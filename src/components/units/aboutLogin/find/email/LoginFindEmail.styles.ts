@@ -60,6 +60,7 @@ export const TitleText = styled.p`
   width: 100px;
   text-align: center;
   line-height: 75px;
+  margin-left: 7px;
 `;
 
 export const Input = styled.input`
@@ -74,6 +75,12 @@ export const Input = styled.input`
   font-size: 17px;
 `;
 
+export const Timer = styled.p`
+  color: #757575;
+  line-height: 75px;
+  margin-right: 13px;
+`;
+
 export const SubmitButton = styled.button`
   width: 582px;
   height: 75px;
@@ -84,4 +91,24 @@ export const SubmitButton = styled.button`
 
   background-color: #0e0e0e;
   color: #e0e0e0;
+`;
+
+export const VertBtn = styled.button`
+  width: 93px;
+  height: 49px;
+  border-radius: 15px;
+
+  margin: 13px 13px 0 0;
+
+  border: none;
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  font-size: 17px;
+
+  cursor: pointer;
+
+  :disabled {
+    color: gray;
+    cursor: default;
+  }
 `;
