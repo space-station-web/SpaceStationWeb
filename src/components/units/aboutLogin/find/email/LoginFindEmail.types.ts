@@ -7,4 +7,5 @@ export interface IFindEmail {
 
   minutes: string;
   second: string;
+  isActive: boolean;
 }

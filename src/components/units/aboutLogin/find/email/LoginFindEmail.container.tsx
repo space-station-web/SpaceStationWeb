@@ -5,6 +5,7 @@ export default function LoginFindEmail(): JSX.Element {
   const [number, setNumber] = useState("");
   const [name, setName] = useState("");
   const [startTimer, setStartTimer] = useState(false); // 타이머 시작 상태를 추적하는 변수
+  const [isActive, setIsActive] = useState(false);
 
   // Timer
   const minuteInMs = 2 * 60 * 1000;
@@ -38,14 +39,26 @@ export default function LoginFindEmail(): JSX.Element {
   // Timer End
 
   const onClickVert = (): void => {
+    if (number === "") {
+      alert("전화번호를 입력해주세요.");
+      return;
+    }
+    if (isActive) {
+      setTimeLeft(minuteInMs);
+    }
     setStartTimer(true); // 버튼 클릭 시 타이머 시작 상태를 true로 설정합니다.
+    alert("인증번호가 전송되었습니다.");
+
+    setIsActive(true);
   };
 
   const onChangeName = (event: ChangeEvent<HTMLInputElement>): void => {
     setName(event.currentTarget.value);
   };
 
-  const onChangePhone = (event: ChangeEvent<HTMLInputElement>): void => {};
+  const onChangePhone = (event: ChangeEvent<HTMLInputElement>): void => {
+    setNumber(event.currentTarget.value);
+  };
 
   return (
     <LoginFindEmailUI
@@ -54,6 +67,7 @@ export default function LoginFindEmail(): JSX.Element {
       onChangePhone={onChangePhone}
       minutes={minutes}
       second={second}
+      isActive={isActive}
     />
   );
 }

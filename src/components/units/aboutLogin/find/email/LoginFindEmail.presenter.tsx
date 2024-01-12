@@ -18,12 +18,14 @@ export default function LoginFindEmailUI(props: IFindEmail): JSX.Element {
           </F.InputTextForm>
 
           <F.InputTextForm>
-            <F.TitleText>인증번호</F.TitleText>
-            <F.Input />
+            <F.TitleTextV>인증번호</F.TitleTextV>
+            <F.InputV type="text" />
             <F.Timer>
               {props.minutes}:{props.second}
             </F.Timer>
-            <F.VertBtn onClick={props.onClickVert}>전송</F.VertBtn>
+            <F.VertBtn onClick={props.onClickVert}>
+              {props.isActive ? "재전송" : "전송"}
+            </F.VertBtn>
           </F.InputTextForm>
 
           <F.SubmitButton>확인</F.SubmitButton>
