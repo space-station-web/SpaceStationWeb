@@ -60,6 +60,15 @@ export const TitleText = styled.p`
   width: 100px;
   text-align: center;
   line-height: 75px;
+  margin-left: 7px;
+`;
+export const TitleTextV = styled.p`
+  color: #bdbdbd;
+  font-size: 17px;
+  width: 100px;
+  text-align: center;
+  line-height: 75px;
+  margin-left: 17px;
 `;
 
 export const Input = styled.input`
@@ -73,6 +82,24 @@ export const Input = styled.input`
   caret-color: #e0e0e0;
   font-size: 17px;
 `;
+export const InputV = styled.input`
+  width: 450px;
+  padding-left: 15px;
+  background-color: #141414;
+  border: none;
+  :focus {
+    outline: none;
+  }
+  color: #e0e0e0;
+  caret-color: #e0e0e0;
+  font-size: 17px;
+`;
+
+export const Timer = styled.p`
+  color: #757575;
+  line-height: 75px;
+  margin-right: 13px;
+`;
 
 export const SubmitButton = styled.button`
   width: 582px;
@@ -84,4 +111,24 @@ export const SubmitButton = styled.button`
 
   background-color: #0e0e0e;
   color: #e0e0e0;
+`;
+
+export const VertBtn = styled.button`
+  width: 93px;
+  height: 49px;
+  border-radius: 15px;
+
+  margin: 13px 13px 0 0;
+
+  border: none;
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  font-size: 17px;
+
+  cursor: pointer;
+
+  :disabled {
+    color: gray;
+    cursor: default;
+  }
 `;

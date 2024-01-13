@@ -75,3 +75,9 @@ export const Button = styled.button`
 
   cursor: pointer;
 `;
+
+export const ErrorMessage = styled.div`
+  color: #ff6d6d;
+  font-size: 15px;
+  margin-right: 370px;
+`;
