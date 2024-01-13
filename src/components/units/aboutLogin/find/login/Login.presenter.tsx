@@ -1,12 +1,15 @@
 import * as F from "./Login.styles";
+import type { ILogin } from "./Login.types";
 
-export default function LoginUI(): JSX.Element {
+export default function LoginUI(
+  props: ILogin,
+): JSX.Element {
   return (
     <>
       <F.Wrapper>
         <F.Form>
           <F.InputTextForm>
-            <F.TitleText>이름</F.TitleText>
+            <F.TitleText>이메일</F.TitleText>
             <F.Input />
           </F.InputTextForm>
 
@@ -22,9 +25,9 @@ export default function LoginUI(): JSX.Element {
             </F.UtilBox>
             
             <F.UtilBox>
-              <F.UtilText>이메일</F.UtilText>
+              <F.UtilText onClick={props.onClickMoveFindEm}>이메일</F.UtilText>
               <F.UtilText>|</F.UtilText>
-              <F.UtilText>비밀번호 찾기</F.UtilText>
+              <F.UtilText onClick={props.onClickMoveFindPw}>비밀번호 찾기</F.UtilText>
             </F.UtilBox>
           </F.UtilForm>
 

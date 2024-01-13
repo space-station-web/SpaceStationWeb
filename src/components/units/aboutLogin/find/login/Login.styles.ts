@@ -98,6 +98,7 @@ export const UtilText = styled.span`
   font-size: 17px;
   text-align: center;
   margin-left: 5px;
+  cursor: pointer;
 `;
 
 export const SubmitButton = styled.button`
