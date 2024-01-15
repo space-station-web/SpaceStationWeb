@@ -1,17 +1,25 @@
 import React from "react";
 
 import * as styled from "./Home.styles";
+import type { HomeProps } from "./Home.types";
 
-function HomeUI(): JSX.Element {
+function HomeUI({ onClickMoveLogin }: HomeProps): JSX.Element {
   return (
     <styled.Wrapper>
+      <styled.Radial />
+      <styled.BackgroundCircle />
+      <styled.Stack style={{ marginTop: 363, alignItems: "center" }}>
+        <div style={{ color: "#f7f7f7", fontSize: 30 }}>나의 생각이 정착할</div>
+        <div style={{ color: "#f7f7f7", fontSize: 55 }}>우주 정거장</div>
+        <div style={{ color: "#f7f7f7", fontSize: 15 }}>2023 Space Station</div>
+      </styled.Stack>
       <styled.Stack
         $gap="245px"
-        style={{ alignItems: "center", marginTop: 558, marginBottom: 813 }}
+        style={{ alignItems: "center", marginTop: 57 }}
       >
         <styled.Group $gap="22px">
           <styled.LoginBtn>가입</styled.LoginBtn>
-          <styled.LoginBtn>로그인</styled.LoginBtn>
+          <styled.LoginBtn onClick={onClickMoveLogin}>로그인</styled.LoginBtn>
         </styled.Group>
         <styled.Stack $gap="30px">
           <styled.Group $gap="30px">
@@ -53,7 +61,9 @@ function HomeUI(): JSX.Element {
             <styled.Card $width="786px" $height="370px">
               <styled.Stack $gap="9px">
                 <styled.SubTitle>오늘의 질문</styled.SubTitle>
-                <styled.Title style={{ filter: `blur(5px)` }}>
+                <styled.Title
+                  style={{ filter: `blur(5px)`, userSelect: "none" }}
+                >
                   제일 좋아하는 과일은 무엇인가요?
                 </styled.Title>
                 <styled.Balloon style={{ fontSize: 17, color: "#bdbdbd" }}>
@@ -87,6 +97,7 @@ function HomeUI(): JSX.Element {
           </styled.Group>
         </styled.Stack>
       </styled.Stack>
+      <styled.Divider />
     </styled.Wrapper>
   );
 }
