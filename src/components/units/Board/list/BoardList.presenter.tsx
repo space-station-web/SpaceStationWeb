@@ -1,7 +1,12 @@
 import * as L from "./BoardList.styles";
 
 export const PRACS = [
-  { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
+  {
+    category: "bbbb",
+    number: 1,
+    title: "크리스마스준비",
+    contents: "집을 온통 초록색과 빨간색으로",
+  },
   { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
   { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
   { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
@@ -30,7 +35,10 @@ export default function BoardListUI(): JSX.Element {
 
       <L.BoardBox>
         {PRACS.map((el) => (
-          <L.Board key={el.number}>{el.number}</L.Board>
+          <L.Board key={el.number}>
+            <L.BoardTitle>{el.title}</L.BoardTitle>
+            <L.BoardContents>{el.contents}</L.BoardContents>
+          </L.Board>
         ))}
       </L.BoardBox>
     </L.Wrapper>
