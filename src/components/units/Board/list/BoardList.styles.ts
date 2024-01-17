@@ -36,8 +36,8 @@ export const Prev = styled.img`
 `;
 
 export const Logo = styled.img`
-  width: 5.25rem;
-  height: 5.25rem;
+  width: 84px;
+  height: 84px;
   float: center;
   margin-right: 48%;
 `;
@@ -52,14 +52,14 @@ export const CategoryDiv = styled.div`
 `;
 
 export const Category = styled.button`
-  width: 10rem;
-  height: 3.125rem;
+  width: 160px;
+  height: 50px;
   border: none;
   border-radius: 999px;
   margin: 0 20px 0 20px;
   background-color: #0a0a0a;
   color: #b4b4b4;
-  font-size: 1.0625rem;
+  font-size: 17px;
   font-weight: 600;
 
   cursor: pointer;
@@ -85,16 +85,14 @@ export const BoardBox = styled.div`
 export const Board = styled.div`
   z-index: 1000;
   background-image: url("board/card.png");
-  width: 18rem;
-  height: 23.1rem;
+  width: 288px;
+  height: 370px;
   border-radius: 20px;
   border: 1px solid black;
   display: flex;
   flex-direction: column;
   align-items: flex-start; /* 왼쪽 정렬 추가 */
   text-align: center;
-  width: 18rem;
-  height: 23.1rem;
 
   padding: 20px;
   display: flex;
@@ -124,15 +122,15 @@ export const Board = styled.div`
 `;
 
 export const BoardTitle = styled.p`
-  font-size: 1.25rem;
+  font-size: 20px;
   font-style: normal;
   font-weight: 600;
-  line-height: 1.4375rem; /* 115% */
+  line-height: 25px;
 `;
 
 export const BoardContents = styled.p`
-  font-size: 1.0625rem;
+  font-size: 17px;
   font-style: normal;
   font-weight: 600;
-  line-height: 1.5625rem; /* 147.059% */
+  line-height: 25px;
 `;
