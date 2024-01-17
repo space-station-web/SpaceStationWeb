@@ -133,12 +133,21 @@ export const CommentToggle = styled.button`
   width: 130px;
   height: 40px;
   border-radius: 999px;
+  border: none;
 
   font-size: 20px;
   background-color: #b4b4b4;
   margin-left: 10px;
 
   cursor: pointer;
+
+  transition: background-color 0.3s ease; /* 트랜지션 속성 추가 */
+
+  &:hover {
+    background-color: #1e1e1e; /* 원하는 hover 시 색상으로 변경 */
+    color: #b4b4b4;
+    border: 1px solid #b4b4b4;
+  }
 `;
 export const SaveButton = styled.img`
   margin-right: 50px;

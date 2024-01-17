@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import * as L from "./BoardDetail.styled";
+import type { IBoardDetailUIProps } from "./BoardDetail.types";
 
-export default function BoardDetailUI(): JSX.Element {
+export default function BoardDetailUI(props: IBoardDetailUIProps): JSX.Element {
   const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {
@@ -71,7 +72,9 @@ export default function BoardDetailUI(): JSX.Element {
             </L.BoardMiddle>
 
             <L.BoardBottom>
-              <L.CommentToggle>댓글보기</L.CommentToggle>
+              <L.CommentToggle onClick={props.onClickCommentToggle}>
+                댓글보기
+              </L.CommentToggle>
               <L.SaveButton src="/common/icon/save.png" />
             </L.BoardBottom>
           </L.BoardWrapper>
