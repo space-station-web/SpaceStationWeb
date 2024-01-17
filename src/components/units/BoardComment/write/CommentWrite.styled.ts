@@ -26,6 +26,24 @@ export const UserProfile = styled.img`
   height: 57px;
   border-radius: 57px;
 `;
+
+export const InputContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex: 1;
+`;
+
+export const IconContainer = styled.div`
+  position: absolute;
+  top: 54%;
+  right: 260px; /* 오른쪽 여백 조절 */
+  transform: translateY(-50%);
+`;
+
+export const Lock = styled.img`
+  cursor: pointer;
+`;
+
 export const Input = styled.input`
   width: 990px;
   height: 72px;
@@ -38,5 +56,18 @@ export const Input = styled.input`
 
   color: #dcdcdc;
   font-size: 17px;
+
+  position: relative;
 `;
-export const Submit = styled.img``;
+export const Submit = styled.div`
+  width: 72px;
+  height: 72px;
+  background-color: #0a0a0a;
+  border-radius: 20px;
+
+  transition: background-image 0.5s ease; /* 트랜지션 속성 추가 */
+
+  &:hover {
+    background-image: url("/common/icon/submit(white).png");
+  }
+`;

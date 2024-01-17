@@ -6,8 +6,13 @@ export default function CommentWriteUI(): JSX.Element {
       <L.Wrapper>
         <L.WriteForm>
           <L.UserProfile src="/common/profile.png" />
-          <L.Input />
-          <L.Submit />
+          <L.InputContainer>
+            <L.Input />
+            <L.IconContainer>
+              <L.Lock src="/common/icon/unlock.png" />
+            </L.IconContainer>
+          </L.InputContainer>
+          <L.Submit></L.Submit>
         </L.WriteForm>
       </L.Wrapper>
     </>
