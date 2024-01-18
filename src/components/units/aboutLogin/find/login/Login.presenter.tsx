@@ -9,13 +9,11 @@ export default function LoginUI(
       <F.Wrapper>
         <F.Form>
           <F.InputTextForm>
-            <F.TitleText>이메일</F.TitleText>
-            <F.Input />
+            <F.Input placeholder="이메일"/>
           </F.InputTextForm>
 
           <F.InputTextForm>
-            <F.TitleText>비밀번호</F.TitleText>
-            <F.Input />
+            <F.Input placeholder="비밀번호"/>
           </F.InputTextForm>
 
           <F.UtilForm>
