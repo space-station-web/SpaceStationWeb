@@ -24,7 +24,7 @@ export const Form = styled.div`
   z-index: 100;
   background-color: #1e1e1e;
   width: 786px;
-  height: 601px;
+  min-height: 601px;
   border: 0.5px solid #757575;
   border-radius: 16px;
 
@@ -36,11 +36,15 @@ export const Form = styled.div`
   padding: 70px;
 `;
 
-export const Title = styled.p`
-  color: #e0e0e0;
+export const Heading1 = styled.p`
   font-size: 20px;
+  font-weight: 600;
+  color: #DCDCDC;
+  white-space: pre-wrap;
+  text-align: center;
+  line-height: 23px;
 
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 `;
 
 export const InputTextForm = styled.div`
@@ -52,16 +56,6 @@ export const InputTextForm = styled.div`
   background-color: #141414;
 
   margin-bottom: 15px;
-`;
-
-
-export const TitleTextV = styled.p`
-  color: #bdbdbd;
-  font-size: 17px;
-  width: 100px;
-  text-align: center;
-  line-height: 75px;
-  margin-left: 17px;
 `;
 
 export const Input = styled.input`
@@ -81,24 +75,6 @@ export const Input = styled.input`
     color: #bdbdbd;
   }
 `;
-export const InputV = styled.input`
-  width: 450px;
-  padding-left: 15px;
-  background-color: #141414;
-  border: none;
-  :focus {
-    outline: none;
-  }
-  color: #e0e0e0;
-  caret-color: #e0e0e0;
-  font-size: 17px;
-`;
-
-export const Timer = styled.p`
-  color: #757575;
-  line-height: 75px;
-  margin-right: 13px;
-`;
 
 export const SubmitButton = styled.button`
   width: 582px;
@@ -106,28 +82,38 @@ export const SubmitButton = styled.button`
   border-radius: 20px;
   border: none;
   cursor: pointer;
-  margin-top: 40px;
+  
 
   background-color: #0e0e0e;
   color: #e0e0e0;
 `;
 
-export const VertBtn = styled.button`
-  width: 93px;
-  height: 49px;
-  border-radius: 15px;
 
-  margin: 13px 13px 0 0;
+export const UtilBox = styled.div`
+  width: 570px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+`;
 
-  border: none;
-  background-color: #1e1e1e;
-  color: #e0e0e0;
-  font-size: 17px;
+export const CheckBox = styled.input`
+  appearance: none;
+  border: 1px solid #8C8C8C;
+  width: 20px;
+  height: 20px;
 
-  cursor: pointer;
-
-  :disabled {
-    color: gray;
-    cursor: default;
+  &:checked {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='black' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e");
+    background-color: #FFFFFF;
   }
+  
+`;
+
+export const UtilText = styled.span`
+  color: #8C8C8C;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  margin-left: 15px;
+  cursor: pointer;
 `;
