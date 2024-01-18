@@ -1,3 +1,5 @@
+import BoardWrite from "./BoardWrite.container";
+
 export default function BoardWriteUI(): JSX.Element {
-  return <div>BoardWrite</div>;
+  return <BoardWrite />;
 }

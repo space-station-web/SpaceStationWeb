@@ -74,9 +74,9 @@ export const ContentsBtn = styled.button`
   }
 `;
 export const Balloon = styled.div`
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   margin-top: 18px;
   width: 431px;
@@ -84,15 +84,16 @@ export const Balloon = styled.div`
   background: #0e0e0e;
   border-radius: 20px;
   border-top-left-radius: 0px;
-  :after { 
-    border-top:0px solid transparent; 
+  :after {
+    border-top: 0px solid transparent;
     border-right: 20px solid transparent;
-    border-bottom: 17px solid #0e0e0e; 
-    border-top-right-radius:20px;
-    content:""; 
-    position:absolute;
-    top:-17px;
-    left:0px; 
+    border-bottom: 17px solid #0e0e0e;
+    border-top-right-radius: 20px;
+    content: "";
+    position: absolute;
+    top: -17px;
+    left: 0px;
+  }
 `;
 export const SubTitle = styled.div`
   font-size: 18px;
