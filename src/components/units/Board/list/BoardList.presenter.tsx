@@ -1,5 +1,6 @@
 import * as L from "./BoardList.styles";
 import SaveIcon from "../../../../../public/save.svg";
+import PaginationComponent from "../../../commons/pagination/Pagination";
 
 export const PRACS = [
   {
@@ -34,7 +35,6 @@ export default function BoardListUI(): JSX.Element {
         <L.Category>최신순</L.Category>
         <L.Category>좋아요순</L.Category>
       </L.CategoryDiv>
-
       <L.BoardBox>
         {PRACS.map((el) => (
           <L.Board key={el.number}>
@@ -48,6 +48,8 @@ export default function BoardListUI(): JSX.Element {
           </L.Board>
         ))}
       </L.BoardBox>
+
+      <PaginationComponent />
     </L.Wrapper>
   );
 }

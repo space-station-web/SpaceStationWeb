@@ -26,11 +26,7 @@ export const Form = styled.div`
   width: 786px;
   min-height: 601px;
   border: 0.5px solid #757575;
-<<<<<<< HEAD
   border-radius: 16px;
-=======
-  border-radius: 40px;
->>>>>>> 548dd88a4fdd806d8ad323ab70667fa5ee48334b
 
   display: flex;
   flex-direction: column;
@@ -43,7 +39,7 @@ export const Form = styled.div`
 export const Heading1 = styled.p`
   font-size: 20px;
   font-weight: 600;
-  color: #DCDCDC;
+  color: #dcdcdc;
   white-space: pre-wrap;
   text-align: center;
   line-height: 23px;
@@ -86,16 +82,10 @@ export const SubmitButton = styled.button`
   border-radius: 20px;
   border: none;
   cursor: pointer;
-<<<<<<< HEAD
-=======
-  margin-top: 10px;
->>>>>>> 548dd88a4fdd806d8ad323ab70667fa5ee48334b
-  
 
   background-color: #0e0e0e;
   color: #e0e0e0;
 `;
-
 
 export const UtilBox = styled.div`
   width: 570px;
@@ -106,42 +96,21 @@ export const UtilBox = styled.div`
 
 export const CheckBox = styled.input`
   appearance: none;
-  border: 1px solid #8C8C8C;
+  border: 1px solid #8c8c8c;
   width: 20px;
   height: 20px;
-<<<<<<< HEAD
-=======
-  cursor: pointer;
-  margin-left: 4px;
->>>>>>> 548dd88a4fdd806d8ad323ab70667fa5ee48334b
 
   &:checked {
     background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='black' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e");
-    background-color: #FFFFFF;
+    background-color: #ffffff;
   }
-  
 `;
 
 export const UtilText = styled.span`
-  color: #8C8C8C;
+  color: #8c8c8c;
   font-size: 15px;
   line-height: 18px;
   text-align: center;
   margin-left: 15px;
   cursor: pointer;
 `;
-<<<<<<< HEAD
-=======
-
-export const NormText = styled.span`
-  color: #8C8C8C;
-  font-size: 15px;
-  line-height: 18px;
-  text-align: center;
-  margin-left: 15px;
-`;
-
-export const blank =  styled.div`
-  height: 25px;
-`;
->>>>>>> 548dd88a4fdd806d8ad323ab70667fa5ee48334b
