@@ -47,16 +47,11 @@ export const InputTextForm = styled.div`
   margin-bottom: 15px;
 `;
 
-export const TitleText = styled.p`
-  color: #bdbdbd;
-  font-size: 17px;
-  width: 100px;
-  text-align: center;
-  line-height: 75px;
-`;
+
 
 export const Input = styled.input`
   width: 450px;
+  height: 75px;
   background-color: #141414;
   border: none;
   :focus {
@@ -65,6 +60,11 @@ export const Input = styled.input`
   color: #e0e0e0;
   caret-color: #e0e0e0;
   font-size: 17px;
+  margin-left: 30px;
+
+  &::placeholder {
+    color: #bdbdbd;
+  }
 `;
 
 // 자동로그인 체크박스 및 이메일|비밀번호 찾기
@@ -106,7 +106,7 @@ export const SubmitButton = styled.button`
   height: 75px;
   border-radius: 20px;
   border: none;
-
+  cursor: pointer;
   
 
   background-color: #0e0e0e;

@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  background-position: top center;
   background-image: url("/common/background.png");
+  background-position: top center;
 
   display: flex;
   justify-content: center;
@@ -34,52 +34,45 @@ export const Form = styled.div`
 
   margin: 550px 0 300px 0;
   padding: 70px;
+
 `;
 
-export const Title = styled.p`
-  color: #e0e0e0;
-  font-size: 20px;
-
+export const Icon = styled.img`
   margin-bottom: 60px;
 `;
 
-export const InputTextForm = styled.div`
-  display: flex;
-  width: 582px;
-  height: 75px;
-  border-radius: 20px;
+export const Heading1 = styled.p`
+  font-size: 20px;
+  font-weight: 600;
+  color: #DCDCDC;
+  white-space: pre-wrap;
+  text-align: center;
+  line-height: 23px;
 
-  background-color: #141414;
-
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 `;
 
-export const Input = styled.input`
-  width: 450px;
-  height: 75px;
-  background-color: #141414;
-  border: none;
-  :focus {
-    outline: none;
-  }
-  color: #e0e0e0;
-  caret-color: #e0e0e0;
-  font-size: 17px;
-  margin-left: 30px;
+export const Heading2 = styled.p`
+  font-size: 18px;
+  font-weight: 400;
+  color: #B4B4B4;
+  white-space: pre-wrap;
+  text-align: center;
+  line-height: 28px;
 
-  &::placeholder {
-    color: #bdbdbd;
-  }
+  margin-bottom: 30px;
 `;
 
-export const SubmitButton = styled.button`
+export const Button = styled.button`
   width: 582px;
   height: 75px;
   border-radius: 20px;
   border: none;
-  cursor: pointer;
-  margin-top: 40px;
+
+  margin-top: 15px;
 
   background-color: #0e0e0e;
   color: #e0e0e0;
+
+  cursor: pointer;
 `;

@@ -8,7 +8,7 @@ export default function LoginFindSuccessEmailUI(
     <>
       <F.Wrapper>
         <F.Form>
-          <F.Icon src="/common/icon.png" />
+          <F.Icon src="/common/icon/icon.png" />
           <F.Text>
             허거덩님의 이메일은
             <br />

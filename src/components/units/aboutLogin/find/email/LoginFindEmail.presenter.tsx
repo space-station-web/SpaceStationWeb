@@ -8,18 +8,15 @@ export default function LoginFindEmailUI(props: IFindEmail): JSX.Element {
         <F.Form>
           <F.Title>이메일 찾기</F.Title>
           <F.InputTextForm>
-            <F.TitleText>이름</F.TitleText>
-            <F.Input onChange={props.onChangeName} />
+            <F.Input placeholder="이름" onChange={props.onChangeName} />
           </F.InputTextForm>
 
           <F.InputTextForm>
-            <F.TitleText>전화번호</F.TitleText>
-            <F.Input type="text" onChange={props.onChangePhone} />
+            <F.Input placeholder="전화번호" type="text" onChange={props.onChangePhone} />
           </F.InputTextForm>
 
           <F.InputTextForm>
-            <F.TitleTextV>인증번호</F.TitleTextV>
-            <F.InputV type="text" />
+            <F.Input placeholder="인증번호" type="text" />
             <F.Timer>
               {props.minutes}:{props.second}
             </F.Timer>
