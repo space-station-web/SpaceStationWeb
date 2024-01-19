@@ -1,4 +1,5 @@
 import * as L from "./CommentWrite.styled";
+import Lock from "../../../../../public/locked.svg";
 
 export default function CommentWriteUI(): JSX.Element {
   return (
@@ -9,7 +10,7 @@ export default function CommentWriteUI(): JSX.Element {
           <L.InputContainer>
             <L.Input />
             <L.IconContainer>
-              <L.Lock src="/common/icon/unlock.png" />
+              <Lock />
             </L.IconContainer>
           </L.InputContainer>
           <L.Submit></L.Submit>
