@@ -67,7 +67,6 @@ export const Submit = styled.div`
   background-image: url("/common/icon/submit(black).png");
   border-radius: 20px;
   cursor: pointer;
-  
 
   transition: background-image 0.5s ease; /* 트랜지션 속성 추가 */
 
