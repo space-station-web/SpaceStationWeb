@@ -1,21 +1,20 @@
-import type { Dispatch, SetStateAction } from "react";
-import { type MessageProps } from "./Notification.container";
 import * as styled from "./Notification.styles";
+import type { NotificationProps } from "./Notification.types";
 
-interface NotificationProps {
-  isOpened: boolean;
-  setIsOpened: Dispatch<SetStateAction<boolean>>;
-  notifications: MessageProps[];
-}
 function NotificationUI({
   isOpened,
   setIsOpened,
   notifications,
+  setNotifications,
 }: NotificationProps): JSX.Element {
   return (
     <>
       <img
-        src="/common/icon/icon_alert_disable.svg"
+        src={
+          notifications.filter((item) => !item.isRead && item).length !== 0
+            ? "/common/icon/icon_alert.svg"
+            : "/common/icon/icon_alert_disable.svg"
+        }
         style={{ marginRight: 60 }}
         onClick={() => {
           setIsOpened(!isOpened);
@@ -31,7 +30,14 @@ function NotificationUI({
             }}
           >
             <div style={{ marginLeft: 15, marginRight: 114 }}>나의 우주선</div>
-            <div style={{ marginRight: 20, fontSize: 15 }}>전체 삭제</div>
+            <div
+              style={{ marginRight: 20, fontSize: 15, cursor: "pointer" }}
+              onClick={() => {
+                setNotifications([]);
+              }}
+            >
+              전체 삭제
+            </div>
             <img
               src="/common/icon/icon_exit.svg"
               style={{ cursor: "pointer" }}
@@ -40,13 +46,24 @@ function NotificationUI({
               }}
             />
           </div>
-          <div style={{ borderTop: "1.5px solid #b4b4b4" }}>
+          <styled.MessageWrapper>
             {notifications.map((item, idx) => {
               return (
-                <styled.MessageWrapper key={`Noti-${item.text}-${idx}`}>
-                  <div style={{ display: "flex", flexDirection: "column" }}>
+                <styled.MessageBox key={`Noti-${item.text}-${idx}`}>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: 9,
+                      cursor: "pointer",
+                    }}
+                  >
                     <div
-                      style={{ display: "flex", alignItems: "center", gap: 10 }}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 10,
+                      }}
                     >
                       <styled.CheckRead $isRead={item.isRead} />
                       <div style={{ fontSize: 18 }}>{item.text}</div>
@@ -55,10 +72,26 @@ function NotificationUI({
                       방금 전
                     </div>
                   </div>
-                </styled.MessageWrapper>
+                  <img
+                    src="/common/icon/icon_exit.svg"
+                    style={{
+                      width: 12,
+                      height: 12,
+                      fill: "#8c8c8c",
+                      position: "absolute",
+                      right: 14,
+                      top: 15.5,
+                    }}
+                    onClick={() => {
+                      setNotifications(
+                        notifications.filter((fItem) => fItem !== item),
+                      );
+                    }}
+                  />
+                </styled.MessageBox>
               );
             })}
-          </div>
+          </styled.MessageWrapper>
         </styled.Wrapper>
       )}
     </>
