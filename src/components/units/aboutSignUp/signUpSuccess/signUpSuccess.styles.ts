@@ -26,7 +26,7 @@ export const Form = styled.div`
   width: 786px;
   height: 601px;
   border: 0.5px solid #757575;
-  border-radius: 16px;
+  border-radius: 40px;
 
   display: flex;
   flex-direction: column;
@@ -38,6 +38,7 @@ export const Form = styled.div`
 `;
 
 export const Icon = styled.img`
+  margin-top: 80px;
   margin-bottom: 60px;
 `;
 
