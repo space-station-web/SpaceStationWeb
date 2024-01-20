@@ -3,7 +3,7 @@ import React from "react";
 import * as styled from "./Home.styles";
 import type { HomeProps } from "./Home.types";
 
-function HomeUI({ onClickMoveLogin }: HomeProps): JSX.Element {
+function HomeUI({ onClickMoveLogin, onClickMoveWrite }: HomeProps): JSX.Element {
   return (
     <styled.Wrapper>
       <styled.Radial />
@@ -43,7 +43,7 @@ function HomeUI({ onClickMoveLogin }: HomeProps): JSX.Element {
                 <styled.SubTitle>나도 한번 써볼까?</styled.SubTitle>
                 <styled.Title>기록지</styled.Title>
               </styled.Stack>
-              <styled.ContentsBtn style={{ alignSelf: "flex-end" }}>
+              <styled.ContentsBtn onClick={onClickMoveWrite} style={{ alignSelf: "flex-end" }}>
                 작성하기
               </styled.ContentsBtn>
             </styled.Card>

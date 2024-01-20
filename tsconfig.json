@@ -15,6 +15,10 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
+<<<<<<< HEAD
   "include": ["global.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx"],
+=======
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/write/TemporaryStorage"],
+>>>>>>> 548dd88a4fdd806d8ad323ab70667fa5ee48334b
   "exclude": ["node_modules"]
 }
