@@ -1,12 +1,15 @@
 // webpack.config.js
+// ...
 module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.svg$/,
-        use: ["@svgr/webpack"],
-      },
-    ],
+  // ...
+  webpackFinal: async (config) => {
+    // ...
+    config.module.rules.unshift({
+      test: /\.svg$/,
+      use: ["@svgr/webpack"],
+    });
+    // ...
+    return config;
   },
 };
 
