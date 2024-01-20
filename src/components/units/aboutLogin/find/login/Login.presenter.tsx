@@ -13,18 +13,18 @@ export default function LoginUI(
           </F.InputTextForm>
 
           <F.InputTextForm>
-            <F.Input placeholder="비밀번호"/>
+            <F.Input type="password" placeholder="비밀번호"/>
           </F.InputTextForm>
 
           <F.UtilForm>
             <F.UtilBox>
               <F.CheckBox type="checkbox" />
-              <F.UtilText>자동 로그인</F.UtilText>
+              <F.NormText>자동 로그인</F.NormText>
             </F.UtilBox>
             
             <F.UtilBox>
               <F.UtilText onClick={props.onClickMoveFindEm}>이메일</F.UtilText>
-              <F.UtilText>|</F.UtilText>
+              <F.NormText>|</F.NormText>
               <F.UtilText onClick={props.onClickMoveFindPw}>비밀번호 찾기</F.UtilText>
             </F.UtilBox>
           </F.UtilForm>
