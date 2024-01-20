@@ -121,6 +121,23 @@ export const Board = styled.div`
   }
 `;
 
+export const BoardTop = styled.div`
+  width: 100%;
+`;
+
+export const BoardSaveBack = styled.div`
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background-color: #141414;
+
+  margin: 0 0 234px 206px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const BoardTitle = styled.p`
   font-size: 20px;
   font-style: normal;

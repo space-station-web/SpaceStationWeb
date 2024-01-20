@@ -29,15 +29,17 @@ export const UserProfile = styled.img`
 
 export const InputContainer = styled.div`
   display: flex;
+
+  position: relative;
   align-items: center;
   flex: 1;
 `;
 
 export const IconContainer = styled.div`
-  position: absolute;
-  top: 54%;
-  right: 260px; /* 오른쪽 여백 조절 */
-  transform: translateY(-50%);
+  //width: 100px;
+  position: absolute; /* 추가 */
+
+  left: 960px;
 `;
 
 export const Lock = styled.img`
@@ -62,8 +64,10 @@ export const Input = styled.input`
 export const Submit = styled.div`
   width: 72px;
   height: 72px;
-  background-color: #0a0a0a;
+  background-image: url("/common/icon/submit(black).png");
   border-radius: 20px;
+  cursor: pointer;
+  
 
   transition: background-image 0.5s ease; /* 트랜지션 속성 추가 */
 
