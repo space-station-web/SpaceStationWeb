@@ -23,7 +23,7 @@ export const Radial = styled.div`
 `;
 export const BackgroundCircle = styled.div`
   width: 1194px;
-  height: 1194px;
+  /* height: 1194px; */
   flex-shrink: 0;
   border-radius: 1194px;
   background: linear-gradient(180deg, #0e0e0e 0%, rgba(19, 17, 17, 0) 100%);
