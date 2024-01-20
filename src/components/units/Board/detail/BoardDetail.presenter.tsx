@@ -13,10 +13,10 @@ export default function BoardDetailUI(props: IBoardDetailUIProps): JSX.Element {
     <>
       {mounted && (
         <L.Wrapper>
-          <L.Radial />
+          
           <L.TopDiv>
             <L.Prev src="/common/icon/Arrow 2.png" />
-            <L.Logo src="/common/icon/logo1.png" />
+            <L.ShareBtn>인용하기</L.ShareBtn>
           </L.TopDiv>
           <L.BoardWrapper>
             <L.TopBoard>

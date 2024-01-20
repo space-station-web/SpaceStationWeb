@@ -10,12 +10,14 @@ export const Wrapper = styled.div`
   padding-top: 27px;
   padding-left: 22px;
   padding-right: 14px;
+  
 `;
 export const MessageWrapper = styled.div`
   height: 330px;
   overflow-y: auto;
   scrollbar-gutter: stable;
   padding-right: 16px;
+  
 
   &::-webkit-scrollbar {
     border-radius: 20px;
@@ -38,6 +40,7 @@ export const MessageWrapper = styled.div`
   }
 `;
 export const MessageBox = styled.div`
+  
   position: relative;
   padding-top: 14.5px;
   padding-bottom: 15.5px;

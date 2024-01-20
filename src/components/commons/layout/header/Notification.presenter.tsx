@@ -56,6 +56,7 @@ function NotificationUI({
                       flexDirection: "column",
                       gap: 9,
                       cursor: "pointer",
+                      
                     }}
                   >
                     <div
