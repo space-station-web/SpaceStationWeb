@@ -1,3 +1,4 @@
+import PaginationComponent from "../../../commons/pagination/Pagination";
 import * as L from "./BookList.styles";
 
 export const PRACS = [
@@ -74,6 +75,8 @@ export default function BoardListUI(): JSX.Element {
           </L.Board>
         ))}
       </L.BoardBox>
+
+      <PaginationComponent />
     </L.Wrapper>
   );
 }
