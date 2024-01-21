@@ -1,13 +1,9 @@
-import React from "react";
-
 import * as styled from "./Home.styles";
 import type { HomeProps } from "./Home.types";
 
 function HomeUI({ onClickMoveLogin, onClickMoveWrite }: HomeProps): JSX.Element {
   return (
     <styled.Wrapper>
-      <styled.Radial />
-      <styled.BackgroundCircle />
       <styled.Stack style={{ marginTop: 363, alignItems: "center" }}>
         <div style={{ color: "#f7f7f7", fontSize: 30 }}>나의 생각이 정착할</div>
         <div style={{ color: "#f7f7f7", fontSize: 55 }}>우주 정거장</div>
@@ -97,7 +93,6 @@ function HomeUI({ onClickMoveLogin, onClickMoveWrite }: HomeProps): JSX.Element 
           </styled.Group>
         </styled.Stack>
       </styled.Stack>
-      <styled.Divider />
     </styled.Wrapper>
   );
 }
