@@ -23,10 +23,9 @@ export const PRACS = [
 export default function BoardListUI(): JSX.Element {
   return (
     <L.Wrapper>
-      <L.Radial />
       <L.TopDiv>
         <L.Prev src="/common/icon/Arrow 2.png" />
-        <L.Logo src="/common/icon/logo1.png" />
+
       </L.TopDiv>
       <L.CategoryDiv>
         <L.Category>이웃 게시물</L.Category>
