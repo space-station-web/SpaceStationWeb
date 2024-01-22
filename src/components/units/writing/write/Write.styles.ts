@@ -1,5 +1,9 @@
 import styled from "@emotion/styled";
 
+interface CustomAlertProps {
+  visible?: boolean;
+}
+
 export const Header = styled.div`
   width: 1921px;
   height: 94px;
@@ -33,10 +37,10 @@ export const TemporaryStorageBtn = styled.div`
 
   position: absolute;
   top: 140px;
-  right: 220px;
+  right: 530px;
 `;
 
-export const PublishWriteBtn = styled.div`
+export const PublishWriteBtn = styled.button`
   width: 160px;
   height: 50px;
   flex-shrink: 0;
@@ -45,7 +49,7 @@ export const PublishWriteBtn = styled.div`
 
   position: absolute;
   top: 140px;
-  right: 40px;
+  right: 350px;
 `;
 
 export const TemporaryStorageBtnText = styled.span`
@@ -81,8 +85,6 @@ export const TemporaryStorageBtnNum = styled.span`
 `;
 
 export const PublishWriteBtnText = styled.span`
-  width: 70.395px;
-
   color: var(--Layout-Color-Gray-100, #DCDCDC);
 
   /* Heading 1 */
@@ -91,11 +93,6 @@ export const PublishWriteBtnText = styled.span`
   font-style: normal;
   font-weight: 600;
   line-height: 50px; /* 115% */ /*피그마와 다름*/
-  margin-top: 15px; 
-  cursor: pointer;
-
-  margin-left: 50px;
-
 `;
 
 export const HLine = styled.div`
@@ -150,6 +147,8 @@ export const InputTextForm = styled.div`
   background: var(--Primary-BlackLight, #2E2E2E);
 
   margin-top: 20px;
+  overflow: auto; 
+
 `;
 
 
@@ -273,25 +272,23 @@ export const ArroyEndBtn = styled.span`
 `;
 
 export const TitleText = styled.input`
-  width: 400px;
-  height: 39.841px;
+  width: 1050px;
+  height: 30px;
   flex-shrink: 0;
   color: var(--Layout-Color-Gray-300, #8C8C8C);
 
-  /* Heading */
   font-family: Pretendard;
   font-size: 30px;
   font-style: normal;
   font-weight: 600;
-  line-height: 110px;
 
   margin-top: 50px;
 
   margin-left: 70px;
 
   border: none;
-  background: transparent; /* 배경을 투명하게 설정 */
-  
+  background: transparent;
+
   :focus {
     outline: none;
   }
@@ -306,29 +303,27 @@ export const Line = styled.div`
   
 
   margin-left: 70px;
-  margin-top: 30px; /* 여기에 내리고 싶은 만큼의 여백을 지정하세요 */
+  margin-top: 30px; 
 
 `;
 
-export const Writing = styled.input`
-width: 400px;
-height: 30.987px;
-flex-shrink: 0;
-color: var(--Layout-Color-Gray-300, #8C8C8C);
+export const Writing = styled.textarea`
+  width: 1050px;
+  min-height: 500px; 
+  color: var(--Layout-Color-Gray-300, #8C8C8C);
 
-/* Heading 2 */
-font-family: Pretendard;
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: 80px; /* 155.556% */
-letter-spacing: -0.18px;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.18px;
 
-margin-left: 70px;
-margin-top: 30px;
-border: none;
-  background: transparent; /* 배경을 투명하게 설정 */
-  
+  margin-left: 70px;
+  margin-top: 30px;
+  border: none;
+  background: transparent;
+
   :focus {
     outline: none;
   }
@@ -346,17 +341,49 @@ export const Input = styled.input`
   font-size: 17px;
 `;
 
-export const image = styled.span`
-width: 25px;
-height: 25px;
-flex-shrink: 0;
+export const Image = styled.span`
+  width: 25px;
+  height: 25px;
+  flex-shrink: 0;
+  position: relative;
+  top: -465px;
+  right: 22px;
 
-fill: var(--Layout-Color-Gray-200, #B4B4B4);
-cursor: pointer;
-
-margin-left: 630px;
+  fill: var(--Layout-Color-Gray-200, #B4B4B4);
+  cursor: pointer;
 `;
 
+export const CustomAlert = styled.div `
+width: 460px;
+height: 177px;
+flex-shrink: 0;
 
+border-radius: 20px;
+background: var(--Primary-Black, #141414);
+
+margin-top: 640px;
+margin-left: -20px;
+transition: opacity 0.5s ease-in-out;
+
+`;
+
+export const CustomAlertImg = styled.div`
+width: 140px;
+height: 140px;
+flex-shrink: 0;
+margin-left: 30px;
+`;
+
+export const CustomAlertText = styled.p`
+color: var(--Layout-Color-Gray-100, #DCDCDC);
+/* Heading 1 */
+font-family: Pretendard;
+font-size: 20px;
+font-style: normal;
+font-weight: 600;
+line-height: 23px; /* 115% */
+margin-left: 140px;
+margin-top: -65px;
+`;
 
 
