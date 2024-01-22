@@ -13,8 +13,5 @@ export default function Write(): JSX.Element {
   const onClickCreateRecommand = async (): Promise<void> => {
     await router.push("../../../../../../write/CreateRecommand");
   };
-  const onClickPublishWrite = async (): Promise<void> => {
-    await router.push("../../../../../../write/PublishWrite");
-  };
-  return <WriteUI onClickMoveTemStorage={onClickMoveTemStorage} onClickCreateRecommand={onClickCreateRecommand} onClickPublishWrite={onClickPublishWrite} onClickPluseTemStorage={onClickPluseTemStorage}/>;
+  return <WriteUI onClickMoveTemStorage={onClickMoveTemStorage} onClickCreateRecommand={onClickCreateRecommand}  onClickPluseTemStorage={onClickPluseTemStorage}/>;
 }
