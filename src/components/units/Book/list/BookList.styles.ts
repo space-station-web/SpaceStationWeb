@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
   align-items: center;
 `;
 
+
 export const TopDiv = styled.div`
   width: 80%;
   display: flex;
@@ -32,25 +33,26 @@ export const CategoryDiv = styled.div`
   justify-content: center;
 `;
 
-export const Category = styled.button`
-  width: 160px;
-  height: 50px;
+export const CategoryContainer = styled.div`
+  width: 80px;
+  height: 100px;
   border: none;
-  border-radius: 999px;
-  margin: 0 20px 0 20px;
-  background-color: #0a0a0a;
+
+  margin: 0 38px 0 38px;
+
+  cursor: pointer;
+  z-index: 100;
+`;
+
+export const CategoryIcon = styled.img``;
+
+export const CategoryName = styled.p`
   color: #b4b4b4;
   font-size: 17px;
   font-weight: 600;
 
-  cursor: pointer;
-  z-index: 100;
-
-  transition: background-color 0.3s ease; /* 배경색 변경에 대한 트랜지션 효과 추가 */
-  &:hover {
-    background-color: #dcdcdc; /* hover 시 배경색 변경 */
-    color: #141414;
-  }
+  text-align: center;
+  margin-top: 15px;
 `;
 
 export const BoardBox = styled.div`
@@ -65,26 +67,16 @@ export const BoardBox = styled.div`
 `;
 export const Board = styled.div`
   z-index: 1000;
-  background-image: url("board/card.png");
   width: 288px;
-  height: 370px;
+  height: 600px;
   border-radius: 20px;
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* 왼쪽 정렬 추가 */
-  text-align: center;
+  border: 1px solid white;
+  background-color: #e7e6e6;
 
-  padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* 아래쪽 정렬 추가 */
   text-align: left; /* 왼쪽 정렬 추가 */
   color: #dcdcdc;
-
-  /* 그라데이션을 직접 배경으로 추가 */
-  background: linear-gradient(180deg, rgba(30, 30, 30, 0) 0%, #0b0b0b 100%),
-    url("board/card.png");
 
   &:nth-child(2),
   &:nth-child(4) {
@@ -96,39 +88,53 @@ export const Board = styled.div`
   &:nth-child(10) {
     margin-top: -110px;
   }
+`;
 
-  &:hover {
-    background-size: 90%; /* hover 시 배경 이미지 크기를 110%로 확대 */
+export const BoardImage = styled.img`
+  width: 100%;
+  height: 388px;
+  img {
+    box-shadow: 0px 5px 4.5px 1px rgba(0, 0, 0, 0.09);
   }
 `;
 
-export const BoardTop = styled.div`
+export const BoardBottom = styled.div`
   width: 100%;
+  padding: 20px;
 `;
 
-export const BoardSaveBack = styled.div`
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  background-color: #141414;
+export const BoardCategory = styled.p`
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 
-  margin: 0 0 234px 206px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  color: #8c8c8c;
+  margin-bottom: 5px;
 `;
 
 export const BoardTitle = styled.p`
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
-  line-height: 25px;
+  color: #1e1e1e;
+
+  margin-bottom: 10px;
 `;
 
-export const BoardContents = styled.p`
+export const BoardSubTitle = styled.p`
+  color: #8c8c8c;
   font-size: 17px;
   font-style: normal;
   font-weight: 600;
-  line-height: 25px;
+  margin-bottom: 10px;
+`;
+
+export const BoardContents = styled.p`
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
+  color: #8c8c8c;
 `;

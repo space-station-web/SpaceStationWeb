@@ -8,7 +8,6 @@ export default function LoginUI(props: ILogin): JSX.Element {
         <F.Form>
           <F.InputTextForm>
             <F.Input placeholder="이메일" />
-            <F.Input placeholder="이메일" />
           </F.InputTextForm>
 
           <F.InputTextForm>
@@ -18,12 +17,12 @@ export default function LoginUI(props: ILogin): JSX.Element {
           <F.UtilForm>
             <F.UtilBox>
               <F.CheckBox type="checkbox" />
-              <F.NormText>자동 로그인</F.NormText>
+              <F.UtilText>자동 로그인</F.UtilText>
             </F.UtilBox>
 
             <F.UtilBox>
               <F.UtilText onClick={props.onClickMoveFindEm}>이메일</F.UtilText>
-              <F.NormText>|</F.NormText>
+              <F.UtilText>|</F.UtilText>
               <F.UtilText onClick={props.onClickMoveFindPw}>
                 비밀번호 찾기
               </F.UtilText>

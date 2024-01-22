@@ -18,7 +18,7 @@ export const Radial = styled.div`
   );
   width: 1459px;
   height: 1172px;
-  z-index: 0;
+  z-index: 1;
   top: 65px;
 `;
 export const BackgroundCircle = styled.div`
