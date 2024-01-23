@@ -38,6 +38,8 @@ export const TemporaryStorageBtn = styled.div`
   position: absolute;
   top: 140px;
   right: 530px;
+
+ 
 `;
 
 export const PublishWriteBtn = styled.button`
@@ -50,9 +52,11 @@ export const PublishWriteBtn = styled.button`
   position: absolute;
   top: 140px;
   right: 350px;
+
+  border: none;
 `;
 
-export const TemporaryStorageBtnText = styled.span`
+export const TemporaryStorageBtnText = styled.button`
   width: 70.395px;
 
   color: var(--Layout-Color-Gray-100, #DCDCDC);
@@ -63,9 +67,12 @@ export const TemporaryStorageBtnText = styled.span`
   font-style: normal;
   font-weight: 600;
   line-height: 50px;
-  
+  background: var(--Primary-BlackLight, #2E2E2E);
+
   margin-left: 30px; 
-  cursor: pointer;
+  cursor: pointer;erline; /* 클릭할 때 밑줄 표시 */
+  border: none;
+  }
 `;
 export const TemporaryStorageBtnNum = styled.span`
   width: 70.395px;
@@ -93,6 +100,9 @@ export const PublishWriteBtnText = styled.span`
   font-style: normal;
   font-weight: 600;
   line-height: 50px; /* 115% */ /*피그마와 다름*/
+
+  cursor: pointer;
+
 `;
 
 export const HLine = styled.div`
