@@ -34,12 +34,10 @@ export default function WriteUI(props: Iwrite): JSX.Element {
     }, 2000);
   };
 
-  const handleTemporaryStorageClick = () => {
+  const handleTemporaryStorageClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     console.log('임시저장 버튼이 클릭되었습니다.');
     setTemporaryStorageCount(temporaryStorageCount + 1);
-    // props.onClickPluseTemStorage();
   };
-
 
   
   return (

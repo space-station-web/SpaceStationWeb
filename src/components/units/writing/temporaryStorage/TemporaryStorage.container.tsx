@@ -7,6 +7,9 @@ export default function TemporaryStorage(): JSX.Element {
   const onClickDelete = async (): Promise<void> => {
     await router.push("../../../../../../write/TemporaryStorage/StorageDelete");
   };
-  return <TemporaryStorageUI onClickDelete={onClickDelete} />;
+  const onClickMoveWriting = async (): Promise<void> => {
+    await router.push("../../../../../../write/TemporaryStorage/TemporaryWriting");
+  };
+  return <TemporaryStorageUI onClickDelete={onClickDelete} onClickMoveWriting={onClickMoveWriting} />;
 
 }
