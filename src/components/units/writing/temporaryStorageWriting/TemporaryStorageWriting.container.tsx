@@ -1,16 +1,32 @@
 import TemporaryStorageWritingUI from "./TemporaryStorageWriting.presenter";
-import React from "react";
-import { useRouter } from "next/router"; 
+import { useRouter } from "next/router";
+import React, { useState } from 'react';
 
 export default function TemporaryStorage(): JSX.Element {
-    const router = useRouter();
-    const onClickDelete = async (): Promise<void> => {
-      await router.push("../../../../../../write/TemporaryStorage/StorageDelete");
-    };
-    const onClickMoveWriting = async (): Promise<void> => {
-      await router.push("../../../../../../write/TemporaryStorage/TemporaryWriting");
-    };
-    return <TemporaryStorageWritingUI onClickDelete={onClickDelete} onClickMoveWriting={onClickMoveWriting} />;
-  
-  }
+  const [temporaryStorageCount, setTemporaryStorageCount] = useState(0);
+  const router = useRouter();
+
+  const handleTemporaryStorageClick = () => {
+    setTemporaryStorageCount(temporaryStorageCount + 1);
+  };
+
+  const onClickMoveTemStorage = async (): Promise<void> => {
+    await router.push("../../../../../../write/TemporaryStorage");
+  };
+  const onClickPluseTemStorage = async (): Promise<void> => {
+    await router.push("../../../../../../write/TemporaryStoragePluse");
+  };
+  const onClickCreateRecommand = async (): Promise<void> => {
+    await router.push("../../../../../../write/CreateRecommand");
+  };
+  return (
+    <>
+      <TemporaryStorageWritingUI
+        onClickMoveTemStorage={onClickMoveTemStorage}
+        onClickCreateRecommand={onClickCreateRecommand}
+        onClickPluseTemStorage={onClickPluseTemStorage}
+      />
+    </>
+  );
+}
   
