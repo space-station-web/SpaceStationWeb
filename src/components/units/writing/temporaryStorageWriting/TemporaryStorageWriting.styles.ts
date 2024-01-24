@@ -305,17 +305,17 @@ export const Line = styled.div`
 
 `;
 
-export const Writing = styled.textarea`
-  width: 1050px;
-  min-height: 500px; 
-  color: var(--Layout-Color-Gray-300, #8C8C8C);
+export const Writing = styled.p`
+width: 1000px;
+color: var(--Layout-Color-Gray-200, #B4B4B4);
 
-  font-family: Pretendard;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.4;
-  letter-spacing: -0.18px;
+/* Heading 2 */
+font-family: Pretendard;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 28px; /* 155.556% */
+letter-spacing: -0.18px;
 
   margin-left: 70px;
   margin-top: 30px;
@@ -339,7 +339,7 @@ export const Input = styled.input`
   font-size: 17px;
 `;
 
-export const Image = styled.span`
+export const ImageIcon = styled.span`
   width: 25px;
   height: 25px;
   flex-shrink: 0;
@@ -385,3 +385,10 @@ margin-top: -65px;
 `;
 
 
+export const ImgWrapper = styled.div`
+
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow-x: auto; /* 가로 스크롤을 활성화합니다 */
+`;
