@@ -21,6 +21,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   position: relative;
 
+  padding-bottom: 40px;
 `;
 
 
@@ -56,8 +57,8 @@ export const PublishWriteBtn = styled.button`
   border: none;
 `;
 
-export const TemporaryStorageBtnText = styled.button`
-  width: 70.395px;
+export const TemporaryStorageBtnText = styled.span`
+  width: 75.395px;
 
   color: var(--Layout-Color-Gray-100, #DCDCDC);
 
@@ -69,9 +70,8 @@ export const TemporaryStorageBtnText = styled.button`
   line-height: 50px;
   background: var(--Primary-BlackLight, #2E2E2E);
 
-  margin-left: 30px; 
-  cursor: pointer;erline; /* 클릭할 때 밑줄 표시 */
-  border: none;
+  margin-left: 20px; 
+  cursor: pointer;
   }
 `;
 export const TemporaryStorageBtnNum = styled.span`
@@ -298,6 +298,7 @@ export const TitleText = styled.input`
 
   border: none;
   background: transparent;
+  overflow: hidden; /* 스크롤 숨기기 */
 
   :focus {
     outline: none;
@@ -323,7 +324,7 @@ export const Writing = styled.textarea`
   color: var(--Layout-Color-Gray-300, #8C8C8C);
 
   font-family: Pretendard;
-  font-size: 18px;
+  font-size: 40px;
   font-style: normal;
   font-weight: 400;
   line-height: 1.4;
@@ -337,7 +338,23 @@ export const Writing = styled.textarea`
   :focus {
     outline: none;
   }
+
+  /* 스크롤바 디자인 */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #a1a1a1; /* 스크롤바 색상 */
+    border-radius: 6px; /* 스크롤바 둥근 테두리 */
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #f0f0f0; /* 스크롤바 트랙 배경색 */
+    border-radius: 6px; /* 스크롤바 트랙 둥근 테두리 */
+  }
 `;
+
 
 export const Input = styled.input`
   width: 800px;
@@ -351,13 +368,13 @@ export const Input = styled.input`
   font-size: 17px;
 `;
 
-export const Image = styled.span`
+export const ImageIcon = styled.span`
   width: 25px;
   height: 25px;
   flex-shrink: 0;
   position: relative;
-  top: -465px;
-  right: 22px;
+  left: 1080px;
+  top: 30px;
 
   fill: var(--Layout-Color-Gray-200, #B4B4B4);
   cursor: pointer;
@@ -394,6 +411,52 @@ font-weight: 600;
 line-height: 23px; /* 115% */
 margin-left: 140px;
 margin-top: -65px;
+`;
+export const WrapHorizontal = styled.div`
+  width: 100%; /* 전체 너비 */
+  max-width: 1050px; /* 최대 너비 설정 */
+  overflow-x: auto; /* 가로 스크롤 활성화 */
+  display: flex; /* 플렉스 컨테이너로 만듭니다. */
+  white-space: nowrap; /* 줄 바꿈 방지 */
+  margin-left : 70px;
+
+  /* 스크롤바 디자인 */
+  ::-webkit-scrollbar {
+    height : 6px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #a1a1a1; /* 스크롤바 색상 */
+    border-radius: 6px; /* 스크롤바 둥근 테두리 */
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #f0f0f0; /* 스크롤바 트랙 배경색 */
+    border-radius: 6px; /* 스크롤바 트랙 둥근 테두리 */
+  }
+`;
+
+export const InsertImgForm = styled.div`
+display: flex; /* 부모에게 flex 속성 추가 */
+`;
+
+
+export const InsertImg = styled.div`
+  display: flex;
+  width: 288px;
+  height: 370px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  background: lightgray 50% / cover no-repeat;
+  margin-right: 30px; /* 이미지 간 간격 조정 */
+  margin-top : 50px;
+  margin-bottom : 30px;
+  &:last-child {
+    margin-right: 70px; /* 마지막 이미지 오른쪽 간격 제거 */
+  }
+  &:first-child {
+    margin-left: 70px; /* 첫번째 이미지 오른쪽 간격 제거 */
+  }
 `;
 
 

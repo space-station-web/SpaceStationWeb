@@ -85,8 +85,7 @@ flex-direction: column;
   height: 80px; //다름
   flex-shrink: 0;
 
-  background: var(--Primary-Blue, #08298A);  
-
+  background: var(--Primary-BlackLight, #1E1E1E);
 `;
 
 export const Date = styled.p`
@@ -200,7 +199,7 @@ border-radius: 999px;
 background: var(--Layout-Color-Gray-200, #B4B4B4);
 
 position: relative;
-top: 80px; 
+top: 110px; 
 left: 40px;
 
 border: none;
@@ -215,6 +214,9 @@ font-size: 20px;
 font-style: normal;
 font-weight: 600;
 line-height: 23px; /* 115% */
+cursor: pointer;
+
+
 `;
 export const DelModalNoBtn = styled.button`
 display: inline-flex;
@@ -229,8 +231,8 @@ border-radius: 999px;
 background: var(--Layout-Color-Gray-200, #B4B4B4);
 
 position: relative;
-top: 80px; 
-left: 80px;
+top: 110px; 
+left: 65px;
 border: none;
 `;
 export const DelModalNoText = styled.p`
@@ -242,4 +244,6 @@ font-size: 20px;
 font-style: normal;
 font-weight: 600;
 line-height: 23px; /* 115% */
+cursor: pointer;
+
 `;

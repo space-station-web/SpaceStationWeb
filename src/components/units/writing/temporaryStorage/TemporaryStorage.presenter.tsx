@@ -11,6 +11,9 @@ export default function TemporaryStorageUI(props: ITemporaryStorage): JSX.Elemen
     setIsDeleteModalOpen(true);
   };
 
+  const handleNoBtnClick = () => {
+    setIsDeleteModalOpen(false);
+  };
   return (
     <>
       <F.Wrapper>
@@ -41,7 +44,7 @@ export default function TemporaryStorageUI(props: ITemporaryStorage): JSX.Elemen
           <F.DelModalYesBtn>
             <F.DelModalYesText>예</F.DelModalYesText>
           </F.DelModalYesBtn>
-          <F.DelModalNoBtn>
+          <F.DelModalNoBtn onClick={handleNoBtnClick}>
             <F.DelModalNoText>아니요</F.DelModalNoText>
           </F.DelModalNoBtn>
         </F.DelModalWrapper>
