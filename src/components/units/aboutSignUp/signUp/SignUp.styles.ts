@@ -43,7 +43,7 @@ export const Icon = styled.img`
 export const Heading1 = styled.p`
   font-size: 20px;
   font-weight: 600;
-  color: #DCDCDC;
+  color: #dcdcdc;
   white-space: pre-wrap;
   text-align: center;
   line-height: 23px;
@@ -54,7 +54,7 @@ export const Heading1 = styled.p`
 export const Heading2 = styled.p`
   font-size: 18px;
   font-weight: 400;
-  color: #B4B4B4;
+  color: #b4b4b4;
   white-space: pre-wrap;
   text-align: center;
   line-height: 28px;

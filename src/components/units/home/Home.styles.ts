@@ -8,40 +8,13 @@ export const Stack = styled.div<{ $gap?: string }>`
   display: flex;
   flex-direction: column;
   gap: ${(props) => props.$gap};
-  z-index: 3;
 `;
 
 export const Wrapper = styled.div`
   padding-bottom: 813px;
-  background-color: #141414;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-export const Radial = styled.div`
-  position: absolute;
-  background: radial-gradient(
-    41.54% 52.48% at 50.04% 49.95%,
-    rgba(255, 255, 255, 0.17) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  width: 1459px;
-  height: 1172px;
   z-index: 1;
-  top: 65px;
 `;
-export const BackgroundCircle = styled.div`
-  width: 1194px;
-  height: 1194px;
-  flex-shrink: 0;
-  border-radius: 1194px;
-  background: linear-gradient(180deg, #0e0e0e 0%, rgba(19, 17, 17, 0) 100%);
-  filter: blur(5px);
-  position: absolute;
-  margin-top: 667px;
-  z-index: 2;
-`;
+
 export const Card = styled.div<{ $width: string; $height: string }>`
   display: flex;
   flex-direction: column;
@@ -54,8 +27,8 @@ export const Card = styled.div<{ $width: string; $height: string }>`
   height: ${(props) => props.$height};
 `;
 export const LoginBtn = styled.button`
-  width: 163px;
-  height: 51px;
+  width: 10rem;
+  height: 3.13rem;
   border-radius: 999px;
   border: none;
   background-color: #141414;
@@ -96,7 +69,7 @@ export const Balloon = styled.div`
   }
 `;
 export const SubTitle = styled.div`
-  font-size: 18px;
+  font-size: 1.125rem;
   color: #bdbdbd;
 `;
 export const Title = styled.div`
@@ -106,10 +79,4 @@ export const Title = styled.div`
 export const SubBody = styled.div`
   font-size: 17px;
   color: #757575;
-`;
-export const Divider = styled.div`
-  width: 1703px;
-  border: 1px solid #646464;
-  position: absolute;
-  bottom: 688px;
 `;
