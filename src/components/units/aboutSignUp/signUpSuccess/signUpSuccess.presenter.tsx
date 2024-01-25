@@ -8,11 +8,7 @@ export default function SignUpSuccessUI(
     <>
       <F.Wrapper>
         <F.Form>
-<<<<<<< HEAD
-          <F.Icon src="/common/icon/icon.png" />
-=======
           <F.Icon src="/common/icon/rocket.png" />
->>>>>>> 548dd88a4fdd806d8ad323ab70667fa5ee48334b
           <F.Heading1>
           허거덩님 환영해요!
           </F.Heading1>
