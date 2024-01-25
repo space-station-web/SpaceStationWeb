@@ -344,8 +344,8 @@ export const ImageIcon = styled.span`
   height: 25px;
   flex-shrink: 0;
   position: relative;
-  top: -465px;
-  right: 22px;
+  left: 1080px;
+  top: 30px;
 
   fill: var(--Layout-Color-Gray-200, #B4B4B4);
   cursor: pointer;
@@ -385,10 +385,37 @@ margin-top: -65px;
 `;
 
 
-export const ImgWrapper = styled.div`
+export const WrapVertical = styled.div`
 
-  display: flex;
-  justify-content: center;
+width: 10px;
+height: 846px;
+transform: rotate(-90deg);
+flex-shrink: 0;
+border-radius: 20px;
+background: var(--Layout-Color-Gray-300, #8C8C8C);
+   /* 가로 스크롤 */
+  overflow: auto;
+  white-space: nowrap;
+
   position: relative;
-  overflow-x: auto; /* 가로 스크롤을 활성화합니다 */
+  top: 10px;
+  left: 500px;
 `;
+export const InsertImgForm = styled.div`
+display: flex; /* 부모에게 flex 속성 추가 */
+flex-direction: row; /* 자식에게 가로로 나열하도록 설정 */
+`;
+
+export const InsertImg = styled.div`
+  width: 288px;
+  height: 370px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  background: lightgray 50% / cover no-repeat;
+  margin-right: 10px; /* 이미지 간 간격 조정 */
+  flex-direction: row; 
+  &:last-child {
+    margin-right: 0; /* 마지막 이미지 오른쪽 간격 제거 */
+  }
+`;
+
