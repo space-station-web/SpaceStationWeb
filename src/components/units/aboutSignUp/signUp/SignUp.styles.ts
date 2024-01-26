@@ -74,4 +74,8 @@ export const Button = styled.button`
   color: #e0e0e0;
 
   cursor: pointer;
+  :hover {
+    color: #1e1e1e;
+    background-color: #e0e0e0;
+  }
 `;
