@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import * as F from "./TemporaryStorage.styles";
 import type { ITemporaryStorage } from "./TemporaryStorage.types";
+interface TemporaryStorageUIProps extends ITemporaryStorage {
+  onClickMoveWriting: () => void;
+}
 
 
 export default function TemporaryStorageUI(props: ITemporaryStorage): JSX.Element {

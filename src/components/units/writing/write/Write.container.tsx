@@ -1,9 +1,14 @@
 import { useRouter } from "next/router";
 import React, { useState } from 'react';
 import WriteUI from "./Write.presenter";
-import TemporaryStorage from '../temporaryStorage/TemporaryStorage.presenter';
+import TemporaryStorageUI  from '../temporaryStorage/TemporaryStorage.presenter';
 
-export default function Write(): JSX.Element {
+interface IWriteProps {
+  temporaryStorageCount: number;
+  onClickTemporaryStorage: () => void;
+}
+
+export default function Write(props: IWriteProps): JSX.Element {
   const [temporaryStorageCount, setTemporaryStorageCount] = useState(0);
   const router = useRouter();
 
@@ -26,7 +31,9 @@ export default function Write(): JSX.Element {
         onClickMoveTemStorage={onClickMoveTemStorage}
         onClickCreateRecommand={onClickCreateRecommand}
         onClickPluseTemStorage={onClickPluseTemStorage}
+        {...props}
       />
+      {/* <TemporaryStorageUI temporaryStorageCount={temporaryStorageCount} /> */}
     </>
   );
 }
