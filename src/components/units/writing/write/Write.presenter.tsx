@@ -3,12 +3,13 @@ import * as F from "./Write.styles";
 import type { Iwrite } from "./Write.types";
 import axios from 'axios';
 
-
 export default function WriteUI(props: Iwrite): JSX.Element {
   const [isComponentVisible, setIsComponentVisible] = useState(false);
   const [isAlertVisible, setIsAlertVisible] = useState(false);
   const [temporaryStorageCount, setTemporaryStorageCount] = useState(0);
   const [selectedImages, setSelectedImages] = useState<string[]>([]);
+  const [temporaryStorageForms, setTemporaryStorageForms] = useState<number[]>([]);
+
 
   const [titleHeight, setTitleHeight] = useState<number>(30);
 
@@ -46,11 +47,14 @@ export default function WriteUI(props: Iwrite): JSX.Element {
     }, 2000);
   };
 
-  const handleTemporaryStorageClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    console.log('임시저장 버튼이 클릭되었습니다.');
+  const handleTemporaryStorageClick = () => {
     setTemporaryStorageCount(temporaryStorageCount + 1);
+    setTemporaryStorageForms((prevForms) => [...prevForms, Date.now()]);
   };
 
+  const handleMoveWritingClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    // Your logic for moving to writing
+  };
   
   return (
     <>
@@ -59,6 +63,9 @@ export default function WriteUI(props: Iwrite): JSX.Element {
           <F.TemporaryStorageBtnText onClick={handleTemporaryStorageClick}>임시저장</F.TemporaryStorageBtnText>
           <F.HLine></F.HLine>
           <F.TemporaryStorageBtnNum onClick={props.onClickMoveTemStorage}>{temporaryStorageCount}</F.TemporaryStorageBtnNum>
+            {/* {temporaryStorageForms.map((formKey) => (
+              <TemporaryStorageUI key={formKey} onClickMoveWriting={handleMoveWritingClick} />
+            ))} */}
         </F.TemporaryStorageBtn>
         <F.PublishWriteBtn>
           <F.PublishWriteBtnText onClick={handlePublishClick}>발행하기</F.PublishWriteBtnText>

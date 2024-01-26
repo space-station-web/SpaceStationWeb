@@ -57,7 +57,7 @@ export const PublishWriteBtn = styled.button`
   border: none;
 `;
 
-export const TemporaryStorageBtnText = styled.span`
+export const TemporaryStorageBtnText = styled.button`
   width: 75.395px;
 
   color: var(--Layout-Color-Gray-100, #DCDCDC);
