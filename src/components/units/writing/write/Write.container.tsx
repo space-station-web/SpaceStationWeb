@@ -31,9 +31,7 @@ export default function Write(props: IWriteProps): JSX.Element {
         onClickMoveTemStorage={onClickMoveTemStorage}
         onClickCreateRecommand={onClickCreateRecommand}
         onClickPluseTemStorage={onClickPluseTemStorage}
-        {...props}
       />
-      {/* <TemporaryStorageUI temporaryStorageCount={temporaryStorageCount} /> */}
     </>
   );
 }
