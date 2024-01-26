@@ -114,3 +114,9 @@ export const UtilText = styled.span`
   margin-left: 15px;
   cursor: pointer;
 `;
+
+export const ErrorMessage = styled.div`
+  color: #ff6d6d;
+  font-size: 15px;
+  margin-right: 370px;
+`;

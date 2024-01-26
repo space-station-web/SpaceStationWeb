@@ -7,11 +7,16 @@ export default function LoginUI(props: ILogin): JSX.Element {
       <F.Wrapper>
         <F.Form>
           <F.InputTextForm>
-            <F.Input placeholder="이메일" />
+            <F.Input 
+              placeholder="이메일" 
+              onChange={props.onChangeEmail} />
           </F.InputTextForm>
 
           <F.InputTextForm>
-            <F.Input placeholder="비밀번호" />
+            <F.Input 
+              type="password" 
+              placeholder="비밀번호" 
+              onChange={props.onChangePassword} />
           </F.InputTextForm>
 
           <F.UtilForm>
@@ -29,7 +34,7 @@ export default function LoginUI(props: ILogin): JSX.Element {
             </F.UtilBox>
           </F.UtilForm>
 
-          <F.SubmitButton>로그인</F.SubmitButton>
+          <F.SubmitButton onClick={props.handleLogin}>로그인</F.SubmitButton>
 
           <F.Line></F.Line>
 

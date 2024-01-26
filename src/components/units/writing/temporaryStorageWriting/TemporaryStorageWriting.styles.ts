@@ -44,8 +44,8 @@ export const PublishWriteBtn = styled.button`
   border: none;
 `;
 
-export const TemporaryStorageBtnText = styled.button`
-  width: 70.395px;
+export const TemporaryStorageBtnText = styled.span`
+  width: 75.395px;
 
   color: var(--Layout-Color-Gray-100, #DCDCDC);
 
@@ -57,9 +57,8 @@ export const TemporaryStorageBtnText = styled.button`
   line-height: 50px;
   background: var(--Primary-BlackLight, #2E2E2E);
 
-  margin-left: 30px; 
-  cursor: pointer;erline; /* 클릭할 때 밑줄 표시 */
-  border: none;
+  margin-left: 20px; 
+  cursor: pointer;
   }
 `;
 export const TemporaryStorageBtnNum = styled.span`
@@ -344,8 +343,8 @@ export const ImageIcon = styled.span`
   height: 25px;
   flex-shrink: 0;
   position: relative;
-  top: -465px;
-  right: 22px;
+  left: 1080px;
+  top: 30px;
 
   fill: var(--Layout-Color-Gray-200, #B4B4B4);
   cursor: pointer;
@@ -385,10 +384,46 @@ margin-top: -65px;
 `;
 
 
-export const ImgWrapper = styled.div`
+// export const WrapVertical = styled.div`
 
-  display: flex;
-  justify-content: center;
-  position: relative;
-  overflow-x: auto; /* 가로 스크롤을 활성화합니다 */
+// width: 10px;
+// height: 846px;
+// transform: rotate(-90deg);
+// flex-shrink: 0;
+// border-radius: 20px;
+// background: var(--Layout-Color-Gray-300, #8C8C8C);
+//    /* 가로 스크롤 */
+//   overflow: auto;
+//   white-space: nowrap;
+
+//   position: relative;
+//   top: 10px;
+//   left: 500px;
+// `;
+export const WrapHorizontal = styled.div`
+  width: 100%; /* 전체 너비 */
+  overflow-x: auto; /* 가로 스크롤 활성화 */
+  display: flex; /* 플렉스 컨테이너로 만듭니다. */
+  white-space: nowrap; /* 줄 바꿈 방지 */
 `;
+export const InsertImgForm = styled.div`
+display: flex; /* 부모에게 flex 속성 추가 */
+`;
+
+export const InsertImg = styled.div`
+  display: flex;
+  width: 288px;
+  height: 370px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  background: lightgray 50% / cover no-repeat;
+  margin-right: 30px; /* 이미지 간 간격 조정 */
+  margin-top : 50px;
+  &:last-child {
+    margin-right: 70px; /* 마지막 이미지 오른쪽 간격 제거 */
+  }
+  &:first-child {
+    margin-left: 70px; /* 첫번째 이미지 오른쪽 간격 제거 */
+  }
+`;
+

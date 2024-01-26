@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import * as F from "./TemporaryStorage.styles";
 import type { ITemporaryStorage } from "./TemporaryStorage.types";
+interface TemporaryStorageUIProps extends ITemporaryStorage {
+  onClickMoveWriting: () => void;
+}
 
 
 export default function TemporaryStorageUI(props: ITemporaryStorage): JSX.Element {
@@ -11,6 +14,9 @@ export default function TemporaryStorageUI(props: ITemporaryStorage): JSX.Elemen
     setIsDeleteModalOpen(true);
   };
 
+  const handleNoBtnClick = () => {
+    setIsDeleteModalOpen(false);
+  };
   return (
     <>
       <F.Wrapper>
@@ -41,7 +47,7 @@ export default function TemporaryStorageUI(props: ITemporaryStorage): JSX.Elemen
           <F.DelModalYesBtn>
             <F.DelModalYesText>예</F.DelModalYesText>
           </F.DelModalYesBtn>
-          <F.DelModalNoBtn>
+          <F.DelModalNoBtn onClick={handleNoBtnClick}>
             <F.DelModalNoText>아니요</F.DelModalNoText>
           </F.DelModalNoBtn>
         </F.DelModalWrapper>

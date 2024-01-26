@@ -1,12 +1,21 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, ChangeEvent } from 'react';
 import * as F from "./Write.styles";
 import type { Iwrite } from "./Write.types";
+import axios from 'axios';
 
 export default function WriteUI(props: Iwrite): JSX.Element {
   const [isComponentVisible, setIsComponentVisible] = useState(false);
   const [isAlertVisible, setIsAlertVisible] = useState(false);
   const [temporaryStorageCount, setTemporaryStorageCount] = useState(0);
+  const [selectedImages, setSelectedImages] = useState<string[]>([]);
+  const [temporaryStorageForms, setTemporaryStorageForms] = useState<number[]>([]);
 
+
+  const [titleHeight, setTitleHeight] = useState<number>(30);
+
+  const handleTitleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setTitleHeight(event.target.scrollHeight);
+  };
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const onClickCreateRecommand = () => {
@@ -19,10 +28,14 @@ export default function WriteUI(props: Iwrite): JSX.Element {
       fileInputRef.current.click();
     }
   };
-
-  const onFileInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const filePath = event.target.value;
-    console.log('선택된 파일 경로:', filePath);
+   // 이미지 넣기
+   const onFileInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+  
+    if (files) {
+      const newImages = Array.from(files).map(file => URL.createObjectURL(file));
+      setSelectedImages(prevImages => [...prevImages, ...newImages]);
+    }
   };
 
   const handlePublishClick = () => {
@@ -34,22 +47,28 @@ export default function WriteUI(props: Iwrite): JSX.Element {
     }, 2000);
   };
 
-  const handleTemporaryStorageClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    console.log('임시저장 버튼이 클릭되었습니다.');
+  const handleTemporaryStorageClick = () => {
     setTemporaryStorageCount(temporaryStorageCount + 1);
+    setTemporaryStorageForms((prevForms) => [...prevForms, Date.now()]);
   };
 
+  const handleMoveWritingClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    // Your logic for moving to writing
+  };
   
   return (
     <>
       <F.Wrapper>
-      <F.TemporaryStorageBtn>
+        <F.TemporaryStorageBtn>
           <F.TemporaryStorageBtnText onClick={handleTemporaryStorageClick}>임시저장</F.TemporaryStorageBtnText>
           <F.HLine></F.HLine>
           <F.TemporaryStorageBtnNum onClick={props.onClickMoveTemStorage}>{temporaryStorageCount}</F.TemporaryStorageBtnNum>
+            {/* {temporaryStorageForms.map((formKey) => (
+              <TemporaryStorageUI key={formKey} onClickMoveWriting={handleMoveWritingClick} />
+            ))} */}
         </F.TemporaryStorageBtn>
         <F.PublishWriteBtn>
-          <F.PublishWriteBtnText onClick={handlePublishClick}>발행하기</F.PublishWriteBtnText> {/*버튼 매우 이상함*/}
+          <F.PublishWriteBtnText onClick={handlePublishClick}>발행하기</F.PublishWriteBtnText>
           {isAlertVisible && (
         <F.CustomAlert>
           <F.CustomAlertImg>
@@ -89,20 +108,32 @@ export default function WriteUI(props: Iwrite): JSX.Element {
               </F.ArroyBtn>
             </F.InputRecommendForm>
           )}
-          <F.InputTextForm>
+          <F.InputTextForm >
           <F.TitleText placeholder='글에 대한 제목을 정해주세요.'></F.TitleText>
+
+          
+
             <F.Line></F.Line>
-            <F.Writing placeholder='글이 잘 써지지 않는다면, 글감을 확인해주세요.'></F.Writing>
-            <F.Image onClick={onImageClick}>
+            <F.ImageIcon onClick={onImageClick}>
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
               <path d="M25 22.2222V2.77778C25 1.25 23.75 0 22.2222 0H2.77778C1.25 0 0 1.25 0 2.77778V22.2222C0 23.75 1.25 25 2.77778 25H22.2222C23.75 25 25 23.75 25 22.2222ZM7.63889 14.5833L11.1111 18.7639L15.9722 12.5L22.2222 20.8333H2.77778L7.63889 14.5833Z" fill="#B4B4B4"/>
             </svg>
-          </F.Image>
+          </F.ImageIcon>
+          <F.WrapHorizontal>
+          <F.InsertImgForm>
+            {selectedImages.map((image, index) => (
+              <F.InsertImg key={index} style={{ backgroundImage: `url(${image})` }} />
+            ))}
+          </F.InsertImgForm>
+          </F.WrapHorizontal>
+          <F.Writing placeholder='글이 잘 써지지 않는다면, 글감을 확인해주세요.'></F.Writing>
+
           <input
             type="file"
             ref={fileInputRef}
             style={{ opacity: 0, position: 'absolute', top: 0, left: 0, width: 0, height: 0 }}
             onChange={onFileInputChange}
+            multiple  // 여러 개 파일 선택 가능
           />
           </F.InputTextForm>
 

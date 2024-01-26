@@ -1,6 +1,7 @@
 import * as L from "./BookWrite.styles"
+import type { IBookWriteProps } from "./BookWrite.types"
 
-export default function BookWriteUI(): JSX.Element {
+export default function BookWriteUI(props:IBookWriteProps): JSX.Element {
   return (
     <>
       <L.Wrapper>
@@ -16,10 +17,12 @@ export default function BookWriteUI(): JSX.Element {
           </L.TitleContainer>
           
           <L.ImageContainer>
-            <L.ImageBox>
+            <L.ImageBox onClick={props.onClickImage} >
+              <input type="file" style={{ display: "none" }} onChange={props.onChangeFile} ref={props.fileRef} />
               <L.UploadIcon src="/book/upload.png"/>
               <L.TextBox>커버사진 추가하기</L.TextBox>
             </L.ImageBox>
+            <img src={`https://storage.googleapis.com/${props.imageUrl}`} />
           </L.ImageContainer>
 
           <L.Contents>집을 온통 초록색과 빨간색으로 물
