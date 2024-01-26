@@ -39,7 +39,7 @@ export const Form = styled.div`
 export const Heading1 = styled.p`
   font-size: 20px;
   font-weight: 600;
-  color: #DCDCDC;
+  color: #dcdcdc;
   white-space: pre-wrap;
   text-align: center;
   line-height: 23px;
@@ -82,12 +82,10 @@ export const SubmitButton = styled.button`
   border-radius: 20px;
   border: none;
   cursor: pointer;
-  
 
   background-color: #0e0e0e;
   color: #e0e0e0;
 `;
-
 
 export const UtilBox = styled.div`
   width: 570px;
@@ -98,22 +96,27 @@ export const UtilBox = styled.div`
 
 export const CheckBox = styled.input`
   appearance: none;
-  border: 1px solid #8C8C8C;
+  border: 1px solid #8c8c8c;
   width: 20px;
   height: 20px;
 
   &:checked {
     background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='black' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e");
-    background-color: #FFFFFF;
+    background-color: #ffffff;
   }
-  
 `;
 
 export const UtilText = styled.span`
-  color: #8C8C8C;
+  color: #8c8c8c;
   font-size: 15px;
   line-height: 18px;
   text-align: center;
   margin-left: 15px;
   cursor: pointer;
+`;
+
+export const ErrorMessage = styled.div`
+  color: #ff6d6d;
+  font-size: 15px;
+  margin-right: 370px;
 `;

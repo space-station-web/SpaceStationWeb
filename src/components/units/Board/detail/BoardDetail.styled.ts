@@ -1,27 +1,19 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  padding: 30px 200px 20px 200px;
+  width:100%;
+  
+  padding: 150px 200px 20px 200px;
   background-color: #141414;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
-export const Radial = styled.div`
-  position: absolute;
-  background: radial-gradient(
-    41.54% 52.48% at 50.04% 49.95%,
-    rgba(255, 255, 255, 0.17) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  width: 1459px;
-  height: 1172px;
-  z-index: 0;
-  top: 65px;
-`;
+
+
 export const TopDiv = styled.div`
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -34,18 +26,25 @@ export const Prev = styled.img`
   float: left;
 `;
 
-export const Logo = styled.img`
-  width: 84px;
-  height: 84px;
-  float: center;
-  margin-right: 48%;
+export const ShareBtn = styled.button`
+  width: 160px;
+  height: 50px;
+  border:none;
+  border-radius: 999px;
+  background-color:#1e1e1e;
+
+  font-size: 20px;
+  font-weight: 600;
+  color:#dcdcdc;
+
 `;
+
 
 export const BoardWrapper = styled.div`
   z-index: 2;
   width: 1200px;
   border-radius: 20px;
-  margin-top: 60px;
+  margin-top: 20px;
 `;
 
 export const TopBoard = styled.div`

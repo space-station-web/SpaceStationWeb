@@ -1,24 +1,12 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  padding: 30px 200px 3013px 200px;
+  padding: 150px 200px 3013px 200px;
   background-color: #141414;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-export const Radial = styled.div`
-  position: absolute;
-  background: radial-gradient(
-    41.54% 52.48% at 50.04% 49.95%,
-    rgba(255, 255, 255, 0.17) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  width: 1459px;
-  height: 1172px;
-  z-index: 1;
-  top: 65px;
 `;
 
 export const TopDiv = styled.div`
@@ -33,13 +21,6 @@ export const Prev = styled.img`
   width: 32px;
   height: 32px;
   float: left;
-`;
-
-export const Logo = styled.img`
-  width: 84px;
-  height: 84px;
-  float: center;
-  margin-right: 48%;
 `;
 
 export const CategoryDiv = styled.div`
@@ -119,6 +100,23 @@ export const Board = styled.div`
   &:hover {
     background-size: 90%; /* hover 시 배경 이미지 크기를 110%로 확대 */
   }
+`;
+
+export const BoardTop = styled.div`
+  width: 100%;
+`;
+
+export const BoardSaveBack = styled.div`
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background-color: #141414;
+
+  margin: 0 0 234px 206px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const BoardTitle = styled.p`
