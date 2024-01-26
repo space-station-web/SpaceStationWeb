@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import Save from "../../../../../public/save.svg";
 
 export const Wrapper = styled.div`
   padding: 150px 200px 3013px 200px;
@@ -118,6 +119,11 @@ export const BoardSaveBack = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const SaveIcon = styled(Save)`
+  fill: #FF6F00;
+  cursor: pointer;
+`
 
 export const BoardTitle = styled.p`
   font-size: 20px;

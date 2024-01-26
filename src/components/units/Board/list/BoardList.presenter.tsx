@@ -1,26 +1,26 @@
 import * as L from "./BoardList.styles";
-import SaveIcon from "../../../../../public/save.svg";
 import PaginationComponent from "../../../commons/pagination/Pagination";
+import type { BoardListTypes } from "./BoardList.type";
 
 export const PRACS = [
   {
     category: "bbbb",
-    number: 1,
+    number: 0,
     title: "크리스마스준비",
     contents: "집을 온통 초록색과 빨간색으로",
   },
   { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
-  { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
-  { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
-  { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
-  { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
-  { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
-  { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
-  { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
-  { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
+  { category: "bbbb", number: 2, title: "1234", contents: "123aaaa" },
+  { category: "bbbb", number: 3, title: "1234", contents: "123aaaa" },
+  { category: "bbbb", number: 4, title: "1234", contents: "123aaaa" },
+  { category: "bbbb", number: 5, title: "1234", contents: "123aaaa" },
+  { category: "bbbb", number: 6, title: "1234", contents: "123aaaa" },
+  { category: "bbbb", number: 7, title: "1234", contents: "123aaaa" },
+  { category: "bbbb", number: 8, title: "1234", contents: "123aaaa" },
+  { category: "bbbb", number: 9, title: "1234", contents: "123aaaa" },
 ];
 
-export default function BoardListUI(): JSX.Element {
+export default function BoardListUI(props:BoardListTypes): JSX.Element {
   return (
     <L.Wrapper>
       <L.TopDiv>
@@ -39,7 +39,7 @@ export default function BoardListUI(): JSX.Element {
           <L.Board key={el.number}>
             <L.BoardTop>
               <L.BoardSaveBack>
-                <SaveIcon fill="#FF6F00" />
+                <L.SaveIcon  style={{ fill: props.savedPosts[el.number] ? '#FF6F00' : 'none' }} onClick={props.onClickSave(el.number)}/>
               </L.BoardSaveBack>
             </L.BoardTop>
             <L.BoardTitle>{el.title}</L.BoardTitle>
