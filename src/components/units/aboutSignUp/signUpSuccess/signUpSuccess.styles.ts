@@ -26,11 +26,7 @@ export const Form = styled.div`
   width: 786px;
   height: 601px;
   border: 0.5px solid #757575;
-<<<<<<< HEAD
-  border-radius: 16px;
-=======
   border-radius: 40px;
->>>>>>> 548dd88a4fdd806d8ad323ab70667fa5ee48334b
 
   display: flex;
   flex-direction: column;
@@ -42,10 +38,7 @@ export const Form = styled.div`
 `;
 
 export const Icon = styled.img`
-<<<<<<< HEAD
-=======
   margin-top: 80px;
->>>>>>> 548dd88a4fdd806d8ad323ab70667fa5ee48334b
   margin-bottom: 60px;
 `;
 
@@ -83,4 +76,9 @@ export const Button = styled.button`
   color: #e0e0e0;
 
   cursor: pointer;
+
+  :hover {
+    color: #1e1e1e;
+    background-color: #e0e0e0;
+  }
 `;

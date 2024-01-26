@@ -22,12 +22,12 @@ export default function LoginUI(props: ILogin): JSX.Element {
           <F.UtilForm>
             <F.UtilBox>
               <F.CheckBox type="checkbox" />
-              <F.UtilText>자동 로그인</F.UtilText>
+              <F.NormText>자동 로그인</F.NormText>
             </F.UtilBox>
 
             <F.UtilBox>
               <F.UtilText onClick={props.onClickMoveFindEm}>이메일</F.UtilText>
-              <F.UtilText>|</F.UtilText>
+              <F.NormText>|</F.NormText>
               <F.UtilText onClick={props.onClickMoveFindPw}>
                 비밀번호 찾기
               </F.UtilText>

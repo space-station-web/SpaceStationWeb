@@ -33,7 +33,7 @@ export default function SignUpEmailUI(props: ISignUpEmail): JSX.Element {
               onChange={props.onChangeConfirmPassword} 
             />
           </F.InputTextForm>
-          <F.ErrorMessage>{props.errorMessage}</F.ErrorMessage>
+          {/* <F.ErrorMessage>{props.errorMessage}</F.ErrorMessage> */}
           <F.InputTextForm>
             <F.Input 
               placeholder="휴대폰 번호"
@@ -47,21 +47,22 @@ export default function SignUpEmailUI(props: ISignUpEmail): JSX.Element {
             />
           </F.InputTextForm>
 
+          <F.blank></F.blank>
           <F.UtilBox>
             <F.CheckBox type="checkbox" />
-            <F.UtilText>
+            <F.NormText>
               [필수] 이용 약관 및 개인정보 처리방침에 동의합니다.
-            </F.UtilText>
+            </F.NormText>
           </F.UtilBox>
           <F.UtilBox>
             <F.CheckBox type="checkbox" />
-            <F.UtilText>
+            <F.NormText>
               [필수] 만 14세 이상임을 확인하고 동의합니다.
-            </F.UtilText>
+            </F.NormText>
           </F.UtilBox>
           <F.UtilBox>
             <F.CheckBox type="checkbox" />
-            <F.UtilText>[선택] 우주 정거장 알림을 받겠습니다.</F.UtilText>
+            <F.NormText>[선택] 우주 정거장 알림을 받겠습니다.</F.NormText>
           </F.UtilBox>
 
           <F.SubmitButton onClick={props.handleSignUp}>
