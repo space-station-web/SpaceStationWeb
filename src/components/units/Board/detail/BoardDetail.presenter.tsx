@@ -13,9 +13,8 @@ export default function BoardDetailUI(props: IBoardDetailUIProps): JSX.Element {
     <>
       {mounted && (
         <L.Wrapper>
-          
           <L.TopDiv>
-            <L.Prev src="/common/icon/Arrow 2.png" />
+            <L.Prev src="/common/icon/Arrow 2.png" onClick={props.onClickPrev}/>
             <L.ShareBtn>인용하기</L.ShareBtn>
           </L.TopDiv>
           <L.BoardWrapper>
@@ -75,7 +74,7 @@ export default function BoardDetailUI(props: IBoardDetailUIProps): JSX.Element {
               <L.CommentToggle onClick={props.onClickCommentToggle}>
                 댓글보기
               </L.CommentToggle>
-              <L.SaveButton src="/common/icon/save.png" />
+              <L.SaveButton />
             </L.BoardBottom>
           </L.BoardWrapper>
         </L.Wrapper>

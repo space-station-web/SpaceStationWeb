@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import Save from "../../../../../public/save.svg";
 
 export const Wrapper = styled.div`
   width:100%;
@@ -18,12 +19,14 @@ export const TopDiv = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  z-index:2;
 `;
 
 export const Prev = styled.img`
   width: 32px;
   height: 32px;
   float: left;
+  cursor: pointer;
 `;
 
 export const ShareBtn = styled.button`
@@ -148,7 +151,7 @@ export const CommentToggle = styled.button`
     border: 1px solid #b4b4b4;
   }
 `;
-export const SaveButton = styled.img`
+export const SaveButton = styled(Save)`
   margin-right: 50px;
   cursor: pointer;
 `;
