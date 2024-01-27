@@ -1,26 +1,17 @@
 import * as L from "./BoardList.styles";
 import SaveIcon from "../../../../../public/save.svg";
 import PaginationComponent from "../../../commons/pagination/Pagination";
+import type { IBoardListTypes } from "./BoardListTypes";
 
-export const PRACS = [
-  {
-    category: "bbbb",
-    number: 1,
-    title: "크리스마스준비",
-    contents: "집을 온통 초록색과 빨간색으로",
-  },
-  { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
-  { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
-  { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
-  { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
-  { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
-  { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
-  { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
-  { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
-  { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
-];
 
-export default function BoardListUI(): JSX.Element {
+export default function BoardListUI(props: IBoardListTypes): JSX.Element {
+  
+  // 한 줄로 표시할 내용의 길이를 정하는 함수
+  const truncateContent = (content:string, maxLength:number = 13):string => {
+    // 내용이 최대 길이보다 길면, 잘라내고 "..."를 추가합니다.
+    return content.length > maxLength ? content.slice(0, maxLength) + "..." : content;
+  };
+
   return (
     <L.Wrapper>
       <L.TopDiv>
@@ -35,20 +26,23 @@ export default function BoardListUI(): JSX.Element {
         <L.Category>좋아요순</L.Category>
       </L.CategoryDiv>
       <L.BoardBox>
-        {PRACS.map((el) => (
-          <L.Board key={el.number}>
+        {props.posts.map((el) => (
+          <L.Board key={el.id}>
             <L.BoardTop>
               <L.BoardSaveBack>
                 <SaveIcon fill="#FF6F00" />
               </L.BoardSaveBack>
             </L.BoardTop>
-            <L.BoardTitle>{el.title}</L.BoardTitle>
-            <L.BoardContents>{el.contents}</L.BoardContents>
+            <L.BoardTitle>{truncateContent(el.title)}</L.BoardTitle>
+            <L.BoardContents>{truncateContent(el.content)}</L.BoardContents>
           </L.Board>
         ))}
       </L.BoardBox>
 
-      <PaginationComponent />
+      <PaginationComponent
+        currentPage={props.currentPage}
+        setCurrentPage={props.setCurrentPage}
+        totalPageCount={props.totalPageCount}/>
     </L.Wrapper>
   );
 }
