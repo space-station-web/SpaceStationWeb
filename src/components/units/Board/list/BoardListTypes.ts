@@ -1,4 +1,4 @@
-import type { Dispatch, SetStateAction } from "react";
+import type { Dispatch, MouseEvent, SetStateAction } from "react";
 import type { Post } from "./BoardList.container";
 
 export interface IBoardListTypes {
@@ -10,4 +10,7 @@ export interface IBoardListTypes {
   //
   onClickSave: (number: number) => () => void;
   savedPosts: Record<number, boolean>;
+
+  //
+  onClickBoard: (event: MouseEvent<HTMLDivElement>) => void;
 }

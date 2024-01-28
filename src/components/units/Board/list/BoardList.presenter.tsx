@@ -25,7 +25,7 @@ export default function BoardListUI(props: IBoardListTypes): JSX.Element {
       </L.CategoryDiv>
       <L.BoardBox>
         {props.posts.map((el) => (
-          <L.Board key={el.id}>
+          <L.Board key={el.id} onClick={props.onClickBoard}>
             <L.BoardTop>
               <L.BoardSaveBack>
                 <L.SaveIcon

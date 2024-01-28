@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState, type MouseEvent } from "react";
 import BoardListUI from "./BoardList.presenter";
 
 export interface Post {
@@ -10,8 +11,17 @@ export interface Post {
 const POSTS_PER_PAGE = 10; // 한 페이지당 게시물 수
 
 export default function BoardList(): JSX.Element {
+  const router = useRouter();
   const [posts, setPosts] = useState<Post[]>([]);
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 상태
+
+  // 게시글 클릭 시 라우팅
+  const onClickBoard = async (
+    event: MouseEvent<HTMLDivElement>,
+  ): Promise<void> => {
+    console.log(event.currentTarget.id);
+    await router.push(`/boards/${event.currentTarget.id}`);
+  };
 
   // 게시물 저장 아이콘관련
   const [savedPosts, setSavedPosts] = useState<Record<number, boolean>>({});
@@ -58,6 +68,8 @@ export default function BoardList(): JSX.Element {
         //
         onClickSave={onClickSave}
         savedPosts={savedPosts}
+        //
+        onClickBoard={onClickBoard}
       />
     </>
   );

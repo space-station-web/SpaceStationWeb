@@ -63,6 +63,7 @@ export const BoardBox = styled.div`
 
   flex-direction: center;
   justify-content: center;
+  cursor: pointer;
 `;
 export const Board = styled.div`
   z-index: 1000;
