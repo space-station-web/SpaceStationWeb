@@ -1,23 +1,25 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  background-position: top center;
-  background-image: url("/common/background.png");
-
+  width: 1186px;
+  position: relative; 
+  z-index: 1;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+`;
 
-  position: relative;
-
-  ::before {
-    position: absolute;
-    content: "";
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-  }
+export const Prev = styled.img`
+  position: absolute;
+  top: 300px; 
+  left: 0; 
+  width: 32px;
+  height: 32px;
+`;
+export const Stack = styled.div<{ $gap?: string }>`
+  display: flex;
+  flex-direction: column;
+  gap: ${(props) => props.$gap};
 `;
 
 export const Form = styled.div`
@@ -32,8 +34,8 @@ export const Form = styled.div`
   flex-direction: column;
   align-items: center;
 
-  margin: 550px 0 300px 0;
-  padding: 70px;
+  margin: 50px 0 300px 0;
+  padding: 60px 70px 40px 70px;
 `;
 
 export const Title = styled.p`
@@ -54,16 +56,6 @@ export const InputTextForm = styled.div`
   margin-bottom: 15px;
 `;
 
-
-export const TitleTextV = styled.p`
-  color: #bdbdbd;
-  font-size: 17px;
-  width: 100px;
-  text-align: center;
-  line-height: 75px;
-  margin-left: 17px;
-`;
-
 export const Input = styled.input`
   width: 450px;
   height: 75px;
@@ -81,24 +73,6 @@ export const Input = styled.input`
     color: #bdbdbd;
   }
 `;
-export const InputV = styled.input`
-  width: 450px;
-  padding-left: 15px;
-  background-color: #141414;
-  border: none;
-  :focus {
-    outline: none;
-  }
-  color: #e0e0e0;
-  caret-color: #e0e0e0;
-  font-size: 17px;
-`;
-
-export const Timer = styled.p`
-  color: #757575;
-  line-height: 75px;
-  margin-right: 13px;
-`;
 
 export const SubmitButton = styled.button`
   width: 582px;
@@ -112,22 +86,9 @@ export const SubmitButton = styled.button`
   color: #e0e0e0;
 `;
 
-export const VertBtn = styled.button`
-  width: 93px;
-  height: 49px;
-  border-radius: 15px;
 
-  margin: 13px 13px 0 0;
-
-  border: none;
-  background-color: #1e1e1e;
-  color: #e0e0e0;
-  font-size: 17px;
-
-  cursor: pointer;
-
-  :disabled {
-    color: gray;
-    cursor: default;
-  }
+export const ErrorMessage = styled.div`
+  color: #ff6d6d;
+  font-size: 15px;
+  margin-right: 370px;
 `;
