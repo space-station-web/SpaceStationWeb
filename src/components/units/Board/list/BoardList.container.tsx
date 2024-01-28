@@ -71,6 +71,7 @@ export default function BoardList(): JSX.Element {
         savedPosts={savedPosts}
         //
         onClickBoard={onClickBoard}
+        //
       />
     </>
   );

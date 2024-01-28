@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  width:100%;
-  
+  width: 100%;
+
   padding: 150px 200px 20px 200px;
   background-color: #141414;
   position: relative;
@@ -10,7 +10,6 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
 `;
-
 
 export const TopDiv = styled.div`
   width: 100%;
@@ -24,21 +23,21 @@ export const Prev = styled.img`
   width: 32px;
   height: 32px;
   float: left;
+  cursor: pointer;
+  z-index: 2;
 `;
 
 export const ShareBtn = styled.button`
   width: 160px;
   height: 50px;
-  border:none;
+  border: none;
   border-radius: 999px;
-  background-color:#1e1e1e;
+  background-color: #1e1e1e;
 
   font-size: 20px;
   font-weight: 600;
-  color:#dcdcdc;
-
+  color: #dcdcdc;
 `;
-
 
 export const BoardWrapper = styled.div`
   z-index: 2;

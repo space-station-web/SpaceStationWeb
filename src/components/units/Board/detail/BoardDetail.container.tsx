@@ -29,11 +29,17 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
     }
   }, [id]);
 
+  const onClickBoards = (): void => {
+    void router.push("/boards");
+  };
+
   return (
     <BoardDetailUI
       onClickCommentToggle={onClickCommentToggle}
       setIsOpen={props.setIsOpen}
       data={data}
+      //
+      onClickBoards={onClickBoards}
     />
   );
 }
