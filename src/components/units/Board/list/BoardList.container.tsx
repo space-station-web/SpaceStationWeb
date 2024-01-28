@@ -26,10 +26,11 @@ export default function BoardList(): JSX.Element {
   // 게시물 저장 아이콘관련
   const [savedPosts, setSavedPosts] = useState<Record<number, boolean>>({});
 
-  const onClickSave = (number: number) => () => {
+  const onClickSave = (id: number) => (event: React.MouseEvent) => {
+    event.stopPropagation(); // 이벤트 버블링 방지
     setSavedPosts((prev) => ({
       ...prev,
-      [number]: !prev[number],
+      [id]: !prev[id],
     }));
   };
   // ///////

@@ -124,6 +124,7 @@ export const BoardSaveBack = styled.div`
 export const SaveIcon = styled(Save)`
   fill: #ff6f00;
   cursor: pointer;
+  z-index: 4;
 `;
 
 export const BoardTitle = styled.p`

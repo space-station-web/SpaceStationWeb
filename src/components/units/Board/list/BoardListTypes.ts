@@ -8,7 +8,7 @@ export interface IBoardListTypes {
   totalPageCount: number;
 
   //
-  onClickSave: (number: number) => () => void;
+  onClickSave: (id: number) => (event: React.MouseEvent) => void;
   savedPosts: Record<number, boolean>;
 
   //
