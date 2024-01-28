@@ -1,23 +1,25 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  background-position: top center;
-  background-image: url("/common/background.png");
-
+  width: 1186px;
+  position: relative; 
+  z-index: 1;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+`;
 
-  position: relative;
-
-  ::before {
-    position: absolute;
-    content: "";
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-  }
+export const Prev = styled.img`
+  position: absolute;
+  top: 300px; 
+  left: 0; 
+  width: 32px;
+  height: 32px;
+`;
+export const Stack = styled.div<{ $gap?: string }>`
+  display: flex;
+  flex-direction: column;
+  gap: ${(props) => props.$gap};
 `;
 
 export const Form = styled.div`
@@ -32,7 +34,7 @@ export const Form = styled.div`
   flex-direction: column;
   align-items: center;
 
-  margin: 550px 0 300px 0;
+  margin: 50px 0 300px 0;
   padding: 70px;
 `;
 
@@ -107,6 +109,7 @@ export const CheckBox = styled.input`
   height: 20px;
   cursor: pointer;
   margin-left: 4px;
+  margin-right: 15px;
 
   &:checked {
     background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='black' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e");
@@ -119,8 +122,9 @@ export const UtilText = styled.span`
   font-size: 15px;
   line-height: 18px;
   text-align: center;
-  margin-left: 15px;
+  margin-left: 5px;
   cursor: pointer;
+  text-decoration: underline;
 `;
 
 export const NormText = styled.span`
@@ -128,7 +132,7 @@ export const NormText = styled.span`
   font-size: 15px;
   line-height: 18px;
   text-align: center;
-  margin-left: 15px;
+  
 `;
 
 export const ErrorMessage = styled.div`
@@ -139,4 +143,25 @@ export const ErrorMessage = styled.div`
 
 export const blank =  styled.div`
   height: 25px;
+`;
+
+// 유틸 버튼
+export const VertBtn = styled.button`
+  width: 93px;
+  height: 49px;
+  border-radius: 15px;
+
+  margin: 13px 13px 0 0;
+
+  border: none;
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  font-size: 17px;
+
+  cursor: pointer;
+
+  :disabled {
+    color: gray;
+    cursor: default;
+  }
 `;

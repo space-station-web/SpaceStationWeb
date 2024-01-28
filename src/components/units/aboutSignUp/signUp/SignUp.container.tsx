@@ -10,5 +10,13 @@ export default function SignUp(): JSX.Element {
   const onClickMoveNaver = async (): Promise<void> => {  // 여긴 아직
     await router.push("../../../../../../SignUp/FindEmail");
   };
-  return <SignUpUI onClickMoveSignUpEm={onClickMoveSignUpEm} onClickMoveNaver={onClickMoveNaver} />;
+
+  const onClickMovePrev = async (): Promise<void> => {
+    history.back();
+  };
+
+  return <SignUpUI 
+  onClickMovePrev={onClickMovePrev}
+  onClickMoveSignUpEm={onClickMoveSignUpEm} 
+  onClickMoveNaver={onClickMoveNaver} />;
 }

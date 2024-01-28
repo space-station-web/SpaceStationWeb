@@ -1,73 +1,66 @@
+import { useRouter } from "next/router";
 import { useState, type ChangeEvent, useEffect } from "react";
+import axios from 'axios';
 import LoginFindEmailUI from "./LoginFindEmail.presenter";
 
+
 export default function LoginFindEmail(): JSX.Element {
+  const router = useRouter();
+
+  const [_name, setName] = useState("");
   const [number, setNumber] = useState("");
-  const [name, setName] = useState("");
-  const [startTimer, setStartTimer] = useState(false); // 타이머 시작 상태를 추적하는 변수
-  const [isActive, setIsActive] = useState(false);
+  const [birth, setBirth] = useState("");
 
-  // Timer
-  const minuteInMs = 2 * 60 * 1000;
-  const interval = 1000;
-  const [timeLeft, setTimeLeft] = useState(minuteInMs);
-
-  const minutes = String(Math.floor((timeLeft / (1000 * 60)) % 60)).padStart(
-    2,
-    "0",
-  );
-  const second = String(Math.floor((timeLeft / 1000) % 60)).padStart(2, "0");
-  useEffect(() => {
-    let timer: number | undefined;
-    if (startTimer) {
-      // 타이머 시작 상태가 true일 때만 타이머를 시작합니다.
-      timer = window.setInterval(() => {
-        setTimeLeft((prevTime) => prevTime - interval);
-      }, interval);
-
-      if (timeLeft <= 0) {
-        clearInterval(timer);
-        console.log("타이머가 종료되었습니다.");
-        setStartTimer(false); // 타이머가 종료되면 시작 상태를 false로 설정합니다.
-      }
-    }
-
-    return () => {
-      clearInterval(timer);
-    };
-  }, [timeLeft, startTimer]); // startTimer를 의존성 배열에 추가합니다.
-  // Timer End
-
-  const onClickVert = (): void => {
-    if (number === "") {
-      alert("전화번호를 입력해주세요.");
-      return;
-    }
-    if (isActive) {
-      setTimeLeft(minuteInMs);
-    }
-    setStartTimer(true); // 버튼 클릭 시 타이머 시작 상태를 true로 설정합니다.
-    alert("인증번호가 전송되었습니다.");
-
-    setIsActive(true);
-  };
+  const [errorMessage, setErrorMessage] = useState("ㅤ");
 
   const onChangeName = (event: ChangeEvent<HTMLInputElement>): void => {
     setName(event.currentTarget.value);
   };
-
-  const onChangePhone = (event: ChangeEvent<HTMLInputElement>): void => {
+  const onChangeNumber = (event: ChangeEvent<HTMLInputElement>): void => {
     setNumber(event.currentTarget.value);
+  };
+  const onChangeBirth = (event: ChangeEvent<HTMLInputElement>): void => {
+    setNumber(event.currentTarget.value);
+  };
+  const onClickMovePrev = async (): Promise<void> => {
+    history.back();
+  };
+  const handleCheck = async (): Promise<void> => {
+    // 비번 확인 해야함 
+    try {
+      const name = _name;
+      const phone = number;
+      const b_date = birth;
+      
+      const response = await axios.post(
+        '/email-check',
+        {
+          name,
+          phone,
+          b_date
+        }
+      );
+      console.log("res", response);
+      // 가입된 계정이면
+      await router.push("../../../../../../login/FindEmail/successFind");
+
+      // 가입되지 않은 계정이면 입력값들 초기화 
+      setErrorMessage("가입되지 않은 계정입니다.");
+      console.log('이메일 찾기 성공');
+    } catch (error) {
+      console.log('이메일 찾기 실패 실패', error);
+    }
+    
   };
 
   return (
     <LoginFindEmailUI
-      onClickVert={onClickVert}
       onChangeName={onChangeName}
-      onChangePhone={onChangePhone}
-      minutes={minutes}
-      second={second}
-      isActive={isActive}
+      onChangeNumber={onChangeNumber}
+      onChangeBirth={onChangeBirth}
+      handleCheck={handleCheck}
+      onClickMovePrev={onClickMovePrev}
+      errorMessage={errorMessage}
     />
   );
 }
