@@ -15,8 +15,8 @@ function LayoutUI({ children, pathName }: LayoutProps): JSX.Element {
       <styled.BackgroundCircle />
       <LayoutHeader />
       {children}
-      {pathName.includes("Home") && <styled.Divider />}
-      {pathName.includes("Home") && <styled.BackgroundBottomImg />}
+      {pathName?.includes("Home") && <styled.Divider />}
+      {pathName?.includes("Home") && <styled.BackgroundBottomImg />}
     </styled.Background>
   );
 }
