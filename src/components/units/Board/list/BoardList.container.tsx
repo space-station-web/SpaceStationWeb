@@ -19,7 +19,7 @@ export default function BoardList(): JSX.Element {
   const onClickBoard = async (
     event: MouseEvent<HTMLDivElement>,
   ): Promise<void> => {
-    console.log(event.currentTarget.id);
+    console.log(event);
     await router.push(`/boards/${event.currentTarget.id}`);
   };
 

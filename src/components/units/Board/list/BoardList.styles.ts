@@ -66,7 +66,7 @@ export const BoardBox = styled.div`
   cursor: pointer;
 `;
 export const Board = styled.div`
-  z-index: 1000;
+  z-index: 3;
   background-image: url("board/card.png");
   width: 288px;
   height: 370px;
