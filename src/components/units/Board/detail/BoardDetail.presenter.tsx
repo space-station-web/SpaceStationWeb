@@ -31,7 +31,10 @@ export default function BoardDetailUI(props: IBoardDetailUIProps): JSX.Element {
       {mounted && (
         <L.Wrapper>
           <L.TopDiv>
-            <L.Prev src="/common/icon/Arrow 2.png" />
+            <L.Prev
+              src="/common/icon/Arrow 2.png"
+              onClick={props.onClickBoards}
+            />
             <L.ShareBtn>인용하기</L.ShareBtn>
           </L.TopDiv>
           <L.BoardWrapper>

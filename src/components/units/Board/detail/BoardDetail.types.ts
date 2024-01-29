@@ -7,6 +7,7 @@ export interface IBoardDetailUIProps {
   onClickCommentToggle: (event: MouseEvent<HTMLButtonElement>) => void;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   data: IData | null;
+  onClickBoards: (event: MouseEvent<HTMLImageElement>) => void;
 }
 
 export interface IData {

@@ -22,6 +22,7 @@ export const Prev = styled.img`
   width: 32px;
   height: 32px;
   float: left;
+  cursor: pointer;
 `;
 
 export const CategoryDiv = styled.div`

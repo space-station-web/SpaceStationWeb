@@ -22,6 +22,8 @@ export const Prev = styled.img`
   width: 32px;
   height: 32px;
   float: left;
+  cursor: pointer;
+  z-index: 2;
 `;
 
 export const ShareBtn = styled.button`
