@@ -1,109 +1,79 @@
 import styled from "@emotion/styled";
 
-interface CustomAlertProps {
-  visible?: boolean;
-}
 
-export const Header = styled.div`
-  width: 1921px;
-  height: 94px;
-  flex-shrink: 0;
 
-  background: linear-gradient(180deg, #333333 0%, rgba(51, 51, 51, 0.00) 100%);
-`;
 
 export const Wrapper = styled.div`
-  background-position: top center;
-  background-image: url("/common/background2.png");
-  background-size: cover;  
-
-  display: flex;
-  justify-content: center;
+   padding: 150px 200px 13px 200px;
+  background-color: #141414;
   position: relative;
-
-  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index:1;
+`;
+export const TopContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: right;
 `;
 
+export const TempBtnContainer = styled.div`
+width: 178px;
+height: 50px;
+flex-shrink: 0;
+  border-radius: 999px;
+background: var(--Primary-BlackLight, #1E1E1E);
+margin-right: 20px;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+`;
+export const TempText = styled.span`
+color: var(--Layout-Color-Gray-100, #DCDCDC);
+
+/* Heading 1 */
+font-family: Pretendard;
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: 23px; /* 115% */
+cursor: pointer;
+`;
+export const TempLine = styled.p`
+width: 1.5px;
+height: 23px;
+
+background: #8C8C8C;
+`;
+export const TempNum = styled.span`
+width: 13.073px;
+
+color: var(--Layout-Color-Gray-100, #DCDCDC);
+
+/* Heading 1 */
+font-family: Pretendard;
+font-size: 20px;
+font-style: normal;
+font-weight: 600;
+line-height: 23px; /* 115% */
+cursor: pointer;
+
+`;
+export const publishBtn = styled.button`
+
+width: 160px;
+height: 50px;
+flex-shrink: 0;
+`;
 
 export const Form = styled.div`
   flex-direction: column;
 `;
 
-export const TemporaryStorageBtn = styled.div`
-  width: 178px;
-  height: 50px;
-  flex-shrink: 0;
-  border-radius: 999px;
-  background: var(--Primary-BlackLight, #2E2E2E);
 
-  position: absolute;
-  top: 140px;
-  right: 530px;
-
- 
-`;
-
-export const PublishWriteBtn = styled.button`
-  width: 160px;
-  height: 50px;
-  flex-shrink: 0;
-  border-radius: 999px;
-  background: var(--Primary-BlackLight, #2E2E2E);
-
-  position: absolute;
-  top: 140px;
-  right: 350px;
-
-  border: none;
-`;
-
-export const TemporaryStorageBtnText = styled.button`
-  width: 75.395px;
-
-  color: var(--Layout-Color-Gray-100, #DCDCDC);
-
-  /* Heading 1 */
-  font-family: Pretendard;
-  font-size: 15px; /*피그마와 다름*/
-  font-style: normal;
-  font-weight: 600;
-  line-height: 50px;
-  background: var(--Primary-BlackLight, #2E2E2E);
-
-  margin-left: 20px; 
-  cursor: pointer;
-  }
-`;
-export const TemporaryStorageBtnNum = styled.span`
-  width: 70.395px;
-
-  color: var(--Layout-Color-Gray-100, #DCDCDC);
-
-  /* Heading 1 */
-  font-family: Pretendard;
-  font-size: 15px; /*피그마와 다름*/
-  font-style: normal;
-  font-weight: 600;
-  line-height: 45px; /* 115% */ /*피그마와 다름*/
-  margin-top: 10px; 
- 
-  margin-left: 135px;
-  cursor: pointer;
-`;
-
-export const PublishWriteBtnText = styled.span`
-  color: var(--Layout-Color-Gray-100, #DCDCDC);
-
-  /* Heading 1 */
-  font-family: Pretendard;
-  font-size: 15px; /*피그마와 다름*/
-  font-style: normal;
-  font-weight: 600;
-  line-height: 50px; /* 115% */ /*피그마와 다름*/
-
-  cursor: pointer;
-
-`;
 
 export const HLine = styled.div`
   width: 1.5px;
@@ -112,7 +82,6 @@ export const HLine = styled.div`
   background: #8C8C8C;
 
   border-top: 1px solid #757575;
-  margin: -35px 110px;
   
 `;
 
@@ -132,7 +101,7 @@ export const InputRecommendForm = styled.div`
   background: var(--Primary-BlackLight, #2E2E2E);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
-  margin-top: 200px;
+  margin-top: 20px;
 
 `;
 
@@ -380,18 +349,17 @@ export const ImageIcon = styled.span`
   cursor: pointer;
 `;
 
-export const CustomAlert = styled.div `
-width: 460px;
-height: 177px;
-flex-shrink: 0;
-
-border-radius: 20px;
-background: var(--Primary-Black, #141414);
-
-margin-top: 640px;
-margin-left: -20px;
-transition: opacity 0.5s ease-in-out;
-
+export const CustomAlert = styled.div`
+  width: 460px;
+  height: 177px;
+  flex-shrink: 0;
+  
+  border-radius: 20px;
+  background: var(--Primary-Black, #141414);
+  
+  transition: opacity 0.5s ease-in-out;
+  
+  margin-top: -50px; 
 `;
 
 export const CustomAlertImg = styled.div`
@@ -403,21 +371,21 @@ margin-left: 30px;
 
 export const CustomAlertText = styled.p`
 color: var(--Layout-Color-Gray-100, #DCDCDC);
-/* Heading 1 */
+
 font-family: Pretendard;
 font-size: 20px;
 font-style: normal;
 font-weight: 600;
-line-height: 23px; /* 115% */
+line-height: 23px;
 margin-left: 140px;
 margin-top: -65px;
 `;
 export const WrapHorizontal = styled.div`
-  width: 100%; /* 전체 너비 */
-  max-width: 1050px; /* 최대 너비 설정 */
-  overflow-x: auto; /* 가로 스크롤 활성화 */
-  display: flex; /* 플렉스 컨테이너로 만듭니다. */
-  white-space: nowrap; /* 줄 바꿈 방지 */
+  width: 100%; 
+  max-width: 1050px; 
+  overflow-x: auto;
+  display: flex;
+  white-space: nowrap; 
   margin-left : 70px;
 
   /* 스크롤바 디자인 */
@@ -452,10 +420,10 @@ export const InsertImg = styled.div`
   margin-top : 50px;
   margin-bottom : 30px;
   &:last-child {
-    margin-right: 70px; /* 마지막 이미지 오른쪽 간격 제거 */
+    margin-right: 70px; 
   }
   &:first-child {
-    margin-left: 70px; /* 첫번째 이미지 오른쪽 간격 제거 */
+    margin-left: 70px; 
   }
 `;
 
