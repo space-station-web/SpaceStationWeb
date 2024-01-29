@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   width: 100%;
-
   padding: 150px 200px 20px 200px;
   background-color: #141414;
   position: relative;
@@ -49,7 +48,7 @@ export const BoardWrapper = styled.div`
 export const TopBoard = styled.div`
   width: 100%;
   height: 125px;
-  background-color: #141414;
+  background-color: #0a0a0a;
   border-radius: 20px 20px 0px 0px;
 
   display: flex;
@@ -79,15 +78,31 @@ export const BoardMiddle = styled.p`
   background-color: #1e1e1e;
 `;
 
+export const BoardTopContainer = styled.div`
+  width: 100%;
+  border-bottom: 1px solid #b4b4b4;
+
+  display: flex;
+  flex-direction: row;
+  position: relative;
+`;
+
 export const Title = styled.div`
-  width: 1050px;
+  width: 90%;
   padding: 15px;
 
   font-size: 30px;
   font-weight: 600;
   color: #dcdcdc;
+`;
 
-  border-bottom: 1px solid #b4b4b4;
+export const CreateAt = styled.p`
+  color: #b4b4b4;
+  font-size: 17px;
+  position: absolute;
+  bottom: 17px;
+  left: 975px;
+  width: 100%;
 `;
 
 export const ImageBox = styled.div`
