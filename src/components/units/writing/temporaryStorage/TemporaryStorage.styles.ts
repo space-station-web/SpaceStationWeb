@@ -37,8 +37,8 @@ export const FormHeader = styled.div`
   flex-direction: column;
 
   width: 1194px;
-height: 125px;
-flex-shrink: 0;
+  height: 125px;
+  flex-shrink: 0;
 
   border-radius: 20px 20px 0px 0px;
   background: var(--Primary-Black, #141414);  
@@ -47,15 +47,15 @@ flex-shrink: 0;
 
 export const FormHeaderWrite = styled.p`
   color: var(--Layout-Color-Gray-100, #DCDCDC);
-text-align: center;
 
 /* Heading */
 font-family: Pretendard;
 font-size: 30px;
 font-style: normal;
 font-weight: 600;
-line-height: normal;
+line-height: 90px;
 
+margin-left: 45px;
 `;
 
 export const FormHeaderNum = styled.p`
@@ -66,17 +66,21 @@ font-family: Pretendard;
 font-size: 20px;
 font-style: normal;
 font-weight: 600;
-line-height: 23px; /* 115% */
+margin-left: 45px;
+
+margin-top: -20px;
 `;
 
 export const OneForm = styled.div`
 flex-direction: column;
 
-  width: 1194px; //다름
-  height: 80px; //다름
-  flex-shrink: 0;
+width: 1194px;
+height: 93px;
+flex-shrink: 0;
 
-  background: var(--Primary-BlackLight, #1E1E1E);
+border-bottom: 1px solid var(--Layout-Color-Gray-300, #8C8C8C);
+background: var(--Primary-BlackLight, #1E1E1E);
+
 `;
 
 export const Date = styled.p`
@@ -87,11 +91,10 @@ font-family: Pretendard;
 font-size: 18px;
 font-style: normal;
 font-weight: 400;
-line-height: 80px; /* 155.556% */
+line-height: 28px; /* 155.556% */
 letter-spacing: -0.18px;
 
 margin-left: 45px;
-
 `;
 
 export const Title = styled.span`
@@ -103,10 +106,9 @@ font-size: 20px;
 font-style: normal;
 font-weight: 600;
 line-height: 23px; /* 115% */
-position: relative;
-left: 170px;
-bottom: 50px;
 cursor: pointer;
+
+margin-left: 200px;
 `;
 
 export const DeleteBtn = styled.button`
@@ -116,12 +118,10 @@ flex-shrink: 0;
 
 border-radius: 999px;
 background: var(--Layout-Color-Gray-200, #B4B4B4);
-margin-left: 650px;
-position: relative;
-top: -80px; 
 
 border: none;
 cursor: pointer;
+margin-left: 550px;
 
 `;
 
