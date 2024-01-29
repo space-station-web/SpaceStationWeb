@@ -9,21 +9,13 @@ export const Header = styled.div`
   height: 94px;
   flex-shrink: 0;
 
-  background: linear-gradient(180deg, #333333 0%, rgba(51, 51, 51, 0.00) 100%);
+  background: linear-gradient(180deg, #333333 0%, rgba(51, 51, 51, 0) 100%);
 `;
 
 export const Wrapper = styled.div`
-  background-position: top center;
-  background-image: url("/common/background2.png");
-  background-size: cover;  
-
-  display: flex;
-  justify-content: center;
-  position: relative;
-
   padding-bottom: 40px;
+  z-index: 2;
 `;
-
 
 export const Form = styled.div`
   flex-direction: column;
@@ -34,13 +26,11 @@ export const TemporaryStorageBtn = styled.div`
   height: 50px;
   flex-shrink: 0;
   border-radius: 999px;
-  background: var(--Primary-BlackLight, #2E2E2E);
+  background: var(--Primary-BlackLight, #2e2e2e);
 
   position: absolute;
   top: 140px;
   right: 530px;
-
- 
 `;
 
 export const PublishWriteBtn = styled.button`
@@ -48,7 +38,7 @@ export const PublishWriteBtn = styled.button`
   height: 50px;
   flex-shrink: 0;
   border-radius: 999px;
-  background: var(--Primary-BlackLight, #2E2E2E);
+  background: var(--Primary-BlackLight, #2e2e2e);
 
   position: absolute;
   top: 140px;
@@ -57,10 +47,10 @@ export const PublishWriteBtn = styled.button`
   border: none;
 `;
 
-export const TemporaryStorageBtnText = styled.button`
+export const TemporaryStorageBtnText = styled.p`
   width: 75.395px;
 
-  color: var(--Layout-Color-Gray-100, #DCDCDC);
+  color: var(--Layout-Color-Gray-100, #dcdcdc);
 
   /* Heading 1 */
   font-family: Pretendard;
@@ -68,16 +58,15 @@ export const TemporaryStorageBtnText = styled.button`
   font-style: normal;
   font-weight: 600;
   line-height: 50px;
-  background: var(--Primary-BlackLight, #2E2E2E);
+  background: var(--Primary-BlackLight, #2e2e2e);
 
-  margin-left: 20px; 
+  margin-left: 20px;
   cursor: pointer;
-  }
 `;
 export const TemporaryStorageBtnNum = styled.span`
   width: 70.395px;
 
-  color: var(--Layout-Color-Gray-100, #DCDCDC);
+  color: var(--Layout-Color-Gray-100, #dcdcdc);
 
   /* Heading 1 */
   font-family: Pretendard;
@@ -85,14 +74,14 @@ export const TemporaryStorageBtnNum = styled.span`
   font-style: normal;
   font-weight: 600;
   line-height: 45px; /* 115% */ /*피그마와 다름*/
-  margin-top: 10px; 
- 
+  margin-top: 10px;
+
   margin-left: 135px;
   cursor: pointer;
 `;
 
 export const PublishWriteBtnText = styled.span`
-  color: var(--Layout-Color-Gray-100, #DCDCDC);
+  color: var(--Layout-Color-Gray-100, #dcdcdc);
 
   /* Heading 1 */
   font-family: Pretendard;
@@ -102,18 +91,16 @@ export const PublishWriteBtnText = styled.span`
   line-height: 50px; /* 115% */ /*피그마와 다름*/
 
   cursor: pointer;
-
 `;
 
 export const HLine = styled.div`
   width: 1.5px;
   height: 23px;
 
-  background: #8C8C8C;
+  background: #8c8c8c;
 
   border-top: 1px solid #757575;
   margin: -35px 110px;
-  
 `;
 
 export const TemporaryStorageText = styled.p`
@@ -129,24 +116,21 @@ export const InputRecommendForm = styled.div`
   height: 116px;
   flex-shrink: 0;
   border-radius: 20px;
-  background: var(--Primary-BlackLight, #2E2E2E);
+  background: var(--Primary-BlackLight, #2e2e2e);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
   margin-top: 200px;
-
 `;
-
 
 export const InputRecommendEndForm = styled.div`
   width: 1194px;
   height: 368px;
   flex-shrink: 0;
   border-radius: 20px;
-  background: var(--Primary-BlackLight, #2E2E2E);
+  background: var(--Primary-BlackLight, #2e2e2e);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
   margin-top: 200px;
-
 `;
 
 export const InputTextForm = styled.div`
@@ -154,20 +138,18 @@ export const InputTextForm = styled.div`
   height: 710px;
   flex-shrink: 0;
   border-radius: 20px;
-  background: var(--Primary-BlackLight, #2E2E2E);
+  background: var(--Primary-BlackLight, #2e2e2e);
 
   margin-top: 20px;
-  overflow: auto; 
-
+  overflow: auto;
 `;
-
 
 export const RecommendText = styled.p`
   width: 500px;
   height: 28.897px;
   flex-shrink: 0;
 
-  color: var(--Layout-Color-Gray-200, #B4B4B4);
+  color: var(--Layout-Color-Gray-200, #b4b4b4);
 
   /* Heading 1 */
   font-family: Pretendard;
@@ -183,7 +165,7 @@ export const RecommendClickTitle = styled.p`
   width: 200px;
   height: 22.933px;
   flex-shrink: 0;
-  color: var(--Layout-Color-Gray-100, #DCDCDC);
+  color: var(--Layout-Color-Gray-100, #dcdcdc);
 
   /* Heading 1 */
   font-family: Pretendard;
@@ -198,7 +180,7 @@ export const RecommendClickText1 = styled.p`
   width: 500px;
   height: 87.742px;
   flex-shrink: 0;
-  color: var(--Layout-Color-Gray-300, #8C8C8C);
+  color: var(--Layout-Color-Gray-300, #8c8c8c);
 
   /* Heading 2 */
   font-family: Pretendard;
@@ -216,18 +198,17 @@ export const RecommendClickTextLine = styled.div`
   height: 1px;
   flex-shrink: 0;
   border-radius: 1px;
-  background: var(--Primary-BlackDark, #0A0A0A);
-  
+  background: var(--Primary-BlackDark, #0a0a0a);
+
   margin-left: 70px;
   margin-top: 35px;
-
 `;
 
 export const RecommendClickText2 = styled.p`
-width: 500px;
-height: 87.742px;
-flex-shrink: 0;
-color: var(--Layout-Color-Gray-300, #8C8C8C);
+  width: 500px;
+  height: 87.742px;
+  flex-shrink: 0;
+  color: var(--Layout-Color-Gray-300, #8c8c8c);
 
   /* Heading 2 */
   font-family: Pretendard;
@@ -239,16 +220,14 @@ color: var(--Layout-Color-Gray-300, #8C8C8C);
 
   margin-left: 70px;
   margin-top: 35px;
-
 `;
-
 
 export const ArroyBtn = styled.span`
   width: 24px;
   height: 24px;
   flex-shrink: 0;
 
-  color: var(--Layout-Color-Gray-200, #B4B4B4);
+  color: var(--Layout-Color-Gray-200, #b4b4b4);
 
   /* Heading 1 */
   font-family: Pretendard;
@@ -259,7 +238,6 @@ export const ArroyBtn = styled.span`
   cursor: pointer;
 
   margin-left: 600px;
-
 `;
 
 export const ArroyEndBtn = styled.span`
@@ -267,7 +245,7 @@ export const ArroyEndBtn = styled.span`
   height: 24px;
   flex-shrink: 0;
 
-  color: var(--Layout-Color-Gray-200, #B4B4B4);
+  color: var(--Layout-Color-Gray-200, #b4b4b4);
 
   /* Heading 1 */
   font-family: Pretendard;
@@ -278,14 +256,13 @@ export const ArroyEndBtn = styled.span`
   cursor: pointer;
 
   margin-left: 600px;
-
 `;
 
 export const TitleText = styled.input`
   width: 1050px;
   height: 30px;
   flex-shrink: 0;
-  color: var(--Layout-Color-Gray-300, #8C8C8C);
+  color: var(--Layout-Color-Gray-300, #8c8c8c);
 
   font-family: Pretendard;
   font-size: 30px;
@@ -310,18 +287,16 @@ export const Line = styled.div`
   height: 1px;
   flex-shrink: 0;
   border-radius: 1px;
-  background: var(--Layout-Color-Gray-200, #B4B4B4);
-  
+  background: var(--Layout-Color-Gray-200, #b4b4b4);
 
   margin-left: 70px;
-  margin-top: 30px; 
-
+  margin-top: 30px;
 `;
 
 export const Writing = styled.textarea`
   width: 1050px;
-  min-height: 500px; 
-  color: var(--Layout-Color-Gray-300, #8C8C8C);
+  min-height: 500px;
+  color: var(--Layout-Color-Gray-300, #8c8c8c);
 
   font-family: Pretendard;
   font-size: 40px;
@@ -355,7 +330,6 @@ export const Writing = styled.textarea`
   }
 `;
 
-
 export const Input = styled.input`
   width: 800px;
   background-color: #141414;
@@ -376,41 +350,40 @@ export const ImageIcon = styled.span`
   left: 1080px;
   top: 30px;
 
-  fill: var(--Layout-Color-Gray-200, #B4B4B4);
+  fill: var(--Layout-Color-Gray-200, #b4b4b4);
   cursor: pointer;
 `;
 
-export const CustomAlert = styled.div `
-width: 460px;
-height: 177px;
-flex-shrink: 0;
+export const CustomAlert = styled.div`
+  width: 460px;
+  height: 177px;
+  flex-shrink: 0;
 
-border-radius: 20px;
-background: var(--Primary-Black, #141414);
+  border-radius: 20px;
+  background: var(--Primary-Black, #141414);
 
-margin-top: 640px;
-margin-left: -20px;
-transition: opacity 0.5s ease-in-out;
-
+  margin-top: 640px;
+  margin-left: -20px;
+  transition: opacity 0.5s ease-in-out;
 `;
 
 export const CustomAlertImg = styled.div`
-width: 140px;
-height: 140px;
-flex-shrink: 0;
-margin-left: 30px;
+  width: 140px;
+  height: 140px;
+  flex-shrink: 0;
+  margin-left: 30px;
 `;
 
 export const CustomAlertText = styled.p`
-color: var(--Layout-Color-Gray-100, #DCDCDC);
-/* Heading 1 */
-font-family: Pretendard;
-font-size: 20px;
-font-style: normal;
-font-weight: 600;
-line-height: 23px; /* 115% */
-margin-left: 140px;
-margin-top: -65px;
+  color: var(--Layout-Color-Gray-100, #dcdcdc);
+  /* Heading 1 */
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 23px; /* 115% */
+  margin-left: 140px;
+  margin-top: -65px;
 `;
 export const WrapHorizontal = styled.div`
   width: 100%; /* 전체 너비 */
@@ -418,11 +391,11 @@ export const WrapHorizontal = styled.div`
   overflow-x: auto; /* 가로 스크롤 활성화 */
   display: flex; /* 플렉스 컨테이너로 만듭니다. */
   white-space: nowrap; /* 줄 바꿈 방지 */
-  margin-left : 70px;
+  margin-left: 70px;
 
   /* 스크롤바 디자인 */
   ::-webkit-scrollbar {
-    height : 6px;
+    height: 6px;
   }
 
   ::-webkit-scrollbar-thumb {
@@ -437,9 +410,8 @@ export const WrapHorizontal = styled.div`
 `;
 
 export const InsertImgForm = styled.div`
-display: flex; /* 부모에게 flex 속성 추가 */
+  display: flex; /* 부모에게 flex 속성 추가 */
 `;
-
 
 export const InsertImg = styled.div`
   display: flex;
@@ -449,8 +421,8 @@ export const InsertImg = styled.div`
   border-radius: 20px;
   background: lightgray 50% / cover no-repeat;
   margin-right: 30px; /* 이미지 간 간격 조정 */
-  margin-top : 50px;
-  margin-bottom : 30px;
+  margin-top: 50px;
+  margin-bottom: 30px;
   &:last-child {
     margin-right: 70px; /* 마지막 이미지 오른쪽 간격 제거 */
   }
@@ -458,5 +430,3 @@ export const InsertImg = styled.div`
     margin-left: 70px; /* 첫번째 이미지 오른쪽 간격 제거 */
   }
 `;
-
-

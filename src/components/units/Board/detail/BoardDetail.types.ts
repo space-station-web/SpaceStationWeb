@@ -14,4 +14,5 @@ export interface IData {
   title: string;
   content: string;
   UserId: string;
+  createdAt: Date;
 }
