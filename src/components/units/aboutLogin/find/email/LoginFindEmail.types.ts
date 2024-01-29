@@ -1,11 +1,13 @@
 import type { ChangeEvent, MouseEvent } from "react";
 
 export interface IFindEmail {
-  onClickVert: (event: MouseEvent<HTMLButtonElement>) => void;
+  handleCheck: (event: MouseEvent<HTMLButtonElement>) => void;
   onChangeName: (event: ChangeEvent<HTMLInputElement>) => void;
-  onChangePhone: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChangeNumber: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChangeBirth: (event: ChangeEvent<HTMLInputElement>) => void;
 
-  minutes: string;
-  second: string;
-  isActive: boolean;
+  onClickMovePrev: (event: MouseEvent<HTMLImageElement>) => void;
+
+  errorMessage: string;
+
 }

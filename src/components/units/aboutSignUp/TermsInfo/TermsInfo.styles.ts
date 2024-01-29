@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  background-image: url("/common/background.png");
   background-position: top center;
+  background-image: url("/common/background.png");
 
   display: flex;
   justify-content: center;
-
+  
   position: relative;
 
   ::before {
@@ -34,51 +34,31 @@ export const Form = styled.div`
 
   margin: 550px 0 300px 0;
   padding: 70px;
-
-`;
-
-export const Icon = styled.img`
-  margin-top: 80px;
-  margin-bottom: 60px;
 `;
 
 export const Heading1 = styled.p`
   font-size: 20px;
   font-weight: 600;
-  color: #DCDCDC;
+  color: #dcdcdc;
   white-space: pre-wrap;
   text-align: center;
   line-height: 23px;
 
-  margin-bottom: 10px;
+  margin-bottom: 40px;
 `;
 
-export const Heading2 = styled.p`
-  font-size: 18px;
-  font-weight: 400;
-  color: #B4B4B4;
-  white-space: pre-wrap;
+
+export const UtilText = styled.span`
+  color: #BDBDBD;
+  font-size: 17px;
   text-align: center;
-  line-height: 28px;
-
-  margin-bottom: 30px;
+  margin-left: 5px;
+  cursor: pointer;
 `;
 
-export const Button = styled.button`
-  width: 582px;
-  height: 75px;
-  border-radius: 20px;
-  border: none;
-
-  margin-top: 15px;
-
-  background-color: #0e0e0e;
-  color: #e0e0e0;
-
-  cursor: pointer;
-
-  :hover {
-    color: #1e1e1e;
-    background-color: #e0e0e0;
-  }
+export const NormText = styled.span`
+  color: #BDBDBD;
+  font-size: 17px;
+  text-align: center;
+  margin-left: 5px;
 `;

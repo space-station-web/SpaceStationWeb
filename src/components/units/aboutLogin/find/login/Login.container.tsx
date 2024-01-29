@@ -15,6 +15,12 @@ export default function Login(): JSX.Element {
   const onClickMoveFindEm = async (): Promise<void> => {
     await router.push("../../../../../../login/FindEmail");
   };
+  const onClickMoveSignUp = async (): Promise<void> => {
+    await router.push("../../../../../../signUp");
+  };
+  const onClickMovePrev = async (): Promise<void> => {
+    history.back();
+  };
 
   const onChangeEmail = (event: ChangeEvent<HTMLInputElement>): void => {
     setEmail(event.currentTarget.value);
@@ -52,6 +58,8 @@ export default function Login(): JSX.Element {
   return <LoginUI 
   onClickMoveFindPw={onClickMoveFindPw} 
   onClickMoveFindEm={onClickMoveFindEm} 
+  onClickMoveSignUp={onClickMoveSignUp}
+  onClickMovePrev={onClickMovePrev}
   onChangeEmail={onChangeEmail} 
   onChangePassword={onChangePassword} 
   handleLogin={handleLogin} />;
