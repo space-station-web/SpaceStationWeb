@@ -356,29 +356,27 @@ export const CustomAlert = styled.div`
   
   border-radius: 20px;
   background: var(--Primary-Black, #141414);
-  
-  transition: opacity 0.5s ease-in-out;
-  
-  margin-top: -50px; 
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `;
 
 export const CustomAlertImg = styled.div`
 width: 140px;
 height: 140px;
 flex-shrink: 0;
-margin-left: 30px;
 `;
 
 export const CustomAlertText = styled.p`
 color: var(--Layout-Color-Gray-100, #DCDCDC);
 
+/* Heading 1 */
 font-family: Pretendard;
 font-size: 20px;
 font-style: normal;
 font-weight: 600;
-line-height: 23px;
-margin-left: 140px;
-margin-top: -65px;
+line-height: 23px; /* 115% */
 `;
 export const WrapHorizontal = styled.div`
   width: 100%; 
