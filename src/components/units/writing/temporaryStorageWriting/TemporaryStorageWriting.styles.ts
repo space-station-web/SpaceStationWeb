@@ -1,96 +1,91 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  background-position: top center;
-  background-image: url("/common/background2.png");
-  background-size: cover;  
-
-  display: flex;
-  justify-content: center;
+ padding: 150px 200px 13px 200px;
+  background-color: #141414;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
 `;
+export const TopContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: right;
+`;
 
+export const TempBtnContainer = styled.div`
+width: 178px;
+height: 50px;
+flex-shrink: 0;
+  border-radius: 999px;
+background: var(--Primary-BlackLight, #1E1E1E);
+margin-right: 20px;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+`;
+export const TempText = styled.span`
+color: var(--Layout-Color-Gray-100, #DCDCDC);
+
+/* Heading 1 */
+font-family: Pretendard;
+font-size: 20px;
+font-style: normal;
+font-weight: 600;
+line-height: 23px; /* 115% */
+margin-right: 20px;
+cursor: pointer;
+`;
+export const TempLine = styled.p`
+width: 1.5px;
+height: 23px;
+
+background: #8C8C8C;
+`;
+export const TempNum = styled.span`
+width: 13.073px;
+
+margin-left: 20px;
+color: var(--Layout-Color-Gray-100, #DCDCDC);
+
+/* Heading 1 */
+font-family: Pretendard;
+font-size: 20px;
+font-style: normal;
+font-weight: 600;
+line-height: 23px; /* 115% */
+cursor: pointer;
+
+`;
+export const publishBtn = styled.button`
+
+  width: 160px;
+  height: 50px;
+  flex-shrink: 0;
+
+  border-radius: 999px;
+  background: var(--Primary-BlackLight, #1E1E1E);
+  margin-right: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+`;
+export const publishBtnText = styled.p`
+color: white;
+  cursor: pointer;
+`;
 
 export const Form = styled.div`
   flex-direction: column;
 `;
 
-export const TemporaryStorageBtn = styled.div`
-  width: 178px;
-  height: 50px;
-  flex-shrink: 0;
-  border-radius: 999px;
-  background: var(--Primary-BlackLight, #2E2E2E);
-
-  position: absolute;
-  top: 140px;
-  right: 530px;
-
- 
-`;
-
-export const PublishWriteBtn = styled.button`
-  width: 160px;
-  height: 50px;
-  flex-shrink: 0;
-  border-radius: 999px;
-  background: var(--Primary-BlackLight, #2E2E2E);
-
-  position: absolute;
-  top: 140px;
-  right: 350px;
-
-  border: none;
-`;
-
-export const TemporaryStorageBtnText = styled.span`
-  width: 75.395px;
-
-  color: var(--Layout-Color-Gray-100, #DCDCDC);
-
-  /* Heading 1 */
-  font-family: Pretendard;
-  font-size: 15px; /*피그마와 다름*/
-  font-style: normal;
-  font-weight: 600;
-  line-height: 50px;
-  background: var(--Primary-BlackLight, #2E2E2E);
-
-  margin-left: 20px; 
-  cursor: pointer;
-  }
-`;
-export const TemporaryStorageBtnNum = styled.span`
-  width: 70.395px;
-
-  color: var(--Layout-Color-Gray-100, #DCDCDC);
-
-  /* Heading 1 */
-  font-family: Pretendard;
-  font-size: 15px; /*피그마와 다름*/
-  font-style: normal;
-  font-weight: 600;
-  line-height: 45px; /* 115% */ /*피그마와 다름*/
-  margin-top: 10px; 
- 
-  margin-left: 135px;
-  cursor: pointer;
-`;
-
-export const PublishWriteBtnText = styled.span`
-  color: var(--Layout-Color-Gray-100, #DCDCDC);
-
-  /* Heading 1 */
-  font-family: Pretendard;
-  font-size: 15px; /*피그마와 다름*/
-  font-style: normal;
-  font-weight: 600;
-  line-height: 50px; /* 115% */ /*피그마와 다름*/
-
-  cursor: pointer;
-
-`;
 
 export const HLine = styled.div`
   width: 1.5px;
@@ -102,15 +97,6 @@ export const HLine = styled.div`
   margin: -35px 110px;
   
 `;
-
-export const TemporaryStorageText = styled.p`
-  color: #bdbdbd;
-  font-size: 17px;
-  width: 500px;
-  text-align: center;
-  line-height: 75px;
-`;
-
 export const InputRecommendForm = styled.div`
   width: 1194px;
   height: 116px;
@@ -119,7 +105,7 @@ export const InputRecommendForm = styled.div`
   background: var(--Primary-BlackLight, #2E2E2E);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
-  margin-top: 200px;
+  margin-top: 20px;
 
 `;
 
@@ -132,7 +118,7 @@ export const InputRecommendEndForm = styled.div`
   background: var(--Primary-BlackLight, #2E2E2E);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
-  margin-top: 200px;
+  margin-top: 20px;
 
 `;
 

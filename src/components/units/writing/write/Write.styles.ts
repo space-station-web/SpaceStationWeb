@@ -101,14 +101,6 @@ export const HLine = styled.div`
   
 `;
 
-export const TemporaryStorageText = styled.p`
-  color: #bdbdbd;
-  font-size: 17px;
-  width: 500px;
-  text-align: center;
-  line-height: 75px;
-`;
-
 export const InputRecommendForm = styled.div`
   width: 1194px;
   height: 116px;
@@ -130,7 +122,7 @@ export const InputRecommendEndForm = styled.div`
   background: var(--Primary-BlackLight, #2E2E2E);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
-  margin-top: 200px;
+  margin-top: 20px;
 
 `;
 
@@ -323,21 +315,21 @@ export const Writing = styled.textarea`
   :focus {
     outline: none;
   }
-
-  /* 스크롤바 디자인 */
-  ::-webkit-scrollbar {
+  
+  // 스크롤바 디자인
+  /* ::-webkit-scrollbar {
     width: 6px;
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #a1a1a1; /* 스크롤바 색상 */
-    border-radius: 6px; /* 스크롤바 둥근 테두리 */
+    background-color: #a1a1a1;
+    border-radius: 6px;
   }
 
   ::-webkit-scrollbar-track {
-    background-color: #f0f0f0; /* 스크롤바 트랙 배경색 */
-    border-radius: 6px; /* 스크롤바 트랙 둥근 테두리 */
-  }
+    background-color: #f0f0f0; 
+    border-radius: 6px; 
+  } */
 `;
 
 
@@ -435,13 +427,13 @@ export const WrapHorizontal = styled.div`
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #a1a1a1; /* 스크롤바 색상 */
-    border-radius: 6px; /* 스크롤바 둥근 테두리 */
+    background-color: #a1a1a1; 
+    border-radius: 6px; 
   }
 
   ::-webkit-scrollbar-track {
-    background-color: #f0f0f0; /* 스크롤바 트랙 배경색 */
-    border-radius: 6px; /* 스크롤바 트랙 둥근 테두리 */
+    background-color: #f0f0f0; 
+    border-radius: 6px;
   }
 `;
 

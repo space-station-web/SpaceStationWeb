@@ -82,7 +82,6 @@ export default function WriteUI(props: Iwrite): JSX.Element {
           <F.publishBtn onClick={handlePublishClick}>
             <F.publishBtnText>발행하기</F.publishBtnText>
           </F.publishBtn>
-         
         </F.TopContainer>
         
         <F.Form>

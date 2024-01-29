@@ -1,15 +1,5 @@
 import styled from "@emotion/styled";
 
-// export const Wrapper = styled.div`
-// background: #000;
-// background-position: top center;
-//   background-size: cover;  
-
-//   display: flex;
-//   justify-content: center;
-//   position: relative;
-// `;
-
 export const Wrapper = styled.div`
 padding: 150px 200px 13px 200px;
   background-color: #141414;
@@ -28,9 +18,7 @@ flex-shrink: 0;
 
   border-radius: 20px;
   background: var(--Primary-BlackLight, #1E1E1E);
-
-  margin-top: 180px;
-  margin-bottom: 180px;
+  margin-top: 20px;
 `;
 
 export const FormHeader = styled.div`
