@@ -9,6 +9,8 @@ export default function WriteUI(props: Iwrite): JSX.Element {
   const [temporaryStorageCount, setTemporaryStorageCount] = useState(0);
   const [selectedImages, setSelectedImages] = useState<string[]>([]);
   const [temporaryStorageForms, setTemporaryStorageForms] = useState<number[]>([]);
+  const [isTempSaveAlertVisible, setIsTempSaveAlertVisible] = useState(false);
+
 
 
   const [titleHeight, setTitleHeight] = useState<number>(30);
@@ -41,15 +43,23 @@ export default function WriteUI(props: Iwrite): JSX.Element {
   const handlePublishClick = () => {
     setIsAlertVisible(true);
 
-    // 2초 후에 창이 사라지도록 설정
-    // setTimeout(() => {
-    //   setIsAlertVisible(false);
-    // }, 2000);
+    //2초 후에 창이 사라지도록 설정
+    setTimeout(() => {
+      setIsAlertVisible(false);
+    }, 2000);
   };
 
   const handleTemporaryStorageClick = () => {
     setTemporaryStorageCount(temporaryStorageCount + 1);
     setTemporaryStorageForms((prevForms) => [...prevForms, Date.now()]);
+    
+    // Show the temporary save alert
+    setIsTempSaveAlertVisible(true);
+  
+    // Hide the temporary save alert after 2 seconds
+    setTimeout(() => {
+      setIsTempSaveAlertVisible(false);
+    }, 2000);
   };
 
   const handleMoveWritingClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -70,7 +80,7 @@ export default function WriteUI(props: Iwrite): JSX.Element {
             </F.TempNum>
           </F.TempBtnContainer>
           <F.publishBtn onClick={handlePublishClick}>
-            발행하기
+            <F.publishBtnText>발행하기</F.publishBtnText>
           </F.publishBtn>
          
         </F.TopContainer>
@@ -141,6 +151,19 @@ export default function WriteUI(props: Iwrite): JSX.Element {
           <F.CustomAlertText>글이 발행되었습니다.</F.CustomAlertText>
         </F.CustomAlert>
       )}
+      {isTempSaveAlertVisible && (
+      <F.CustomTemSaveAlert>
+        <F.CustomTemSaveAlertImg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="none">
+  <path d="M50 12.5V61.5" stroke="#FF6F00" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M27 38.625L50 61.5" stroke="#FF6F00" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M73 38.625L50 61.5" stroke="#FF6F00" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12.5833 57.667V74.167C12.5833 81.542 18.2083 87.5003 25.125 87.5003H74.9583C81.875 87.5003 87.5 81.542 87.5 74.167V57.667" stroke="#FF6F00" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+        </F.CustomTemSaveAlertImg>
+        <F.CustomTemSaveAlertText>글이 임시저장되었습니다.</F.CustomTemSaveAlertText>
+      </F.CustomTemSaveAlert>
+    )}
         </F.Form>
       </F.Wrapper>
     </>

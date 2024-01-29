@@ -4,13 +4,13 @@ import styled from "@emotion/styled";
 
 
 export const Wrapper = styled.div`
-   padding: 150px 200px 13px 200px;
+  padding: 150px 200px 13px 200px;
   background-color: #141414;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index:1;
+  position: relative; //스크롤해도 이어짐
 `;
 export const TopContainer = styled.div`
   display: flex;
@@ -36,10 +36,11 @@ color: var(--Layout-Color-Gray-100, #DCDCDC);
 
 /* Heading 1 */
 font-family: Pretendard;
-font-size: 16px;
+font-size: 20px;
 font-style: normal;
 font-weight: 600;
 line-height: 23px; /* 115% */
+margin-right: 20px;
 cursor: pointer;
 `;
 export const TempLine = styled.p`
@@ -51,6 +52,7 @@ background: #8C8C8C;
 export const TempNum = styled.span`
 width: 13.073px;
 
+margin-left: 20px;
 color: var(--Layout-Color-Gray-100, #DCDCDC);
 
 /* Heading 1 */
@@ -64,9 +66,23 @@ cursor: pointer;
 `;
 export const publishBtn = styled.button`
 
-width: 160px;
-height: 50px;
-flex-shrink: 0;
+  width: 160px;
+  height: 50px;
+  flex-shrink: 0;
+
+  border-radius: 999px;
+  background: var(--Primary-BlackLight, #1E1E1E);
+  margin-right: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+`;
+export const publishBtnText = styled.p`
+color: white;
+  cursor: pointer;
 `;
 
 export const Form = styled.div`
@@ -378,6 +394,33 @@ font-style: normal;
 font-weight: 600;
 line-height: 23px; /* 115% */
 `;
+
+export const CustomTemSaveAlert = styled.div`
+  width: 460px;
+  height: 177px;
+  flex-shrink: 0;
+
+  border-radius: 20px;
+  background: var(--Primary-Black, #141414);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+export const CustomTemSaveAlertImg = styled.div`
+ width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+`;
+export const CustomTemSaveAlertText = styled.p`
+  color: var(--Layout-Color-Gray-100, #DCDCDC);
+
+  /* Heading 1 */
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 23px; /* 115% */
+`;
 export const WrapHorizontal = styled.div`
   width: 100%; 
   max-width: 1050px; 
@@ -403,7 +446,7 @@ export const WrapHorizontal = styled.div`
 `;
 
 export const InsertImgForm = styled.div`
-display: flex; /* 부모에게 flex 속성 추가 */
+display: flex; 
 `;
 
 
