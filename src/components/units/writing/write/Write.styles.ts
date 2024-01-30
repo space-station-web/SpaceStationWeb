@@ -27,7 +27,10 @@ display: flex;
 flex-direction: row;
 align-items: center;
 justify-content: center;
+
+  background: linear-gradient(180deg, #333333 0%, rgba(51, 51, 51, 0) 100%);
 `;
+
 export const TempText = styled.span`
 color: var(--Layout-Color-Gray-100, #DCDCDC);
 
@@ -46,26 +49,34 @@ height: 23px;
 
 background: #8C8C8C;
 `;
+
+export const Form = styled.div`
+  flex-direction: column;
+`;
+
 export const TempNum = styled.span`
 width: 13.073px;
+`;
 
-margin-left: 20px;
-color: var(--Layout-Color-Gray-100, #DCDCDC);
 
-/* Heading 1 */
-font-family: Pretendard;
-font-size: 20px;
-font-style: normal;
-font-weight: 600;
-line-height: 23px; /* 115% */
-cursor: pointer;
+export const TemporaryStorageBtn = styled.div`
+  width: 178px;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: var(--Primary-BlackLight, #2e2e2e);
 
+  position: absolute;
+  top: 140px;
+  right: 530px;
 `;
 export const publishBtn = styled.button`
 
   width: 160px;
   height: 50px;
   flex-shrink: 0;
+  border-radius: 999px;
+  background: var(--Primary-BlackLight, #2e2e2e);
 
   border-radius: 999px;
   background: var(--Primary-BlackLight, #1E1E1E);
@@ -79,26 +90,6 @@ export const publishBtn = styled.button`
 `;
 export const publishBtnText = styled.p`
 color: white;
-  cursor: pointer;
-`;
-
-export const Form = styled.div`
-  flex-direction: column;
-`;
-
-
-
-
-export const TemporaryStorageBtn = styled.div`
-  width: 178px;
-  height: 50px;
-  flex-shrink: 0;
-  border-radius: 999px;
-  background: var(--Primary-BlackLight, #2e2e2e);
-
-  position: absolute;
-  top: 40px;
-  right: 530px;
 `;
 
 
@@ -153,6 +144,9 @@ export const InputRecommendForm = styled.div`
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
   margin-top: 20px;
+
+
+  margin-top: 200px;
 `;
 
 export const InputRecommendEndForm = styled.div`
