@@ -493,3 +493,17 @@ export const InsertImg = styled.div`
     margin-left: 70px; 
   }
 `;
+export const backBtn = styled.span`
+  width: 30px;
+  height: 30px;
+  transform: rotate(0deg);
+  writing-mode: vertical-lr;
+  text-align: center; 
+  line-height: 30px; 
+  flex-shrink: 0;
+  background: url("/common/back.png");
+  cursor: pointer;
+
+  margin-right: 780px;
+  margin-top: 20px;
+`;

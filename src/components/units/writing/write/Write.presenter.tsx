@@ -71,6 +71,8 @@ export default function WriteUI(props: Iwrite): JSX.Element {
     <>
       <F.Wrapper>
         <F.TopContainer>
+          <F.backBtn onClick={props.onClickMoveHomePage}>
+          </F.backBtn>
           <F.TempBtnContainer>
             <F.TempText onClick={handleTemporaryStorageClick}>
               임시저장
