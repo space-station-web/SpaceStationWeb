@@ -3,7 +3,6 @@ import Save from "../../../../../public/save.svg";
 
 export const Wrapper = styled.div`
   padding: 150px 200px 0px 200px;
-  background-color: #141414;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -22,6 +21,7 @@ export const Prev = styled.img`
   width: 32px;
   height: 32px;
   float: left;
+  cursor: pointer;
 `;
 
 export const CategoryDiv = styled.div`

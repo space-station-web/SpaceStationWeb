@@ -19,14 +19,14 @@ function LayoutUI({ children, pathName }: LayoutProps): JSX.Element {
   }, [pathName]);
   return (
     <styled.Background>
-      {!pathName.includes("boards") && <styled.BackgroundTopImg />}
+      {!pathName?.includes("boards") && <styled.BackgroundTopImg />}
       <styled.Radial />
       <styled.BackgroundCircle $margin={margin} />
       <LayoutHeader />
       <styled.ChildWrapper>{children}</styled.ChildWrapper>
-      {pathName.includes("home") && <styled.Divider />}
-      {pathName.includes("home") ||
-        (pathName.includes("mypage") && <styled.BackgroundBottomImg />)}
+      {pathName?.includes("home") && <styled.Divider />}
+      {pathName?.includes("home") ||
+        (pathName?.includes("mypage") && <styled.BackgroundBottomImg />)}
     </styled.Background>
   );
 }

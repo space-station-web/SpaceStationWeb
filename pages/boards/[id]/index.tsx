@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
-import BoardDetail from "../../../src/components/units/Board/detail/BoardDetail.container";
-import CommentWrite from "../../../src/components/units/BoardComment/write/CommentWrite.container";
 import { useState } from "react";
+import BoardDetail from "../../../src/components/units/Board/detail/BoardDetail.container";
+import BoardCommentList from "../../../src/components/units/BoardComment/list/BoardCommentList.container";
+import CommentWrite from "../../../src/components/units/BoardComment/write/CommentWrite.container";
 
 const Align = styled.div`
   display: flex;
@@ -14,7 +15,14 @@ export default function BoardDetailPage(): JSX.Element {
   return (
     <Align>
       <BoardDetail setIsOpen={setIsOpen} />
-      {isOpen ? <CommentWrite /> : " "}
+      {isOpen ? (
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <CommentWrite />
+          <BoardCommentList />
+        </div>
+      ) : (
+        " "
+      )}
     </Align>
   );
 }

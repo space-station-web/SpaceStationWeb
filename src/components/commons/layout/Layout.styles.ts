@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const Background = styled.div`
   width: 100%;
-  background-color: #141414;
+  background-color: #0a0a0a;
   position: relative;
   display: flex;
   flex-direction: column;
