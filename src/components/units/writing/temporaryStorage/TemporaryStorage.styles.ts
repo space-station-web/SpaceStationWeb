@@ -226,3 +226,18 @@ line-height: 23px; /* 115% */
 cursor: pointer;
 
 `;
+
+export const backBtn = styled.span`
+  width: 30px;
+  height: 30px;
+  transform: rotate(0deg);
+  writing-mode: vertical-lr;
+  text-align: center; 
+  line-height: 30px; 
+  flex-shrink: 0;
+  background: url("/common/back.png");
+  cursor: pointer;
+
+  margin-right: 1150px;
+  margin-top: 20px;
+`;

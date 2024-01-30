@@ -9,7 +9,6 @@ export default function TemporaryStorage(): JSX.Element {
   const handleTemporaryStorageClick = () => {
     setTemporaryStorageCount(temporaryStorageCount + 1);
   };
-
   const onClickMoveTemStorage = async (): Promise<void> => {
     await router.push("../../../../../../write/TemporaryStorage");
   };

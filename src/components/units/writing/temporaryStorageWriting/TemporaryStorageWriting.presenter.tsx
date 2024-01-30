@@ -54,6 +54,8 @@ export default function ITemporaryStorageWritingUI(props: ITemporaryStorage): JS
     <>
       <F.Wrapper>
       <F.TopContainer>
+      <F.backBtn onClick={props.onClickMoveTemStorage}>
+          </F.backBtn>
           <F.TempBtnContainer>
             <F.TempText onClick={handleTemporaryStorageClick}>
               임시저장
