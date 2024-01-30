@@ -1,8 +1,5 @@
 import styled from "@emotion/styled";
 
-
-
-
 export const Wrapper = styled.div`
   padding: 150px 200px 13px 200px;
   background-color: #141414;
@@ -34,10 +31,6 @@ justify-content: center;
   background: linear-gradient(180deg, #333333 0%, rgba(51, 51, 51, 0) 100%);
 `;
 
-export const Wrapper = styled.div`
-  padding-bottom: 40px;
-  z-index: 2;
-`;
 export const TempText = styled.span`
 color: var(--Layout-Color-Gray-100, #DCDCDC);
 
@@ -55,23 +48,15 @@ width: 1.5px;
 height: 23px;
 
 background: #8C8C8C;
+`;
 
 export const Form = styled.div`
   flex-direction: column;
 `;
+
 export const TempNum = styled.span`
 width: 13.073px;
-
-margin-left: 20px;
-color: var(--Layout-Color-Gray-100, #DCDCDC);
-
-/* Heading 1 */
-font-family: Pretendard;
-font-size: 20px;
-font-style: normal;
-font-weight: 600;
-line-height: 23px; /* 115% */
-cursor: pointer;
+`;
 
 
 export const TemporaryStorageBtn = styled.div`
@@ -105,6 +90,7 @@ export const publishBtn = styled.button`
 `;
 export const publishBtnText = styled.p`
 color: white;
+`;
 
 
 export const TemporaryStorageBtnText = styled.p`
@@ -121,25 +107,6 @@ export const TemporaryStorageBtnText = styled.p`
   background: var(--Primary-BlackLight, #2e2e2e);
 
   margin-left: 20px;
-  cursor: pointer;
-`;
-
-export const Form = styled.div`
-  flex-direction: column;
-`;
-
-
-  color: var(--Layout-Color-Gray-100, #dcdcdc);
-
-  /* Heading 1 */
-  font-family: Pretendard;
-  font-size: 15px; /*피그마와 다름*/
-  font-style: normal;
-  font-weight: 600;
-  line-height: 45px; /* 115% */ /*피그마와 다름*/
-  margin-top: 10px;
-
-  margin-left: 135px;
   cursor: pointer;
 `;
 
@@ -430,22 +397,7 @@ export const CustomAlert = styled.div`
   align-items: center;
 `;
 
-export const CustomAlertImg = styled.div`
-width: 140px;
-height: 140px;
-flex-shrink: 0;
-`;
 
-export const CustomAlertText = styled.p`
-color: var(--Layout-Color-Gray-100, #DCDCDC);
-
-/* Heading 1 */
-font-family: Pretendard;
-font-size: 20px;
-font-style: normal;
-font-weight: 600;
-line-height: 23px; /* 115% */
-`;
 
 export const CustomTemSaveAlert = styled.div`
   width: 460px;
@@ -491,17 +443,6 @@ export const CustomAlertText = styled.p`
   font-style: normal;
   font-weight: 600;
   line-height: 23px; /* 115% */
-`;
-export const WrapHorizontal = styled.div`
-  width: 100%; 
-  max-width: 1050px; 
-  overflow-x: auto;
-  display: flex;
-  white-space: nowrap; 
-  margin-left : 70px;
-
-  margin-left: 140px;
-  margin-top: -65px;
 `;
 export const WrapHorizontal = styled.div`
   width: 100%; /* 전체 너비 */
