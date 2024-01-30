@@ -20,6 +20,8 @@ export default function TemporaryStorageUI(props: ITemporaryStorage): JSX.Elemen
   return (
     <>
       <F.Wrapper>
+      <F.backBtn onClick={props.onClickMoveWrite}>
+          </F.backBtn>
         <F.Form>
           <F.FormHeader>
             <F.FormHeaderWrite>임시저장 글</F.FormHeaderWrite>
