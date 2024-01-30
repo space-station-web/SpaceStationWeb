@@ -28,6 +28,10 @@ flex-direction: row;
 align-items: center;
 justify-content: center;
 `;
+
+  background: linear-gradient(180deg, #333333 0%, rgba(51, 51, 51, 0) 100%);
+`;
+
 export const TempText = styled.span`
 color: var(--Layout-Color-Gray-100, #DCDCDC);
 
@@ -46,19 +50,14 @@ height: 23px;
 
 background: #8C8C8C;
 `;
+
+export const Form = styled.div`
+  flex-direction: column;
+`;
+
 export const TempNum = styled.span`
 width: 13.073px;
-
-margin-left: 20px;
-color: var(--Layout-Color-Gray-100, #DCDCDC);
-
-/* Heading 1 */
-font-family: Pretendard;
-font-size: 20px;
-font-style: normal;
-font-weight: 600;
-line-height: 23px; /* 115% */
-cursor: pointer;
+`;
 
 `;
 export const publishBtn = styled.button`
@@ -117,7 +116,6 @@ export const TemporaryStorageBtnText = styled.p`
   margin-left: 20px;
   cursor: pointer;
 `;
-
 export const PublishWriteBtnText = styled.span`
   color: var(--Layout-Color-Gray-100, #dcdcdc);
 
