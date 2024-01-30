@@ -10,11 +10,6 @@ export default function WriteUI(props: Iwrite): JSX.Element {
   const [temporaryStorageForms, setTemporaryStorageForms] = useState<number[]>([]);
   const [isTempSaveAlertVisible, setIsTempSaveAlertVisible] = useState(false);
 
-
-  const [temporaryStorageForms, setTemporaryStorageForms] = useState<number[]>(
-    [],
-  );
-
   const [titleHeight, setTitleHeight] = useState<number>(30);
 
   const handleTitleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -89,23 +84,6 @@ export default function WriteUI(props: Iwrite): JSX.Element {
             <F.publishBtnText>발행하기</F.publishBtnText>
           </F.publishBtn>
         </F.TopContainer>
-        
-        <F.TemporaryStorageBtn>
-          <F.TemporaryStorageBtnText onClick={handleTemporaryStorageClick}>
-            임시저장
-          </F.TemporaryStorageBtnText>
-          <F.HLine></F.HLine>
-          <F.TemporaryStorageBtnNum onClick={props.onClickMoveTemStorage}>
-            {temporaryStorageCount}
-          </F.TemporaryStorageBtnNum>
-          {/* {temporaryStorageForms.map((formKey) => (
-              <TemporaryStorageUI key={formKey} onClickMoveWriting={handleMoveWritingClick} />
-            ))} */}
-        </F.TemporaryStorageBtn>
-        <F.PublishWriteBtn>
-          <F.PublishWriteBtnText onClick={handlePublishClick}>
-            발행하기
-          </F.PublishWriteBtnText>
           {isAlertVisible && (
             <F.CustomAlert>
               <F.CustomAlertImg>
@@ -136,7 +114,6 @@ export default function WriteUI(props: Iwrite): JSX.Element {
               <F.CustomAlertText>글이 발행되었습니다.</F.CustomAlertText>
             </F.CustomAlert>
           )}
-        </F.PublishWriteBtn>
         <F.Form>
           {isComponentVisible ? (
             <F.InputRecommendEndForm>
