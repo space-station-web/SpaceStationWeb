@@ -1,13 +1,35 @@
 import styled from "@emotion/styled";
 
-interface CustomAlertProps {
-  visible?: boolean;
-}
 
-export const Header = styled.div`
-  width: 1921px;
-  height: 94px;
-  flex-shrink: 0;
+
+
+export const Wrapper = styled.div`
+  padding: 150px 200px 13px 200px;
+  background-color: #141414;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; //스크롤해도 이어짐
+`;
+export const TopContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: right;
+`;
+
+export const TempBtnContainer = styled.div`
+width: 178px;
+height: 50px;
+flex-shrink: 0;
+  border-radius: 999px;
+background: var(--Primary-BlackLight, #1E1E1E);
+margin-right: 20px;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
 
   background: linear-gradient(180deg, #333333 0%, rgba(51, 51, 51, 0) 100%);
 `;
@@ -16,10 +38,41 @@ export const Wrapper = styled.div`
   padding-bottom: 40px;
   z-index: 2;
 `;
+export const TempText = styled.span`
+color: var(--Layout-Color-Gray-100, #DCDCDC);
+
+/* Heading 1 */
+font-family: Pretendard;
+font-size: 20px;
+font-style: normal;
+font-weight: 600;
+line-height: 23px; /* 115% */
+margin-right: 20px;
+cursor: pointer;
+`;
+export const TempLine = styled.p`
+width: 1.5px;
+height: 23px;
+
+background: #8C8C8C;
 
 export const Form = styled.div`
   flex-direction: column;
 `;
+export const TempNum = styled.span`
+width: 13.073px;
+
+margin-left: 20px;
+color: var(--Layout-Color-Gray-100, #DCDCDC);
+
+/* Heading 1 */
+font-family: Pretendard;
+font-size: 20px;
+font-style: normal;
+font-weight: 600;
+line-height: 23px; /* 115% */
+cursor: pointer;
+
 
 export const TemporaryStorageBtn = styled.div`
   width: 178px;
@@ -32,20 +85,27 @@ export const TemporaryStorageBtn = styled.div`
   top: 140px;
   right: 530px;
 `;
+export const publishBtn = styled.button`
 
-export const PublishWriteBtn = styled.button`
   width: 160px;
   height: 50px;
   flex-shrink: 0;
   border-radius: 999px;
   background: var(--Primary-BlackLight, #2e2e2e);
 
-  position: absolute;
-  top: 140px;
-  right: 350px;
+  border-radius: 999px;
+  background: var(--Primary-BlackLight, #1E1E1E);
+  margin-right: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 
   border: none;
 `;
+export const publishBtnText = styled.p`
+color: white;
+
 
 export const TemporaryStorageBtnText = styled.p`
   width: 75.395px;
@@ -63,8 +123,11 @@ export const TemporaryStorageBtnText = styled.p`
   margin-left: 20px;
   cursor: pointer;
 `;
-export const TemporaryStorageBtnNum = styled.span`
-  width: 70.395px;
+
+export const Form = styled.div`
+  flex-direction: column;
+`;
+
 
   color: var(--Layout-Color-Gray-100, #dcdcdc);
 
@@ -100,15 +163,9 @@ export const HLine = styled.div`
   background: #8c8c8c;
 
   border-top: 1px solid #757575;
-  margin: -35px 110px;
-`;
+  
 
-export const TemporaryStorageText = styled.p`
-  color: #bdbdbd;
-  font-size: 17px;
-  width: 500px;
-  text-align: center;
-  line-height: 75px;
+  margin: -35px 110px;
 `;
 
 export const InputRecommendForm = styled.div`
@@ -118,6 +175,9 @@ export const InputRecommendForm = styled.div`
   border-radius: 20px;
   background: var(--Primary-BlackLight, #2e2e2e);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+  margin-top: 20px;
+
 
   margin-top: 200px;
 `;
@@ -129,6 +189,9 @@ export const InputRecommendEndForm = styled.div`
   border-radius: 20px;
   background: var(--Primary-BlackLight, #2e2e2e);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+  margin-top: 20px;
+
 
   margin-top: 200px;
 `;
@@ -313,21 +376,21 @@ export const Writing = styled.textarea`
   :focus {
     outline: none;
   }
-
-  /* 스크롤바 디자인 */
-  ::-webkit-scrollbar {
+  
+  // 스크롤바 디자인
+  /* ::-webkit-scrollbar {
     width: 6px;
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #a1a1a1; /* 스크롤바 색상 */
-    border-radius: 6px; /* 스크롤바 둥근 테두리 */
+    background-color: #a1a1a1;
+    border-radius: 6px;
   }
 
   ::-webkit-scrollbar-track {
-    background-color: #f0f0f0; /* 스크롤바 트랙 배경색 */
-    border-radius: 6px; /* 스크롤바 트랙 둥근 테두리 */
-  }
+    background-color: #f0f0f0; 
+    border-radius: 6px; 
+  } */
 `;
 
 export const Input = styled.input`
@@ -358,6 +421,52 @@ export const CustomAlert = styled.div`
   width: 460px;
   height: 177px;
   flex-shrink: 0;
+  
+  border-radius: 20px;
+  background: var(--Primary-Black, #141414);
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const CustomAlertImg = styled.div`
+width: 140px;
+height: 140px;
+flex-shrink: 0;
+`;
+
+export const CustomAlertText = styled.p`
+color: var(--Layout-Color-Gray-100, #DCDCDC);
+
+/* Heading 1 */
+font-family: Pretendard;
+font-size: 20px;
+font-style: normal;
+font-weight: 600;
+line-height: 23px; /* 115% */
+`;
+
+export const CustomTemSaveAlert = styled.div`
+  width: 460px;
+  height: 177px;
+  flex-shrink: 0;
+
+  border-radius: 20px;
+  background: var(--Primary-Black, #141414);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+export const CustomTemSaveAlertImg = styled.div`
+ width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+`;
+export const CustomTemSaveAlertText = styled.p`
+  color: var(--Layout-Color-Gray-100, #DCDCDC);
+
+
 
   border-radius: 20px;
   background: var(--Primary-Black, #141414);
@@ -382,6 +491,15 @@ export const CustomAlertText = styled.p`
   font-style: normal;
   font-weight: 600;
   line-height: 23px; /* 115% */
+`;
+export const WrapHorizontal = styled.div`
+  width: 100%; 
+  max-width: 1050px; 
+  overflow-x: auto;
+  display: flex;
+  white-space: nowrap; 
+  margin-left : 70px;
+
   margin-left: 140px;
   margin-top: -65px;
 `;
@@ -399,17 +517,19 @@ export const WrapHorizontal = styled.div`
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #a1a1a1; /* 스크롤바 색상 */
-    border-radius: 6px; /* 스크롤바 둥근 테두리 */
+    background-color: #a1a1a1; 
+    border-radius: 6px; 
   }
 
   ::-webkit-scrollbar-track {
-    background-color: #f0f0f0; /* 스크롤바 트랙 배경색 */
-    border-radius: 6px; /* 스크롤바 트랙 둥근 테두리 */
+    background-color: #f0f0f0; 
+    border-radius: 6px;
   }
 `;
 
 export const InsertImgForm = styled.div`
+display: flex; 
+
   display: flex; /* 부모에게 flex 속성 추가 */
 `;
 
@@ -424,9 +544,9 @@ export const InsertImg = styled.div`
   margin-top: 50px;
   margin-bottom: 30px;
   &:last-child {
-    margin-right: 70px; /* 마지막 이미지 오른쪽 간격 제거 */
+    margin-right: 70px; 
   }
   &:first-child {
-    margin-left: 70px; /* 첫번째 이미지 오른쪽 간격 제거 */
+    margin-left: 70px; 
   }
 `;
