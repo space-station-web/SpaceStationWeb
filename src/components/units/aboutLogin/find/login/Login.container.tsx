@@ -10,7 +10,7 @@ export default function Login(): JSX.Element {
   const [password, setPassword] = useState('');
 
   const onClickMoveFindPw = async (): Promise<void> => {
-    await router.push("../../../../../../login/FindPassword");
+    await router.push("../../../../../../login/sendEmail");
   };
   const onClickMoveFindEm = async (): Promise<void> => {
     await router.push("../../../../../../login/FindEmail");

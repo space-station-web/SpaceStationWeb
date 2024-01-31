@@ -26,23 +26,27 @@ export default function SignUpEmailUI(props: ISignUpEmail): JSX.Element {
             />
           </F.InputTextForm>
           <F.InputTextForm>
-            <F.Input 
-              placeholder="닉네임"
+            <F.InputF 
+              placeholder={props.phNick}
               onChange={props.onChangeName} 
+              onFocus={props.onFocusNick}
+              onBlur={props.onBlurNick}
             />
             <F.VertBtn>
               중복 확인
             </F.VertBtn>
           </F.InputTextForm>
           <F.InputTextForm>
-            <F.Input 
+            <F.InputF
               type="password"
-              placeholder="비밀번호" 
+              placeholder={props.phPassword} 
               onChange={props.onChangePassword}
+              onFocus={props.onFocusPassword}
+              onBlur={props.onBlurPassword}
             />
           </F.InputTextForm>
           <F.InputTextForm>
-            <F.Input 
+            <F.Input
               type="password"
               placeholder="비밀번호 확인"
               onChange={props.onChangeConfirmPassword} 
@@ -50,9 +54,11 @@ export default function SignUpEmailUI(props: ISignUpEmail): JSX.Element {
           </F.InputTextForm>
           {/* <F.ErrorMessage>{props.errorMessage}</F.ErrorMessage> */}
           <F.InputTextForm>
-            <F.Input 
-              placeholder="휴대폰 번호"
+            <F.InputF
+              placeholder={props.phNumber}
               onChange={props.onChangeNumber} 
+              onFocus={props.onFocusNumber}
+              onBlur={props.onBlurNumber}
             />
             <F.VertBtn>
               전송
@@ -68,9 +74,11 @@ export default function SignUpEmailUI(props: ISignUpEmail): JSX.Element {
             </F.VertBtn>
           </F.InputTextForm> */}
           <F.InputTextForm>
-            <F.Input 
-              placeholder="생년월일"
-              onChange={props.onChangeBirth} 
+            <F.InputF
+              placeholder={props.phBirth}
+              onChange={props.onChangeBirth}  
+              onFocus={props.onFocusBirth}
+              onBlur={props.onBlurBirth}
             />
           </F.InputTextForm>
 

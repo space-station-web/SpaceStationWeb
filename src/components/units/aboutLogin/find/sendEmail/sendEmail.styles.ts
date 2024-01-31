@@ -21,11 +21,12 @@ export const Stack = styled.div<{ $gap?: string }>`
   flex-direction: column;
   gap: ${(props) => props.$gap};
 `;
+
 export const Form = styled.div`
   z-index: 100;
   background-color: #1e1e1e;
   width: 786px;
-  height: 601px;
+  min-height: 601px;
   border: 0.5px solid #757575;
   border-radius: 40px;
 
@@ -37,8 +38,12 @@ export const Form = styled.div`
   padding: 70px;
 `;
 
+export const Title = styled.p`
+  color: #e0e0e0;
+  font-size: 20px;
 
-
+  margin-bottom: 60px;
+`;
 
 export const InputTextForm = styled.div`
   display: flex;
@@ -50,8 +55,6 @@ export const InputTextForm = styled.div`
 
   margin-bottom: 15px;
 `;
-
-
 
 export const Input = styled.input`
   width: 450px;
@@ -71,69 +74,18 @@ export const Input = styled.input`
   }
 `;
 
-// 자동로그인 체크박스 및 이메일|비밀번호 찾기
-export const UtilForm = styled.div`
-  display: flex;
-  width: 582px;
-  justify-content: space-between;
-  margin-top: 10px;
-  margin-bottom: 60px;
-`;
-
-export const UtilBox = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-export const CheckBox = styled.input`
-  appearance: none;
-  border: 1px solid #B4B4B4;
-  width: 20px;
-  height: 20px;
-  margin: 0 8px;
-  cursor: pointer;
-
-  &:checked {
-    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='black' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e");
-    background-color: #FFFFFF;
-  }
-  
-`;
-
-export const UtilText = styled.span`
-  color: #BDBDBD;
-  font-size: 17px;
-  text-align: center;
-  margin-right: 7px;
-  cursor: pointer;
-`;
-
-export const NormText = styled.span`
-  color: #BDBDBD;
-  font-size: 17px;
-  text-align: center;
-  margin-right: 7px;
-`;
-
 export const SubmitButton = styled.button`
   width: 582px;
   height: 75px;
   border-radius: 20px;
   border: none;
   cursor: pointer;
-  
+  margin-top: 120px;
+
   background-color: #0e0e0e;
   color: #e0e0e0;
-
   :hover {
     color: #1e1e1e;
     background-color: #e0e0e0;
   }
-`;
-
-export const Line = styled.div`
-  width: 582px;
-  border: 0;
-  border-top: 1px solid #757575;
-  margin: 20px 0;
 `;

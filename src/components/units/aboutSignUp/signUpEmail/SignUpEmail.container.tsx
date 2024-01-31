@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useState, type ChangeEvent, useEffect } from "react";
+import { useState, type ChangeEvent, type FocusEvent, useEffect } from "react";
 import axios from 'axios';
 import SignUpEmailUI from "./SignUpEmail.presenter";
 
@@ -14,6 +14,12 @@ export default function SignUpEmail(): JSX.Element {
   const [birth, setBirth] = useState("");
   const [errorMessage, setErrorMessage] = useState("ㅤ");
   const [isEdit, setIsEdit] = useState(false);
+
+  // placeholder 변경
+  const [phNick, setPhNick] = useState("닉네임");
+  const [phPassword, setPhPassword] = useState("비밀번호");
+  const [phNumber, setPhNumber] = useState("휴대폰 번호");
+  const [phBirth, setPhBirth] = useState("생년월일");
   // const [startTimer, setStartTimer] = useState(false); // 타이머 시작 상태를 추적하는 변수
   // const [isActive, setIsActive] = useState(false);
 
@@ -112,6 +118,34 @@ export default function SignUpEmail(): JSX.Element {
     setBirth(event.currentTarget.value);
   };
 
+  // placeholder 변경
+  
+  const onFocusNick = async (): Promise<void> => {
+    setPhNick("한글 2~10자, 영문 2~20자");
+  };
+  const onFocusPassword = async (): Promise<void> => {
+    setPhPassword("최소 8자리, 대 소문자,숫자,특수문자 포함");
+  };
+  const onFocusNumber = async (): Promise<void> => {
+    setPhNumber("-없이 숫자만 입력");
+  };
+  const onFocusBirth = async (): Promise<void> => {
+    setPhBirth("숫자 8자리");
+  };
+  
+  const onBlurNick = async (): Promise<void> => {
+    setPhNick("닉네임");
+  };
+  const onBlurPassword = async (): Promise<void> => {
+    setPhPassword("비밀번호");
+  };
+  const onBlurNumber = async (): Promise<void> => {
+    setPhNumber("휴대폰 번호");
+  };
+  const onBlurBirth = async (): Promise<void> => {
+    setPhBirth("생년월일");
+  };
+
   const onChangeConfirmPassword = ( // 비밀번호 확인 (비밀번호와 일치할 때까지 '불일치'텍스트 나오도록)
     event: ChangeEvent<HTMLInputElement>,
   ): void => {
@@ -143,9 +177,23 @@ export default function SignUpEmail(): JSX.Element {
     onChangeConfirmPassword={onChangeConfirmPassword}
     onChangeNumber={onChangeNumber}
     onChangeBirth={onChangeBirth}
+    onFocusNick={onFocusNick}
+    onFocusPassword={onFocusPassword}
+    onFocusNumber={onFocusNumber}
+    onFocusBirth={onFocusBirth}
+    onBlurNick={onBlurNick}
+    onBlurPassword={onBlurPassword}
+    onBlurNumber={onBlurNumber}
+    onBlurBirth={onBlurBirth}
+    phNick={phNick}
+    phPassword={phPassword}
+    phNumber={phNumber}
+    phBirth={phBirth}
+
     handleSignUp={handleSignUp}
     onClickMoveTermsInfo={onClickMoveTermsInfo}
     isEdit={isEdit}
     errorMessage={errorMessage} 
+
     />;
 }
