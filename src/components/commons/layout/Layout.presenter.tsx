@@ -25,8 +25,9 @@ function LayoutUI({ children, pathName }: LayoutProps): JSX.Element {
       <LayoutHeader />
       <styled.ChildWrapper>{children}</styled.ChildWrapper>
       {pathName?.includes("home") && <styled.Divider />}
-      {pathName?.includes("home") ||
-        (pathName?.includes("mypage") && <styled.BackgroundBottomImg />)}
+      {(pathName?.includes("home") || pathName?.includes("mypage")) && (
+        <styled.BackgroundBottomImg />
+      )}
     </styled.Background>
   );
 }

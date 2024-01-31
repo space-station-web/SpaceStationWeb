@@ -53,5 +53,6 @@ export const Divider = styled.div`
   bottom: 688px;
 `;
 export const ChildWrapper = styled.div`
+  width: 100%;
   z-index: 1;
 `;
