@@ -1,4 +1,5 @@
 import type { AppProps } from "next/app";
+import { RecoilRoot } from "recoil";
 
 import { Global } from "@emotion/react";
 import Layout from "../src/components/commons/layout/Layout.container";
@@ -8,12 +9,13 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <>
       <Global styles={globalStyles} />
-
-      <div style={{ width: "100%", display: "flex", flexDirection: "column" }}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </div>
+      <RecoilRoot>
+        <div style={{ width: "100%", display: "flex", flexDirection: "column" }}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </div>
+      </RecoilRoot>
     </>
   );
 }
