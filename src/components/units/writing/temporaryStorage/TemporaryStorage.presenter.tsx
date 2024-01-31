@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import * as F from "./TemporaryStorage.styles";
 import type { ITemporaryStorage } from "./TemporaryStorage.types";
+
 interface TemporaryStorageUIProps extends ITemporaryStorage {
   onClickMoveWriting: () => void;
+  temporaryStorageCount: number;
 }
 
 
-export default function TemporaryStorageUI(props: ITemporaryStorage): JSX.Element {
-
+export default function TemporaryStorageUI(props: TemporaryStorageUIProps): JSX.Element {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   const handleDeleteModal = () => {
@@ -25,7 +26,8 @@ export default function TemporaryStorageUI(props: ITemporaryStorage): JSX.Elemen
         <F.Form>
           <F.FormHeader>
             <F.FormHeaderWrite>임시저장 글</F.FormHeaderWrite>
-            <F.FormHeaderNum>총 3개</F.FormHeaderNum>
+            {/* <F.FormHeaderNum>총 {props.temporaryStorageCount}개</F.FormHeaderNum> */}
+            <F.FormHeaderNum>총 {props.temporaryStorageCount}개</F.FormHeaderNum>
           </F.FormHeader>
           <F.OneForm>
             <F.Line>

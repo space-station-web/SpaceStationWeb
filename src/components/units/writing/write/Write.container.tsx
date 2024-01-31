@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import WriteUI from "./Write.presenter";
 import TemporaryStorageUI  from '../temporaryStorage/TemporaryStorage.presenter';
 
@@ -9,12 +9,12 @@ interface IWriteProps {
 }
 
 export default function Write(props: IWriteProps): JSX.Element {
-  const [temporaryStorageCount, setTemporaryStorageCount] = useState(0);
+  // const [temporaryStorageCount, setTemporaryStorageCount] = useState(0);
   const router = useRouter();
 
-  const handleTemporaryStorageClick = () => {
-    setTemporaryStorageCount(temporaryStorageCount + 1);
-  };
+  // const handleTemporaryStorageClick = () => {
+  //   setTemporaryStorageCount(temporaryStorageCount + 1);
+  // };
   const onClickMoveHomePage = async (): Promise<void> => {
     await router.push("../../../../../../Home");
   };
