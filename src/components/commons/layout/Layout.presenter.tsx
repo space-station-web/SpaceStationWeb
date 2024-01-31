@@ -1,6 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react";
 import * as styled from "./Layout.styles";
-import LayoutHeader from "./header/LayoutHeader.container";
 
 interface LayoutProps {
   children: ReactNode;
@@ -22,7 +21,7 @@ function LayoutUI({ children, pathName }: LayoutProps): JSX.Element {
       {!pathName?.includes("boards") && <styled.BackgroundTopImg />}
       <styled.Radial />
       <styled.BackgroundCircle $margin={margin} />
-      <LayoutHeader />
+      {/* <LayoutHeader /> */}
       <styled.ChildWrapper>{children}</styled.ChildWrapper>
       {pathName?.includes("home") && <styled.Divider />}
       {pathName?.includes("home") ||
