@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   padding: 0px 200px 20px 200px;
