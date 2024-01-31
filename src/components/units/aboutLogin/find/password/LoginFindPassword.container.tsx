@@ -7,13 +7,13 @@ export default function LoginFindPassword(): JSX.Element {
   const router = useRouter();
 
   const [name, setName] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
 
   const onChangeName = (event: ChangeEvent<HTMLInputElement>): void => {
     setName(event.currentTarget.value);
   };
-  const onChangePassword = (event: ChangeEvent<HTMLInputElement>): void => {
-    setPassword(event.currentTarget.value);
+  const onChangeEmail = (event: ChangeEvent<HTMLInputElement>): void => {
+    setEmail(event.currentTarget.value);
   };
   const onClickMovePrev = async (): Promise<void> => {
     history.back();
@@ -21,7 +21,7 @@ export default function LoginFindPassword(): JSX.Element {
 
   return <LoginFindPasswordUI
   onChangeName={onChangeName}
-  onChangePassword={onChangePassword}
+  onChangeEmail={onChangeEmail}
   onClickMovePrev={onClickMovePrev}
   />;
 }

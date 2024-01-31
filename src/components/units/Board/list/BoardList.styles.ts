@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
+import Save from "../../../../../public/save.svg";
 
 export const Wrapper = styled.div`
   padding: 150px 200px 0px 200px;
-  background-color: #141414;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -21,6 +21,7 @@ export const Prev = styled.img`
   width: 32px;
   height: 32px;
   float: left;
+  cursor: pointer;
 `;
 
 export const CategoryDiv = styled.div`
@@ -62,9 +63,10 @@ export const BoardBox = styled.div`
 
   flex-direction: center;
   justify-content: center;
+  cursor: pointer;
 `;
 export const Board = styled.div`
-  z-index: 1000;
+  z-index: 3;
   background-image: url("board/card.png");
   width: 288px;
   height: 370px;
@@ -117,6 +119,12 @@ export const BoardSaveBack = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const SaveIcon = styled(Save)`
+  fill: #ff6f00;
+  cursor: pointer;
+  z-index: 4;
 `;
 
 export const BoardTitle = styled.p`

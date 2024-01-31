@@ -15,6 +15,9 @@ export default function Write(props: IWriteProps): JSX.Element {
   const handleTemporaryStorageClick = () => {
     setTemporaryStorageCount(temporaryStorageCount + 1);
   };
+  const onClickMoveHomePage = async (): Promise<void> => {
+    await router.push("../../../../../../Home");
+  };
 
   const onClickMoveTemStorage = async (): Promise<void> => {
     await router.push("../../../../../../write/TemporaryStorage");
@@ -28,12 +31,11 @@ export default function Write(props: IWriteProps): JSX.Element {
   return (
     <>
       <WriteUI
+        onClickMoveHomePage={onClickMoveHomePage}
         onClickMoveTemStorage={onClickMoveTemStorage}
         onClickCreateRecommand={onClickCreateRecommand}
         onClickPluseTemStorage={onClickPluseTemStorage}
-        {...props}
       />
-      {/* <TemporaryStorageUI temporaryStorageCount={temporaryStorageCount} /> */}
     </>
   );
 }

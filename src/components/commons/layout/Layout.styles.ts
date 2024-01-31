@@ -2,12 +2,13 @@ import styled from "@emotion/styled";
 
 export const Background = styled.div`
   width: 100%;
-  background-color: #141414;
+  background-color: #0a0a0a;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  overflow: hidden;
 `;
 export const Radial = styled.div`
   position: absolute;
@@ -18,18 +19,19 @@ export const Radial = styled.div`
   );
   width: 1459px;
   height: 1172px;
-  z-index: 1;
+
   top: 65px;
 `;
-export const BackgroundCircle = styled.div`
+export const BackgroundCircle = styled.div<{ $margin: string }>`
   width: 1194px;
-  /* height: 1194px; */
+  height: 1194px;
   flex-shrink: 0;
   border-radius: 1194px;
   background: linear-gradient(180deg, #0e0e0e 0%, rgba(19, 17, 17, 0) 100%);
   filter: blur(5px);
   position: absolute;
-  margin-top: 667px;
+  z-index: 1;
+  margin-top: ${(props) => props.$margin};
 `;
 export const BackgroundTopImg = styled.div`
   position: absolute;
@@ -49,4 +51,7 @@ export const Divider = styled.div`
   border: 1px solid #646464;
   position: absolute;
   bottom: 688px;
+`;
+export const ChildWrapper = styled.div`
+  z-index: 1;
 `;
