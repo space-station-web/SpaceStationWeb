@@ -1,7 +1,7 @@
-import * as F from "./LoginFindPassword.styles";
-import type { ILoginFindPw } from "./LoginFindPassword.types";
+import * as F from "./sendEmail.styles";
+import type { ISendEmail } from "./sendEmail.types";
 
-export default function LoginFindPasswordUI(props: ILoginFindPw): JSX.Element {
+export default function SendEmailUI(props: ISendEmail): JSX.Element {
   return (
     <>
       <F.Wrapper>
@@ -21,11 +21,7 @@ export default function LoginFindPasswordUI(props: ILoginFindPw): JSX.Element {
             <F.Input placeholder="이메일"/>
           </F.InputTextForm>
 
-          <F.InputTextForm>
-            <F.Input placeholder="인증번호"/>
-          </F.InputTextForm>
-
-          <F.SubmitButton>이메일 인증하기</F.SubmitButton>
+          <F.SubmitButton>이메일 인증번호 받기</F.SubmitButton>
         </F.Form>
       </F.Wrapper>
     </>

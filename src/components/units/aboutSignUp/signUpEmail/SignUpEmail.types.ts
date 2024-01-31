@@ -1,4 +1,4 @@
-import type { MouseEvent,ChangeEvent } from "react";
+import type { MouseEvent,ChangeEvent,FocusEvent,  } from "react";
 
 export interface ISignUpEmail {
   onChangeEmail: (event: ChangeEvent<HTMLInputElement>) => void;
@@ -9,6 +9,8 @@ export interface ISignUpEmail {
   onChangeNumber: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeBirth: (event: ChangeEvent<HTMLInputElement>) => void;
 
+  
+
   handleSignUp: (event: MouseEvent<HTMLButtonElement>) => void;
   onClickMoveTermsInfo: (event: MouseEvent<HTMLButtonElement>) => void;
 
@@ -16,4 +18,20 @@ export interface ISignUpEmail {
 
   isEdit: boolean;
   errorMessage: string;
+
+  // placeholder 변경
+  onFocusNick: (event: FocusEvent<HTMLInputElement>) => void;
+  onFocusPassword: (event: FocusEvent<HTMLInputElement>) => void;
+  onFocusNumber: (event: FocusEvent<HTMLInputElement>) => void;
+  onFocusBirth: (event: FocusEvent<HTMLInputElement>) => void;
+
+  onBlurNick: (event: FocusEvent<HTMLInputElement>) => void;
+  onBlurPassword: (event: FocusEvent<HTMLInputElement>) => void;
+  onBlurNumber: (event: FocusEvent<HTMLInputElement>) => void;
+  onBlurBirth: (event: FocusEvent<HTMLInputElement>) => void;
+
+  phNick: string
+  phPassword: string
+  phNumber: string
+  phBirth: string
 }

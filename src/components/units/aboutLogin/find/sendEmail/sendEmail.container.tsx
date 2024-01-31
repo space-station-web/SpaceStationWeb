@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
 import { useState, type ChangeEvent, useEffect } from "react";
 import axios from 'axios';
-import LoginFindPasswordUI from "./LoginFindPassword.presenter";
+import SendEmailUI from "./sendEmail.presenter";
 
-export default function LoginFindPassword(): JSX.Element {
+export default function SendEmail(): JSX.Element {
   const router = useRouter();
 
   const [name, setName] = useState('');
@@ -19,9 +19,9 @@ export default function LoginFindPassword(): JSX.Element {
     history.back();
   };
 
-  return <LoginFindPasswordUI
+  return <SendEmailUI
   onChangeName={onChangeName}
   onChangeEmail={onChangeEmail}
   onClickMovePrev={onClickMovePrev}
-  />;
+  />
 }
