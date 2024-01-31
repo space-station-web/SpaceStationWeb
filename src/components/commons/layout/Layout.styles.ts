@@ -55,4 +55,8 @@ export const Divider = styled.div`
 export const ChildWrapper = styled.div`
   width: 100%;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
