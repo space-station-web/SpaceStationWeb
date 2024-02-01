@@ -84,6 +84,21 @@ color: white;
 
 export const Form = styled.div`
   flex-direction: column;
+  
+   // 스크롤바 디자인
+   ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #a1a1a1;
+    border-radius: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #f0f0f0; 
+    border-radius: 6px; 
+  }
 `;
 
 
@@ -309,6 +324,21 @@ letter-spacing: -0.18px;
 
   :focus {
     outline: none;
+  }
+
+  // 스크롤바 디자인
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #a1a1a1;
+    border-radius: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #f0f0f0; 
+    border-radius: 6px; 
   }
 `;
 

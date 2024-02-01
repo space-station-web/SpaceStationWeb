@@ -347,7 +347,7 @@ export const Writing = styled.textarea`
   }
   
   // 스크롤바 디자인
-  /* ::-webkit-scrollbar {
+  ::-webkit-scrollbar {
     width: 6px;
   }
 
@@ -359,7 +359,7 @@ export const Writing = styled.textarea`
   ::-webkit-scrollbar-track {
     background-color: #f0f0f0; 
     border-radius: 6px; 
-  } */
+  }
 `;
 
 export const Input = styled.input`
@@ -420,13 +420,9 @@ export const CustomTemSaveAlertImg = styled.div`
 export const CustomTemSaveAlertText = styled.p`
   color: var(--Layout-Color-Gray-100, #DCDCDC);
 
-
-
   border-radius: 20px;
   background: var(--Primary-Black, #141414);
 
-  margin-top: 640px;
-  margin-left: -20px;
   transition: opacity 0.5s ease-in-out;
 `;
 
@@ -447,14 +443,13 @@ export const CustomAlertText = styled.p`
   line-height: 23px; /* 115% */
 `;
 export const WrapHorizontal = styled.div`
-  width: 100%; /* 전체 너비 */
-  max-width: 1050px; /* 최대 너비 설정 */
-  overflow-x: auto; /* 가로 스크롤 활성화 */
-  display: flex; /* 플렉스 컨테이너로 만듭니다. */
-  white-space: nowrap; /* 줄 바꿈 방지 */
+  width: 100%; 
+  max-width: 1050px; 
+  overflow-x: auto; 
+  display: flex;
+  white-space: nowrap; 
   margin-left: 70px;
 
-  /* 스크롤바 디자인 */
   ::-webkit-scrollbar {
     height: 6px;
   }

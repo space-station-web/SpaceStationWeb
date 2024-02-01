@@ -9,12 +9,23 @@ interface IWriteProps {
 }
 
 export default function Write(props: IWriteProps): JSX.Element {
-  // const [temporaryStorageCount, setTemporaryStorageCount] = useState(0);
+  const [temporaryStorageCount, setTemporaryStorageCount] = useState(0);
+  const [temporaryStorageForms, setTemporaryStorageForms] = useState<number[]>([]);
+  const [isTempSaveAlertVisible, setIsTempSaveAlertVisible] = useState(false);
   const router = useRouter();
 
-  // const handleTemporaryStorageClick = () => {
-  //   setTemporaryStorageCount(temporaryStorageCount + 1);
-  // };
+  const handleTemporaryStorageClick = () => {
+    setTemporaryStorageCount(temporaryStorageCount + 1);
+    console.log(temporaryStorageCount);
+    setTemporaryStorageForms((prevForms) => [...prevForms, Date.now()]);
+    
+    setIsTempSaveAlertVisible(true);
+  
+    setTimeout(() => {
+      setIsTempSaveAlertVisible(false);
+    }, 2000);
+  };
+
   const onClickMoveHomePage = async (): Promise<void> => {
     await router.push("../../../../../../Home");
   };
@@ -35,6 +46,8 @@ export default function Write(props: IWriteProps): JSX.Element {
         onClickMoveTemStorage={onClickMoveTemStorage}
         onClickCreateRecommand={onClickCreateRecommand}
         onClickPluseTemStorage={onClickPluseTemStorage}
+        handleTemporaryStorageClick={handleTemporaryStorageClick}
+        temporaryStorageCount={temporaryStorageCount}
       />
     </>
   );
