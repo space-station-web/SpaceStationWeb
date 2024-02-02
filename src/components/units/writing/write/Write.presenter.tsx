@@ -1,19 +1,16 @@
 import React, { ChangeEvent, useRef, useState } from "react";
 import * as F from "./Write.styles";
 import type { Iwrite } from "./Write.types";
+import TemporaryStorageUI  from '../temporaryStorage/TemporaryStorage.presenter';
+import ITemporaryStorageProps from '../temporaryStorage/TemporaryStorage.container';
+
 
 export default function WriteUI(props: Iwrite): JSX.Element {
   const [isComponentVisible, setIsComponentVisible] = useState(false);
   const [isAlertVisible, setIsAlertVisible] = useState(false);
   const [selectedImages, setSelectedImages] = useState<string[]>([]);
-  const [temporaryStorageForms, setTemporaryStorageForms] = useState<number[]>([]);
   const [isTempSaveAlertVisible, setIsTempSaveAlertVisible] = useState(false);
-
-  const [titleHeight, setTitleHeight] = useState<number>(30);
-
-  const handleTitleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    setTitleHeight(event.target.scrollHeight);
-  };
+  const [isTemporaryStorageVisible, setIsTemporaryStorageVisible] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -48,9 +45,8 @@ export default function WriteUI(props: Iwrite): JSX.Element {
     }, 2000);
   };
 
-  const handleMoveWritingClick = (
-    event: React.MouseEvent<HTMLButtonElement>,
-  ) => {
+  const handleMoveTemporaryStorageClick = () => {
+    setIsTemporaryStorageVisible(true);
   };
 
   return (
@@ -64,7 +60,7 @@ export default function WriteUI(props: Iwrite): JSX.Element {
               임시저장
             </F.TempText>
             <F.TempLine></F.TempLine>
-            <F.TempNum onClick={props.onClickMoveTemStorage}>
+            <F.TempNum onClick={handleMoveTemporaryStorageClick}>
               {props.temporaryStorageCount}
             </F.TempNum>
           </F.TempBtnContainer>
@@ -200,6 +196,12 @@ export default function WriteUI(props: Iwrite): JSX.Element {
     )}
         </F.Form>
       </F.Wrapper>
+      {/* {isTemporaryStorageVisible && (
+        <TemporaryStorageUI 
+        temporaryStorageCount={props.temporaryStorageCount}
+        {...ITemporaryStorageProps}
+      />
+      )} */}
     </>
   );
 }

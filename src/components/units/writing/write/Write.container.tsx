@@ -20,7 +20,7 @@ export default function Write(props: IWriteProps): JSX.Element {
     setTemporaryStorageForms((prevForms) => [...prevForms, Date.now()]);
     
     setIsTempSaveAlertVisible(true);
-  
+    console.log('temporaryStorageAlert');
     setTimeout(() => {
       setIsTempSaveAlertVisible(false);
     }, 2000);

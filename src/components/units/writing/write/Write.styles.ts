@@ -390,13 +390,16 @@ export const CustomAlert = styled.div`
   width: 460px;
   height: 177px;
   flex-shrink: 0;
-  
   border-radius: 20px;
   background: var(--Primary-Black, #141414);
-
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  /* 위치 지정 */
+  position: absolute;
+  top: 800px;
+  left: 1170px;
 `;
 
 
