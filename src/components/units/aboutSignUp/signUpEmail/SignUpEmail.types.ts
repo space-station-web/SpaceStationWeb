@@ -8,16 +8,25 @@ export interface ISignUpEmail {
   onChangeConfirmPassword: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeNumber: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeBirth: (event: ChangeEvent<HTMLInputElement>) => void;
+  // 체크박스
+  onChangeCheck1: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChangeCheck2: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChangeCheck3: (event: ChangeEvent<HTMLInputElement>) => void;
 
-  
 
   handleSignUp: (event: MouseEvent<HTMLButtonElement>) => void;
   onClickMoveTermsInfo: (event: MouseEvent<HTMLButtonElement>) => void;
 
   onClickMovePrev: (event: MouseEvent<HTMLImageElement>) => void;
 
-  isEdit: boolean;
-  errorMessage: string;
+  isRight: boolean;
+  errorMessageNick: string;
+  errorMessagePw: string;
+  errorMessageConfirm: string;
+
+  isError1: boolean;
+  isError2: boolean;
+  isError3: boolean;
 
   // placeholder 변경
   onFocusNick: (event: FocusEvent<HTMLInputElement>) => void;
