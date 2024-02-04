@@ -11,31 +11,32 @@ export default function ChangePassword(): JSX.Element {
   const [errorMessage, setErrorMessage] = useState("ㅤ");
   const [isEdit, setIsEdit] = useState(false);
 
-  const onClickMoveLogin = async (): Promise<void> => {
+  const onClickMoveSuccess = async (): Promise<void> => {
+    await router.push('../../../../../../login/FindPassword/changePassword/successFind');
     // 비번 확인 해야함 
-    try {
-      console.log("newPassword :",newPassword);
-      console.log("confirmPassword :",confirmPassword);
-      const pw = newPassword;
-      const pwcheck = confirmPassword;
+    // try {
+    //   console.log("newPassword :",newPassword);
+    //   console.log("confirmPassword :",confirmPassword);
+    //   const pw = newPassword;
+    //   const pwcheck = confirmPassword;
 
-      const response = await axios.post(
-        '/changepw',
-        {
-          pw,
-          pwcheck
-        }
-      );
-      console.log("res", response);
+    //   const response = await axios.post(
+    //     '/changepw',
+    //     {
+    //       pw,
+    //       pwcheck
+    //     }
+    //   );
+    //   console.log("res", response);
 
-      // 비번 변경 이상 없으면 변경 성공 화면으로 이동
-      await router.push('../../../../../../login/FindPassword/changePassword/successFind');
+    //   // 비번 변경 이상 없으면 변경 성공 화면으로 이동
+    //   await router.push('../../../../../../login/FindPassword/changePassword/successFind');
       
-      console.log('비밀번호 변경 성공');
-    } catch (error) {
-      console.log('비밀번호 변경 실패', error);
+    //   console.log('비밀번호 변경 성공');
+    // } catch (error) {
+    //   console.log('비밀번호 변경 실패', error);
       
-    }
+    // }
 
     
 
@@ -62,7 +63,7 @@ export default function ChangePassword(): JSX.Element {
 
   return (
     <ChangePasswordUI
-      onClickMoveLogin={onClickMoveLogin}
+      onClickMoveSuccess={onClickMoveSuccess}
       onChangeNewPassword={onChangeNewPassword}
       onChangeConfirmPassword={onChangeConfirmPassword}
       isEdit={isEdit}

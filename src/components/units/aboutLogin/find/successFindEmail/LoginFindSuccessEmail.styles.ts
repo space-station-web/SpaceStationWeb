@@ -23,7 +23,7 @@ export const Form = styled.div`
   align-items: center;
 
   margin: 50px 0 300px 0;
-  padding: 70px 0 0 50px;
+  padding: 70px;
 `;
 
 export const Icon = styled.img`

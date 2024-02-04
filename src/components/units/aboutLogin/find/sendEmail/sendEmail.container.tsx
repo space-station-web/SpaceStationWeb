@@ -18,10 +18,14 @@ export default function SendEmail(): JSX.Element {
   const onClickMovePrev = async (): Promise<void> => {
     history.back();
   };
+  const onClickMoveFindPw = async (): Promise<void> => {
+    await router.push("../../../../../../login/FindPassword");
+  };
 
   return <SendEmailUI
   onChangeName={onChangeName}
   onChangeEmail={onChangeEmail}
   onClickMovePrev={onClickMovePrev}
+  onClickMoveFindPw={onClickMoveFindPw}
   />
 }

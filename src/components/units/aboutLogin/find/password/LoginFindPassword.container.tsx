@@ -18,10 +18,14 @@ export default function LoginFindPassword(): JSX.Element {
   const onClickMovePrev = async (): Promise<void> => {
     history.back();
   };
+  const onClickMoveChangePw = async (): Promise<void> => {
+    await router.push("../../../../../../login/FindPassword/changePassword");
+  };
 
   return <LoginFindPasswordUI
   onChangeName={onChangeName}
   onChangeEmail={onChangeEmail}
   onClickMovePrev={onClickMovePrev}
+  onClickMoveChangePw={onClickMoveChangePw}
   />;
 }
