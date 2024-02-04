@@ -25,7 +25,7 @@ export default function ChangePasswordUI(
             placeholder="새 비밀번호 확인"
           />
           <F.ErrorMessage>{props.errorMessage}</F.ErrorMessage>
-          <F.Button onClick={props.onClickMoveLogin}>완료</F.Button>
+          <F.Button onClick={props.onClickMoveSuccess}>완료</F.Button>
         </F.Form>
       </F.Wrapper>
     </>

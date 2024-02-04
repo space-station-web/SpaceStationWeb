@@ -25,7 +25,7 @@ export default function LoginFindPasswordUI(props: ILoginFindPw): JSX.Element {
             <F.Input placeholder="인증번호"/>
           </F.InputTextForm>
 
-          <F.SubmitButton>이메일 인증하기</F.SubmitButton>
+          <F.SubmitButton onClick={props.onClickMoveChangePw}>이메일 인증하기</F.SubmitButton>
         </F.Form>
       </F.Wrapper>
     </>

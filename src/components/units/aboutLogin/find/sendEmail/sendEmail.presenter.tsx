@@ -21,7 +21,7 @@ export default function SendEmailUI(props: ISendEmail): JSX.Element {
             <F.Input placeholder="이메일"/>
           </F.InputTextForm>
 
-          <F.SubmitButton>이메일 인증번호 받기</F.SubmitButton>
+          <F.SubmitButton onClick={props.onClickMoveFindPw}>이메일 인증번호 받기</F.SubmitButton>
         </F.Form>
       </F.Wrapper>
     </>

@@ -48,13 +48,6 @@ export const Heading1 = styled.p`
 `;
 
 
-export const UtilText = styled.span`
-  color: #BDBDBD;
-  font-size: 17px;
-  text-align: center;
-  margin-left: 5px;
-  cursor: pointer;
-`;
 
 export const NormText = styled.span`
   color: #BDBDBD;
