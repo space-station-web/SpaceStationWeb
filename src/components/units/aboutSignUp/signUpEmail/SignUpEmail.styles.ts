@@ -57,7 +57,7 @@ export const InputTextForm = styled.div`
 
   background-color: #141414;
 
-  margin-bottom: 15px;
+  margin: 7px 0;
 `;
 
 export const Input = styled.input`
@@ -162,7 +162,17 @@ export const NormText = styled.span`
 export const ErrorMessage = styled.div`
   color: #ff6d6d;
   font-size: 15px;
-  margin-right: 370px;
+  width: 570px;
+  margin-bottom: 13px;
+`;
+
+
+export const ErrorMessage1 = styled.small`
+  color: red;
+  text-align: left;
+  display: block;
+  margin-bottom: 10px;
+  margin-left: 150px;
 `;
 
 export const blank =  styled.div`
