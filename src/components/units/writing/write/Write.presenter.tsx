@@ -45,10 +45,6 @@ export default function WriteUI(props: Iwrite): JSX.Element {
     }, 2000);
   };
 
-  const handleMoveTemporaryStorageClick = () => {
-    setIsTemporaryStorageVisible(true);
-  };
-
   return (
     <>
       <F.Wrapper>
@@ -60,7 +56,8 @@ export default function WriteUI(props: Iwrite): JSX.Element {
               임시저장
             </F.TempText>
             <F.TempLine></F.TempLine>
-            <F.TempNum onClick={handleMoveTemporaryStorageClick}>
+            {/*<F.TempNum onClick={handleMoveTemporaryStorageClick}>*/}
+            <F.TempNum onClick={props.onClickMoveTemStorage}>
               {props.temporaryStorageCount}
             </F.TempNum>
           </F.TempBtnContainer>

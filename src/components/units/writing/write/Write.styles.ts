@@ -2,7 +2,8 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   padding: 150px 200px 13px 200px;
-  background-color: #141414;
+  //background-color: #141414;
+  background-color: rgba(20, 20, 20, 0.8);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -331,7 +332,7 @@ export const Writing = styled.textarea`
   color: var(--Layout-Color-Gray-300, #8c8c8c);
 
   font-family: Pretendard;
-  font-size: 40px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: 1.4;

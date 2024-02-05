@@ -83,6 +83,8 @@ line-height: 28px; /* 155.556% */
 letter-spacing: -0.18px;
 
 margin-left: 45px;
+position: relative;
+top: 30px;
 `;
 
 export const Title = styled.span`

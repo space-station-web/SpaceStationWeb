@@ -305,17 +305,17 @@ export const Line = styled.div`
 
 `;
 
-export const Writing = styled.p`
-width: 1000px;
-color: var(--Layout-Color-Gray-200, #B4B4B4);
+export const Writing = styled.textarea`
+  width: 1050px;
+  min-height: 500px;
+  color: var(--Layout-Color-Gray-300, #8c8c8c);
 
-/* Heading 2 */
-font-family: Pretendard;
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: 28px; /* 155.556% */
-letter-spacing: -0.18px;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.18px;
 
   margin-left: 70px;
   margin-top: 30px;
@@ -325,7 +325,7 @@ letter-spacing: -0.18px;
   :focus {
     outline: none;
   }
-
+  
   // 스크롤바 디자인
   ::-webkit-scrollbar {
     width: 6px;
@@ -366,37 +366,36 @@ export const ImageIcon = styled.span`
   cursor: pointer;
 `;
 
-export const CustomAlert = styled.div `
-width: 460px;
-height: 177px;
-flex-shrink: 0;
+export const CustomAlert = styled.div`
+  width: 460px;
+  height: 177px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  background: var(--Primary-Black, #141414);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
-border-radius: 20px;
-background: var(--Primary-Black, #141414);
-
-margin-top: 640px;
-margin-left: -20px;
-transition: opacity 0.5s ease-in-out;
-
+  /* 위치 지정 */
+  position: absolute;
+  top: 800px;
+  left: 1170px;
 `;
-
 export const CustomAlertImg = styled.div`
-width: 140px;
-height: 140px;
-flex-shrink: 0;
-margin-left: 30px;
+  width: 140px;
+  height: 140px;
+  flex-shrink: 0;
+  margin-left: 30px;
 `;
 
 export const CustomAlertText = styled.p`
-color: var(--Layout-Color-Gray-100, #DCDCDC);
-/* Heading 1 */
-font-family: Pretendard;
-font-size: 20px;
-font-style: normal;
-font-weight: 600;
-line-height: 23px; /* 115% */
-margin-left: 140px;
-margin-top: -65px;
+  color: var(--Layout-Color-Gray-100, #dcdcdc);
+  /* Heading 1 */
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 23px; /* 115% */
 `;
 
 
@@ -424,6 +423,9 @@ export const WrapHorizontal = styled.div`
 `;
 export const InsertImgForm = styled.div`
 display: flex; /* 부모에게 flex 속성 추가 */
+margin-left: 80px; //지워야 함
+margin-bottom: 30px;
+margin-top: 50px;
 `;
 
 export const InsertImg = styled.div`

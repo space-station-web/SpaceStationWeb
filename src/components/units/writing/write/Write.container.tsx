@@ -2,13 +2,14 @@ import { useRouter } from "next/router";
 import React, { createContext, useContext, useState } from 'react';
 import WriteUI from "./Write.presenter";
 import TemporaryStorageUI  from '../temporaryStorage/TemporaryStorage.presenter';
+import { Iwrite } from "./Write.types";
 
-interface IWriteProps {
-  temporaryStorageCount: number;
-  onClickTemporaryStorage: () => void;
-}
+// interface IWriteProps {
+//   temporaryStorageCount: number;
+//   onClickTemporaryStorage: () => void;
+// }
 
-export default function Write(props: IWriteProps): JSX.Element {
+export default function Write(props: Iwrite): JSX.Element {
   const [temporaryStorageCount, setTemporaryStorageCount] = useState(0);
   const [temporaryStorageForms, setTemporaryStorageForms] = useState<number[]>([]);
   const [isTempSaveAlertVisible, setIsTempSaveAlertVisible] = useState(false);
