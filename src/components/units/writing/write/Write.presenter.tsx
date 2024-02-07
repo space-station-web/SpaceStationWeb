@@ -7,6 +7,7 @@ import ITemporaryStorageProps from '../temporaryStorage/TemporaryStorage.contain
 
 export default function WriteUI(props: Iwrite): JSX.Element {
   const [title, setTitle] = useState("");
+  const [write, setWrite] = useState("");
   const [isComponentVisible, setIsComponentVisible] = useState(false);
   const [isAlertVisible, setIsAlertVisible] = useState(false);
   const [selectedImages, setSelectedImages] = useState<string[]>([]);
@@ -45,27 +46,24 @@ export default function WriteUI(props: Iwrite): JSX.Element {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        // 여기에 필요한 인증 정보나 기타 헤더를 추가할 수 있습니다.
       },
       body: JSON.stringify({
-        title: title, // 사용자가 입력한 제목 사용
-        content: '작성한 글의 내용',
-        images: selectedImages // 선택된 이미지들
-        // 필요한 다른 데이터를 추가할 수 있습니다.
+        title: title,
+        content: write,
+        images: selectedImages 
       })
     })
     .then(response => {
       if (!response.ok) {
-        throw new Error(`'${title}' :: 문제 발생 ::`);
+        throw new Error(`'${title} ${write}' :: 문제 발생 ::`);
       }
-      // 성공적으로 API 호출이 완료되었을 때 수행할 작업을 추가할 수 있습니다.
-      console.log(`'${title}' 제목의 글이 성공적으로 발행되었습니다.`);
+      console.log(`'${title} ${write}' 글이 성공적으로 발행되었습니다.`);
     })
     .catch(error => {
-      console.error('글 발행 에러:', error);
+      console.error('발행 에러 :: ', error);
     })
     .finally(() => {
-      // 글 발행 알림을 2초 후에 닫습니다.
+      // 2초 뒤에 사라짐
       setTimeout(() => {
         setIsAlertVisible(false);
       }, 2000);
@@ -152,8 +150,8 @@ export default function WriteUI(props: Iwrite): JSX.Element {
           <F.InputTextForm>
           <F.TitleText
               placeholder="글에 대한 제목을 정해주세요."
-              value={title} // 입력 필드에 제목 상태를 연결
-              onChange={(e) => setTitle(e.target.value)} // 사용자가 입력한 제목을 상태에 업데이트
+              value={title} 
+              onChange={(e) => setTitle(e.target.value)}
             ></F.TitleText>
             <F.Line></F.Line>
             <F.ImageIcon onClick={onImageClick}>
@@ -180,8 +178,11 @@ export default function WriteUI(props: Iwrite): JSX.Element {
                 ))}
               </F.InsertImgForm>
             </F.WrapHorizontal>
-            <F.Writing placeholder="글이 잘 써지지 않는다면, 글감을 확인해주세요."></F.Writing>
-
+            <F.Writing 
+              placeholder="글이 잘 써지지 않는다면, 글감을 확인해주세요."
+              value={write}
+              onChange={(e) => setWrite(e.target.value)}
+              ></F.Writing>
             <input
               type="file"
               ref={fileInputRef}
