@@ -2,7 +2,8 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   padding: 150px 200px 13px 200px;
-  background-color: #141414;
+  //background-color: #141414;
+  background-color: rgba(20, 20, 20, 0.8);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -331,7 +332,7 @@ export const Writing = styled.textarea`
   color: var(--Layout-Color-Gray-300, #8c8c8c);
 
   font-family: Pretendard;
-  font-size: 40px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: 1.4;
@@ -347,7 +348,7 @@ export const Writing = styled.textarea`
   }
   
   // 스크롤바 디자인
-  /* ::-webkit-scrollbar {
+  ::-webkit-scrollbar {
     width: 6px;
   }
 
@@ -359,7 +360,7 @@ export const Writing = styled.textarea`
   ::-webkit-scrollbar-track {
     background-color: #f0f0f0; 
     border-radius: 6px; 
-  } */
+  }
 `;
 
 export const Input = styled.input`
@@ -390,13 +391,16 @@ export const CustomAlert = styled.div`
   width: 460px;
   height: 177px;
   flex-shrink: 0;
-  
   border-radius: 20px;
   background: var(--Primary-Black, #141414);
-
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  /* 위치 지정 */
+  position: absolute;
+  top: 800px;
+  left: 1170px;
 `;
 
 
@@ -420,13 +424,9 @@ export const CustomTemSaveAlertImg = styled.div`
 export const CustomTemSaveAlertText = styled.p`
   color: var(--Layout-Color-Gray-100, #DCDCDC);
 
-
-
   border-radius: 20px;
   background: var(--Primary-Black, #141414);
 
-  margin-top: 640px;
-  margin-left: -20px;
   transition: opacity 0.5s ease-in-out;
 `;
 
@@ -447,14 +447,13 @@ export const CustomAlertText = styled.p`
   line-height: 23px; /* 115% */
 `;
 export const WrapHorizontal = styled.div`
-  width: 100%; /* 전체 너비 */
-  max-width: 1050px; /* 최대 너비 설정 */
-  overflow-x: auto; /* 가로 스크롤 활성화 */
-  display: flex; /* 플렉스 컨테이너로 만듭니다. */
-  white-space: nowrap; /* 줄 바꿈 방지 */
+  width: 100%; 
+  max-width: 1050px; 
+  overflow-x: auto; 
+  display: flex;
+  white-space: nowrap; 
   margin-left: 70px;
 
-  /* 스크롤바 디자인 */
   ::-webkit-scrollbar {
     height: 6px;
   }
