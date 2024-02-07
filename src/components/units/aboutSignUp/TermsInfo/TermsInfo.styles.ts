@@ -24,16 +24,29 @@ export const Form = styled.div`
   z-index: 100;
   background-color: #1e1e1e;
   width: 786px;
-  height: 601px;
+  min-height: 601px;
   border: 0.5px solid #757575;
   border-radius: 40px;
 
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
 
   margin: 550px 0 300px 0;
   padding: 70px;
+`;
+
+export const Title = styled.div`
+  width: 650px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #dcdcdc;
+  align-items: center;
+  
+  text-align: center;
+  line-height: 23px;
+
+  margin-bottom: 20px;
 `;
 
 export const Heading1 = styled.p`
@@ -41,24 +54,23 @@ export const Heading1 = styled.p`
   font-weight: 600;
   color: #dcdcdc;
   white-space: pre-wrap;
-  text-align: center;
+  text-align: left;
   line-height: 23px;
 
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 `;
 
-
-export const UtilText = styled.span`
-  color: #BDBDBD;
+export const Body2 = styled.p`
   font-size: 17px;
-  text-align: center;
-  margin-left: 5px;
-  cursor: pointer;
+  font-weight: 300;
+  color: #B4B4B4;
+  white-space: pre-wrap;
+  text-align: left;
+  line-height: 24px;
 `;
 
-export const NormText = styled.span`
-  color: #BDBDBD;
-  font-size: 17px;
-  text-align: center;
-  margin-left: 5px;
+export const br = styled.div`
+  height: 20px;
 `;
+
+

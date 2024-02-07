@@ -76,6 +76,7 @@ export const UtilForm = styled.div`
   display: flex;
   width: 582px;
   justify-content: space-between;
+  margin-top: 10px;
   margin-bottom: 60px;
 `;
 
@@ -89,7 +90,7 @@ export const CheckBox = styled.input`
   border: 1px solid #B4B4B4;
   width: 20px;
   height: 20px;
-  margin-left: 4px;
+  margin: 0 8px;
   cursor: pointer;
 
   &:checked {
@@ -103,7 +104,7 @@ export const UtilText = styled.span`
   color: #BDBDBD;
   font-size: 17px;
   text-align: center;
-  margin-left: 5px;
+  margin-right: 7px;
   cursor: pointer;
 `;
 
@@ -111,7 +112,7 @@ export const NormText = styled.span`
   color: #BDBDBD;
   font-size: 17px;
   text-align: center;
-  margin-left: 5px;
+  margin-right: 7px;
 `;
 
 export const SubmitButton = styled.button`
@@ -121,9 +122,13 @@ export const SubmitButton = styled.button`
   border: none;
   cursor: pointer;
   
-
   background-color: #0e0e0e;
   color: #e0e0e0;
+
+  :hover {
+    color: #1e1e1e;
+    background-color: #e0e0e0;
+  }
 `;
 
 export const Line = styled.div`

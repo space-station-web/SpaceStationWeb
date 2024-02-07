@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   padding: 30px 200px 20px 200px;
-  background-color: #141414;
+  background-color: #0a0a0a;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -67,7 +67,6 @@ export const Submit = styled.div`
   background-image: url("/common/icon/submit(black).png");
   border-radius: 20px;
   cursor: pointer;
-  
 
   transition: background-image 0.5s ease; /* 트랜지션 속성 추가 */
 

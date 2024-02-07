@@ -5,8 +5,6 @@ export const Wrapper = styled.div`
   background-color: transparent;
   width: 100%;
   padding: 39px 32px 32px 52px;
-  position: absolute;
-  top: 0px;
   z-index: 2;
 `;
 export const NavBar = styled.div`

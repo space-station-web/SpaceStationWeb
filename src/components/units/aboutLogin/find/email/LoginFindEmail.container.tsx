@@ -25,31 +25,32 @@ export default function LoginFindEmail(): JSX.Element {
   const onClickMovePrev = async (): Promise<void> => {
     history.back();
   };
-  const handleCheck = async (): Promise<void> => {
+  const onClickMoveSuccess = async (): Promise<void> => {
+    await router.push("../../../../../../login/FindEmail/successFind");
     // 비번 확인 해야함 
-    try {
-      const name = _name;
-      const phone = number;
-      const b_date = birth;
+    // try {
+    //   const name = _name;
+    //   const phone = number;
+    //   const b_date = birth;
       
-      const response = await axios.post(
-        '/email-check',
-        {
-          name,
-          phone,
-          b_date
-        }
-      );
-      console.log("res", response);
-      // 가입된 계정이면
-      await router.push("../../../../../../login/FindEmail/successFind");
+    //   const response = await axios.post(
+    //     '/email-check',
+    //     {
+    //       name,
+    //       phone,
+    //       b_date
+    //     }
+    //   );
+    //   console.log("res", response);
+    //   // 가입된 계정이면
+    //   await router.push("../../../../../../login/FindEmail/successFind");
 
-      // 가입되지 않은 계정이면 입력값들 초기화 
-      setErrorMessage("가입되지 않은 계정입니다.");
-      console.log('이메일 찾기 성공');
-    } catch (error) {
-      console.log('이메일 찾기 실패 실패', error);
-    }
+    //   // 가입되지 않은 계정이면 입력값들 초기화 
+    //   setErrorMessage("가입되지 않은 계정입니다.");
+    //   console.log('이메일 찾기 성공');
+    // } catch (error) {
+    //   console.log('이메일 찾기 실패 실패', error);
+    // }
     
   };
 
@@ -58,7 +59,7 @@ export default function LoginFindEmail(): JSX.Element {
       onChangeName={onChangeName}
       onChangeNumber={onChangeNumber}
       onChangeBirth={onChangeBirth}
-      handleCheck={handleCheck}
+      onClickMoveSuccess={onClickMoveSuccess}
       onClickMovePrev={onClickMovePrev}
       errorMessage={errorMessage}
     />

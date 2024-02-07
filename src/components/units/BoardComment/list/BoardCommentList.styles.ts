@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   padding: 0px 200px 20px 200px;
-  background-color: #141414;
+  background-color: #0a0a0a;
   position: relative;
   display: flex;
   flex-direction: column;

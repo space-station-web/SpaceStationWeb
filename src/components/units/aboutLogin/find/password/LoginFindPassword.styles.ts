@@ -26,7 +26,7 @@ export const Form = styled.div`
   z-index: 100;
   background-color: #1e1e1e;
   width: 786px;
-  height: 601px;
+  min-height: 601px;
   border: 0.5px solid #757575;
   border-radius: 40px;
 
@@ -84,4 +84,8 @@ export const SubmitButton = styled.button`
 
   background-color: #0e0e0e;
   color: #e0e0e0;
+  :hover {
+    color: #1e1e1e;
+    background-color: #e0e0e0;
+  }
 `;
