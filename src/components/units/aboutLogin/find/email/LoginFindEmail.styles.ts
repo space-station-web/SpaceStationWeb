@@ -26,7 +26,7 @@ export const Form = styled.div`
   z-index: 100;
   background-color: #1e1e1e;
   width: 786px;
-  height: 601px;
+  min-height: 601px;
   border: 0.5px solid #757575;
   border-radius: 40px;
 
@@ -35,7 +35,7 @@ export const Form = styled.div`
   align-items: center;
 
   margin: 50px 0 300px 0;
-  padding: 60px 70px 40px 70px;
+  padding: 70px;
 `;
 
 export const Title = styled.p`
@@ -84,6 +84,11 @@ export const SubmitButton = styled.button`
 
   background-color: #0e0e0e;
   color: #e0e0e0;
+
+  :hover {
+    color: #1e1e1e;
+    background-color: #e0e0e0;
+  }
 `;
 
 

@@ -1,16 +1,20 @@
 import { useRouter } from "next/router";
 import { useState, type ChangeEvent, useEffect } from "react";
+import { useRecoilState } from "recoil";
+import { isLoginState } from "../../../../commons/recoil/Recoil.auth.state";
 import axios from 'axios';
 import LoginUI from "./Login.presenter";
 
 export default function Login(): JSX.Element {
   const router = useRouter();
 
+  const [login, setLoginState] = useRecoilState(isLoginState);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const onClickMoveFindPw = async (): Promise<void> => {
-    await router.push("../../../../../../login/FindPassword");
+    await router.push("../../../../../../login/sendEmail");
   };
   const onClickMoveFindEm = async (): Promise<void> => {
     await router.push("../../../../../../login/FindEmail");
@@ -31,28 +35,31 @@ export default function Login(): JSX.Element {
   };
 
   const handleLogin = async (): Promise<void> => {
-    try {
-      console.log("em :",email);
-      console.log("pw :",password);
+    setLoginState(true);
+    await router.push('../../../../../../Home');
 
-      const response = await axios.post(
-        '/login',
-        {
-          email,
-          password,
-        }
-      );
-      console.log("res", response);
-      // const accessToken = response.data.data.accessToken;
-      // localStorage.setItem('accessToken', accessToken);
+    // try {
+    //   console.log("em :",email);
+    //   console.log("pw :",password);
 
-      await router.push('../../../../../../Home');
-      // window.location.replace('/');
-      console.log('로그인성공');
-    } catch (error) {
-      console.log('실패하였습니다', error);
+    //   const response = await axios.post(
+    //     '/login',
+    //     {
+    //       email,
+    //       password,
+    //     }
+    //   );
+    //   console.log("res", response);
+    //   // const accessToken = response.data.data.accessToken;
+    //   // localStorage.setItem('accessToken', accessToken);
+
+    //   await router.push('../../../../../../Home');
+    //   // window.location.replace('/');
+    //   console.log('로그인성공');
+    // } catch (error) {
+    //   console.log('실패하였습니다', error);
       
-    }
+    // }
   };
 
   return <LoginUI 

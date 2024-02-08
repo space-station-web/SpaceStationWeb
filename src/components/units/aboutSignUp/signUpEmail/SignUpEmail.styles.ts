@@ -57,7 +57,7 @@ export const InputTextForm = styled.div`
 
   background-color: #141414;
 
-  margin-bottom: 15px;
+  margin: 7px 0;
 `;
 
 export const Input = styled.input`
@@ -65,9 +65,7 @@ export const Input = styled.input`
   height: 75px;
   background-color: #141414;
   border: none;
-  :focus {
-    outline: none;
-  }
+  
   color: #e0e0e0;
   caret-color: #e0e0e0;
   font-size: 17px;
@@ -75,6 +73,32 @@ export const Input = styled.input`
 
   &::placeholder {
     color: #bdbdbd;
+  }
+  &:focus {
+    outline: none;
+  }
+`;
+export const InputF = styled.input`
+  width: 450px;
+  height: 75px;
+  background-color: #141414;
+  border: none;
+  
+  color: #e0e0e0;
+  caret-color: #e0e0e0;
+  font-size: 17px;
+  margin-left: 30px;
+
+  &::placeholder {
+    color: #bdbdbd;
+  }
+  &:focus {
+    outline: none;
+
+    &::placeholder {
+      color: #C8C8C8;
+      font-size: 15px;
+    }
   }
 `;
 
@@ -138,7 +162,17 @@ export const NormText = styled.span`
 export const ErrorMessage = styled.div`
   color: #ff6d6d;
   font-size: 15px;
-  margin-right: 370px;
+  width: 570px;
+  margin-bottom: 13px;
+`;
+
+
+export const ErrorMessage1 = styled.small`
+  color: red;
+  text-align: left;
+  display: block;
+  margin-bottom: 10px;
+  margin-left: 150px;
 `;
 
 export const blank =  styled.div`
