@@ -18,43 +18,42 @@ export default function TemporaryStorageUI(props: TemporaryStorageUIProps): JSX.
   const handleNoBtnClick = () => {
     setIsDeleteModalOpen(false);
   };
-  async function fetchPostId() {
+  async function fetchDraftId() {
     try {
-      const response = await fetch('/posts'); // 서버의 API 엔드포인트에 요청을 보냅니다.
-      if (response.ok) {
-        const data = await response.json();
-        return data.postId; // 서버에서 받은 데이터 중 postId를 반환합니다.
-      } else {
-        console.error('글 정보를 가져오는데 실패했습니다 1 .');
-        return null;
-      }
-    } catch (error) {
-      console.error('글 정보를 가져오는데 실패했습니다 2 .', error);
-      return null;
-    }
-  }
-
-  const handleDeleteConfirmation = async () => {
-    try {
-      const postId = await fetchPostId(); // postId를 가져옵니다.
-      if (postId) {
-        const response = await fetch(`/posts/${postId}`, {
-          method: 'DELETE',
-        });
+        const response = await fetch('/drafts'); // 임시 저장 전체 목록을 가져오는 엔드포인트에 요청
         if (response.ok) {
-          console.log('글 삭제 !!');
+            const data = await response.json();
+            return data.draftId;
         } else {
-          console.error('글 삭제에 실패했습니다.');
+            console.error('글 정보를 가져오는데 실패했습니다 1.');
+            return null;
         }
-      } else {
-        console.error('postId를 가져오는데 실패했습니다.');
-      }
     } catch (error) {
-      console.error('글 삭제에 실패했습니다.', error);
+        console.error('글 정보를 가져오는데 실패했습니다 2.', error);
+        return null;
     }
-    setIsDeleteModalOpen(false); // 모달을 닫습니다.
-  };
-  
+}
+
+const handleDeleteConfirmation = async () => {
+    try {
+        const draftId = await fetchDraftId(); // 임시 저장의 draftId를 가져옴
+        if (draftId) {
+            const response = await fetch(`/drafts/${draftId}`, {
+                method: 'DELETE',
+            });
+            if (response.ok) {
+                console.log('글 삭제 !!');
+            } else {
+                console.error('글 삭제 실패 1.');
+            }
+        } else {
+            console.error('draftId를 가져오는데 실패했습니다.');
+        }
+    } catch (error) {
+        console.error('글 삭제 실패 2.', error);
+    }
+    setIsDeleteModalOpen(false);
+};
 
   return (
     <>
