@@ -9,19 +9,21 @@ interface LayoutProps {
 }
 
 function LayoutUI({ children, pathName, margin }: LayoutProps): JSX.Element {
+  const safePathName = pathName || "";
+
   return (
     <styled.Background>
-      {!(pathName?.includes("boards") || pathName?.includes("search")) && (
-        <styled.BackgroundTopImg />
-      )}
+      {!(
+        safePathName.includes("boards") || safePathName.includes("search")
+      ) && <styled.BackgroundTopImg />}
       <styled.Radial />
       <styled.BackgroundCircle $margin={margin} />
-      {!(pathName?.includes("login") || pathName?.includes("signUp")) && (
+      {!(safePathName.includes("login") || safePathName.includes("signUp")) && (
         <LayoutHeader />
       )}
       <styled.ChildWrapper>{children}</styled.ChildWrapper>
-      {pathName?.includes("home") && <styled.Divider />}
-      {(pathName?.includes("home") || pathName?.includes("mypage")) && (
+      {safePathName.includes("home") && <styled.Divider />}
+      {(safePathName.includes("home") || safePathName.includes("mypage")) && (
         <styled.BackgroundBottomImg />
       )}
     </styled.Background>
