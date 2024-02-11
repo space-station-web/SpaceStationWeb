@@ -7,9 +7,11 @@ function BoardItemUI({
   questionItem,
   save,
   handleSaveClick,
+  onClick,
 }: BoardItemUIProps) {
   const [optionOpen, setOptionOpen] = useState(false);
-  const handleOptionClick = () => {
+  const handleOptionClick = (e: React.MouseEvent<HTMLElement>) => {
+    e.stopPropagation();
     setOptionOpen(!optionOpen);
   };
   const optionRef = useRef<HTMLDivElement>(null);
@@ -28,6 +30,7 @@ function BoardItemUI({
         <styled.MyWritting
           $imgUrl={writtingItem.img}
           key={`${writtingItem.author}-${writtingItem.title}`}
+          onClick={onClick}
         >
           <styled.SaveBtn onClick={handleSaveClick}>
             <styled.IconSave $issave={save} />
@@ -75,7 +78,7 @@ function BoardItemUI({
 
     case "question":
       return questionItem ? (
-        <styled.Question>
+        <styled.Question onClick={onClick}>
           <div>
             {questionItem.number < 10
               ? "0" + questionItem.number

@@ -11,17 +11,17 @@ interface LayoutProps {
 function LayoutUI({ children, pathName, margin }: LayoutProps): JSX.Element {
   return (
     <styled.Background>
-      {!(pathName.includes("boards") || pathName.includes("search")) && (
+      {!(pathName?.includes("boards") || pathName?.includes("search")) && (
         <styled.BackgroundTopImg />
       )}
       <styled.Radial />
       <styled.BackgroundCircle $margin={margin} />
-      {!(pathName.includes("login") || pathName.includes("signUp")) && (
+      {!(pathName?.includes("login") || pathName?.includes("signUp")) && (
         <LayoutHeader />
       )}
       <styled.ChildWrapper>{children}</styled.ChildWrapper>
-      {pathName.includes("home") && <styled.Divider />}
-      {(pathName.includes("home") || pathName.includes("mypage")) && (
+      {pathName?.includes("home") && <styled.Divider />}
+      {(pathName?.includes("home") || pathName?.includes("mypage")) && (
         <styled.BackgroundBottomImg />
       )}
     </styled.Background>

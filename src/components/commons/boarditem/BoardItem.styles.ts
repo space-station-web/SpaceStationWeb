@@ -47,6 +47,7 @@ export const MyWrittingTitle = styled.div`
 export const OptionBox = styled.div`
   position: absolute;
   left: 276px;
+  top: 322px;
   z-index: 1;
   border-radius: 20px;
   border: 1px solid #141414;

@@ -8,5 +8,6 @@ export interface BoardItemUIProps {
   writtingItem?: { img: string; author: string; title: string };
   questionItem?: { number: number; question: string; answer: string };
   save: boolean;
-  handleSaveClick: () => void;
+  handleSaveClick: (e: React.MouseEvent<HTMLDivElement>) => void;
+  onClick: () => void;
 }
