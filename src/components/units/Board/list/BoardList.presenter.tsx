@@ -26,15 +26,17 @@ export default function BoardListUI(props: IBoardListTypes): JSX.Element {
       <L.BoardBox>
         {props.posts.map((el) => (
           <L.Board
-            id={el.id.toString()}
-            key={el.id}
+            id={el.post_id.toString()}
+            key={el.post_id}
             onClick={props.onClickBoard}
           >
             <L.BoardTop>
               <L.BoardSaveBack>
                 <L.SaveIcon
-                  style={{ fill: props.savedPosts[el.id] ? "#FF6F00" : "none" }}
-                  onClick={props.onClickSave(el.id)}
+                  style={{
+                    fill: props.savedPosts[el.post_id] ? "#FF6F00" : "none",
+                  }}
+                  onClick={props.onClickSave(el.post_id)}
                 />
               </L.BoardSaveBack>
             </L.BoardTop>

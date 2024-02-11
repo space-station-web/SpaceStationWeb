@@ -4,10 +4,19 @@ import { useEffect, useState, type MouseEvent } from "react";
 import BoardListUI from "./BoardList.presenter";
 
 export interface Post {
-  id: number;
+  post_id: number;
   title: string;
   content: string;
+  created_at: string;
 }
+
+export interface ApiResponse {
+  isSuccess: boolean;
+  code: number;
+  message: string;
+  result: Post[];
+}
+
 const POSTS_PER_PAGE = 10; // 한 페이지당 게시물 수
 
 export default function BoardList(): JSX.Element {
@@ -38,10 +47,11 @@ export default function BoardList(): JSX.Element {
   useEffect(() => {
     async function fetchPosts(): Promise<void> {
       try {
-        const response = await axios.get<Post[]>(
-          "https://koreanjson.com/posts",
+        const response = await axios.get<ApiResponse>(
+          "http://localhost:8080/posts?orderColumn=created_at&orderDirection=desc",
         );
-        setPosts(response.data); // 데이터를 상태에 저장
+        setPosts(response.data.result); // 데이터를 상태에 저장
+        console.log(response.data);
       } catch (error) {
         console.error("Error:", error);
       }
