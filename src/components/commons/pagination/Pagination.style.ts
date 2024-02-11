@@ -21,15 +21,17 @@ export const PageNumber = styled.div<PageNumberProps>`
   height: 30px;
   margin: 5px;
 
-  font-size: 18px;
+  font-size: 0.69rem;
   color: #8c8c8c;
 
   cursor: pointer;
 
-  ${props => props.active && css`
-    /* 활성화된 페이지 번호에 대한 스타일 */
-    font-weight: bold;
-    color: white;
-    /* 여기에 필요한 스타일 추가 */
-  `}
+  ${(props) =>
+    props.active &&
+    css`
+      /* 활성화된 페이지 번호에 대한 스타일 */
+      font-weight: bold;
+      color: white;
+      /* 여기에 필요한 스타일 추가 */
+    `}
 `;
