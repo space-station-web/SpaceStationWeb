@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
+  width: 100%;
   padding: 0px 200px 20px 200px;
   background-color: #0a0a0a;
   position: relative;
@@ -10,7 +11,7 @@ export const Wrapper = styled.div`
 `;
 
 export const CommentListContainer = styled.div`
-  width: 1200px;
+  width: 46.1rem;
   background-color: #1e1e1e;
   border-radius: 20px;
 `;
