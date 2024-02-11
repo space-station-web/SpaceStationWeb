@@ -54,7 +54,7 @@ export default function SignUpEmail(): JSX.Element {
 
   // 회원가입
   const handleSignUp = async (): Promise<void> => {
-    console.log("eeeee");
+    
     // 비번 확인 해야함 
     try {
       const name = _name;
@@ -67,7 +67,7 @@ export default function SignUpEmail(): JSX.Element {
       const alarm = isChecked3;
       
       const response = await axios.post(
-        'http://localhost:3000/signup',
+        'http://localhost:8080/signup',
         {
           name,
           nickname,
@@ -94,7 +94,7 @@ export default function SignUpEmail(): JSX.Element {
     try {
       const nickname = _nick;
       const response = await axios.get(
-        `http://localhost:3000/signup/${nickname}`
+        `http://localhost:8080/signup/${nickname}`
       );
       console.log("res", response.data.isSuccess);
       const isSuccess = response.data.isSuccess === true;
