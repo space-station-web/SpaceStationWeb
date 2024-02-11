@@ -26,6 +26,8 @@ export default function BoardDetailUI(props: IBoardDetailUIProps): JSX.Element {
       .slice(0, -1); // 문자열 끝의 슬래시 제거
   };
 
+  const firstData = props.data?.[0];
+
   return (
     <>
       {mounted && (
@@ -40,22 +42,20 @@ export default function BoardDetailUI(props: IBoardDetailUIProps): JSX.Element {
           <L.BoardWrapper>
             <L.TopBoard>
               <L.UserProfile src="/common/icon/User.png" />
-              <L.UserName>{props.data?.UserId}</L.UserName>
+              <L.UserName>{firstData?.user_id}</L.UserName>
             </L.TopBoard>
 
             <L.BoardMiddle>
               <L.BoardTopContainer>
-                <L.Title>{props.data?.title}</L.Title>
+                <L.Title>{firstData?.title}</L.Title>
                 <L.CreateAt>
-                  {props.data?.createdAt
-                    ? formatDate(props.data.createdAt)
-                    : "날짜 정보 없음"}
+                  {formatDate(firstData?.created_at ?? "날짜 정보 없음")}
                 </L.CreateAt>
               </L.BoardTopContainer>
               <L.ImageBox>
                 <L.Image src="/common/exImage.png" />
               </L.ImageBox>
-              <L.Contents>{props.data?.content}</L.Contents>
+              <L.Contents>{firstData?.content}</L.Contents>
             </L.BoardMiddle>
 
             <L.BoardBottom>
