@@ -15,14 +15,13 @@ export default function BoardListUI(props: IBoardListTypes): JSX.Element {
     <L.Wrapper>
       <L.TopDiv>
         <L.Prev src="/common/icon/Arrow 2.png" />
+        <L.CategoryDiv>
+          <L.Category>이웃</L.Category>
+          <L.Category>최신순</L.Category>
+          <L.Category>좋아요순</L.Category>
+        </L.CategoryDiv>
       </L.TopDiv>
-      <L.CategoryDiv>
-        <L.Category>이웃 게시물</L.Category>
-        <L.Category>오늘의 글감</L.Category>
-        <L.Category>많이 보관한순</L.Category>
-        <L.Category>최신순</L.Category>
-        <L.Category>좋아요순</L.Category>
-      </L.CategoryDiv>
+
       <L.BoardBox>
         {props.posts.map((el) => (
           <L.Board

@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   width: 100%;
-  padding: 150px 200px 20px 200px;
+  padding: 50px 250px 20px 250px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -10,7 +10,8 @@ export const Wrapper = styled.div`
 `;
 
 export const TopDiv = styled.div`
-  width: 100%;
+  width: 46.1rem;
+  height: 4.8rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -18,35 +19,34 @@ export const TopDiv = styled.div`
 `;
 
 export const Prev = styled.img`
-  width: 32px;
-  height: 32px;
+  width: 1.2rem;
+  height: 1.2rem;
   float: left;
   cursor: pointer;
   z-index: 2;
 `;
 
 export const ShareBtn = styled.button`
-  width: 160px;
-  height: 50px;
+  width: 6.1rem;
+  height: 1.9rem;
   border: none;
   border-radius: 999px;
   background-color: #1e1e1e;
 
-  font-size: 20px;
+  font-size: 0.76rem;
   font-weight: 600;
   color: #dcdcdc;
 `;
 
 export const BoardWrapper = styled.div`
   z-index: 2;
-  width: 1200px;
+  width: 46.1rem;
   border-radius: 20px;
-  margin-top: 20px;
 `;
 
 export const TopBoard = styled.div`
   width: 100%;
-  height: 125px;
+  height: 4.8rem;
   background-color: #141414;
   border-radius: 20px 20px 0px 0px;
 
@@ -56,8 +56,8 @@ export const TopBoard = styled.div`
 `;
 
 export const UserProfile = styled.img`
-  width: 40px;
-  height: 40px;
+  width: 1.5rem;
+  height: 1.5rem;
 
   margin-left: 60px;
 `;
@@ -67,7 +67,7 @@ export const UserName = styled.p`
   font-weight: 600;
   color: #dcdcdc;
 
-  margin-left: 20px;
+  margin-left: 0.76rem;
 `;
 
 export const BoardMiddle = styled.p`
@@ -89,16 +89,16 @@ export const Title = styled.div`
   width: 90%;
   padding: 15px;
 
-  font-size: 30px;
+  font-size: 1.15rem;
   font-weight: 600;
   color: #dcdcdc;
 `;
 export const CreateAt = styled.p`
   color: #b4b4b4;
-  font-size: 17px;
+  font-size: 0.65rem;
   position: absolute;
-  bottom: 17px;
-  left: 975px;
+  bottom: 0.65rem;
+  left: 36.2rem;
   width: 100%;
 `;
 
@@ -113,15 +113,15 @@ export const Image = styled.img`
 `;
 
 export const Contents = styled.p`
-  width: 1050px;
-  font-size: 18px;
+  width: 100%;
+  font-size: 0.69rem;
   font-weight: 400;
   line-height: 28px; /* 155.556% */
   letter-spacing: -0.18px;
   color: #b4b4b4;
 
   border-bottom: 1px solid #8c8c8c;
-  padding-bottom: 40px;
+  padding-bottom: 10px;
 `;
 
 export const BoardBottom = styled.div`
@@ -140,12 +140,12 @@ export const BoardBottom = styled.div`
 `;
 
 export const CommentToggle = styled.button`
-  width: 130px;
-  height: 40px;
+  width: 5rem;
+  height: 1.5rem;
   border-radius: 999px;
   border: none;
 
-  font-size: 20px;
+  font-size: 0.76rem;
   background-color: #b4b4b4;
   margin-left: 10px;
 
@@ -160,6 +160,8 @@ export const CommentToggle = styled.button`
   }
 `;
 export const SaveButton = styled.img`
+  width: 1.1rem;
+  height: 1.1rem;
   margin-right: 50px;
   cursor: pointer;
 `;

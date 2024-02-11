@@ -10,9 +10,9 @@ export const Wrapper = styled.div`
 `;
 
 export const WriteForm = styled.div`
-  width: 1200px;
-  height: 110px;
-  padding: 23px;
+  width: 46.1rem;
+  height: 4.23rem;
+  padding: 10px;
   background-color: #464646;
   border-radius: 20px;
 
@@ -22,8 +22,8 @@ export const WriteForm = styled.div`
 `;
 
 export const UserProfile = styled.img`
-  width: 57px;
-  height: 57px;
+  width: 2.19rem;
+  height: 2.19rem;
   border-radius: 57px;
 `;
 
@@ -47,8 +47,8 @@ export const Lock = styled.img`
 `;
 
 export const Input = styled.input`
-  width: 990px;
-  height: 72px;
+  width: 38rem;
+  height: 2.76rem;
   border: none;
   border-radius: 20px;
   background-color: #0a0a0a;
@@ -62,8 +62,8 @@ export const Input = styled.input`
   position: relative;
 `;
 export const Submit = styled.div`
-  width: 72px;
-  height: 72px;
+  width: 2.7rem;
+  height: 2.7rem;
   background-image: url("/common/icon/submit(black).png");
   border-radius: 20px;
   cursor: pointer;
