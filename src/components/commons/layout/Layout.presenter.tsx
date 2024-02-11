@@ -13,17 +13,17 @@ function LayoutUI({ children, pathName, margin }: LayoutProps): JSX.Element {
 
   return (
     <styled.Background>
-      {!(
-        safePathName.includes("boards") || safePathName.includes("search")
-      ) && <styled.BackgroundTopImg />}
+      {!(pathName?.includes("boards") || pathName?.includes("search")) && (
+        <styled.BackgroundTopImg />
+      )}
       <styled.Radial />
       <styled.BackgroundCircle $margin={margin} />
-      {!(safePathName.includes("login") || safePathName.includes("signUp")) && (
+      {!(pathName?.includes("login") || pathName?.includes("signUp")) && (
         <LayoutHeader />
       )}
       <styled.ChildWrapper>{children}</styled.ChildWrapper>
-      {safePathName.includes("home") && <styled.Divider />}
-      {(safePathName.includes("home") || safePathName.includes("mypage")) && (
+      {pathName?.includes("home") && <styled.Divider />}
+      {(pathName?.includes("home") || pathName?.includes("mypage")) && (
         <styled.BackgroundBottomImg />
       )}
     </styled.Background>
