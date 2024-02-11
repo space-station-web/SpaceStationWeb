@@ -15,9 +15,9 @@ export default function LoginFindSuccessEmailUI(
         <F.Form>
           <F.Icon src="/common/icon/icon.png" />
           <F.Text>
-            허거덩님의 이메일은
+            {props._nick}님의 이메일은
             <br />
-            space2024@naver.com입니다.
+            {props._email}입니다.
           </F.Text>
           <F.Button onClick={props.onClickMoveLogin}>로그인</F.Button>
           <F.Button onClick={props.onClickMoveFindPw}>비밀번호 찾기</F.Button>

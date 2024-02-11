@@ -15,6 +15,7 @@ export const Prev = styled.img`
   left: 0; 
   width: 32px;
   height: 32px;
+  cursor: pointer;
 `;
 export const Stack = styled.div<{ $gap?: string }>`
   display: flex;

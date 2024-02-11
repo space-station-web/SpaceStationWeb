@@ -35,8 +35,8 @@ export default function SignUpEmailUI(props: ISignUpEmail): JSX.Element {
                 onFocus={props.onFocusNick}
                 onBlur={props.onBlurNick}
               />
-              <F.VertBtn>
-                중복 확인
+              <F.VertBtn onClick={props.handleCheck}>
+                {props.isDuplicateText}
               </F.VertBtn>
             </F.InputTextForm>
             {props.isError1 ? (

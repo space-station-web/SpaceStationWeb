@@ -20,37 +20,43 @@ export default function LoginFindEmail(): JSX.Element {
     setNumber(event.currentTarget.value);
   };
   const onChangeBirth = (event: ChangeEvent<HTMLInputElement>): void => {
-    setNumber(event.currentTarget.value);
+    setBirth(event.currentTarget.value);
   };
   const onClickMovePrev = async (): Promise<void> => {
     history.back();
   };
-  const onClickMoveSuccess = async (): Promise<void> => {
-    await router.push("../../../../../../login/FindEmail/successFind");
+  const handleFind = async (): Promise<void> => {
+    // await router.push("../../../../../../login/FindEmail/successFind");
     // 비번 확인 해야함 
-    // try {
-    //   const name = _name;
-    //   const phone = number;
-    //   const b_date = birth;
+    try {
+      const name = _name;
+      const phone = number;
+      const b_date = birth;
       
-    //   const response = await axios.post(
-    //     '/email-check',
-    //     {
-    //       name,
-    //       phone,
-    //       b_date
-    //     }
-    //   );
-    //   console.log("res", response);
-    //   // 가입된 계정이면
-    //   await router.push("../../../../../../login/FindEmail/successFind");
-
-    //   // 가입되지 않은 계정이면 입력값들 초기화 
-    //   setErrorMessage("가입되지 않은 계정입니다.");
-    //   console.log('이메일 찾기 성공');
-    // } catch (error) {
-    //   console.log('이메일 찾기 실패 실패', error);
-    // }
+      const response = await axios.post(
+        'http://localhost:8080/email-check',
+        {
+          name,
+          phone,
+          b_date
+        }
+      );
+      console.log("res", response);
+      const isSuccess = response.data.result.isSuccess === true;
+      if (isSuccess) { // 가입된 계정이면
+        const nickname = response.data.result.result.userNickname;
+        const email = response.data.result.result.userEmail;
+        await router.push({
+          pathname: "../../../../../../login/FindEmail/successFind",
+          query: { nickname, email },
+        });
+        
+      } else { // 가입되지 않은 계정이면 입력값들 초기화 
+        setErrorMessage("가입되지 않은 계정입니다.");
+      }
+    } catch (error) {
+      console.log('이메일 찾기 실패 실패', error);
+    }
     
   };
 
@@ -59,7 +65,7 @@ export default function LoginFindEmail(): JSX.Element {
       onChangeName={onChangeName}
       onChangeNumber={onChangeNumber}
       onChangeBirth={onChangeBirth}
-      onClickMoveSuccess={onClickMoveSuccess}
+      handleFind={handleFind}
       onClickMovePrev={onClickMovePrev}
       errorMessage={errorMessage}
     />

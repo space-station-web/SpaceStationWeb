@@ -13,12 +13,15 @@ export interface ISignUpEmail {
   onChangeCheck2: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeCheck3: (event: ChangeEvent<HTMLInputElement>) => void;
 
-
+  // 버튼 이벤트
   handleSignUp: (event: MouseEvent<HTMLButtonElement>) => void;
+  handleCheck: (event: MouseEvent<HTMLButtonElement>) => void;
   onClickMoveTermsInfo: (event: MouseEvent<HTMLButtonElement>) => void;
-
   onClickMovePrev: (event: MouseEvent<HTMLImageElement>) => void;
 
+  isDuplicateText: string;
+
+  // 정규식 확인
   isRight: boolean;
   errorMessageNick: string;
   errorMessagePw: string;
@@ -39,8 +42,8 @@ export interface ISignUpEmail {
   onBlurNumber: (event: FocusEvent<HTMLInputElement>) => void;
   onBlurBirth: (event: FocusEvent<HTMLInputElement>) => void;
 
-  phNick: string
-  phPassword: string
-  phNumber: string
-  phBirth: string
+  phNick: string;
+  phPassword: string;
+  phNumber: string;
+  phBirth: string;
 }

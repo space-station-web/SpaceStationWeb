@@ -26,7 +26,7 @@ export default function LoginFindEmailUI(props: IFindEmail): JSX.Element {
           </F.InputTextForm>
           <F.ErrorMessage>{props.errorMessage}</F.ErrorMessage>
 
-          <F.SubmitButton onClick={props.onClickMoveSuccess}>확인</F.SubmitButton>
+          <F.SubmitButton onClick={props.handleFind}>확인</F.SubmitButton>
         </F.Form>
       </F.Wrapper>
     </>
