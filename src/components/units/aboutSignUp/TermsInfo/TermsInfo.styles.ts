@@ -1,24 +1,28 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  background-position: top center;
-  background-image: url("/common/background.png");
-
+  width: 1186px;
+  position: relative; 
+  z-index: 1;
   display: flex;
-  justify-content: center;
-  
-  position: relative;
-
-  ::before {
-    position: absolute;
-    content: "";
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-  }
+  flex-direction: column;
+  align-items: center;
 `;
+
+export const Prev = styled.img`
+  position: absolute;
+  top: 300px; 
+  left: 0; 
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+`;
+export const Stack = styled.div<{ $gap?: string }>`
+  display: flex;
+  flex-direction: column;
+  gap: ${(props) => props.$gap};
+`;
+
 
 export const Form = styled.div`
   z-index: 100;
@@ -32,7 +36,7 @@ export const Form = styled.div`
   flex-direction: column;
   align-items: start;
 
-  margin: 550px 0 300px 0;
+  margin: 50px 0 300px 0;
   padding: 70px;
 `;
 

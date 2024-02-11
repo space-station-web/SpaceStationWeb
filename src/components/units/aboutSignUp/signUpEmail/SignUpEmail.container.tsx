@@ -26,6 +26,10 @@ export default function SignUpEmail(): JSX.Element {
   const [isError2, setIsError2] = useState(false); // 비밀번호 정규식
   const [isError3, setIsError3] = useState(false); // 비밀번호 확인 일치
 
+  const [isNotDuplicate, setIsNotDuplicate] = useState(false); // 닉네임 중복 확인 (true 되면 사용 가능)
+  const [isDuplicateText, setIsDuplicateText] = useState("중복 확인");
+
+
   // placeholder 변경
   const [phNick, setPhNick] = useState("닉네임");
   const [phPassword, setPhPassword] = useState("비밀번호");
@@ -35,7 +39,7 @@ export default function SignUpEmail(): JSX.Element {
   // const [isActive, setIsActive] = useState(false);
 
   useEffect(() => { // 완료 버튼 활성화 여부 (조건 모두 만족시 활성화)
-    if (isChecked1 && isChecked2 && !isError1 && !isError2 && !isError3) {
+    if (isChecked1 && isChecked2 && !isError1 && !isError2 && !isError3 && isNotDuplicate) {
       setIsRight(true);
     } else {
       setIsRight(false);
@@ -43,51 +47,12 @@ export default function SignUpEmail(): JSX.Element {
     console.log("isRight", isRight);
   }, [isChecked1, isChecked2, isError1, isError2, isError3]);
 
-  // // Timer
-  // const minuteInMs = 2 * 60 * 1000;
-  // const interval = 1000;
-  // const [timeLeft, setTimeLeft] = useState(minuteInMs);
+  
+  // const handleSignUp = async (): Promise<void> => {
+  //   await router.push("../../../../../../signUp/signUpSuccess");
+  // }
 
-  // const minutes = String(Math.floor((timeLeft / (1000 * 60)) % 60)).padStart(
-  //   2,
-  //   "0",
-  // );
-  // const second = String(Math.floor((timeLeft / 1000) % 60)).padStart(2, "0");
-  // useEffect(() => {
-  //   let timer: number | undefined;
-  //   if (startTimer) {
-  //     // 타이머 시작 상태가 true일 때만 타이머를 시작합니다.
-  //     timer = window.setInterval(() => {
-  //       setTimeLeft((prevTime) => prevTime - interval);
-  //     }, interval);
-
-  //     if (timeLeft <= 0) {
-  //       clearInterval(timer);
-  //       console.log("타이머가 종료되었습니다.");
-  //       setStartTimer(false); // 타이머가 종료되면 시작 상태를 false로 설정합니다.
-  //     }
-  //   }
-
-  //   return () => {
-  //     clearInterval(timer);
-  //   };
-  // }, [timeLeft, startTimer]); // startTimer를 의존성 배열에 추가합니다.
-  // // Timer End
-
-  // const onClickVert = (): void => {
-  //   if (number === "") {
-  //     alert("전화번호를 입력해주세요.");
-  //     return;
-  //   }
-  //   if (isActive) {
-  //     setTimeLeft(minuteInMs);
-  //   }
-  //   setStartTimer(true); // 버튼 클릭 시 타이머 시작 상태를 true로 설정합니다.
-  //   alert("인증번호가 전송되었습니다.");
-
-  //   setIsActive(true);
-  // };
-
+  // 회원가입
   const handleSignUp = async (): Promise<void> => {
     console.log("eeeee");
     // 비번 확인 해야함 
@@ -102,7 +67,7 @@ export default function SignUpEmail(): JSX.Element {
       const alarm = isChecked3;
       
       const response = await axios.post(
-        'http://localhost:8080/signup',
+        'http://localhost:3000/signup',
         {
           name,
           nickname,
@@ -122,6 +87,30 @@ export default function SignUpEmail(): JSX.Element {
     }
     
   };
+
+  // 닉네임 중복 확인 
+  const handleCheck = async (): Promise<void> => {
+   
+    try {
+      const nickname = _nick;
+      const response = await axios.get(
+        `http://localhost:3000/signup/${nickname}`
+      );
+      console.log("res", response.data.isSuccess);
+      const isSuccess = response.data.isSuccess === true;
+      if (isSuccess) {
+        setIsNotDuplicate(true);
+        setIsDuplicateText("사용 가능");
+      } else {
+        setIsNotDuplicate(false);
+        setIsDuplicateText("사용 불가능");
+      }
+      console.log(' 성공');
+    } catch (error) {
+      console.log(' 실패', error);
+    }
+  };
+
 
   // 입력값
   const onChangeEmail = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -264,7 +253,10 @@ export default function SignUpEmail(): JSX.Element {
     phBirth={phBirth}
 
     handleSignUp={handleSignUp}
+    handleCheck={handleCheck}
     onClickMoveTermsInfo={onClickMoveTermsInfo}
+    isDuplicateText={isDuplicateText}
+
     isRight={isRight}
     errorMessageNick={errorMessageNick} 
     errorMessagePw={errorMessagePW}
