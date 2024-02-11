@@ -1,4 +1,5 @@
 import type { Dispatch, MouseEvent, SetStateAction } from "react";
+import type { PostData } from "./BoardDetail.container";
 
 export interface IBoardDetailProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
@@ -6,14 +7,6 @@ export interface IBoardDetailProps {
 export interface IBoardDetailUIProps {
   onClickCommentToggle: (event: MouseEvent<HTMLButtonElement>) => void;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
-  data: IData | null;
+  data: PostData[] | null;
   onClickBoards: (event: MouseEvent<HTMLImageElement>) => void;
-}
-
-export interface IData {
-  id: number;
-  title: string;
-  content: string;
-  UserId: string;
-  createdAt: string;
 }
