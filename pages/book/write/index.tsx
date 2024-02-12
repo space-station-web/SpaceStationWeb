@@ -1,7 +1,5 @@
-import BookWrite from "../../../src/components/units/Book/write/BookWrite.container";
+import BookWrite from "../../../src/components/units/Book/new/BookWrite.container";
 
-export default function BookWritePage():JSX.Element {
-  return (
-    <BookWrite />
-  )
+export default function BookWritePage(): JSX.Element {
+  return <BookWrite />;
 }
