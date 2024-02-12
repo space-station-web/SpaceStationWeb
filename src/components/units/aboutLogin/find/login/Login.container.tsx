@@ -1,8 +1,7 @@
 import { useRouter } from "next/router";
-import { useState, type ChangeEvent, useEffect } from "react";
+import { useState, type ChangeEvent } from "react";
 import { useRecoilState } from "recoil";
 import { isLoginState } from "../../../../commons/recoil/Recoil.auth.state";
-import axios from 'axios';
 import LoginUI from "./Login.presenter";
 
 export default function Login(): JSX.Element {
@@ -10,8 +9,8 @@ export default function Login(): JSX.Element {
 
   const [login, setLoginState] = useRecoilState(isLoginState);
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const onClickMoveFindPw = async (): Promise<void> => {
     await router.push("../../../../../../login/sendEmail");
@@ -36,7 +35,7 @@ export default function Login(): JSX.Element {
 
   const handleLogin = async (): Promise<void> => {
     setLoginState(true);
-    await router.push('../../../../../../Home');
+    await router.push("/");
 
     // try {
     //   console.log("em :",email);
@@ -58,16 +57,19 @@ export default function Login(): JSX.Element {
     //   console.log('로그인성공');
     // } catch (error) {
     //   console.log('실패하였습니다', error);
-      
+
     // }
   };
 
-  return <LoginUI 
-  onClickMoveFindPw={onClickMoveFindPw} 
-  onClickMoveFindEm={onClickMoveFindEm} 
-  onClickMoveSignUp={onClickMoveSignUp}
-  onClickMovePrev={onClickMovePrev}
-  onChangeEmail={onChangeEmail} 
-  onChangePassword={onChangePassword} 
-  handleLogin={handleLogin} />;
+  return (
+    <LoginUI
+      onClickMoveFindPw={onClickMoveFindPw}
+      onClickMoveFindEm={onClickMoveFindEm}
+      onClickMoveSignUp={onClickMoveSignUp}
+      onClickMovePrev={onClickMovePrev}
+      onChangeEmail={onChangeEmail}
+      onChangePassword={onChangePassword}
+      handleLogin={handleLogin}
+    />
+  );
 }
