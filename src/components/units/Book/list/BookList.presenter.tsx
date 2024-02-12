@@ -1,4 +1,6 @@
+import { useState } from "react";
 import PaginationComponent from "../../../commons/pagination/Pagination";
+import ModalComponent from "./BoodListModal";
 import * as L from "./BookList.styles";
 
 export const PRACS = [
@@ -20,6 +22,11 @@ export const PRACS = [
 ];
 
 export default function BoardListUI(): JSX.Element {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const toggleModal = (): void => {
+    setIsModalVisible(!isModalVisible);
+  };
+
   return (
     <L.Wrapper>
       <L.TopDiv>
@@ -55,7 +62,7 @@ export default function BoardListUI(): JSX.Element {
           <L.CategoryName>사랑</L.CategoryName>
         </L.CategoryContainer>
 
-        <L.CategoryContainer>
+        <L.CategoryContainer onClick={toggleModal}>
           <L.CategoryIcon src="./book/8.png" />
           <L.CategoryName>책 등록하기</L.CategoryName>
         </L.CategoryContainer>
@@ -77,6 +84,7 @@ export default function BoardListUI(): JSX.Element {
       </L.BoardBox>
 
       <PaginationComponent />
+      {isModalVisible && <ModalComponent onClose={toggleModal} />}
     </L.Wrapper>
   );
 }
