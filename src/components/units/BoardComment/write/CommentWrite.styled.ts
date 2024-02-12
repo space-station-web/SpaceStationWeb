@@ -1,9 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  padding: 30px 200px 20px 200px;
-  background-color: #0a0a0a;
-  position: relative;
+  padding: 0px 200px 20px 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,8 +10,8 @@ export const Wrapper = styled.div`
 export const WriteForm = styled.div`
   width: 46.1rem;
   height: 4.23rem;
-  padding: 10px;
-  background-color: #464646;
+  padding: 10px 15px 10px 15px;
+  background-color: #1e1e1e;
   border-radius: 20px;
 
   display: flex;
@@ -36,10 +34,9 @@ export const InputContainer = styled.div`
 `;
 
 export const IconContainer = styled.div`
-  //width: 100px;
   position: absolute; /* 추가 */
 
-  left: 960px;
+  left: 740px;
 `;
 
 export const Lock = styled.img`
@@ -59,7 +56,7 @@ export const Input = styled.input`
   color: #dcdcdc;
   font-size: 17px;
 
-  position: relative;
+  outline: none;
 `;
 export const Submit = styled.div`
   width: 2.7rem;
