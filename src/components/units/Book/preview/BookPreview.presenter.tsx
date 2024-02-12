@@ -16,14 +16,16 @@ export default function BookPreviewUI(): JSX.Element {
               <L.Author>By.가나다라</L.Author>
               <L.Table>목차</L.Table>
 
-              <L.PreviewBottomDiv>
-                <L.ScrollContent>123</L.ScrollContent>
+              <L.TopContainerDiv>
+                <L.PreviewBottomDiv>
+                  <L.ScrollContent>123</L.ScrollContent>
+                </L.PreviewBottomDiv>
                 <L.ButtonContainer>
                   <L.Save />
                   <L.Button>읽기</L.Button>
                   <L.Button>인용하기</L.Button>
                 </L.ButtonContainer>
-              </L.PreviewBottomDiv>
+              </L.TopContainerDiv>
             </L.PreviewContentsContainer>
           </L.PreviewTop>
 
