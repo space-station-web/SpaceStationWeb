@@ -139,3 +139,5 @@ export const BoardContents = styled.p`
 
   color: #8c8c8c;
 `;
+
+export const Modal = styled.div``;
