@@ -4,6 +4,17 @@ import type { IBoardDetailUIProps } from "./BoardDetail.types";
 
 export default function BoardDetailUI(props: IBoardDetailUIProps): JSX.Element {
   const [mounted, setMounted] = useState<boolean>(false);
+  const [isStored, setIsStored] = useState<boolean>(false);
+
+  useEffect(() => {
+    // props로 받은 isStored 상태를 로컬 상태에 반영
+    setIsStored(props.isStored);
+  }, [props.isStored]);
+
+  const handleSaveButtonClick = async (): Promise<void> => {
+    await props.storePost(); // 게시글 보관 API 호출
+    setIsStored((prev) => !prev); // 버튼 색상 변경을 위한 상태 업데이트
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -62,7 +73,10 @@ export default function BoardDetailUI(props: IBoardDetailUIProps): JSX.Element {
               <L.CommentToggle onClick={props.onClickCommentToggle}>
                 댓글보기
               </L.CommentToggle>
-              <L.SaveButton src="/common/icon/save.png" />
+              <L.SaveButton
+                onClick={handleSaveButtonClick}
+                fill={isStored ? "#ff6f00" : "none"}
+              />
             </L.BoardBottom>
           </L.BoardWrapper>
         </L.Wrapper>

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import Save from "../../../../../public/save.svg";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -159,9 +160,9 @@ export const CommentToggle = styled.button`
     border: 1px solid #b4b4b4;
   }
 `;
-export const SaveButton = styled.img`
-  width: 1.1rem;
-  height: 1.1rem;
-  margin-right: 50px;
+export const SaveButton = styled(Save)`
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 20px;
   cursor: pointer;
 `;
