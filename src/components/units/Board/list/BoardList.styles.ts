@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
 `;
 
 export const TopDiv = styled.div`
-  width: 80%;
+  width: 90%;
   display: flex;
   flex-direction: row;
   align-items: center;

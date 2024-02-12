@@ -1,16 +1,15 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  width:100%;
-  
-  padding: 150px 200px 20px 200px;
-  background-color: #141414;
+  width: 100%;
+
+  padding: 50px 200px 20px 200px;
+
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
-
 
 export const TopDiv = styled.div`
   width: 100%;
@@ -21,35 +20,33 @@ export const TopDiv = styled.div`
 `;
 
 export const Prev = styled.img`
-  width: 32px;
-  height: 32px;
+  width: 1.23rem;
+  height: 1.23rem;
   float: left;
 `;
 
 export const ShareBtn = styled.button`
-  width: 160px;
-  height: 50px;
-  border:none;
+  width: 6.1rem;
+  height: 1.9rem;
+  border: none;
   border-radius: 999px;
-  background-color:#1e1e1e;
+  background-color: #1e1e1e;
 
-  font-size: 20px;
+  font-size: 0.76rem;
   font-weight: 600;
-  color:#dcdcdc;
-
+  color: #dcdcdc;
 `;
-
 
 export const BoardWrapper = styled.div`
   z-index: 2;
-  width: 1200px;
+  width: 46.1rem;
   border-radius: 20px;
   margin-top: 20px;
 `;
 
 export const TopBoard = styled.div`
   width: 100%;
-  height: 125px;
+  height: 4.8rem;
   background-color: #141414;
   border-radius: 20px 20px 0px 0px;
 
@@ -59,14 +56,14 @@ export const TopBoard = styled.div`
 `;
 
 export const UserProfile = styled.img`
-  width: 40px;
-  height: 40px;
+  width: 1.53rem;
+  height: 1.53rem;
 
   margin-left: 60px;
 `;
 
 export const UserName = styled.p`
-  font-size: 20px;
+  font-size: 0.76rem;
   font-weight: 600;
   color: #dcdcdc;
 
@@ -81,10 +78,10 @@ export const BoardMiddle = styled.p`
 `;
 
 export const Title = styled.div`
-  width: 1050px;
+  width: 40.3rem;
   padding: 15px;
 
-  font-size: 30px;
+  font-size: 1.15rem;
   font-weight: 600;
   color: #dcdcdc;
 
@@ -102,8 +99,8 @@ export const Image = styled.img`
 `;
 
 export const Contents = styled.p`
-  width: 1050px;
-  font-size: 18px;
+  width: 40.3rem;
+  font-size: 0.69rem;
   font-weight: 400;
   line-height: 28px; /* 155.556% */
   letter-spacing: -0.18px;
@@ -129,12 +126,12 @@ export const BoardBottom = styled.div`
 `;
 
 export const CommentToggle = styled.button`
-  width: 130px;
-  height: 40px;
+  width: 5rem;
+  height: 1.53rem;
   border-radius: 999px;
   border: none;
 
-  font-size: 20px;
+  font-size: 0.76rem;
   background-color: #b4b4b4;
   margin-left: 10px;
 

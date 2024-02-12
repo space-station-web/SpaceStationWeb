@@ -2,16 +2,14 @@ import styled from "@emotion/styled";
 import SaveIcon from "../../../../../public/save.svg";
 
 export const Wrapper = styled.div`
-  padding: 150px 200px 113px 200px;
-  background-color: #0a0a0a;
-  position: relative;
+  padding: 50px 200px 113px 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
 export const TopDiv = styled.div`
-  width: 1200px;
+  width: 46.1rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -19,8 +17,8 @@ export const TopDiv = styled.div`
 `;
 
 export const Prev = styled.img`
-  width: 32px;
-  height: 32px;
+  width: 1.2rem;
+  height: 1.2rem;
   float: left;
 `;
 
@@ -29,8 +27,8 @@ export const PreviewContainer = styled.div`
   margin-top: 40px;
   padding: 70px;
 
-  width: 1194px;
-  height: 1167px;
+  width: 46.1rem;
+
   border-radius: 20px;
   background-color: #1e1e1e;
 `;
@@ -41,22 +39,24 @@ export const PreviewTop = styled.div`
 `;
 
 export const PreviewImage = styled.img`
+  width: 12.9rem;
+  height: 16.6rem;
   margin-right: 30px;
 `;
 
 export const PreviewContentsContainer = styled.div`
-  width: 689px;
-  height: 439px;
+  width: 26.5rem;
+  height: 16.8rem;
 
   border-radius: 20px;
   background-color: #141414;
-  padding: 45px;
+  padding: 28px;
 
   position: relative;
 `;
 
 export const Title = styled.p`
-  font-size: 30px;
+  font-size: 1.2rem;
   color: #dcdcdc;
   font-weight: 600;
 
@@ -64,30 +64,37 @@ export const Title = styled.p`
 `;
 
 export const Author = styled.p`
-  font-size: 17px;
+  font-size: 0.65rem;
   color: #b4b4b4;
   font-weight: 600;
   line-height: 25px;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 `;
 
 export const Table = styled.p`
-  font-size: 17px;
+  font-size: 0.65rem;
   color: #b4b4b4;
   font-weight: 600;
   line-height: 25px;
 `;
 
+export const TopContainerDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
 export const PreviewBottomDiv = styled.div`
+  width: 17.6rem;
+  height: 8.8rem;
   display: flex;
   flex-direction: row;
 `;
 
 export const ScrollContent = styled.div`
   overflow-y: scroll;
-  width: 450px;
-  height: 230px;
-  padding: 20px;
+  width: 17.3rem;
+  height: 8.8rem;
+  padding: 10px;
   background-color: #1e1e1e;
   border-radius: 20px;
   color: #dcdcdc;
@@ -96,10 +103,7 @@ export const ScrollContent = styled.div`
 export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
-
-  position: absolute;
-  top: 248px;
-  left: 527px;
+  justify-content: end;
 `;
 
 export const Save = styled(SaveIcon)`
@@ -109,11 +113,12 @@ export const Save = styled(SaveIcon)`
 `;
 
 export const Button = styled.button`
-  width: 130px;
-  height: 40px;
+  width: 5rem;
+  height: 1.5rem;
   border-radius: 999px;
   background-color: #b4b4b4;
-  margin: 15px 8px 0 0;
+  margin: 12px 0 0 20px;
+  font-size: 0.76rem;
 
   color: #1e1e1e;
 
@@ -127,19 +132,19 @@ export const PreviewMiddle = styled.div`
 `;
 
 export const SubTitle = styled.p`
-  font-size: 20px;
+  font-size: 0.76rem;
   color: #b4b4b4;
   font-weight: 600;
   margin-bottom: 15px;
 `;
 
 export const IntroduceArea = styled.div`
-  width: 1050px;
+  width: 40.3rem;
   border-radius: 20px;
   background-color: #141414;
   padding: 30px;
 
-  font-size: 18px;
+  font-size: 0.69rem;
   color: #b4b4b4;
   font-weight: 400;
   line-height: 28px; /* 155.556% */
@@ -151,8 +156,8 @@ export const PreviewBottom = styled.div`
 `;
 
 export const BottomContainer = styled.div`
-  width: 1050px;
-  height: 115px;
+  width: 40.3rem;
+  height: 4.4rem;
   background-color: #141414;
   border-radius: 20px;
 
@@ -164,13 +169,13 @@ export const BottomContainer = styled.div`
 `;
 
 export const AuthorImg = styled.img`
-  width: 82px;
-  height: 82px;
+  width: 3.1rem;
+  height: 3.1rem;
   margin-right: 25px;
 `;
 
 export const AuthorName = styled.p`
-  font-size: 20px;
+  font-size: 0.76rem;
   color: #dcdcdc;
   font-weight: 600;
 `;
