@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
-import React, { createContext, useContext, useState } from 'react';
+import { useState } from "react";
 import WriteUI from "./Write.presenter";
-import TemporaryStorageUI  from '../temporaryStorage/TemporaryStorage.presenter';
 import { Iwrite } from "./Write.types";
 
 // interface IWriteProps {
@@ -11,7 +10,9 @@ import { Iwrite } from "./Write.types";
 
 export default function Write(props: Iwrite): JSX.Element {
   const [temporaryStorageCount, setTemporaryStorageCount] = useState(0);
-  const [temporaryStorageForms, setTemporaryStorageForms] = useState<number[]>([]);
+  const [temporaryStorageForms, setTemporaryStorageForms] = useState<number[]>(
+    [],
+  );
   const [isTempSaveAlertVisible, setIsTempSaveAlertVisible] = useState(false);
   const router = useRouter();
 
@@ -19,16 +20,16 @@ export default function Write(props: Iwrite): JSX.Element {
     setTemporaryStorageCount(temporaryStorageCount + 1);
     console.log(temporaryStorageCount);
     setTemporaryStorageForms((prevForms) => [...prevForms, Date.now()]);
-    
+
     setIsTempSaveAlertVisible(true);
-    console.log('temporaryStorageAlert');
+    console.log("temporaryStorageAlert");
     setTimeout(() => {
       setIsTempSaveAlertVisible(false);
     }, 2000);
   };
 
   const onClickMoveHomePage = async (): Promise<void> => {
-    await router.push("../../../../../../Home");
+    await router.push("/");
   };
 
   const onClickMoveTemStorage = async (): Promise<void> => {
