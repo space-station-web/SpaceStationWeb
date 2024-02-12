@@ -9,4 +9,7 @@ export interface IBoardDetailUIProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   data: PostData[] | null;
   onClickBoards: (event: MouseEvent<HTMLImageElement>) => void;
+
+  isStored: boolean;
+  storePost: () => Promise<void>;
 }

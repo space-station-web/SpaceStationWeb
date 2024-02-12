@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   width: 100%;
-  padding: 150px 200px 13px 200px;
+  padding: 50px 200px 13px 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -139,3 +139,5 @@ export const BoardContents = styled.p`
 
   color: #8c8c8c;
 `;
+
+export const Modal = styled.div``;
