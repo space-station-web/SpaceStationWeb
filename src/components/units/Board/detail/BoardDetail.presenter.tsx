@@ -1,10 +1,18 @@
 import { useEffect, useState } from "react";
 import * as L from "./BoardDetail.styled";
 import type { IBoardDetailUIProps } from "./BoardDetail.types";
+import BookModal from "./BoardModal";
 
 export default function BoardDetailUI(props: IBoardDetailUIProps): JSX.Element {
   const [mounted, setMounted] = useState<boolean>(false);
   const [isStored, setIsStored] = useState<boolean>(false);
+
+  // 글 수정, 글 삭제 모달
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const toggleModal = (): void => {
+    setIsModalVisible((prev) => !prev);
+  };
+  // ------------------------
 
   useEffect(() => {
     // props로 받은 isStored 상태를 로컬 상태에 반영
@@ -51,9 +59,17 @@ export default function BoardDetailUI(props: IBoardDetailUIProps): JSX.Element {
             <L.ShareBtn>인용하기</L.ShareBtn>
           </L.TopDiv>
           <L.BoardWrapper>
+            {/* modal */}
+            <L.BookModalContainer>
+              {isModalVisible && <BookModal onClose={toggleModal} />}
+            </L.BookModalContainer>
+            {/*  */}
             <L.TopBoard>
-              <L.UserProfile src="/common/icon/User.png" />
-              <L.UserName>{firstData?.user_id}</L.UserName>
+              <L.UserBox>
+                <L.UserProfile src="/common/icon/User.png" />
+                <L.UserName>{firstData?.user_id}</L.UserName>
+              </L.UserBox>
+              <L.MoreIcon onClick={toggleModal} />
             </L.TopBoard>
 
             <L.BoardMiddle>

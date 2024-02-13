@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import More from "../../../../../public/common/icon/more.svg";
 import Save from "../../../../../public/save.svg";
 
 export const Wrapper = styled.div`
@@ -48,19 +49,29 @@ export const BoardWrapper = styled.div`
 export const TopBoard = styled.div`
   width: 100%;
   height: 4.8rem;
+  padding: 0 30px 0 60px;
   background-color: #141414;
   border-radius: 20px 20px 0px 0px;
 
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+`;
+
+export const UserBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const MoreIcon = styled(More)`
+  cursor: pointer;
 `;
 
 export const UserProfile = styled.img`
   width: 1.5rem;
   height: 1.5rem;
-
-  margin-left: 60px;
 `;
 
 export const UserName = styled.p`
@@ -165,4 +176,9 @@ export const SaveButton = styled(Save)`
   height: 1.5rem;
   margin-right: 20px;
   cursor: pointer;
+`;
+
+export const BookModalContainer = styled.div`
+  position: absolute;
+  left: 59.1rem;
 `;
