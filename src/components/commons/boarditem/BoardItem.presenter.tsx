@@ -27,7 +27,7 @@ function BoardItemUI({
       return writtingItem ? (
         <styled.MyWritting
           $imgUrl={writtingItem.img}
-          key={`${writtingItem.author}-${writtingItem.title}`}
+          key={`${writtingItem.user_id}-${writtingItem.title}`}
         >
           <styled.SaveBtn onClick={handleSaveClick}>
             <styled.IconSave $issave={save} />
