@@ -13,6 +13,7 @@ export default function LayoutHeader(): JSX.Element {
   };
   const onClickLogout = async (): Promise<void> => {
     setLoginState(false);
+    localStorage.clear(); // 모든 로컬 스토리지 항목 삭제
     await router.push("../../../../../../login/");
   };
   const onClickSignUp = async (): Promise<void> => {

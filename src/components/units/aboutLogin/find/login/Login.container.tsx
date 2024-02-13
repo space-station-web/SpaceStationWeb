@@ -61,12 +61,14 @@ export default function Login(): JSX.Element {
   
         // 로그인 여부 업데이트
         setLoginState(true);
-        console.log('유저',_userId);
-        // const user = useRecoilValue(userIdState);
-        // console.log('유저',user);
+        
 
         // user-id 업데이트
         setUserIdState(userId);
+        console.log('유저',_userId);
+        
+        // const user = useRecoilValue(userIdState);
+        // console.log('유저',user);
   
         // 홈으로 이동
         await router.push('../../../../../../');
