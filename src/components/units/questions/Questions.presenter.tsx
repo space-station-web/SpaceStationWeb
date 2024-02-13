@@ -1,6 +1,10 @@
 import * as Q from "./Question.styles";
 
-export default function QuestionsUI(): JSX.Element {
+interface Questions {
+  questionTitle: string;
+}
+
+export default function QuestionsUI(props: Questions): JSX.Element {
   return (
     <>
       <Q.Wrapper>
@@ -10,8 +14,10 @@ export default function QuestionsUI(): JSX.Element {
         </Q.TopDiv>
         <Q.QuestionContainer>
           <Q.Category>오늘의 질문</Q.Category>
-          <Q.QuestionTitle>123</Q.QuestionTitle>
-          <Q.AnswerText />
+
+          <Q.QuestionTitle>{props.questionTitle}</Q.QuestionTitle>
+
+          <Q.AnswerText placeholder="자유롭게 작성해보세요." />
         </Q.QuestionContainer>
       </Q.Wrapper>
     </>

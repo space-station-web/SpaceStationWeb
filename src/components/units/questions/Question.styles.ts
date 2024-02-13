@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 `;
 
 export const TopDiv = styled.div`
-  width: 80%;
+  width: 80.0001%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -25,7 +25,7 @@ export const Prev = styled.img`
 
 export const Button = styled.button`
   width: 6.15rem;
-  height: 1.9rem;
+  height: 1.91rem;
   border-radius: 999px;
   font-size: 0.76rem;
   background-color: #1e1e1e;
@@ -46,6 +46,7 @@ export const QuestionContainer = styled.div`
 export const Category = styled.div`
   font-size: 0.76rem;
   color: #dcdcdc;
+  margin-left: 14px;
 `;
 
 export const QuestionTitle = styled.div`
@@ -66,7 +67,7 @@ export const AnswerText = styled.textarea`
   border: none;
 
   color: #b4b4b4;
-  line-height: 10px;
+  line-height: 1.125rem;
   resize: none;
 
   outline: none;
