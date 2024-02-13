@@ -16,7 +16,7 @@ export default function LayoutHeaderUI(props: ILayoutHeader): JSX.Element {
           cursor: "pointer",
         }}
         onClick={() => {
-          void router.push("/Home");
+          void router.push("/");
         }}
       />
 

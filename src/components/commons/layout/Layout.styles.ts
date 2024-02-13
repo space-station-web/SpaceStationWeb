@@ -27,8 +27,8 @@ export const BackgroundCircle = styled.div<{ $margin: string }>`
   height: 1194px;
   flex-shrink: 0;
   border-radius: 1194px;
-  background: linear-gradient(180deg, #0e0e0e 0%, rgba(19, 17, 17, 0) 100%);
-  filter: blur(5px);
+  background: linear-gradient(180deg, #0a0a0a 0%, rgba(19, 17, 17, 0) 100%);
+  filter: blur(4px);
   position: absolute;
   z-index: 1;
   margin-top: ${(props) => props.$margin};

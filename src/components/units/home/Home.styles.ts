@@ -11,7 +11,7 @@ export const Stack = styled.div<{ $gap?: string }>`
 `;
 
 export const Wrapper = styled.div`
-  padding-bottom: 813px;
+  padding-bottom: 100px;
   z-index: 1;
 `;
 
@@ -27,20 +27,28 @@ export const Card = styled.div<{ $width: string; $height: string }>`
   height: ${(props) => props.$height};
 `;
 export const LoginBtn = styled.button`
-  width: 10rem;
-  height: 3.13rem;
+  width: 6.1rem;
+  height: 1.9rem;
   border-radius: 999px;
   border: none;
   background-color: #141414;
   color: #e0e0e0;
+  font-size: 0.76rem;
+  cursor: pointer;
+  :hover {
+    color: #1e1e1e;
+    background-color: #e0e0e0;
+  }
 `;
 export const ContentsBtn = styled.button`
-  width: 128px;
-  height: 39px;
+  width: 4.93rem;
+  height: 1.53rem;
   border-radius: 999px;
   border: 1px solid #e0e0e0;
   background-color: transparent;
   color: #e0e0e0;
+  font-size: 0.76rem;
+  cursor: pointer;
   :hover {
     color: #1e1e1e;
     background-color: #e0e0e0;
@@ -52,8 +60,8 @@ export const Balloon = styled.div`
   justify-content: center;
   position: relative;
   margin-top: 18px;
-  width: 431px;
-  height: 52px;
+  width: 16.5rem;
+  height: 2rem;
   background: #0e0e0e;
   border-radius: 20px;
   border-top-left-radius: 0px;
@@ -69,14 +77,14 @@ export const Balloon = styled.div`
   }
 `;
 export const SubTitle = styled.div`
-  font-size: 1.125rem;
+  font-size: 0.69rem;
   color: #bdbdbd;
 `;
 export const Title = styled.div`
-  font-size: 20px;
+  font-size: 0.769rem;
   color: #e0e0e0;
 `;
 export const SubBody = styled.div`
-  font-size: 17px;
+  font-size: 0.65rem;
   color: #757575;
 `;
