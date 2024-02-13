@@ -35,13 +35,11 @@ export default function Login(): JSX.Element {
   };
 
   const handleLogin = async (): Promise<void> => {
-    
-
     try {
       const email = _email;
       const pw = _password;
       const auto = true;
-
+  
       const response = await axios.post(
         'http://localhost:8080/login',
         {
@@ -50,16 +48,27 @@ export default function Login(): JSX.Element {
           auto
         }
       );
-      console.log("res", response);
-      // const accessToken = response.data.data.accessToken;
-      // localStorage.setItem('accessToken', accessToken);
-      setLoginState(true);
-      await router.push('../../../../../../Home');
-      // window.location.replace('/');
-      console.log('로그인성공');
+  
+      if (response.data.result.isSuccess === true) {
+        const accessToken: string = response.data.result.result.accessToken;
+        const refreshToken: string = response.data.result.result.refreshToken;
+  
+        // Save tokens to local storage
+        localStorage.setItem('accessToken', accessToken);
+        localStorage.setItem('refreshToken', refreshToken);
+  
+        // Update login state
+        setLoginState(true);
+  
+        // Navigate to the desired route
+        await router.push('../../../../../../');
+        
+        console.log('로그인 성공', response);
+      } else {
+        console.log('로그인 실패:', response.data.result.error);
+      }
     } catch (error) {
-      console.log('실패하였습니다', error);
-      
+      console.log('로그인 요청 중 오류 발생:', error);
     }
   };
 
