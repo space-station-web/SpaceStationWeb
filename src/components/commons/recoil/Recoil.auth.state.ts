@@ -4,3 +4,8 @@ export const isLoginState = atom({
   key: 'isLoginState',
   default: false, 
 });
+
+export const userIdState = atom({
+  key: 'userIdState',
+  default: "-1",
+});
