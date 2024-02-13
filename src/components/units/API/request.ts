@@ -4,7 +4,7 @@ export const ACCESS_TOKEN_KEY = 'accessToken';
 export const REFRESH_TOKEN_KEY = 'refreshToken';
 
 const request = axios.create({
-  baseURL: 'https://www.greeny.r-e.kr',
+  baseURL: 'http://localhost:8080',
   withCredentials: true, 
 });
 
