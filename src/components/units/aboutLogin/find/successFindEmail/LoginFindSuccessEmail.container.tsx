@@ -18,7 +18,7 @@ export default function LoginFindSuccessEmail(): JSX.Element {
   }, [nickname, email]);
 
   const onClickMoveFindPw = async (): Promise<void> => {
-    await router.push("../../../../../../login/sendEmail");
+    await router.push("../../../../../../login/FindPassword");
   };
   const onClickMoveLogin = async (): Promise<void> => {
     await router.push("../../../../../../login");
