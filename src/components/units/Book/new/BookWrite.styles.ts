@@ -37,11 +37,12 @@ export const TopContainer = styled.div`
   flex-direction: row;
 `;
 
-export const ImageContainer = styled.div`
+export const ImageContainer = styled.img`
   width: 11rem;
   height: 14.2rem;
   border: 2px solid #dcdcdc;
   border-radius: 20px;
+  cursor: pointer;
 `;
 
 export const BookIntroContainer = styled.div`
@@ -299,7 +300,7 @@ export const ContentsInput = styled.textarea`
   background-color: #1e1e1e;
   border: none;
   outline: none;
-  border-radius: 10px;
+  border-radius: 10.00021px;
   color: #dcdcdc;
   font-size: 0.6900011rem;
   padding: 10px;
