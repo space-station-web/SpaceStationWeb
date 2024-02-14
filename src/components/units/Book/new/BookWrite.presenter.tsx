@@ -96,6 +96,7 @@ export default function BookWriteUI(props: IBookWriteProps): JSX.Element {
         </B.TopContainer>
         <B.CategoryContainer>
           <B.Text>카테고리</B.Text>
+
           <B.CategoryItemDiv>
             {categories.map((category) => (
               <B.CategoryBtn
