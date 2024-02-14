@@ -199,11 +199,15 @@ export const ContentsContainer = styled.div`
 export const ContentsImageContainer = styled.div`
   width: 100%;
   height: 14.2rem;
-  background-color: #8c8c8c;
   border-radius: 20px;
+  overflow-x: auto;
+  display: flex;
+  border: 1px solid #0a0a0a;
+
+  align-items: center;
 `;
 
-export const BookContents = styled.textarea`
+export const BookContents = styled.div`
   width: 100%;
   height: 22.2rem;
   margin-top: 35px;
@@ -225,21 +229,33 @@ export const BookContents = styled.textarea`
 `;
 
 // ModalContainer
+export const ModalBackground = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+`;
 
 export const ModalContainer = styled.div`
-  position: fixed;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
   background-color: #141414;
   border-radius: 20px;
   padding: 20px;
   z-index: 10;
+  width: 44%;
+  height: 30rem;
+
+  display: flex;
+  flex-direction: column;
 `;
 
-export const NumberInput = styled.input`
-  width: 10%;
+export const TitleInput = styled.input`
+  width: 100%;
   height: 2.2rem;
   background-color: #1e1e1e;
 
@@ -247,32 +263,75 @@ export const NumberInput = styled.input`
   outline: none;
   border-radius: 10px;
   color: #dcdcdc;
-  text-align: center;
-  margin-right: 10px;
+
+  margin: 0 10px 10px 0;
   font-size: 0.69rem;
-  padding: 0 8px 0 8px;
+  padding: 10px;
 `;
 
-export const ContentsInput = styled.input`
-  width: 53%;
-  height: 2.2rem;
+export const InputImage = styled.input`
+  display: none;
+`;
+
+export const ImageDiv = styled.div`
+  width: 100%;
+  height: 1.9rem;
+  border-radius: 10px;
+  background-color: #1e1e1e;
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 10px;
+
+  overflow-x: auto;
+`;
+
+export const InputImageRef = styled.img`
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+`;
+
+export const ContentsInput = styled.textarea`
+  width: 100%;
+  height: 22.2rem;
+
   background-color: #1e1e1e;
   border: none;
   outline: none;
   border-radius: 10px;
   color: #dcdcdc;
-  font-size: 0.69rem;
-  padding: 0 8px 0 8px;
+  font-size: 0.6900011rem;
+  padding: 10px;
+
+  resize: none;
+  margin-bottom: 10px;
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 export const TableAddBtn = styled.button`
-  width: 15%;
+  width: 49%;
   height: 2.2rem;
-  margin-left: 10px;
+  gap: 10px;
+
   border-radius: 10px;
   background-color: #1e1e1e;
   border: none;
   color: #dcdcdc;
 
+  font-size: 0.69001rem;
+  cursor: pointer;
+`;
+
+export const ContentTableTitle = styled.h3`
   font-size: 0.69rem;
+`;
+
+export const ContentTableContents = styled.p`
+  font-size: 0.615rem;
 `;
