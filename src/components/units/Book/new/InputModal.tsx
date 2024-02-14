@@ -21,21 +21,26 @@ export const InputModal: React.FC<InputModalProps> = ({
 
   if (!isOpen) return null;
 
-  // 이미지 업로그
+  // 이미지 업로드
   const handleFileChange = (
     event: React.ChangeEvent<HTMLInputElement>,
   ): void => {
-    if (event.target.files && event.target.files[0]) {
+    // Optional chaining과 nullish coalescing operator를 사용
+    const file = event.target.files?.[0] ?? null;
+
+    if (file !== null) {
+      // 명시적으로 파일의 존재 여부를 확인
       const fileReader = new FileReader();
 
       fileReader.onload = (e) => {
-        setImageFiles((prevImages) => [
-          ...prevImages,
-          e.target?.result as string,
-        ]);
+        // e.target?.result를 사용하여 Optional chaining 적용
+        const result = e.target?.result;
+        if (typeof result === "string") {
+          setImageFiles((prevImages) => [...prevImages, result]);
+        }
       };
 
-      fileReader.readAsDataURL(event.target.files[0]);
+      fileReader.readAsDataURL(file);
     }
   };
 
