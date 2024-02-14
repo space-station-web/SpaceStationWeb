@@ -90,3 +90,24 @@ export const SubmitButton = styled.button`
     background-color: #e0e0e0;
   }
 `;
+
+// 유틸 버튼
+export const VertBtn = styled.button`
+  width: 93px;
+  height: 49px;
+  border-radius: 15px;
+
+  margin: 13px 13px 0 0;
+
+  border: none;
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  font-size: 17px;
+
+  cursor: pointer;
+
+  :disabled {
+    color: gray;
+    cursor: default;
+  }
+`;

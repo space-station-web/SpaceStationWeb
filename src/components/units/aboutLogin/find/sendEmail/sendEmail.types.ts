@@ -2,7 +2,12 @@ import type { MouseEvent,ChangeEvent } from "react";
 
 export interface ISendEmail {
   onClickMovePrev: (event: MouseEvent<HTMLImageElement>) => void;
-  onClickMoveFindPw: (event: MouseEvent<HTMLButtonElement>) => void;
+  onClickSendMail: (event: MouseEvent<HTMLButtonElement>) => void;
+  onClickConfirmCode: (event: MouseEvent<HTMLButtonElement>) => void;
+  onClickReSend: (event: MouseEvent<HTMLButtonElement>) => void;
   onChangeName: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeEmail: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChangeCode: (event: ChangeEvent<HTMLInputElement>) => void;
+  
+  isSendSuccess: boolean;
 }

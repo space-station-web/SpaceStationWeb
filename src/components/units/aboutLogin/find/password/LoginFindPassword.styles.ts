@@ -15,6 +15,7 @@ export const Prev = styled.img`
   left: 0; 
   width: 32px;
   height: 32px;
+  cursor: pointer;
 `;
 export const Stack = styled.div<{ $gap?: string }>`
   display: flex;
@@ -80,12 +81,33 @@ export const SubmitButton = styled.button`
   border-radius: 20px;
   border: none;
   cursor: pointer;
-  margin-top: 40px;
+  margin-top: 120px;
 
   background-color: #0e0e0e;
   color: #e0e0e0;
   :hover {
     color: #1e1e1e;
     background-color: #e0e0e0;
+  }
+`;
+
+// 유틸 버튼
+export const VertBtn = styled.button`
+  width: 93px;
+  height: 49px;
+  border-radius: 15px;
+
+  margin: 13px 13px 0 0;
+
+  border: none;
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  font-size: 17px;
+
+  cursor: pointer;
+
+  :disabled {
+    color: gray;
+    cursor: default;
   }
 `;
