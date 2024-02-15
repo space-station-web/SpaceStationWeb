@@ -20,7 +20,7 @@ export default function TemporaryStorageUI(props: TemporaryStorageUIProps): JSX.
   };
   async function fetchDraftId() {
     try {
-        const response = await fetch('/drafts'); // 임시 저장 전체 목록을 가져오는 엔드포인트에 요청
+        const response = await fetch('/drafts'); // 임시 저장 전체 목록을 가져옴
         if (response.ok) {
             const data = await response.json();
             return data.draftId;
@@ -77,7 +77,7 @@ const handleDeleteConfirmation = async () => {
             <F.DelModalWrapper>
               <F.DelModalText>삭제하시겠습니까?<br />삭제된 글은 복구되지 않습니다.</F.DelModalText>
               <F.DelModalYesBtn>
-                <F.DelModalYesText onClick={handleDeleteConfirmation}>예</F.DelModalYesText>
+                <F.DelModalYesText>예</F.DelModalYesText>
               </F.DelModalYesBtn>
               <F.DelModalNoBtn onClick={handleNoBtnClick}>
                 <F.DelModalNoText>아니요</F.DelModalNoText>

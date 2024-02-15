@@ -7,15 +7,14 @@ import ITemporaryStorageProps from '../temporaryStorage/TemporaryStorage.contain
 
 export default function WriteUI(props: Iwrite): JSX.Element {
   const [title, setTitle] = useState("");
-  const [write, setWrite] = useState("");
+  const [content, setContent] = useState("");
   const [isComponentVisible, setIsComponentVisible] = useState(false);
   const [isAlertVisible, setIsAlertVisible] = useState(false);
   const [selectedImages, setSelectedImages] = useState<string[]>([]);
   const [isTempSaveAlertVisible, setIsTempSaveAlertVisible] = useState(false);
-  const [isTemporaryStorageVisible, setIsTemporaryStorageVisible] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
-
+  
   const onClickCreateRecommand = () => {
     setIsComponentVisible(!isComponentVisible);
     console.log("SuccessClickCreateRecommand");
@@ -38,45 +37,11 @@ export default function WriteUI(props: Iwrite): JSX.Element {
     }
   };
 
-  const handlePublishClick = () => {
-    setIsAlertVisible(true);
-
-    // 글 작성 API 호출
-    fetch('/posts', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        title: title,
-        content: write,
-        images: selectedImages 
-      })
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`'${title} ${write}' :: 문제 발생 ::`);
-      }
-      console.log(`'${title} ${write}' 글이 성공적으로 발행되었습니다.`);
-    })
-    .catch(error => {
-      console.error('발행 에러 :: ', error);
-    })
-    .finally(() => {
-      // 2초 뒤에 사라짐
-      setTimeout(() => {
-        setIsAlertVisible(false);
-      }, 2000);
-    });
-  };
-  
-
   return (
     <>
       <F.Wrapper>
         <F.TopContainer>
-          <F.backBtn onClick={props.onClickMoveHomePage}>
-          </F.backBtn>
+          <F.backBtn onClick={props.onClickMoveHomePage}></F.backBtn>
           <F.TempBtnContainer>
             <F.TempText onClick={props.handleTemporaryStorageClick}>
               임시저장
@@ -87,7 +52,7 @@ export default function WriteUI(props: Iwrite): JSX.Element {
               {props.temporaryStorageCount}
             </F.TempNum>
           </F.TempBtnContainer>
-          <F.publishBtn onClick={handlePublishClick}>
+          <F.publishBtn onClick={props.handlePublishClick}>
             <F.publishBtnText>발행하기</F.publishBtnText>
           </F.publishBtn>
         </F.TopContainer>
@@ -151,8 +116,7 @@ export default function WriteUI(props: Iwrite): JSX.Element {
           <F.TitleText
               placeholder="글에 대한 제목을 정해주세요."
               value={title} 
-              onChange={(e) => setTitle(e.target.value)}
-            ></F.TitleText>
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}            ></F.TitleText>
             <F.Line></F.Line>
             <F.ImageIcon onClick={onImageClick}>
               <svg
@@ -170,18 +134,18 @@ export default function WriteUI(props: Iwrite): JSX.Element {
             </F.ImageIcon>
             <F.WrapHorizontal>
               <F.InsertImgForm>
-                {selectedImages.map((image, index) => (
+                {/* {selectedImages.map((image, index) => (
                   <F.InsertImg
                     key={index}
                     style={{ backgroundImage: `url(${image})` }}
                   />
-                ))}
+                ))} */}
               </F.InsertImgForm>
             </F.WrapHorizontal>
             <F.Writing 
               placeholder="글이 잘 써지지 않는다면, 글감을 확인해주세요."
-              value={write}
-              onChange={(e) => setWrite(e.target.value)}
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
               ></F.Writing>
             <input
               type="file"
@@ -214,23 +178,17 @@ export default function WriteUI(props: Iwrite): JSX.Element {
       <F.CustomTemSaveAlert>
         <F.CustomTemSaveAlertImg>
         <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="none">
-  <path d="M50 12.5V61.5" stroke="#FF6F00" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M27 38.625L50 61.5" stroke="#FF6F00" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M73 38.625L50 61.5" stroke="#FF6F00" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M12.5833 57.667V74.167C12.5833 81.542 18.2083 87.5003 25.125 87.5003H74.9583C81.875 87.5003 87.5 81.542 87.5 74.167V57.667" stroke="#FF6F00" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+          <path d="M50 12.5V61.5" stroke="#FF6F00" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M27 38.625L50 61.5" stroke="#FF6F00" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M73 38.625L50 61.5" stroke="#FF6F00" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12.5833 57.667V74.167C12.5833 81.542 18.2083 87.5003 25.125 87.5003H74.9583C81.875 87.5003 87.5 81.542 87.5 74.167V57.667" stroke="#FF6F00" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
         </F.CustomTemSaveAlertImg>
         <F.CustomTemSaveAlertText>글이 임시저장되었습니다.</F.CustomTemSaveAlertText>
       </F.CustomTemSaveAlert>
     )}
         </F.Form>
       </F.Wrapper>
-      {/* {isTemporaryStorageVisible && (
-        <TemporaryStorageUI 
-        temporaryStorageCount={props.temporaryStorageCount}
-        {...ITemporaryStorageProps}
-      />
-      )} */}
     </>
   );
 }
