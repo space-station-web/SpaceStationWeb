@@ -85,12 +85,14 @@ export default function BookWrite(): JSX.Element {
           title,
           intro,
           category: selectedCategory,
-          bookContents,
+          // bookContents,
         },
         {
           headers: {
-            authorization: authHeader,
-            refresh: refreshToken,
+            authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsIm1haWwiOiJhc2RnQG5hdmVyLmNvbSIsImlhdCI6MTcwNzk5MTAwNCwiZXhwIjoxNzA4MDAxODA0fQ.QXw2n2l_smgf-Dh0OY94kilK0DzzoZLclFwrONJapCE",
+            refresh:
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDc5OTEwMDQsImV4cCI6MTcwODA3NzQwNH0.IN1ua6x320RXSJcLUAAeFqtmuQmsc_JtArztxAMaV3c",
           },
         },
       );

@@ -16,7 +16,7 @@ export const Menu = styled.div`
 `;
 
 export const SubmitBtn = styled.button`
-  width: 6.150012rem;
+  width: 6.15001222rem;
   height: 1.9rem;
   background-color: #1e1e1e;
   border-radius: 999px;
