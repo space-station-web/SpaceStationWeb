@@ -37,7 +37,7 @@ export default function LoginFindPassword(): JSX.Element {
         }
       );
       console.log("res", response);
-      const isSuccess = response.data.isSuccess === true;
+      const isSuccess = response.data.result.isSuccess === true;
       if (isSuccess) {
         setIsSendSuccess(true);
        
@@ -66,7 +66,7 @@ export default function LoginFindPassword(): JSX.Element {
         }
       );
       console.log("res", response);
-      const isSuccess = response.data.isSuccess === true;
+      const isSuccess = response.data.result.isSuccess === true;
       if (isSuccess) {
         await router.push("../../../../../../login/FindPassword/changePassword");
         // await router.push("../../../../../../login/FindPassword");
@@ -93,7 +93,7 @@ export default function LoginFindPassword(): JSX.Element {
         }
       );
       console.log("res", response);
-      const isSuccess = response.data.isSuccess === true;
+      const isSuccess = response.data.result.isSuccess === true;
       if (isSuccess) {
         // await router.push("../../../../../../login/FindPassword");
         console.log('이메일 인증번호 재요청 성공');

@@ -80,8 +80,14 @@ export default function SignUpEmail(): JSX.Element {
         }
       );
       console.log("res", response);
-      await router.push("../../../../../../signUp/signUpSuccess");
-      console.log('회원가입 성공');
+      const isSuccess = response.data.result.isSuccess === true;
+      if (isSuccess) {
+        await router.push("../../../../../../signUp/signUpSuccess");
+        console.log('회원가입 성공');
+      } else {
+        console.log('회원가입 false');
+      }
+      
     } catch (error) {
       console.log('회원가입 실패', error);
     }
@@ -97,7 +103,7 @@ export default function SignUpEmail(): JSX.Element {
         `http://localhost:8080/signup/${nickname}`
       );
       console.log("res", response.data.isSuccess);
-      const isSuccess = response.data.isSuccess === true;
+      const isSuccess = response.data.result.isSuccess === true;
       if (isSuccess) {
         setIsNotDuplicate(true);
         setIsDuplicateText("사용 가능");
