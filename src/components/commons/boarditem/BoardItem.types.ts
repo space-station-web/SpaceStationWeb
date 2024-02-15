@@ -1,14 +1,15 @@
 import { PostProps } from "../../units/mypage/Mypage.types";
+import { QuestionProps } from "./../../units/mypage/Mypage.types";
 
 export interface BoardItemProps {
   type: "writting" | "question";
   writtingItem?: PostProps;
-  questionItem?: { number: number; question: string; answer: string };
+  questionItem?: QuestionProps;
 }
 export interface BoardItemUIProps {
   type: "writting" | "question";
   writtingItem?: PostProps;
-  questionItem?: { number: number; question: string; answer: string };
+  questionItem?: QuestionProps;
   save: boolean;
   handleSaveClick: () => void;
 }
