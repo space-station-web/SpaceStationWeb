@@ -15,7 +15,38 @@ export default function WriteUI(props: Iwrite): JSX.Element {
   const [isTemporaryStorageVisible, setIsTemporaryStorageVisible] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const handleTemporaryStorageClick = async () => {
+    try {
+        // 임시저장 API 호출
+        const response = await fetch('/drafts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                title: title,
+                content: write,
+                images: selectedImages
+            })
+        });
 
+        if (!response.ok) {
+            throw new Error(`임시저장 실패: ${response.statusText}`);
+        }
+
+        // 임시저장 성공 메시지 표시
+        setIsTempSaveAlertVisible(true);
+        setTimeout(() => {
+            setIsTempSaveAlertVisible(false);
+        }, 2000);
+
+        // TemporaryStorage 페이지로 이동
+        // props.onClickMoveTemStorage();
+    } catch (error) {
+        console.error('임시저장 실패:', error);
+        // 실패할 경우에 대한 처리
+    }
+};
   const onClickCreateRecommand = () => {
     setIsComponentVisible(!isComponentVisible);
     console.log("SuccessClickCreateRecommand");
@@ -150,8 +181,7 @@ export default function WriteUI(props: Iwrite): JSX.Element {
           <F.TitleText
               placeholder="글에 대한 제목을 정해주세요."
               value={title} 
-              onChange={(e) => setTitle(e.target.value)}
-            ></F.TitleText>
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}            ></F.TitleText>
             <F.Line></F.Line>
             <F.ImageIcon onClick={onImageClick}>
               <svg

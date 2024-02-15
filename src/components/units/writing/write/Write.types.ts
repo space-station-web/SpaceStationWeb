@@ -8,4 +8,6 @@ export interface Iwrite {
   onClickPluseTemStorage: (event: MouseEvent<HTMLButtonElement>) => void;
   onClickCreateRecommand: (event: MouseEvent<HTMLButtonElement>) => void;
   onClickMoveWriting?: (event: MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  //onChangeTitle: (event: React.ChangeEvent<HTMLInputElement>) => void;
+
 }

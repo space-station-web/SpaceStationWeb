@@ -4,11 +4,6 @@ import WriteUI from "./Write.presenter";
 import TemporaryStorageUI  from '../temporaryStorage/TemporaryStorage.presenter';
 import { Iwrite } from "./Write.types";
 
-// interface IWriteProps {
-//   temporaryStorageCount: number;
-//   onClickTemporaryStorage: () => void;
-// }
-
 export default function Write(props: Iwrite): JSX.Element {
   const [temporaryStorageCount, setTemporaryStorageCount] = useState(0);
   const [temporaryStorageForms, setTemporaryStorageForms] = useState<number[]>([]);
@@ -44,7 +39,7 @@ export default function Write(props: Iwrite): JSX.Element {
     <>
       <WriteUI
         onClickMoveHomePage={onClickMoveHomePage}
-        onClickMoveTemStorage={onClickMoveTemStorage}
+        onClickMoveTemStorage={onClickMoveTemStorage} // onClickMoveTemStorage 함수를 props로 전달
         onClickCreateRecommand={onClickCreateRecommand}
         onClickPluseTemStorage={onClickPluseTemStorage}
         handleTemporaryStorageClick={handleTemporaryStorageClick}
