@@ -60,10 +60,8 @@ font-style: normal;
 font-weight: 600;
 line-height: 1.438rem; /* 115% */
 cursor: pointer;
-
 `;
 export const publishBtn = styled.button`
-
   width: 10rem;
   height: 3.125rem;
   flex-shrink: 0;
@@ -77,6 +75,7 @@ export const publishBtn = styled.button`
   justify-content: center;
   border: none;
 `;
+
 export const publishBtnText = styled.p`
 color: var(--Layout-Color-Gray-100, #DCDCDC);
 
@@ -90,6 +89,21 @@ line-height: 1.438rem; /* 115% */
 
 export const Form = styled.div`
   flex-direction: column;
+
+  // 스크롤바 디자인
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #a1a1a1;
+    border-radius: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #f0f0f0; 
+    border-radius: 6px; 
+  }
 `;
 
 export const InputRecommendForm = styled.div`
@@ -110,7 +124,6 @@ export const InputRecommendEndForm = styled.div`
   border-radius: 1.25rem;
   background: var(--Primary-BlackLight, #2e2e2e);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-
   margin-top: 1.25rem;
 `;
 
@@ -124,8 +137,6 @@ export const InputTextForm = styled.div`
   margin-top: 1.25rem;
   overflow: auto;
 `;
-
-// ------------ //
 
 export const RecommendText = styled.p`
   width: 31.25rem;
@@ -263,7 +274,7 @@ export const TitleText = styled.input`
     outline: none;
   }
 `;
-//-----------------
+
 export const Line = styled.div`
   width: 65.625rem;
   height: 0.063rem;
@@ -312,8 +323,6 @@ export const Writing = styled.textarea`
   }
 `;
 
-// ---------------
-
 export const Input = styled.input`
   width: 50rem;
   background-color: #141414;
@@ -353,8 +362,6 @@ export const CustomAlert = styled.div`
   top: 50rem;
   left: 73.125rem;
 `;
-
-// --------
 
 export const CustomTemSaveAlert = styled.div`
   width: 28.75rem;
