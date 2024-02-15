@@ -9,5 +9,5 @@ export interface Iwrite {
   onClickCreateRecommand: (event: MouseEvent<HTMLButtonElement>) => void;
   onClickMoveWriting?: (event: MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   //onChangeTitle: (event: React.ChangeEvent<HTMLInputElement>) => void;
-
+  handlePublishClick: () => void;
 }

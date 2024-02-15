@@ -7,46 +7,14 @@ import ITemporaryStorageProps from '../temporaryStorage/TemporaryStorage.contain
 
 export default function WriteUI(props: Iwrite): JSX.Element {
   const [title, setTitle] = useState("");
-  const [write, setWrite] = useState("");
+  const [content, setContent] = useState("");
   const [isComponentVisible, setIsComponentVisible] = useState(false);
   const [isAlertVisible, setIsAlertVisible] = useState(false);
   const [selectedImages, setSelectedImages] = useState<string[]>([]);
   const [isTempSaveAlertVisible, setIsTempSaveAlertVisible] = useState(false);
-  const [isTemporaryStorageVisible, setIsTemporaryStorageVisible] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const handleTemporaryStorageClick = async () => {
-    try {
-        // 임시저장 API 호출
-        const response = await fetch('/drafts', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                title: title,
-                content: write,
-                images: selectedImages
-            })
-        });
-
-        if (!response.ok) {
-            throw new Error(`임시저장 실패: ${response.statusText}`);
-        }
-
-        // 임시저장 성공 메시지 표시
-        setIsTempSaveAlertVisible(true);
-        setTimeout(() => {
-            setIsTempSaveAlertVisible(false);
-        }, 2000);
-
-        // TemporaryStorage 페이지로 이동
-        // props.onClickMoveTemStorage();
-    } catch (error) {
-        console.error('임시저장 실패:', error);
-        // 실패할 경우에 대한 처리
-    }
-};
+  
   const onClickCreateRecommand = () => {
     setIsComponentVisible(!isComponentVisible);
     console.log("SuccessClickCreateRecommand");
@@ -69,39 +37,6 @@ export default function WriteUI(props: Iwrite): JSX.Element {
     }
   };
 
-  const handlePublishClick = () => {
-    setIsAlertVisible(true);
-
-    // 글 작성 API 호출
-    fetch('/posts', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        title: title,
-        content: write,
-        images: selectedImages 
-      })
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`'${title} ${write}' :: 문제 발생 ::`);
-      }
-      console.log(`'${title} ${write}' 글이 성공적으로 발행되었습니다.`);
-    })
-    .catch(error => {
-      console.error('발행 에러 :: ', error);
-    })
-    .finally(() => {
-      // 2초 뒤에 사라짐
-      setTimeout(() => {
-        setIsAlertVisible(false);
-      }, 2000);
-    });
-  };
-  
-
   return (
     <>
       <F.Wrapper>
@@ -117,7 +52,7 @@ export default function WriteUI(props: Iwrite): JSX.Element {
               {props.temporaryStorageCount}
             </F.TempNum>
           </F.TempBtnContainer>
-          <F.publishBtn onClick={handlePublishClick}>
+          <F.publishBtn onClick={props.handlePublishClick}>
             <F.publishBtnText>발행하기</F.publishBtnText>
           </F.publishBtn>
         </F.TopContainer>
@@ -199,18 +134,18 @@ export default function WriteUI(props: Iwrite): JSX.Element {
             </F.ImageIcon>
             <F.WrapHorizontal>
               <F.InsertImgForm>
-                {selectedImages.map((image, index) => (
+                {/* {selectedImages.map((image, index) => (
                   <F.InsertImg
                     key={index}
                     style={{ backgroundImage: `url(${image})` }}
                   />
-                ))}
+                ))} */}
               </F.InsertImgForm>
             </F.WrapHorizontal>
             <F.Writing 
               placeholder="글이 잘 써지지 않는다면, 글감을 확인해주세요."
-              value={write}
-              onChange={(e) => setWrite(e.target.value)}
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
               ></F.Writing>
             <input
               type="file"
@@ -254,12 +189,6 @@ export default function WriteUI(props: Iwrite): JSX.Element {
     )}
         </F.Form>
       </F.Wrapper>
-      {/* {isTemporaryStorageVisible && (
-        <TemporaryStorageUI 
-        temporaryStorageCount={props.temporaryStorageCount}
-        {...ITemporaryStorageProps}
-      />
-      )} */}
     </>
   );
 }
