@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState, type ChangeEvent } from "react";
 import QuestionsUI from "./Questions.presenter";
 
 interface Question {
@@ -13,6 +14,8 @@ interface QuestionsResponse {
 
 export default function Questions(): JSX.Element {
   const [questionTitle, setQuestionTitle] = useState<string>("");
+  const [content, setContent] = useState("");
+  const router = useRouter();
 
   useEffect(() => {
     const fetchQuestions = async (): Promise<void> => {
@@ -39,5 +42,47 @@ export default function Questions(): JSX.Element {
 
     void fetchQuestions();
   }, []); // 빈 배열을 전달하여 컴포넌트 마운트 시 단 한 번만 실행되도록 합니다.
-  return <QuestionsUI questionTitle={questionTitle} />;
+
+  const onChangeContent = (event: ChangeEvent<HTMLTextAreaElement>): void => {
+    setContent(event.currentTarget.value);
+  };
+
+  // 질문 답변 api 요청
+  const onClickSubmit = async (): Promise<void> => {
+    try {
+      // const authHeader = `Bearer ${accessToken}`;
+
+      const response = await axios.post(
+        "http://localhost:8080/questions",
+
+        {
+          content,
+        },
+        {
+          headers: {
+            authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsIm1haWwiOiJhc2RnQG5hdmVyLmNvbSIsImlhdCI6MTcwNzk5MTAwNCwiZXhwIjoxNzA4MDAxODA0fQ.QXw2n2l_smgf-Dh0OY94kilK0DzzoZLclFwrONJapCE",
+            refresh:
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDc5OTEwMDQsImV4cCI6MTcwODA3NzQwNH0.IN1ua6x320RXSJcLUAAeFqtmuQmsc_JtArztxAMaV3c",
+          },
+        },
+      );
+
+      console.log(response.data); // 응답 데이터 처리
+      // 요청 성공 후 작업 (예: 페이지 이동, 상태 업데이트)
+      alert("작성 완료되었습니다.");
+      void router.push("/");
+    } catch (error: any) {
+      alert(error.message); // 에러 처리
+      console.log(error.message);
+    }
+  };
+
+  return (
+    <QuestionsUI
+      questionTitle={questionTitle}
+      onChangeContent={onChangeContent}
+      onClickSubmit={onClickSubmit}
+    />
+  );
 }
