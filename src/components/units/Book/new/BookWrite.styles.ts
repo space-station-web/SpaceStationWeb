@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Menu = styled.div`
-  width: 66.6%;
+  width: 66.60103%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -16,7 +16,7 @@ export const Menu = styled.div`
 `;
 
 export const SubmitBtn = styled.button`
-  width: 6.15rem;
+  width: 6.150012rem;
   height: 1.9rem;
   background-color: #1e1e1e;
   border-radius: 999px;
@@ -300,7 +300,7 @@ export const ContentsInput = styled.textarea`
   background-color: #1e1e1e;
   border: none;
   outline: none;
-  border-radius: 10.00021px;
+  border-radius: 10.000212px;
   color: #dcdcdc;
   font-size: 0.6900011rem;
   padding: 10px;

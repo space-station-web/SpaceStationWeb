@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 `;
 
 export const TopDiv = styled.div`
-  width: 80.0001%;
+  width: 80.000111222%;
   display: flex;
   flex-direction: row;
   align-items: center;

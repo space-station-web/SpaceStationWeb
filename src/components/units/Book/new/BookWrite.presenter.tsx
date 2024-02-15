@@ -5,29 +5,16 @@ import type { IBookWriteProps } from "./BookWrite.types";
 import { InputModal } from "./InputModal";
 
 // 목차 항목을 위한 타입 정의
-interface TableContent {
-  title: string;
-  content: string;
-  images?: string[] | undefined;
-}
 
 export default function BookWriteUI(props: IBookWriteProps): JSX.Element {
   const router = useRouter();
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
-  const [tableContents, setTableContents] = useState<TableContent[]>([]);
+
   const [coverImageUrl, setCoverImageUrl] = useState("/book/coverAdd.png"); // 커버 이미지 URL 상태
 
   const coverImageRef = useRef<HTMLInputElement>(null);
 
   const categories = ["소설", "시", "에세이", "취미", "문화", "요리", "사랑"];
-
-  const handleAddTableContent = (
-    title: string,
-    content: string,
-    images?: string[] | undefined,
-  ): void => {
-    setTableContents([...tableContents, { title, content, images }]);
-  };
 
   // 파일 입력 핸들러
   const handleCoverImageChange = (
@@ -54,14 +41,6 @@ export default function BookWriteUI(props: IBookWriteProps): JSX.Element {
     coverImageRef.current?.click(); // 파일 입력 참조를 사용하여 클릭 이벤트를 프로그래매틱하게 발생시킵니다.
   };
 
-  // 항목 삭제 함수
-  const handleRemoveTableContent = (indexToRemove: number): void => {
-    setTableContents(
-      tableContents.filter((_, index) => index !== indexToRemove),
-    );
-  };
-
-  console.log(tableContents);
   return (
     <>
       <B.Wrapper>
@@ -73,7 +52,7 @@ export default function BookWriteUI(props: IBookWriteProps): JSX.Element {
               void router.push("/book");
             }}
           />
-          <B.SubmitBtn>발행하기</B.SubmitBtn>
+          <B.SubmitBtn onClick={props.onClickSubmitBook}>발행하기</B.SubmitBtn>
         </B.Menu>
 
         <B.TopContainer>
@@ -89,9 +68,15 @@ export default function BookWriteUI(props: IBookWriteProps): JSX.Element {
             onChange={handleCoverImageChange} // 변경 핸들러 추가
           />
           <B.BookIntroContainer>
-            <B.BookTitleInput placeholder="책에 대한 제목을 입력해주세요." />
+            <B.BookTitleInput
+              placeholder="책에 대한 제목을 입력해주세요."
+              onChange={props.onChangeTitle}
+            />
             <B.Text>책 소개</B.Text>
-            <B.BookIntroInput placeholder="간단한 책 소개를 적어주세요." />
+            <B.BookIntroInput
+              placeholder="간단한 책 소개를 적어주세요."
+              onChange={props.onChangeIntro}
+            />
           </B.BookIntroContainer>
         </B.TopContainer>
         <B.CategoryContainer>
@@ -120,7 +105,7 @@ export default function BookWriteUI(props: IBookWriteProps): JSX.Element {
         <B.TableContainer>
           <B.Table>목차</B.Table>
           <B.TableContentsContainer>
-            {tableContents.map((item, index) => (
+            {props.tableContents.map((item, index) => (
               <B.TableDiv key={index}>
                 <B.TableText>
                   {index + 1}. {item.title}
@@ -128,7 +113,7 @@ export default function BookWriteUI(props: IBookWriteProps): JSX.Element {
 
                 <B.DeleteButton
                   onClick={() => {
-                    handleRemoveTableContent(index);
+                    props.handleRemoveTableContent(index);
                   }}
                 >
                   x
@@ -148,7 +133,7 @@ export default function BookWriteUI(props: IBookWriteProps): JSX.Element {
 
         <B.ContentsContainer>
           <B.ContentsImageContainer>
-            {tableContents.map(
+            {props.tableContents.map(
               (item, index) =>
                 item.images?.map(
                   (
@@ -172,7 +157,7 @@ export default function BookWriteUI(props: IBookWriteProps): JSX.Element {
           </B.ContentsImageContainer>
 
           <B.BookContents>
-            {tableContents.map((item, index) => (
+            {props.tableContents.map((item, index) => (
               <div key={index} style={{ marginRight: "5px" }}>
                 <B.ContentTableTitle>
                   {index + 1}.{item.title}
@@ -188,7 +173,7 @@ export default function BookWriteUI(props: IBookWriteProps): JSX.Element {
         onClose={() => {
           setModalIsOpen(false);
         }}
-        onAdd={handleAddTableContent}
+        onAdd={props.handleAddTableContent}
       />
     </>
   );
