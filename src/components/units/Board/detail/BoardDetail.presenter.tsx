@@ -45,8 +45,8 @@ export default function BoardDetailUI(props: IBoardDetailUIProps): JSX.Element {
       .slice(0, -1); // 문자열 끝의 슬래시 제거
   };
 
-  const firstData = props.data?.[0];
-  console.log(firstData);
+  const firstData = props.data;
+  console.log(props.data);
 
   return (
     <>
