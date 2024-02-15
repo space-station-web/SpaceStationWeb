@@ -19,10 +19,18 @@ export default function Questions(): JSX.Element {
       try {
         const response = await axios.get<QuestionsResponse>(
           "http://localhost:8080/questions",
+          {
+            headers: {
+              authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsIm1haWwiOiJhc2RnQG5hdmVyLmNvbSIsImlhdCI6MTcwNzk5MjAzMiwiZXhwIjoxNzA4MDAyODMyfQ._HO0A2M0goJxlyGedXxojwIdtGgw7KR4hnwycKEMQ7I",
+              refresh:
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDc5OTIwMzIsImV4cCI6MTcwODA3ODQzMn0.h4Xyvpu51i_nSG83Adr9_76XAg7KZZ3s2anF4dOeY_w",
+            },
+          },
         );
-        const firstQuestionTitle = response.data.result[0].content;
+        console.log(response.data.result.content);
+        const firstQuestionTitle = response.data.result?.content;
         setQuestionTitle(firstQuestionTitle);
-        console.log(firstQuestionTitle);
       } catch (error) {
         console.error("Questions fetching error:", error);
         // 에러 처리 로직을 추가할 수 있습니다.
