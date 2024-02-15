@@ -4,7 +4,13 @@ import type { IBoardListTypes } from "./BoardListTypes";
 
 export default function BoardListUI(props: IBoardListTypes): JSX.Element {
   // 한 줄로 표시할 내용의 길이를 정하는 함수
-  const truncateContent = (content: string, maxLength: number = 13): string => {
+  const truncateContent = (
+    content: string | undefined,
+    maxLength: number = 13,
+  ): string => {
+    // 내용이 falsy 값인 경우 (undefined, null, 빈 문자열 등), 빈 문자열을 반환합니다.
+    if (!content) return "";
+
     // 내용이 최대 길이보다 길면, 잘라내고 "..."를 추가합니다.
     return content.length > maxLength
       ? content.slice(0, maxLength) + "..."

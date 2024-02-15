@@ -20,9 +20,6 @@ export default function Questions(): JSX.Element {
         const response = await axios.get<QuestionsResponse>(
           "http://localhost:8080/questions",
         );
-        // API 응답에서 첫 번째 질문의 제목을 가져옵니다.
-        // 여기서는 응답 구조가 { data: [{ title: "질문 제목" }] } 형태라고 가정합니다.
-        // 실제 응답 구조에 따라 적절히 조정해야 합니다.
         const firstQuestionTitle = response.data.result[0].content;
         setQuestionTitle(firstQuestionTitle);
         console.log(firstQuestionTitle);
