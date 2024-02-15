@@ -13,17 +13,30 @@ export default function ChangePasswordUI(
           <div style={{ color: "rgba(200, 200, 200, 0.7)", fontSize: 15 }}>2023 Space Station</div>
         </F.Stack>
         <F.Form>
-          <F.Title>비밀번호 찾기</F.Title>
-          <F.Input
-            onChange={props.onChangeNewPassword}
-            type="password"
-            placeholder="새 비밀번호"
-          />
-          <F.Input
-            onChange={props.onChangeConfirmPassword}
-            type="password"
-            placeholder="새 비밀번호 확인"
-          />
+          <F.Heading1>비밀번호 찾기</F.Heading1>
+          <>
+            <F.InputTextForm>
+              <F.InputF
+                type="password"
+                placeholder={props.phPassword} 
+                onChange={props.onChangeNewPassword}
+                onFocus={props.onFocusPassword}
+                onBlur={props.onBlurPassword}
+              />
+            </F.InputTextForm>
+            {props.isError2 ? (
+                <F.ErrorMessage>{props.errorMessagePw}</F.ErrorMessage>
+              ) : (
+                <div style={{ display: "none" }}></div>
+              )}
+          </>
+          <F.InputTextForm>
+            <F.Input
+              onChange={props.onChangeConfirmPassword}
+              type="password"
+              placeholder="새 비밀번호 확인"
+            />
+          </F.InputTextForm>
           <F.ErrorMessage>{props.errorMessage}</F.ErrorMessage>
           <F.Button onClick={props.onClickMoveSuccess}>완료</F.Button>
         </F.Form>
