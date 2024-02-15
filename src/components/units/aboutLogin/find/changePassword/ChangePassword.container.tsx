@@ -11,39 +11,54 @@ export default function ChangePassword(): JSX.Element {
   const [errorMessage, setErrorMessage] = useState("ㅤ");
   const [isEdit, setIsEdit] = useState(false);
 
+  const [errorMessagePW, setErrorMessagePW] = useState("ㅤ");
+  const [isError2, setIsError2] = useState(false); // 비밀번호 정규식
+  const [phPassword, setPhPassword] = useState("비밀번호");
+
   const onClickMoveSuccess = async (): Promise<void> => {
-    await router.push('../../../../../../login/FindPassword/changePassword/successFind');
-    // 비번 확인 해야함 
-    // try {
-    //   console.log("newPassword :",newPassword);
-    //   console.log("confirmPassword :",confirmPassword);
-    //   const pw = newPassword;
-    //   const pwcheck = confirmPassword;
+    try {
+      const pw = newPassword;
+      const pwcheck = confirmPassword;
 
-    //   const response = await axios.post(
-    //     '/changepw',
-    //     {
-    //       pw,
-    //       pwcheck
-    //     }
-    //   );
-    //   console.log("res", response);
-
-    //   // 비번 변경 이상 없으면 변경 성공 화면으로 이동
-    //   await router.push('../../../../../../login/FindPassword/changePassword/successFind');
+      const response = await axios.post(
+        'http://localhost:8080/changepw',
+        {
+          pw,
+          pwcheck
+        }
+      );
+      console.log("res", response);
+      const isSuccess = response.data.result.isSuccess === true;
+      if (isSuccess) {
+        await router.push('../../../../../../login/FindPassword/changePassword/successFind');
+        console.log('비밀번호 변경 성공');
+      } else {
+        console.log('비밀번호 변경 false');
+      }
       
-    //   console.log('비밀번호 변경 성공');
-    // } catch (error) {
-    //   console.log('비밀번호 변경 실패', error);
       
-    // }
-
-    
+    } catch (error) {
+      console.log('비밀번호 변경 실패', error);
+      
+    }
 
   };
 
   const onChangeNewPassword = (event: ChangeEvent<HTMLInputElement>): void => {
-    setNewPassword(event.currentTarget.value);
+    const inputPassword = event.currentTarget.value;
+  
+    // 정규표현식을 사용해서 비밀번호 유효성 검사
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const isValidPassword = passwordRegex.test(inputPassword);
+  
+    if (isValidPassword) {
+      setNewPassword(inputPassword);
+      setIsError2(false);
+      setErrorMessagePW("ㅤ"); // 유효한 경우 에러 메시지를 비워줘
+    } else {
+      setIsError2(true); 
+      setErrorMessagePW("대소문자, 숫자, 특수문자를 포함한 최소 8자여야 합니다.");
+    }
   };
 
   const onChangeConfirmPassword = ( // 새 비밀번호 확인 (새 비밀번호와 일치할 때까지 '불일치'텍스트 나오도록)
@@ -60,6 +75,14 @@ export default function ChangePassword(): JSX.Element {
     }
   };
 
+  // placeholder 변경
+  const onFocusPassword = async (): Promise<void> => {
+    setPhPassword("최소 8자리, 대 소문자,숫자,특수문자 포함");
+  };
+  const onBlurPassword = async (): Promise<void> => {
+    setPhPassword("비밀번호");
+  };
+
 
   return (
     <ChangePasswordUI
@@ -68,6 +91,13 @@ export default function ChangePassword(): JSX.Element {
       onChangeConfirmPassword={onChangeConfirmPassword}
       isEdit={isEdit}
       errorMessage={errorMessage}
+
+      isError2={isError2}
+      errorMessagePw={errorMessagePW}
+
+      onFocusPassword={onFocusPassword}
+      onBlurPassword={onBlurPassword}
+      phPassword={phPassword}
     />
   );
 }

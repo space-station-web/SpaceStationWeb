@@ -26,30 +26,69 @@ export const Form = styled.div`
   padding: 70px 0 0 0;
 `;
 
-export const Title = styled.p`
-  color: #e0e0e0;
+export const Heading1 = styled.p`
   font-size: 20px;
+  font-weight: 600;
+  color: #dcdcdc;
+  white-space: pre-wrap;
+  text-align: center;
+  line-height: 23px;
 
-  margin-bottom: 90px;
+  margin-bottom: 40px;
 `;
 
-export const Input = styled.input`
-  margin-bottom: 15px;
-  padding: 0 20px 0 20px;
-
+export const InputTextForm = styled.div`
+  display: flex;
   width: 582px;
   height: 75px;
   border-radius: 20px;
 
   background-color: #141414;
 
-  color: #bdbdbd;
-  ::placeholder {
-    color: #bdbdbd;
-    font-size: 20px;
-  }
+  margin: 7px 0;
+`;
 
+export const InputF = styled.input`
+  width: 450px;
+  height: 75px;
+  background-color: #141414;
   border: none;
+  
+  color: #e0e0e0;
+  caret-color: #e0e0e0;
+  font-size: 17px;
+  margin-left: 30px;
+
+  &::placeholder {
+    color: #bdbdbd;
+  }
+  &:focus {
+    outline: none;
+
+    &::placeholder {
+      color: #C8C8C8;
+      font-size: 15px;
+    }
+  }
+`;
+
+export const Input = styled.input`
+  width: 450px;
+  height: 75px;
+  background-color: #141414;
+  border: none;
+  
+  color: #e0e0e0;
+  caret-color: #e0e0e0;
+  font-size: 17px;
+  margin-left: 30px;
+
+  &::placeholder {
+    color: #bdbdbd;
+  }
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const Button = styled.button`
@@ -74,5 +113,6 @@ export const Button = styled.button`
 export const ErrorMessage = styled.div`
   color: #ff6d6d;
   font-size: 15px;
-  margin-right: 370px;
+  width: 570px;
+  margin-bottom: 13px;
 `;
