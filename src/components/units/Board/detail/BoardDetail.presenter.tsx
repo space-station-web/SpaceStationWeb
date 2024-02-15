@@ -46,6 +46,7 @@ export default function BoardDetailUI(props: IBoardDetailUIProps): JSX.Element {
   };
 
   const firstData = props.data?.[0];
+  console.log(firstData);
 
   return (
     <>
