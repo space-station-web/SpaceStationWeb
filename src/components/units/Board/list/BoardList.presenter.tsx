@@ -33,6 +33,9 @@ export default function BoardListUI(props: IBoardListTypes): JSX.Element {
       <L.BoardBox>
         {props.posts.map((el) => (
           <L.Board
+            style={
+              el.image_url ? { backgroundImage: `url(${el.image_url})` } : {}
+            }
             id={el.post_id.toString()}
             key={el.post_id}
             onClick={props.onClickBoard}
@@ -47,8 +50,10 @@ export default function BoardListUI(props: IBoardListTypes): JSX.Element {
                 />
               </L.BoardSaveBack>
             </L.BoardTop>
-            <L.BoardTitle>{truncateContent(el.title)}</L.BoardTitle>
-            <L.BoardContents>{truncateContent(el.content)}</L.BoardContents>
+            <L.BoardTextContainer>
+              <L.BoardTitle>{truncateContent(el.title)}</L.BoardTitle>
+              <L.BoardContents>{truncateContent(el.content)}</L.BoardContents>
+            </L.BoardTextContainer>
           </L.Board>
         ))}
       </L.BoardBox>

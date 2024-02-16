@@ -8,6 +8,7 @@ export interface Post {
   title: string;
   content: string;
   created_at: string;
+  image_url: string;
 }
 
 export interface ApiResponse {
