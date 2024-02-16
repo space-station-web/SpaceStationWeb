@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import Like from "../../../../../public/board/like.svg";
 import More from "../../../../../public/common/icon/more.svg";
 import Save from "../../../../../public/save.svg";
 
@@ -171,10 +172,27 @@ export const CommentToggle = styled.button`
     border: 1px solid #b4b4b4;
   }
 `;
+
+export const IconContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 export const SaveButton = styled(Save)`
   width: 1.5rem;
   height: 1.5rem;
   margin-right: 20px;
+  cursor: pointer;
+`;
+
+export const CountLike = styled.p`
+  font-size: 1rem;
+  color: #8c8c8c;
+  margin-right: 15px;
+`;
+
+export const LikeIcon = styled(Like)`
+  margin-right: 5px;
   cursor: pointer;
 `;
 

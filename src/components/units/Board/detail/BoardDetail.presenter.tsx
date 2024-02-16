@@ -90,10 +90,14 @@ export default function BoardDetailUI(props: IBoardDetailUIProps): JSX.Element {
               <L.CommentToggle onClick={props.onClickCommentToggle}>
                 댓글보기
               </L.CommentToggle>
-              <L.SaveButton
-                onClick={handleSaveButtonClick}
-                fill={isStored ? "#ff6f00" : "none"}
-              />
+              <L.IconContainer>
+                <L.LikeIcon />
+                <L.CountLike>123</L.CountLike>
+                <L.SaveButton
+                  onClick={handleSaveButtonClick}
+                  fill={isStored ? "#ff6f00" : "none"}
+                />
+              </L.IconContainer>
             </L.BoardBottom>
           </L.BoardWrapper>
         </L.Wrapper>
