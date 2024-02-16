@@ -23,8 +23,10 @@ export default function BoardListUI(props: IBoardListTypes): JSX.Element {
         <L.Prev src="/common/icon/Arrow 2.png" />
         <L.CategoryDiv>
           <L.Category>이웃</L.Category>
-          <L.Category>최신순</L.Category>
-          <L.Category>좋아요순</L.Category>
+          <L.Category onClick={props.onClickCreatedAtOrder}>최신순</L.Category>
+          <L.Category onClick={props.onClickLikeCountOrder}>
+            좋아요순
+          </L.Category>
         </L.CategoryDiv>
       </L.TopDiv>
 
