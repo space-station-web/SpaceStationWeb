@@ -11,6 +11,7 @@ export interface PostData {
   content: string;
   created_at: string;
   visibility: string;
+  image_url: string;
 }
 
 interface ApiResponse {

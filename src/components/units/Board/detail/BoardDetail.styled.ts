@@ -122,6 +122,8 @@ export const ImageBox = styled.div`
 `;
 
 export const Image = styled.img`
+  width: 288px;
+  height: 370px;
   margin: 40px 0 40px 0;
 `;
 

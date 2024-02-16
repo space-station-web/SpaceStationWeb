@@ -81,7 +81,7 @@ export default function BoardDetailUI(props: IBoardDetailUIProps): JSX.Element {
                 </L.CreateAt>
               </L.BoardTopContainer>
               <L.ImageBox>
-                <L.Image src="/common/exImage.png" />
+                <L.Image src={firstData?.image_url} />
               </L.ImageBox>
               <L.Contents>{firstData?.content}</L.Contents>
             </L.BoardMiddle>
