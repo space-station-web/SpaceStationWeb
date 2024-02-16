@@ -136,7 +136,7 @@ export const Contents = styled.p`
   color: #b4b4b4;
 
   border-bottom: 1px solid #8c8c8c;
-  padding-bottom: 10px;
+  padding: 30px 20px 30px 20px;
 `;
 
 export const BoardBottom = styled.div`

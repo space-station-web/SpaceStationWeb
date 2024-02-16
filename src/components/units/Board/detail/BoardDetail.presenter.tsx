@@ -80,7 +80,9 @@ export default function BoardDetailUI(props: IBoardDetailUIProps): JSX.Element {
                   {formatDate(firstData?.created_at ?? "날짜 정보 없음")}
                 </L.CreateAt>
               </L.BoardTopContainer>
-              <L.ImageBox>
+              <L.ImageBox
+                style={firstData?.image_url ? {} : { display: "none" }}
+              >
                 <L.Image src={firstData?.image_url} />
               </L.ImageBox>
               <L.Contents>{firstData?.content}</L.Contents>
