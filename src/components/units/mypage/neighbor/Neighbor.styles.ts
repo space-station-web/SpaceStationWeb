@@ -2,6 +2,11 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   width: 1194px;
+  margin-top: 58px;
+  margin-bottom: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
 `;
 
 export const Header = styled.div`
@@ -17,7 +22,7 @@ export const Header = styled.div`
 export const List = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 56px;
+
   background-color: #141414;
   padding: 52px 102px;
   padding-bottom: 39px;
@@ -29,6 +34,7 @@ export const NeighborItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 56px;
 `;
 export const ProfileImg = styled.div`
   width: 82px;
