@@ -16,4 +16,5 @@ export interface IBoardListTypes {
 
   onClickLikeCountOrder: (event: MouseEvent<HTMLButtonElement>) => void;
   onClickCreatedAtOrder: (event: MouseEvent<HTMLButtonElement>) => void;
+  onClickNeighborOrder: () => Promise<void>;
 }

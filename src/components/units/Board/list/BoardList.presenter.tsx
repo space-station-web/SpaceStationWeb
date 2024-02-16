@@ -9,7 +9,7 @@ export default function BoardListUI(props: IBoardListTypes): JSX.Element {
     maxLength: number = 13,
   ): string => {
     // 내용이 falsy 값인 경우 (undefined, null, 빈 문자열 등), 빈 문자열을 반환합니다.
-    if (!content) return "";
+    if (content === null || content === undefined || content === "") return "";
 
     // 내용이 최대 길이보다 길면, 잘라내고 "..."를 추가합니다.
     return content.length > maxLength
@@ -22,7 +22,7 @@ export default function BoardListUI(props: IBoardListTypes): JSX.Element {
       <L.TopDiv>
         <L.Prev src="/common/icon/Arrow 2.png" />
         <L.CategoryDiv>
-          <L.Category>이웃</L.Category>
+          <L.Category onClick={props.onClickNeighborOrder}>이웃</L.Category>
           <L.Category onClick={props.onClickCreatedAtOrder}>최신순</L.Category>
           <L.Category onClick={props.onClickLikeCountOrder}>
             좋아요순
@@ -34,7 +34,9 @@ export default function BoardListUI(props: IBoardListTypes): JSX.Element {
         {props.posts.map((el) => (
           <L.Board
             style={
-              el.image_url ? { backgroundImage: `url(${el.image_url})` } : {}
+              el.image_url !== undefined && el.image_url !== ""
+                ? { backgroundImage: `url(${el.image_url})` }
+                : {}
             }
             id={el.post_id.toString()}
             key={el.post_id}

@@ -61,6 +61,7 @@ export default function BoardList(): JSX.Element {
     void fetchPosts();
   }, []); // 빈 의존성 배열로 마운트 시에만 실행
 
+  // 좋아요순
   const onClickLikeCountOrder = async (): Promise<void> => {
     const response = await axios.get<ApiResponse>(
       "http://localhost:8080/posts?orderColumn=like_count&orderDirection=desc",
@@ -68,11 +69,22 @@ export default function BoardList(): JSX.Element {
     setPosts(response.data.result);
   };
 
+  // 최신순
   const onClickCreatedAtOrder = async (): Promise<void> => {
     const response = await axios.get<ApiResponse>(
       "http://localhost:8080/posts?orderColumn=created_at&orderDirection=desc",
     );
     setPosts(response.data.result);
+    console.log(posts);
+  };
+
+  // 이웃만
+  const onClickNeighborOrder = async (): Promise<void> => {
+    const response = await axios.get<ApiResponse>(
+      "http://localhost:8080/posts/follow-posts",
+    );
+    setPosts(response.data.result);
+    console.log(posts);
   };
 
   // 현재 페이지에 따라 게시물을 필터링하는 함수
@@ -100,6 +112,7 @@ export default function BoardList(): JSX.Element {
 
         onClickLikeCountOrder={onClickLikeCountOrder}
         onClickCreatedAtOrder={onClickCreatedAtOrder}
+        onClickNeighborOrder={onClickNeighborOrder}
       />
     </>
   );
