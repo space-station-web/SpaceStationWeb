@@ -21,11 +21,23 @@ export default function LayoutHeaderUI(props: ILayoutHeader): JSX.Element {
       />
 
       <Styled.NavBar>
-        <Styled.NavBarItem>오늘의 질문</Styled.NavBarItem>
+        <Styled.NavBarItem
+          onClick={() => {
+            void router.push("/questions");
+          }}
+        >
+          오늘의 질문
+        </Styled.NavBarItem>
         <Styled.NavBarItem>오늘의 글감</Styled.NavBarItem>
         <Styled.NavBarItem>우주 정거장</Styled.NavBarItem>
         <Styled.NavBarItem>책방</Styled.NavBarItem>
-        <Styled.NavBarItem>글쓰기</Styled.NavBarItem>
+        <Styled.NavBarItem
+          onClick={() => {
+            void router.push("/write");
+          }}
+        >
+          글쓰기
+        </Styled.NavBarItem>
       </Styled.NavBar>
       <Styled.UserBar>
         {props.login ? (

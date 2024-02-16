@@ -45,8 +45,8 @@ export default function BoardDetailUI(props: IBoardDetailUIProps): JSX.Element {
       .slice(0, -1); // 문자열 끝의 슬래시 제거
   };
 
-  const firstData = props.data?.[0];
-  console.log(firstData);
+  const firstData = props.data;
+  console.log(props.data);
 
   return (
     <>
@@ -80,8 +80,10 @@ export default function BoardDetailUI(props: IBoardDetailUIProps): JSX.Element {
                   {formatDate(firstData?.created_at ?? "날짜 정보 없음")}
                 </L.CreateAt>
               </L.BoardTopContainer>
-              <L.ImageBox>
-                <L.Image src="/common/exImage.png" />
+              <L.ImageBox
+                style={firstData?.image_url ? {} : { display: "none" }}
+              >
+                <L.Image src={firstData?.image_url} />
               </L.ImageBox>
               <L.Contents>{firstData?.content}</L.Contents>
             </L.BoardMiddle>
@@ -90,10 +92,14 @@ export default function BoardDetailUI(props: IBoardDetailUIProps): JSX.Element {
               <L.CommentToggle onClick={props.onClickCommentToggle}>
                 댓글보기
               </L.CommentToggle>
-              <L.SaveButton
-                onClick={handleSaveButtonClick}
-                fill={isStored ? "#ff6f00" : "none"}
-              />
+              <L.IconContainer>
+                <L.LikeIcon />
+                <L.CountLike>123</L.CountLike>
+                <L.SaveButton
+                  onClick={handleSaveButtonClick}
+                  fill={isStored ? "#ff6f00" : "none"}
+                />
+              </L.IconContainer>
             </L.BoardBottom>
           </L.BoardWrapper>
         </L.Wrapper>

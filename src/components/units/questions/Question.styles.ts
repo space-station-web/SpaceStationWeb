@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 `;
 
 export const TopDiv = styled.div`
-  width: 80.001%;
+  width: 80.00101011%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -24,7 +24,7 @@ export const Prev = styled.img`
 `;
 
 export const Button = styled.button`
-  width: 6.15rem;
+  width: 6.150001rem;
   height: 1.91rem;
   border-radius: 999px;
   font-size: 0.76rem;

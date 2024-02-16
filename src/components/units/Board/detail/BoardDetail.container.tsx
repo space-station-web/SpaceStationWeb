@@ -11,6 +11,7 @@ export interface PostData {
   content: string;
   created_at: string;
   visibility: string;
+  image_url: string;
 }
 
 interface ApiResponse {
@@ -49,7 +50,7 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
   };
 
   // 게시물 api 요청
-  const [data, setData] = useState<PostData[] | null>(null);
+  const [data, setData] = useState<PostData | null>(null);
   const onClickCommentToggle = (): void => {
     props.setIsOpen((prev) => !prev);
   };
@@ -63,6 +64,7 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
           );
 
           setData(response.data.result);
+          console.log(response.data);
         } catch (error) {
           console.error("데이터 로딩 중 오류 발생", error);
         }

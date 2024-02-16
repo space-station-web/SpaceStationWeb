@@ -78,7 +78,7 @@ export const Board = styled.div`
   align-items: flex-start; /* 왼쪽 정렬 추가 */
   text-align: center;
   position: relative;
-  padding: 20px;
+
   display: flex;
   flex-direction: column;
   justify-content: flex-end; /* 아래쪽 정렬 추가 */
@@ -99,10 +99,22 @@ export const Board = styled.div`
   &:nth-child(10) {
     margin-top: -110px;
   }
-
+  background-size: cover;
+  transition: background-size 1s ease-in-out;
   &:hover {
-    background-size: 90%; /* hover 시 배경 이미지 크기를 110%로 확대 */
+    background-size: 110%; /* hover 시 배경 이미지 크기를 110%로 확대 */
   }
+`;
+
+export const BoardTextContainer = styled.div`
+  width: 100%;
+  height: 92px;
+  display: flex;
+  flex-direction: column;
+  background-color: #1e1e1e80;
+  justify-content: center;
+  padding: 0 20px 0 20px;
+  border-radius: 0 0 20px 20px;
 `;
 
 export const BoardTop = styled.div`

@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import * as styled from "./Home.styles";
 import type { HomeProps } from "./Home.types";
 
@@ -5,6 +6,7 @@ function HomeUI({
   onClickMoveLogin,
   onClickMoveWrite,
 }: HomeProps): JSX.Element {
+  const router = useRouter();
   return (
     <styled.Wrapper>
       <styled.Stack style={{ marginTop: 260, alignItems: "center" }}>
@@ -13,7 +15,7 @@ function HomeUI({
         </div>
         <div style={{ color: "#f7f7f7", fontSize: "2.11rem" }}>우주 정거장</div>
         <div style={{ color: "#f7f7f7", fontSize: "0.56rem" }}>
-          2023 Space Station
+          2024 Space Station
         </div>
       </styled.Stack>
       <styled.Stack
@@ -21,7 +23,13 @@ function HomeUI({
         style={{ alignItems: "center", marginTop: 57 }}
       >
         <styled.Group $gap="0.84rem">
-          <styled.LoginBtn>가입</styled.LoginBtn>
+          <styled.LoginBtn
+            onClick={() => {
+              void router.push("/sighUp");
+            }}
+          >
+            가입
+          </styled.LoginBtn>
           <styled.LoginBtn onClick={onClickMoveLogin}>로그인</styled.LoginBtn>
         </styled.Group>
         <styled.Stack $gap="1.1rem">
@@ -78,7 +86,12 @@ function HomeUI({
                   로그인/회원가입을 하시면 오늘의 질문을 볼 수 있어요 !
                 </styled.Balloon>
               </styled.Stack>
-              <styled.ContentsBtn style={{ alignSelf: "flex-end" }}>
+              <styled.ContentsBtn
+                style={{ alignSelf: "flex-end" }}
+                onClick={() => {
+                  void router.push("/questions");
+                }}
+              >
                 답변하기
               </styled.ContentsBtn>
             </styled.Card>
@@ -98,7 +111,12 @@ function HomeUI({
                 <styled.SubTitle>나도 작가에 도전해볼까?</styled.SubTitle>
                 <styled.Title>책 등록하기</styled.Title>
               </styled.Stack>
-              <styled.ContentsBtn style={{ alignSelf: "flex-end" }}>
+              <styled.ContentsBtn
+                style={{ alignSelf: "flex-end" }}
+                onClick={() => {
+                  void router.push("/books/write");
+                }}
+              >
                 작성하기
               </styled.ContentsBtn>
             </styled.Card>

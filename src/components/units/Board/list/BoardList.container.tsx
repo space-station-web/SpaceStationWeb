@@ -8,6 +8,7 @@ export interface Post {
   title: string;
   content: string;
   created_at: string;
+  image_url: string;
 }
 
 export interface ApiResponse {
@@ -60,6 +61,32 @@ export default function BoardList(): JSX.Element {
     void fetchPosts();
   }, []); // 빈 의존성 배열로 마운트 시에만 실행
 
+  // 좋아요순
+  const onClickLikeCountOrder = async (): Promise<void> => {
+    const response = await axios.get<ApiResponse>(
+      "http://localhost:8080/posts?orderColumn=like_count&orderDirection=desc",
+    );
+    setPosts(response.data.result);
+  };
+
+  // 최신순
+  const onClickCreatedAtOrder = async (): Promise<void> => {
+    const response = await axios.get<ApiResponse>(
+      "http://localhost:8080/posts?orderColumn=created_at&orderDirection=desc",
+    );
+    setPosts(response.data.result);
+    console.log(posts);
+  };
+
+  // 이웃만
+  const onClickNeighborOrder = async (): Promise<void> => {
+    const response = await axios.get<ApiResponse>(
+      "http://localhost:8080/posts/follow-posts",
+    );
+    setPosts(response.data.result);
+    console.log(posts);
+  };
+
   // 현재 페이지에 따라 게시물을 필터링하는 함수
   const getCurrentPagePosts = (): Post[] => {
     const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
@@ -82,6 +109,10 @@ export default function BoardList(): JSX.Element {
         //
         onClickBoard={onClickBoard}
         //
+
+        onClickLikeCountOrder={onClickLikeCountOrder}
+        onClickCreatedAtOrder={onClickCreatedAtOrder}
+        onClickNeighborOrder={onClickNeighborOrder}
       />
     </>
   );
