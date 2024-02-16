@@ -1,4 +1,5 @@
 // ModalComponent.jsx
+import axios from "axios";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import styled from "styled-components";
@@ -35,30 +36,36 @@ const BookModal = ({ onClose }: ModalComponentProps): JSX.Element => {
     alert("미완성");
   };
 
+  const refreshToken =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsIm1haWwiOiJhc2RnQG5hdmVyLmNvbSIsImlhdCI6MTcwODA2MDM4MSwiZXhwIjoxNzA4MDcxMTgxfQ.DN6JNIW9Qep8BYUbI7d3Ib0eSLZzmD_pY6SY57F6rDc";
+  const accessToken =
+    "Bearer " +
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDgwNjAzODEsImV4cCI6MTcwODE0Njc4MX0.kvb5RU3ZQD5qkx0mEm-5SCcUNModY3W6akrhI8g-iwg";
+
   // 게시글 삭제 로직을 수행하는 함수
   const router = useRouter();
   const { post_id: postId } = router.query;
 
   const onClickDelete = async (): Promise<void> => {
     // postId가 문자열인지 확인
-
     if (typeof postId === "string") {
       try {
-        const response = await fetch(`http://localhost:8080/posts/${postId}`, {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            // 'Authorization': 'Bearer YOUR_TOKEN_HERE',
+        const response = await axios.delete(
+          `http://localhost:8080/posts/${postId}`,
+          {
+            headers: {
+              Authorization: accessToken,
+              refresh: refreshToken,
+            },
           },
-        });
+        );
 
-        if (response.ok) {
-          alert("게시글이 삭제되었습니다.");
-          onClose(); // 게시글 삭제 후 모달 닫기
-          void router.push("/boards");
-        } else {
-          alert("게시글 삭제에 실패했습니다.");
-        }
+        // 요청이 성공적으로 완료되었음을 알림
+        alert("게시글이 삭제되었습니다.");
+        onClose(); // 게시글 삭제 후 모달 닫기
+        console.log(response);
+
+        // void router.push("/boards");
       } catch (error) {
         console.error("게시글 삭제 중 오류가 발생했습니다.", error);
         alert("게시글 삭제 중 오류가 발생했습니다.");
