@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useEffect, useState, type ChangeEvent } from "react";
-import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from "../../API/request";
 import BookWriteUI from "./BookWrite.presenter";
 import type { TableContent } from "./BookWrite.types";
 
@@ -12,18 +11,18 @@ export default function BookWrite(): JSX.Element {
   const [bookContents, setBookContents] = useState<
     Array<{ index: number; title: string; context: string }>
   >([]); // 요청 파라미터
-  const [accessToken, setAccessToken] = useState<string | null>(null);
-  const [refreshToken, setRefreshToken] = useState<string | null>(null);
+  // const [accessToken, setAccessToken] = useState<string | null>(null);
+  // const [refreshToken, setRefreshToken] = useState<string | null>(null);
 
-  useEffect(() => {
-    // 클라이언트 사이드에서만 실행되도록 함
-    if (typeof window !== "undefined") {
-      const storedAccessToken = window.localStorage.getItem(ACCESS_TOKEN_KEY);
-      const storedRefreshToken = window.localStorage.getItem(REFRESH_TOKEN_KEY);
-      setAccessToken(storedAccessToken);
-      setRefreshToken(storedRefreshToken);
-    }
-  }, []);
+  // useEffect(() => {
+  //   // 클라이언트 사이드에서만 실행되도록 함
+  //   if (typeof window !== "undefined") {
+  //     const storedAccessToken = window.localStorage.getItem(ACCESS_TOKEN_KEY);
+  //     const storedRefreshToken = window.localStorage.getItem(REFRESH_TOKEN_KEY);
+  //     setAccessToken(storedAccessToken);
+  //     setRefreshToken(storedRefreshToken);
+  //   }
+  // }, []);
 
   useEffect(() => {
     const newBookContents = tableContents.map((item, index) => ({
@@ -68,6 +67,12 @@ export default function BookWrite(): JSX.Element {
     setIsToggle((prev) => !prev);
   };
 
+  const accessToken =
+    "Bearer " +
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsIm1haWwiOiJhc2RnQG5hdmVyLmNvbSIsImlhdCI6MTcwODA4MDM4NCwiZXhwIjoxNzA4MDkxMTg0fQ.B320pI89F6ADXXx_y75j7LMhgdpzTSYOb9oIn-CLZtY";
+  const refreshToken =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDgwODAzODQsImV4cCI6MTcwODE2Njc4NH0.YvlFz-QJArPkFKAXdHh-144M8RXV_nYK9Uw6Whiq4YI";
+
   // API 요청 함수
   const onClickSubmitBook = async (): Promise<void> => {
     // if (!accessToken || !refreshToken) {
@@ -76,8 +81,8 @@ export default function BookWrite(): JSX.Element {
     // }
 
     try {
-      const authHeader = `Bearer ${accessToken}`;
-      console.log(bookContents);
+      // const authHeader = `Bearer ${accessToken}`;
+
       const response = await axios.post(
         "http://localhost:8080/books",
 
@@ -85,14 +90,12 @@ export default function BookWrite(): JSX.Element {
           title,
           intro,
           category: selectedCategory,
-          // bookContents,
+          thumbnail: "123",
         },
         {
           headers: {
-            authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsIm1haWwiOiJhc2RnQG5hdmVyLmNvbSIsImlhdCI6MTcwNzk5MTAwNCwiZXhwIjoxNzA4MDAxODA0fQ.QXw2n2l_smgf-Dh0OY94kilK0DzzoZLclFwrONJapCE",
-            refresh:
-              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDc5OTEwMDQsImV4cCI6MTcwODA3NzQwNH0.IN1ua6x320RXSJcLUAAeFqtmuQmsc_JtArztxAMaV3c",
+            authorization: accessToken,
+            refresh: refreshToken,
           },
         },
       );
