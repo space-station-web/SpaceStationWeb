@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState, type ChangeEvent } from "react";
+import { useEffect, useRef, useState, type ChangeEvent } from "react";
 import BookWriteUI from "./BookWrite.presenter";
 import type { TableContent } from "./BookWrite.types";
 
@@ -8,9 +8,47 @@ export default function BookWrite(): JSX.Element {
   const [title, setTitle] = useState("");
   const [intro, setIntro] = useState("");
   const [tableContents, setTableContents] = useState<TableContent[]>([]);
-  const [bookContents, setBookContents] = useState<
+  const [, setBookContents] = useState<
     Array<{ index: number; title: string; context: string }>
-  >([]); // 요청 파라미터
+  >([]);
+  const [thumbnail, setThumbnail] = useState<File | null>(null);
+
+  // 썸네일
+  const [coverImageUrl, setCoverImageUrl] = useState("/book/coverAdd.png"); // 커버 이미지 URL 상태
+
+  const coverImageRef = useRef<HTMLInputElement>(null);
+  const formData = new FormData(); // 이 부분을 onClickSubmitBook으로 옮겼으므로 여기서는 제거
+
+  // 파일 입력 핸들러
+  const handleCoverImageChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ): void => {
+    if (event.target.files === null) {
+      return; // files가 null이면 여기서 함수를 종료합니다.
+    }
+    // 파일이 존재하지 않을 경우 null을 반환하도록 수정
+    const file = event.target.files[0];
+
+    setThumbnail(file); // 이제 file은 File 또는 null이며, 이는 setThumbnail 함수의 타입 요구사항과 일치합니다.
+
+    // 파일이 선택되었을 때만 FileReader를 통해 파일을 읽습니다.
+    if (file !== null) {
+      const fileReader = new FileReader();
+      fileReader.onload = (e) => {
+        const result = e.target?.result;
+        if (typeof result === "string") {
+          setCoverImageUrl(result);
+        }
+      };
+      fileReader.readAsDataURL(file);
+    }
+  };
+
+  const handleFileInputClick = (): void => {
+    coverImageRef.current?.click(); // 파일 입력 참조를 사용하여 클릭 이벤트를 프로그래매틱하게 발생시킵니다.
+  };
+
+  // 요청 파라미터
   // const [accessToken, setAccessToken] = useState<string | null>(null);
   // const [refreshToken, setRefreshToken] = useState<string | null>(null);
 
@@ -69,29 +107,27 @@ export default function BookWrite(): JSX.Element {
 
   const accessToken =
     "Bearer " +
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsIm1haWwiOiJhc2RnQG5hdmVyLmNvbSIsImlhdCI6MTcwODA4MDM4NCwiZXhwIjoxNzA4MDkxMTg0fQ.B320pI89F6ADXXx_y75j7LMhgdpzTSYOb9oIn-CLZtY";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsIm1haWwiOiJhc2RnQG5hdmVyLmNvbSIsImlhdCI6MTcwODEwMDM2NCwiZXhwIjoxNzA4MTExMTY0fQ.F16wPwTFYGIt3X5XXoltp1JPufpUuSCfF6bS3hrJwQI";
   const refreshToken =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDgwODAzODQsImV4cCI6MTcwODE2Njc4NH0.YvlFz-QJArPkFKAXdHh-144M8RXV_nYK9Uw6Whiq4YI";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDgxMDAzNjQsImV4cCI6MTcwODE4Njc2NH0.5KHm2gFgEqaL-7sKqSeX_LDiPPY5DG3v_lQoxDpl3aw";
 
   // API 요청 함수
   const onClickSubmitBook = async (): Promise<void> => {
-    // if (!accessToken || !refreshToken) {
-    //   alert("인증 토큰이 없습니다. 다시 로그인해 주세요.");
-    //   return;
-    // }
+    formData.append("title", title);
+    formData.append("intro", intro);
+    if (selectedCategory !== null) {
+      formData.append("category", selectedCategory);
+    }
+
+    if (thumbnail !== null) {
+      formData.append("thumbnail", thumbnail);
+    }
 
     try {
       // const authHeader = `Bearer ${accessToken}`;
-
       const response = await axios.post(
         "http://localhost:8080/books",
-
-        {
-          title,
-          intro,
-          category: selectedCategory,
-          thumbnail: "123",
-        },
+        formData,
         {
           headers: {
             authorization: accessToken,
@@ -99,7 +135,7 @@ export default function BookWrite(): JSX.Element {
           },
         },
       );
-      console.log(bookContents);
+
       console.log(response.data); // 응답 데이터 처리
       // 요청 성공 후 작업 (예: 페이지 이동, 상태 업데이트)
     } catch (error: any) {
@@ -120,6 +156,10 @@ export default function BookWrite(): JSX.Element {
       onChangeTitle={onChangeTitle}
       onChangeIntro={onChangeIntro}
       onClickSubmitBook={onClickSubmitBook}
+      handleCoverImageChange={handleCoverImageChange}
+      handleFileInputClick={handleFileInputClick}
+      coverImageUrl={coverImageUrl}
+      coverImageRef={coverImageRef}
     />
   );
 }
