@@ -2,29 +2,24 @@ import { useState } from "react";
 import PaginationComponent from "../../../commons/pagination/Pagination";
 import ModalComponent from "./BoodListModal";
 import * as L from "./BookList.styles";
+import type { IBookListProps } from "./BookList.types";
 
-export const PRACS = [
-  {
-    category: "bbbb",
-    number: 1,
-    title: "크리스마스준비",
-    contents: "집을 온통 초록색과 빨간색으로",
-  },
-  { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
-  { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
-  { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
-  { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
-  { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
-  { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
-  { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
-  { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
-  { category: "bbbb", number: 1, title: "1234", contents: "123aaaa" },
-];
-
-export default function BoardListUI(): JSX.Element {
+export default function BoardListUI(props: IBookListProps): JSX.Element {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const toggleModal = (): void => {
     setIsModalVisible(!isModalVisible);
+  };
+
+  // 한 줄로 표시할 내용의 길이를 정하는 함수
+  const truncateContent = (
+    intro: string | undefined,
+    maxLength: number = 13,
+  ): string => {
+    // 내용이 falsy 값인 경우 (undefined, null, 빈 문자열 등), 빈 문자열을 반환합니다.
+    if (!intro) return "";
+
+    // 내용이 최대 길이보다 길면, 잘라내고 "..."를 추가합니다.
+    return intro.length > maxLength ? intro.slice(0, maxLength) + "..." : intro;
   };
 
   return (
@@ -69,21 +64,25 @@ export default function BoardListUI(): JSX.Element {
       </L.CategoryDiv>
 
       <L.BoardBox>
-        {PRACS.map((el) => (
-          <L.Board key={el.number}>
+        {props.books.map((el) => (
+          <L.Board key={el.book_id}>
             <L.BoardImage src="/book/rectangle 208.png"></L.BoardImage>
 
             <L.BoardBottom>
               <L.BoardCategory>지연</L.BoardCategory>
-              <L.BoardTitle>{el.title}</L.BoardTitle>
+              <L.BoardTitle>{truncateContent(el.title)}</L.BoardTitle>
               <L.BoardSubTitle>부제</L.BoardSubTitle>
-              <L.BoardContents>{el.contents}</L.BoardContents>
+              <L.BoardContents>{truncateContent(el.intro)}</L.BoardContents>
             </L.BoardBottom>
           </L.Board>
         ))}
       </L.BoardBox>
 
-      <PaginationComponent />
+      <PaginationComponent
+        currentPage={props.currentPage}
+        setCurrentPage={props.setCurrentPage}
+        totalPageCount={props.totalPageCount}
+      />
       {isModalVisible && <ModalComponent onClose={toggleModal} />}
     </L.Wrapper>
   );
