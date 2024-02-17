@@ -5,6 +5,7 @@ import ChangePasswordUI from "./ChangePassword.presenter";
 
 export default function ChangePassword(): JSX.Element {
   const router = useRouter();
+  const { userId } = router.query;
   
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -19,9 +20,9 @@ export default function ChangePassword(): JSX.Element {
     try {
       const pw = newPassword;
       const pwcheck = confirmPassword;
-
+      console.log("id",userId);
       const response = await axios.post(
-        'http://localhost:8080/changepw',
+        `http://localhost:8080/changepw/${userId}`,
         {
           pw,
           pwcheck
