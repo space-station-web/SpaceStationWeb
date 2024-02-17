@@ -11,6 +11,8 @@ export interface IChangePassword {
   // 비밀번호 정규식
   errorMessagePw: string;
   isError2: boolean;
+  // 모든 입력값 이상 여부
+  isRight: boolean;
 
   // placeholder 변경
   onFocusPassword: (event: FocusEvent<HTMLInputElement>) => void;
