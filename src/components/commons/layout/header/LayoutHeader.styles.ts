@@ -25,7 +25,7 @@ export const UserBar = styled.div`
 export const User = styled.div`
   display: flex;
   gap: 16px;
-  margin-right: 47px;
+  margin-right: 37px;
 `;
 export const UserImg = styled.div`
   width: 32px;

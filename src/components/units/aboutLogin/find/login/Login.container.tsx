@@ -54,6 +54,7 @@ export default function Login(): JSX.Element {
         const accessToken: string = response.data.result.result.accessToken;
         const refreshToken: string = response.data.result.result.refreshToken;
         const userId: string = response.data.result.result.userid
+        const nickname: string = response.data.result.result.usernick
   
         // 토큰 로컬스토리지 저장
         localStorage.setItem('accessToken', accessToken);
@@ -62,7 +63,6 @@ export default function Login(): JSX.Element {
         // 로그인 여부 업데이트
         setLoginState(true);
         
-
         // user-id 업데이트
         setUserIdState(userId);
         console.log('유저',_userId);
@@ -71,7 +71,10 @@ export default function Login(): JSX.Element {
         // console.log('유저',user);
   
         // 홈으로 이동
-        await router.push('../../../../../../');
+        await router.push({
+          pathname: "../../../../../../",
+          query: { nickname },
+        });
         
         console.log('로그인 성공', response);
       } else {
