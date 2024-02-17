@@ -1,12 +1,19 @@
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
+import { useState, useEffect } from "react";
 import { isLoginState } from "../../recoil/Recoil.auth.state";
 import LayoutHeaderUI from "./LayoutHeader.presenter";
 
 export default function LayoutHeader(): JSX.Element {
   const router = useRouter();
+  const { nickname } = router.query;
 
   const [login, setLoginState] = useRecoilState(isLoginState);
+  const [_nick, setNick] = useState("");
+
+  useEffect(() => {
+    setNick(nickname);
+  }, [nickname]);
 
   const onClickLogin = async (): Promise<void> => {
     await router.push("../../../../../../login");
@@ -25,5 +32,6 @@ export default function LayoutHeader(): JSX.Element {
   onClickLogout={onClickLogout}
   onClickSignUp={onClickSignUp}
   login={login}
+  _nick={_nick}
   />;
 }
