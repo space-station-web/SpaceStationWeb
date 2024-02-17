@@ -1,26 +1,35 @@
 import * as S from "./Search.styles";
 import type { ISearchProps } from "./Search.types";
 
-export default function SearchUI(props: ISearchProps): JSX.Element {
+export default function SearchUI({
+  onClickAuthorFilter,
+  onClickTitleFilter,
+  searchFilter,
+  searchingItem,
+  handleSearchChange,
+  handleSubmit,
+}: ISearchProps): JSX.Element {
   return (
     <div>
       <S.Wrapper>
         <S.SearchFullContainer>
           <S.FilterContainer>
             <S.FilterTitleButton
-              onClick={props.onClickTitleFilter}
+              onClick={onClickTitleFilter}
               style={{
-                backgroundColor: props.isTitleApply ? "#dcdcdc" : "#141414",
-                color: props.isTitleApply ? "black" : "#8c8c8c",
+                backgroundColor:
+                  searchFilter === "title" ? "#dcdcdc" : "#141414",
+                color: searchFilter === "title" ? "black" : "#8c8c8c",
               }}
             >
               글 제목
             </S.FilterTitleButton>
             <S.FilterAuthorButton
-              onClick={props.onClickAuthorFilter}
+              onClick={onClickAuthorFilter}
               style={{
-                backgroundColor: props.isAuthorApply ? "#dcdcdc" : "#141414",
-                color: props.isAuthorApply ? "black" : "#8c8c8c",
+                backgroundColor:
+                  searchFilter === "author" ? "#dcdcdc" : "#141414",
+                color: searchFilter === "author" ? "black" : "#8c8c8c",
               }}
             >
               글쓴이
@@ -29,7 +38,13 @@ export default function SearchUI(props: ISearchProps): JSX.Element {
 
           <S.SearchContainer>
             <S.SearchBtnImage src="/common/icon/search.svg" />
-            <S.SearchInput type="text" placeholder="찾고 싶은 글이 있나요?" />
+            <S.SearchInput
+              type="text"
+              placeholder="찾고 싶은 글이 있나요?"
+              value={searchingItem}
+              onChange={handleSearchChange}
+              onKeyDown={handleSubmit}
+            />
           </S.SearchContainer>
           <S.DivideLine> </S.DivideLine>
 

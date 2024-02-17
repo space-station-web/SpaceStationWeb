@@ -1,24 +1,36 @@
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { ChangeEvent, useState } from "react";
 import SearchUI from "./Search.presenter";
 
 export default function Search(): JSX.Element {
-  const [isTitleApply, setIsTitleApply] = useState(false);
-  const [isAuthorApply, setIsAuthorApply] = useState(false);
+  const router = useRouter();
 
+  const [searchFilter, setSearchFilter] = useState("title");
+  const [searchingItem, setSearchingItem] = useState("");
   const onClickTitleFilter = (): void => {
-    setIsTitleApply((prev) => !prev);
+    setSearchFilter("title");
   };
 
   const onClickAuthorFilter = (): void => {
-    setIsAuthorApply((prev) => !prev);
+    setSearchFilter("author");
   };
 
+  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchingItem(e.target.value);
+  };
+
+  const handleSubmit = (e: React.KeyboardEvent<HTMLElement>) => {
+    if (e.key === "Enter")
+      router.push(`/search/searchResult?searchingItem=${searchingItem}`);
+  };
   return (
     <SearchUI
       onClickTitleFilter={onClickTitleFilter}
       onClickAuthorFilter={onClickAuthorFilter}
-      isTitleApply={isTitleApply}
-      isAuthorApply={isAuthorApply}
+      searchFilter={searchFilter}
+      searchingItem={searchingItem}
+      handleSearchChange={handleSearchChange}
+      handleSubmit={handleSubmit}
     />
   );
 }
