@@ -23,7 +23,10 @@ function SearchResultUI({ searchParams }: SearchResultUIProps) {
   ];
   return (
     <styled.Wrapper>
-      <styled.IconBack />
+      <img
+        src="/common/icon/icon_back.svg"
+        style={{ alignSelf: "flex-start", marginLeft: 47 }}
+      />
       <div
         style={{
           display: "flex",
