@@ -59,6 +59,7 @@ export default function Login(): JSX.Element {
         // 토큰 로컬스토리지 저장
         localStorage.setItem('accessToken', accessToken);
         localStorage.setItem('refreshToken', refreshToken);
+        localStorage.setItem('nickname', nickname);
   
         // 로그인 여부 업데이트
         setLoginState(true);
@@ -71,10 +72,11 @@ export default function Login(): JSX.Element {
         // console.log('유저',user);
   
         // 홈으로 이동
-        await router.push({
-          pathname: "../../../../../../",
-          query: { nickname },
-        });
+        // await router.push({
+        //   pathname: "../../../../../../",
+        //   query: { nickname },
+        // });
+        await router.push("../../../../../../")
         
         console.log('로그인 성공', response);
       } else {
