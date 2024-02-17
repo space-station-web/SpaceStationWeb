@@ -118,6 +118,8 @@ export const CreateAt = styled.p`
 export const ImageBox = styled.div`
   width: 100%;
   display: flex;
+  overflow-x: hidden;
+  gap: 10px;
   justify-content: center;
 `;
 
@@ -125,6 +127,7 @@ export const Image = styled.img`
   width: 288px;
   height: 370px;
   margin: 40px 0 40px 0;
+  border-radius: 10px;
 `;
 
 export const Contents = styled.p`
