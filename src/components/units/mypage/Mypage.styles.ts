@@ -1,8 +1,14 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  position: relative;
   width: 1194px;
+  display: flex;
+  flex-direction: column;
+  gap: 184px;
+  margin-top: 58px;
+`;
+export const Box = styled.div`
+  position: relative;
   border-radius: 20px;
   background-color: #1e1e1e;
   display: flex;
@@ -10,7 +16,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding: 50px 72px;
-  margin: 400px;
+  margin-bottom: 400px;
 `;
 export const ProfileImg = styled.div`
   width: 138px;

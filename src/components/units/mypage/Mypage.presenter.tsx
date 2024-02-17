@@ -1,9 +1,10 @@
+import React, { useEffect, useRef, useState } from "react";
 import BoardItem from "../../commons/boarditem/BoardItem.container";
+import { OptionBox, OptionBtn } from "../../commons/boarditem/BoardItem.styles";
 import PaginationComponent from "../../commons/pagination/Pagination";
-import Modal from "./modal/Modal.container";
-import { STORAGEMOCK } from "./Mypage.container";
 import * as styled from "./Mypage.styles";
 import { MyPageProps } from "./Mypage.types";
+import Modal from "./modal/Modal.container";
 
 function MyPageUI({
   tabValue,
@@ -14,14 +15,36 @@ function MyPageUI({
   modalType,
   handleModalType,
   posts,
+  storedPosts,
   handleNeighborClick,
+  handlePostClick,
   isMine,
   isFollowing,
   handleFollowClick,
   storageName,
+  addStorageItem,
+  deleteStorageItem,
+  handleStorageSelect,
   handleStorageChange,
+  handleBackClick,
   questions,
+  storages,
 }: MyPageProps) {
+  const [optionOpen, setOptionOpen] = useState(false);
+  const handleOptionClick = () => {
+    setOptionOpen(!optionOpen);
+  };
+  const optionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const outsideClick = (e: MouseEvent) => {
+      if (!optionRef.current?.contains(e.target as Node)) setOptionOpen(false);
+    };
+    window.addEventListener("click", outsideClick, true);
+    return () => {
+      window.removeEventListener("click", outsideClick, true);
+    };
+  });
   return (
     <>
       <Modal isOpen={deleteModalOpen}>
@@ -43,11 +66,16 @@ function MyPageUI({
           <div style={{ display: "flex", gap: 21 }}>
             <styled.MyPageBtn
               style={{ textAlign: "center", backgroundColor: "#b4b4b4" }}
+              onClick={() => {
+                deleteStorageItem();
+                handleDeleteModal();
+              }}
             >
               예
             </styled.MyPageBtn>
             <styled.MyPageBtn
               style={{ textAlign: "center", backgroundColor: "#b4b4b4" }}
+              onClick={handleDeleteModal}
             >
               아니오
             </styled.MyPageBtn>
@@ -87,115 +115,226 @@ function MyPageUI({
           </styled.StorageTitleInput>
           <styled.MyPageBtn
             style={{ backgroundColor: "#1e1e1e", color: "#dcdcdc" }}
+            onClick={() => {
+              addStorageItem();
+              handleModalType("");
+            }}
           >
             완료
           </styled.MyPageBtn>
         </styled.ModalBox>
       </Modal>
       <styled.Wrapper>
-        <styled.ProfileImg />
-        <div style={{ display: "flex", alignSelf: "flex-end", gap: 11 }}>
-          <img
-            src="/common/icon/icon_neighbor.svg"
-            onClick={handleNeighborClick}
-          />
-          {!isMine && (
-            <styled.MyPageBtn
-              style={
-                isFollowing
-                  ? { backgroundColor: "#dcdcdc", color: "#1e1e1e" }
-                  : { backgroundColor: "#0a0a0a", color: "#8c8c8c" }
-              }
-              onClick={handleFollowClick}
-            >
-              {isFollowing ? "이웃 취소" : "이웃 추가"}
-            </styled.MyPageBtn>
-          )}
-        </div>
-        <styled.ProfileName>
-          <styled.ProfileNameText>허거덩</styled.ProfileNameText>
-          {isMine && <img src="/common/icon/icon_edit_pencil.svg" />}
-        </styled.ProfileName>
-        <styled.TabBar>
-          {tabBarMenu.map((item) => (
-            <styled.TabBarItem
-              onClick={() => {
-                setTabValue(item);
-              }}
-              style={{
-                borderColor: tabValue === item ? "#dcdcdc" : "#8c8c8c",
-              }}
-              key={`mypage-tab-menu-${item}`}
-            >
-              {item}
-            </styled.TabBarItem>
-          ))}
-        </styled.TabBar>
-        <styled.TabBody>
-          {tabValue === "보관함" && (
-            <div style={{ width: "100%" }}>
-              {isMine && (
-                <styled.StorageItem
-                  style={{
-                    justifyContent: "center",
-                    alignItems: "center",
-                    gap: 10,
-                    paddingTop: 35,
-                    paddingBottom: 35,
-                    cursor: "pointer",
-                  }}
-                  onClick={() => {
-                    handleModalType("add");
-                  }}
-                >
-                  <img src="/common/icon/icon_plus.svg" />
-                  <div style={{ color: "#8C8C8C" }}>추가하기</div>
-                </styled.StorageItem>
-              )}
-              {STORAGEMOCK.map((item) => (
-                <styled.StorageItem key={`storage-item-${item.title}`}>
-                  <div style={{ color: "white", lineHeight: "29px" }}>
-                    {item.title}
-                  </div>
+        <img
+          src="/common/icon/icon_back.svg"
+          style={{ alignSelf: "flex-start" }}
+          onClick={handleBackClick}
+        />
+        <styled.Box>
+          <styled.ProfileImg />
+          <div style={{ display: "flex", alignSelf: "flex-end", gap: 11 }}>
+            <img
+              src="/common/icon/icon_neighbor.svg"
+              onClick={handleNeighborClick}
+            />
+            {!isMine && (
+              <styled.MyPageBtn
+                style={
+                  isFollowing
+                    ? { backgroundColor: "#dcdcdc", color: "#1e1e1e" }
+                    : { backgroundColor: "#0a0a0a", color: "#8c8c8c" }
+                }
+                onClick={handleFollowClick}
+              >
+                {isFollowing ? "이웃 취소" : "이웃 추가"}
+              </styled.MyPageBtn>
+            )}
+          </div>
+          <styled.ProfileName>
+            <styled.ProfileNameText>허거덩</styled.ProfileNameText>
+            {isMine && <img src="/common/icon/icon_edit_pencil.svg" />}
+          </styled.ProfileName>
+          <styled.TabBar>
+            {tabBarMenu.map((item) => (
+              <styled.TabBarItem
+                onClick={() => {
+                  setTabValue(item);
+                }}
+                style={{
+                  borderColor: tabValue === item ? "#dcdcdc" : "#8c8c8c",
+                }}
+                key={`mypage-tab-menu-${item}`}
+              >
+                {item}
+              </styled.TabBarItem>
+            ))}
+          </styled.TabBar>
+          <styled.TabBody>
+            {tabValue === "보관함" &&
+              (storedPosts === undefined ? (
+                <div style={{ width: "100%" }}>
                   {isMine && (
-                    <div style={{ display: "flex", gap: 20 }}>
-                      <styled.MyPageBtn
+                    <styled.StorageItem
+                      style={{
+                        justifyContent: "center",
+                        alignItems: "center",
+                        gap: 10,
+                        paddingTop: 35,
+                        paddingBottom: 35,
+                        cursor: "pointer",
+                      }}
+                      onClick={() => {
+                        handleModalType("add");
+                      }}
+                    >
+                      <img src="/common/icon/icon_plus.svg" />
+                      <div style={{ color: "#8C8C8C" }}>추가하기</div>
+                    </styled.StorageItem>
+                  )}
+                  {storages &&
+                    storages.map((item) => (
+                      <styled.StorageItem
+                        key={`storage-item-${item.type}`}
                         onClick={() => {
-                          handleModalType("edit");
+                          handleStorageSelect(item.storage_type_id, "open");
                         }}
                       >
-                        수정하기
-                      </styled.MyPageBtn>
-                      <styled.MyPageBtn onClick={handleDeleteModal}>
-                        삭제하기
-                      </styled.MyPageBtn>
+                        <div style={{ color: "white", lineHeight: "29px" }}>
+                          {item.type}
+                        </div>
+                        {isMine && (
+                          <div style={{ display: "flex", gap: 20 }}>
+                            <styled.MyPageBtn
+                              onClick={(
+                                e: React.MouseEvent<HTMLButtonElement>,
+                              ) => {
+                                e.stopPropagation();
+                                handleModalType("edit");
+                              }}
+                            >
+                              수정하기
+                            </styled.MyPageBtn>
+                            <styled.MyPageBtn
+                              onClick={(
+                                e: React.MouseEvent<HTMLButtonElement>,
+                              ) => {
+                                e.stopPropagation();
+                                handleDeleteModal();
+                                handleStorageSelect(
+                                  item.storage_type_id,
+                                  "delete",
+                                );
+                              }}
+                            >
+                              삭제하기
+                            </styled.MyPageBtn>
+                          </div>
+                        )}
+                      </styled.StorageItem>
+                    ))}
+                </div>
+              ) : (
+                <>
+                  <div
+                    style={{
+                      width: "100%",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      padding: 30,
+                    }}
+                    onClick={() => {
+                      handleStorageSelect(-1, "open");
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 10,
+                        position: "relative",
+                      }}
+                    >
+                      <div style={{ color: "#dcdcdc", fontSize: 30 }}>
+                        {storedPosts.name}
+                      </div>
+                      <div style={{ color: "#b4b4b4", fontSize: 20 }}>
+                        글 {storedPosts.list.length}개
+                      </div>
                     </div>
-                  )}
-                </styled.StorageItem>
+                    <img
+                      src="/common/icon/more.svg"
+                      onClick={(e: React.MouseEvent<HTMLImageElement>) => {
+                        e.stopPropagation();
+                        handleOptionClick();
+                      }}
+                    />
+                    {optionOpen && (
+                      <OptionBox ref={optionRef} style={{ left: 1107 }}>
+                        <OptionBtn
+                          style={{
+                            borderTopLeftRadius: 20,
+                            borderTopRightRadius: 20,
+                          }}
+                        >
+                          수정하기
+                        </OptionBtn>
+                        <OptionBtn
+                          style={{
+                            borderBottomLeftRadius: 20,
+                            borderBottomRightRadius: 20,
+                          }}
+                          onClick={(e: React.MouseEvent<HTMLDivElement>) => {
+                            e.stopPropagation();
+                            handleDeleteModal();
+                            handleStorageSelect(storedPosts.id, "delete");
+                          }}
+                        >
+                          삭제하기
+                        </OptionBtn>
+                      </OptionBox>
+                    )}
+                  </div>
+                  <styled.List>
+                    {storedPosts.list.map((item) => (
+                      <BoardItem
+                        type="writting"
+                        writtingItem={item}
+                        key={`mypage-board-item-${item.post_id}-${item.user_id}`}
+                        onClick={() => {
+                          handlePostClick(item.post_id);
+                        }}
+                      />
+                    ))}
+                  </styled.List>
+                </>
               ))}
-            </div>
-          )}
-          <styled.List>
-            {tabValue === "내 글"
-              ? posts.map((item) => (
-                  <BoardItem
-                    type="writting"
-                    writtingItem={item}
-                    key={`board-item-${item.post_id}-${item.user_id}`}
-                  />
-                ))
-              : tabValue === "질문집"
-                ? questions.map((item) => (
-                    <BoardItem type="question" questionItem={item} />
+            <styled.List>
+              {tabValue === "내 글"
+                ? posts &&
+                  posts.map((item) => (
+                    <BoardItem
+                      type="writting"
+                      writtingItem={item}
+                      key={`mypage-board-item-${item.post_id}-${item.user_id}`}
+                      onClick={() => {
+                        handlePostClick(item.post_id);
+                      }}
+                    />
                   ))
-                : null}
-          </styled.List>
-          <PaginationComponent
-            currentPage={1}
-            setCurrentPage={() => {}}
-            totalPageCount={3}
-          />
-        </styled.TabBody>
+                : tabValue === "질문집"
+                  ? questions &&
+                    questions.map((item) => (
+                      <BoardItem type="question" questionItem={item} />
+                    ))
+                  : null}
+            </styled.List>
+            <PaginationComponent
+              currentPage={1}
+              setCurrentPage={() => {}}
+              totalPageCount={3}
+            />
+          </styled.TabBody>
+        </styled.Box>
       </styled.Wrapper>
     </>
   );
