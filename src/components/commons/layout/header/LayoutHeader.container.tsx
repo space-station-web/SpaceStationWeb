@@ -6,14 +6,27 @@ import LayoutHeaderUI from "./LayoutHeader.presenter";
 
 export default function LayoutHeader(): JSX.Element {
   const router = useRouter();
-  const { nickname } = router.query;
+  // const { nickname } = router.query;
 
   const [login, setLoginState] = useRecoilState(isLoginState);
   const [_nick, setNick] = useState("");
 
+  // const [isTokenState, setIsTokenState] = useState(false);
+
+  // useEffect(() => {
+  //   setNick(nickname);
+  // }, [nickname]);
+  
   useEffect(() => {
-    setNick(nickname);
-  }, [nickname]);
+    const accessToken = window.localStorage.getItem('accessToken');
+    const nickname = window.localStorage.getItem('nickname');
+    if (accessToken !== null) {
+      setLoginState(true);
+    }
+    if (nickname !== null) {
+      setNick(nickname);
+    }
+  }, []);
 
   const onClickLogin = async (): Promise<void> => {
     await router.push("../../../../../../login");
