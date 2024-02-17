@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useRef, useState, type ChangeEvent } from "react";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../API/request";
 import BookWriteUI from "./BookWrite.presenter";
 import type { TableContent } from "./BookWrite.types";
 
@@ -12,6 +13,16 @@ export default function BookWrite(): JSX.Element {
     Array<{ index: number; title: string; context: string }>
   >([]);
   const [thumbnail, setThumbnail] = useState<File | null>(null);
+  const [accessToken, setAccessToken] = useState<string | null>(null);
+  const [refreshToken, setRefreshToken] = useState<string | null>(null);
+
+  useEffect(() => {
+    // localStorage에서 토큰을 가져와 상태에 저장
+    const token = "Bearer " + window.localStorage.getItem(ACCESS_TOKEN);
+    const refresh = window.localStorage.getItem(REFRESH_TOKEN);
+    setAccessToken(token);
+    setRefreshToken(refresh);
+  }, []);
 
   // 썸네일
   const [coverImageUrl, setCoverImageUrl] = useState("/book/coverAdd.png"); // 커버 이미지 URL 상태
@@ -103,12 +114,6 @@ export default function BookWrite(): JSX.Element {
     setIsToggle((prev) => !prev);
   };
 
-  const accessToken =
-    "Bearer " +
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsIm1haWwiOiJhc2RnQG5hdmVyLmNvbSIsImlhdCI6MTcwODEwMDM2NCwiZXhwIjoxNzA4MTExMTY0fQ.F16wPwTFYGIt3X5XXoltp1JPufpUuSCfF6bS3hrJwQI";
-  const refreshToken =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDgxMDAzNjQsImV4cCI6MTcwODE4Njc2NH0.5KHm2gFgEqaL-7sKqSeX_LDiPPY5DG3v_lQoxDpl3aw";
-
   // API 요청 함수
   const onClickSubmitBook = async (): Promise<void> => {
     // 1차 책 생성 요청 작업
@@ -121,6 +126,8 @@ export default function BookWrite(): JSX.Element {
     if (thumbnail !== null) {
       formData.append("thumbnail", thumbnail);
     }
+    console.log("formData1");
+    console.log(formData);
 
     try {
       // const authHeader = `Bearer ${accessToken}`;
@@ -135,34 +142,41 @@ export default function BookWrite(): JSX.Element {
         },
       );
 
+      console.log("1번째 응답 데이터");
       console.log(response.data); // 응답 데이터 처리
 
       // 각 목차 항목에 대한 요청을 준비
       const promises = tableContents.map(async (item, index) => {
         const formData2 = new FormData();
-        formData2.append("bookId", response.data?.result.book_id);
+        formData2.append("bookId", String(response.data?.result.book_id));
         formData2.append("index", String(index + 1));
         formData2.append("title", item.title);
-        formData2.append("content", item.content);
+        formData2.append("text", item.content);
         if (item.image && item.image.length > 0) {
-          item.image.forEach((file, index) => {
+          item.image.forEach((file) => {
             // 'image[]'는 서버측에서 배열로 파일을 받기 위한 표현입니다.
             // 각 파일에 대해 고유한 키를 부여하기 위해 인덱스를 사용할 수 있습니다.
             formData2.append(`image`, file);
           });
-          console.log(formData2);
         }
 
-        await axios.post("http://localhost:8080/books/contents", formData2, {
-          headers: {
-            authorization: accessToken,
-            refresh: refreshToken,
+        const response2 = await axios.post(
+          "http://localhost:8080/books/contents",
+          formData2,
+          {
+            headers: {
+              authorization: accessToken,
+              refresh: refreshToken,
+            },
           },
-        });
+        );
+        console.log("2번째 응답 데이터");
+        console.log(response2);
       });
 
       // 모든 목차 항목에 대한 요청을 동시에 실행
       const results = await Promise.all(promises);
+      console.log("results");
       console.log(results); // 모든 요청의 결과 확인
 
       // 요청 성공 후 작업 (예: 페이지 이동, 상태 업데이트)

@@ -7,5 +7,7 @@ export interface IBookDetailProps {
 export interface IBookDetailUIProps {
   onClickCommentToggle: (event: MouseEvent<HTMLButtonElement>) => void;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
-  data: BookData[] | null;
+  data: BookData | null;
+  isStored: boolean;
+  storePost: () => Promise<void>;
 }

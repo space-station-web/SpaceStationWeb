@@ -1,5 +1,4 @@
 import type { ChangeEvent, MouseEvent } from "react";
-import React from "react";
 
 export interface ISearchProps {
   onClickTitleFilter: (event: MouseEvent<HTMLButtonElement>) => void;
