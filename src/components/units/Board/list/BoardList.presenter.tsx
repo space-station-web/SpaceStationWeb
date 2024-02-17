@@ -34,9 +34,11 @@ export default function BoardListUI(props: IBoardListTypes): JSX.Element {
         {props.posts.map((el) => (
           <L.Board
             style={
-              el.image_url !== undefined && el.image_url !== ""
+              el.image_url !== null
                 ? { backgroundImage: `url(${el.image_url})` }
-                : {}
+                : {
+                    backgroundImage: "url(/board/card.png)",
+                  }
             }
             id={el.post_id.toString()}
             key={el.post_id}

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState, type MouseEvent } from "react";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../API/request";
 import BoardListUI from "./BoardList.presenter";
 
 export interface Post {
@@ -24,11 +25,16 @@ export default function BoardList(): JSX.Element {
   const router = useRouter();
   const [posts, setPosts] = useState<Post[]>([]);
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 상태
-  const accessToken =
-    "Bearer " +
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsIm1haWwiOiJhc2RnQG5hdmVyLmNvbSIsImlhdCI6MTcwODE1MDI4NSwiZXhwIjoxNzA4MTYxMDg1fQ.Ji0pjJL_kPgBM5h_ik3TxGGB-5P--8EOV5NEeZPiYNY";
-  const refreshToken =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDgxNTAyODUsImV4cCI6MTcwODIzNjY4NX0.0fSx4wNWj20i2wxqe5NTlByt6H2tqxGumP1VOF9WsRw";
+  const [accessToken, setAccessToken] = useState<string | null>(null);
+  const [refreshToken, setRefreshToken] = useState<string | null>(null);
+
+  useEffect(() => {
+    // localStorage에서 토큰을 가져와 상태에 저장
+    const token = window.localStorage.getItem(ACCESS_TOKEN);
+    const refresh = window.localStorage.getItem(REFRESH_TOKEN);
+    setAccessToken(token);
+    setRefreshToken(refresh);
+  }, []);
 
   // 게시글 클릭 시 라우팅
   const onClickBoard = async (
@@ -85,11 +91,13 @@ export default function BoardList(): JSX.Element {
 
   // 이웃만
   const onClickNeighborOrder = async (): Promise<void> => {
+    console.log(accessToken);
+    console.log(refreshToken);
     const response = await axios.get<ApiResponse>(
       "http://localhost:8080/posts/follow-posts",
       {
         headers: {
-          authorization: accessToken,
+          authorization: "Bearer " + accessToken,
           refresh: refreshToken,
         },
       },

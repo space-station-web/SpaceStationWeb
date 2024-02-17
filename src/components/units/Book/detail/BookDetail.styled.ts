@@ -23,6 +23,7 @@ export const Prev = styled.img`
   width: 1.23rem;
   height: 1.23rem;
   float: left;
+  cursor: pointer;
 `;
 
 export const ShareBtn = styled.button`

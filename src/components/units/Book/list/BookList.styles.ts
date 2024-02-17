@@ -67,12 +67,13 @@ export const BoardBox = styled.div`
   justify-content: center;
 `;
 export const Board = styled.div`
-  z-index: 1000;
+  z-index: 3;
   width: 11rem;
   height: 23rem;
   border-radius: 20px;
   border: 1px solid white;
   background-color: #e7e6e6;
+  cursor: pointer;
 
   display: flex;
   flex-direction: column;
