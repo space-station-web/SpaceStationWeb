@@ -1,8 +1,11 @@
+
 import type { ChangeEvent, Dispatch, MouseEvent, SetStateAction } from "react";
+
 
 export interface ISearchProps {
   onClickTitleFilter: (event: MouseEvent<HTMLButtonElement>) => void;
   onClickAuthorFilter: (event: MouseEvent<HTMLButtonElement>) => void;
+
   onClickBoard: (event: MouseEvent<HTMLDivElement>) => void;
   searchFilter: string;
   keyword: string;
@@ -26,4 +29,5 @@ export interface IData {
   code: number;
   message: string;
   result: IPost[];
+
 }

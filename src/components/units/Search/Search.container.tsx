@@ -1,3 +1,4 @@
+
 import axios from "axios";
 import _ from "lodash"; // lodash를 임포트합니다.
 import { useRouter } from "next/router";
@@ -8,24 +9,30 @@ import {
   useState,
   type ChangeEvent,
 } from "react";
+
 import SearchUI from "./Search.presenter";
 import type { IData, IPost } from "./Search.types";
 
 const POSTS_PER_PAGE = 10;
 
 export default function Search(): JSX.Element {
+
   const [searchFilter, setSearchFilter] = useState("title");
   const [keyword, setKeyword] = useState("");
   const [post, setPost] = useState<IPost[]>([]);
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 상태
+
   const router = useRouter();
 
+  const [searchFilter, setSearchFilter] = useState("title");
+  const [searchingItem, setSearchingItem] = useState("");
   const onClickTitleFilter = (): void => {
     setSearchFilter("title");
   };
 
   const onClickAuthorFilter = (): void => {
     setSearchFilter("author");
+
   };
 
   const onClickBoard = async (
@@ -75,11 +82,13 @@ export default function Search(): JSX.Element {
 
   const totalPageCount = Math.ceil(post.length / POSTS_PER_PAGE);
 
+
   return (
     <SearchUI
       onClickTitleFilter={onClickTitleFilter}
       onClickAuthorFilter={onClickAuthorFilter}
       searchFilter={searchFilter}
+
       onChangeSearch={onChangeSearch}
       keyword={keyword}
       currentPage={currentPage}
@@ -87,6 +96,7 @@ export default function Search(): JSX.Element {
       totalPageCount={totalPageCount}
       post={getCurrentPagePosts()}
       onClickBoard={onClickBoard}
+
     />
   );
 }

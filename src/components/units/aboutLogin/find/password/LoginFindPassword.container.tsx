@@ -67,9 +67,13 @@ export default function LoginFindPassword(): JSX.Element {
       );
       console.log("res", response);
       const isSuccess = response.data.result.isSuccess === true;
+      const userId = response.data.result.result.userId[0][0].id;
+      console.log("userId", userId);
       if (isSuccess) {
-        await router.push("../../../../../../login/FindPassword/changePassword");
-        // await router.push("../../../../../../login/FindPassword");
+        await router.push({
+          pathname: "../../../../../../login/FindPassword/changePassword",
+          query: { userId },
+        });
         console.log('이메일 인증번호 확인 성공');
       } else {
         console.log('이메일 인증번호 확인 false');

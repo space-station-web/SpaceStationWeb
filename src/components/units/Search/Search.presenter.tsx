@@ -3,6 +3,7 @@ import * as L from "../Board/list/BoardList.styles";
 import * as S from "./Search.styles";
 import type { ISearchProps } from "./Search.types";
 
+
 export default function SearchUI(props: ISearchProps): JSX.Element {
   const truncateContent = (
     content: string | undefined,
@@ -42,15 +43,18 @@ export default function SearchUI(props: ISearchProps): JSX.Element {
           </S.FilterAuthorButton>
         </S.FilterContainer>
 
+
         <S.SearchFullContainer>
           <S.SearchContainer>
             <S.SearchBtnImage src="/common/icon/search.svg" />
             <S.SearchInput
               type="text"
               placeholder="찾고 싶은 글이 있나요?"
+
               // value={props.keyword} // 입력 필드에 표시될 검색어입니다.
               onChange={props.onChangeSearch} // 검색어가 변경될 때 실행될 함수입니다.
               // onKeyDown={props.handleSubmit} // 엔터 키를 눌렀을 때 실행될 함수입니다.
+
             />
           </S.SearchContainer>
         </S.SearchFullContainer>
