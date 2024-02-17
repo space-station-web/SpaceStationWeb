@@ -38,7 +38,7 @@ export default function ChangePasswordUI(
             />
           </F.InputTextForm>
           <F.ErrorMessage>{props.errorMessage}</F.ErrorMessage>
-          <F.Button onClick={props.onClickMoveSuccess}>완료</F.Button>
+          <F.Button onClick={props.onClickMoveSuccess} disabled={!props.isRight}>완료</F.Button>
         </F.Form>
       </F.Wrapper>
     </>

@@ -12,9 +12,24 @@ export default function ChangePassword(): JSX.Element {
   const [errorMessage, setErrorMessage] = useState("ㅤ");
   const [isEdit, setIsEdit] = useState(false);
 
+  // 비밀번호 정규식
   const [errorMessagePW, setErrorMessagePW] = useState("ㅤ");
-  const [isError2, setIsError2] = useState(false); // 비밀번호 정규식
+  const [isError2, setIsError2] = useState(false); 
+
+  // 비밀번호 placeholder
   const [phPassword, setPhPassword] = useState("비밀번호");
+
+  // 모든 입력값 이상 여부
+  const [isRight, setIsRight] = useState(false);
+
+  useEffect(() => { // 완료 버튼 활성화 여부 (조건 모두 만족시 활성화)
+    if (!isEdit && !isError2) {
+      setIsRight(true);
+    } else {
+      setIsRight(false);
+    }
+    console.log("isRight", isRight);
+  }, [isEdit, isError2]);
 
   const onClickMoveSuccess = async (): Promise<void> => {
     try {
@@ -95,6 +110,8 @@ export default function ChangePassword(): JSX.Element {
 
       isError2={isError2}
       errorMessagePw={errorMessagePW}
+
+      isRight={isRight}
 
       onFocusPassword={onFocusPassword}
       onBlurPassword={onBlurPassword}
