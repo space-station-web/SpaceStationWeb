@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useRef, useState, type ChangeEvent } from "react";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../API/request";
 import BookWriteUI from "./BookWrite.presenter";
 import type { TableContent } from "./BookWrite.types";
 
@@ -12,6 +13,16 @@ export default function BookWrite(): JSX.Element {
     Array<{ index: number; title: string; context: string }>
   >([]);
   const [thumbnail, setThumbnail] = useState<File | null>(null);
+  const [accessToken, setAccessToken] = useState<string | null>(null);
+  const [refreshToken, setRefreshToken] = useState<string | null>(null);
+
+  useEffect(() => {
+    // localStorage에서 토큰을 가져와 상태에 저장
+    const token = "Bearer " + window.localStorage.getItem(ACCESS_TOKEN);
+    const refresh = window.localStorage.getItem(REFRESH_TOKEN);
+    setAccessToken(token);
+    setRefreshToken(refresh);
+  }, []);
 
   // 썸네일
   const [coverImageUrl, setCoverImageUrl] = useState("/book/coverAdd.png"); // 커버 이미지 URL 상태
@@ -103,12 +114,6 @@ export default function BookWrite(): JSX.Element {
     setIsToggle((prev) => !prev);
   };
 
-  const accessToken =
-    "Bearer " +
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsIm1haWwiOiJhc2RnQG5hdmVyLmNvbSIsImlhdCI6MTcwODE2MTgxOSwiZXhwIjoxNzA4MTcyNjE5fQ.9l3O92l_ZUTwO96tpxu1I2bG9ZoqbvxkwtO_RxIl1UI";
-  const refreshToken =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDgxNjE4MTksImV4cCI6MTcwODI0ODIxOX0.01IrBlS3M9iCTXHRptX8fQ91LTfJJvKSJXIE9aOu1iQ";
-
   // API 요청 함수
   const onClickSubmitBook = async (): Promise<void> => {
     // 1차 책 생성 요청 작업
@@ -154,8 +159,6 @@ export default function BookWrite(): JSX.Element {
             formData2.append(`image`, file);
           });
         }
-        console.log("formData2");
-        console.log(formData2);
 
         const response2 = await axios.post(
           "http://localhost:8080/books/contents",
