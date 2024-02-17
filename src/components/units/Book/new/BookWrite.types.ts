@@ -12,9 +12,8 @@ export interface IBookWriteProps {
   handleAddTableContent: (
     title: string,
     content: string,
-    images?: string[] | undefined,
+    image?: File[] | undefined,
   ) => void;
-
   onChangeTitle: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeIntro: (event: ChangeEvent<HTMLTextAreaElement>) => void;
   onClickSubmitBook: () => Promise<void>;
@@ -27,5 +26,5 @@ export interface IBookWriteProps {
 export interface TableContent {
   title: string;
   content: string;
-  images?: string[] | undefined;
+  image?: File[];
 }
