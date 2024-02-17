@@ -83,7 +83,9 @@ export default function BoardDetailUI(props: IBoardDetailUIProps): JSX.Element {
               <L.ImageBox
                 style={firstData?.image_url ? {} : { display: "none" }}
               >
-                <L.Image src={firstData?.image_url} />
+                {firstData?.image_url?.map((url, index) => (
+                  <L.Image key={index} src={url} />
+                ))}
               </L.ImageBox>
               <L.Contents>{firstData?.content}</L.Contents>
             </L.BoardMiddle>
@@ -93,8 +95,8 @@ export default function BoardDetailUI(props: IBoardDetailUIProps): JSX.Element {
                 댓글보기
               </L.CommentToggle>
               <L.IconContainer>
-                <L.LikeIcon />
-                <L.CountLike>123</L.CountLike>
+                <L.LikeIcon onClick={props.onClickLike} />
+                <L.CountLike>{firstData?.like}</L.CountLike>
                 <L.SaveButton
                   onClick={handleSaveButtonClick}
                   fill={isStored ? "#ff6f00" : "none"}

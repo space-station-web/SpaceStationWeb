@@ -17,7 +17,7 @@ export default function BookWrite(): JSX.Element {
   const [coverImageUrl, setCoverImageUrl] = useState("/book/coverAdd.png"); // 커버 이미지 URL 상태
 
   const coverImageRef = useRef<HTMLInputElement>(null);
-  const formData = new FormData(); // 이 부분을 onClickSubmitBook으로 옮겼으므로 여기서는 제거
+  const formData = new FormData(); // 1차 책 인트로 폼데이터
 
   // 파일 입력 핸들러
   const handleCoverImageChange = (
@@ -48,20 +48,18 @@ export default function BookWrite(): JSX.Element {
     coverImageRef.current?.click(); // 파일 입력 참조를 사용하여 클릭 이벤트를 프로그래매틱하게 발생시킵니다.
   };
 
-  // 요청 파라미터
-  // const [accessToken, setAccessToken] = useState<string | null>(null);
-  // const [refreshToken, setRefreshToken] = useState<string | null>(null);
+  // const addTableContentsToFormData = (response): void => {
+  //   tableContents.forEach((item, index) => {
+  //     formData2.append("bookId", response.data?.result.book_id);
+  //     formData2.append("index", String(index + 1));
+  //     formData2.append("title", item.title);
+  //     formData2.append("content", item.content);
 
-  // useEffect(() => {
-  //   // 클라이언트 사이드에서만 실행되도록 함
-  //   if (typeof window !== "undefined") {
-  //     const storedAccessToken = window.localStorage.getItem(ACCESS_TOKEN_KEY);
-  //     const storedRefreshToken = window.localStorage.getItem(REFRESH_TOKEN_KEY);
-  //     setAccessToken(storedAccessToken);
-  //     setRefreshToken(storedRefreshToken);
-  //   }
-  // }, []);
-
+  //     if (item.image) {
+  //       formData2.append("image", item.image);
+  //     }
+  //   });
+  // };
   useEffect(() => {
     const newBookContents = tableContents.map((item, index) => ({
       index: index + 1,
@@ -74,9 +72,9 @@ export default function BookWrite(): JSX.Element {
   const handleAddTableContent = (
     title: string,
     content: string,
-    images?: string[] | undefined,
+    image?: File[],
   ): void => {
-    setTableContents([...tableContents, { title, content, images }]);
+    setTableContents([...tableContents, { title, content, image }]);
   };
 
   // 항목 삭제
@@ -113,6 +111,7 @@ export default function BookWrite(): JSX.Element {
 
   // API 요청 함수
   const onClickSubmitBook = async (): Promise<void> => {
+    // 1차 책 생성 요청 작업
     formData.append("title", title);
     formData.append("intro", intro);
     if (selectedCategory !== null) {
@@ -137,6 +136,35 @@ export default function BookWrite(): JSX.Element {
       );
 
       console.log(response.data); // 응답 데이터 처리
+
+      // 각 목차 항목에 대한 요청을 준비
+      const promises = tableContents.map(async (item, index) => {
+        const formData2 = new FormData();
+        formData2.append("bookId", response.data?.result.book_id);
+        formData2.append("index", String(index + 1));
+        formData2.append("title", item.title);
+        formData2.append("content", item.content);
+        if (item.image && item.image.length > 0) {
+          item.image.forEach((file, index) => {
+            // 'image[]'는 서버측에서 배열로 파일을 받기 위한 표현입니다.
+            // 각 파일에 대해 고유한 키를 부여하기 위해 인덱스를 사용할 수 있습니다.
+            formData2.append(`image`, file);
+          });
+          console.log(formData2);
+        }
+
+        await axios.post("http://localhost:8080/books/contents", formData2, {
+          headers: {
+            authorization: accessToken,
+            refresh: refreshToken,
+          },
+        });
+      });
+
+      // 모든 목차 항목에 대한 요청을 동시에 실행
+      const results = await Promise.all(promises);
+      console.log(results); // 모든 요청의 결과 확인
+
       // 요청 성공 후 작업 (예: 페이지 이동, 상태 업데이트)
     } catch (error: any) {
       alert(error.message); // 에러 처리

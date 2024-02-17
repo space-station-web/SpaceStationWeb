@@ -12,4 +12,5 @@ export interface IBoardDetailUIProps {
 
   isStored: boolean;
   storePost: () => Promise<void>;
+  onClickLike: () => Promise<void>;
 }
