@@ -92,7 +92,12 @@ export default function LayoutHeaderUI(props: ILayoutHeader): JSX.Element {
           </>
         )}
         <Notification />
-        <img src="/common/icon/icon_search.svg" />
+        <img
+          src="/common/icon/icon_search.svg"
+          onClick={() => {
+            void router.push("/search");
+          }}
+        />
       </Styled.UserBar>
     </Styled.Wrapper>
   );
