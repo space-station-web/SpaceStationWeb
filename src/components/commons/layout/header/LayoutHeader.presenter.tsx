@@ -44,7 +44,7 @@ export default function LayoutHeaderUI(props: ILayoutHeader): JSX.Element {
           <>
             <Styled.User>
               <Styled.UserImg />
-              <div style={{ color: "#f0f0f0", lineHeight: "31px" }}>허거덩</div>
+              <div onClick={props.onClickTest} style={{ color: "#f0f0f0", lineHeight: "31px" }}>허거덩</div>
             </Styled.User>
             <div
               onClick={props.onClickLogout}
