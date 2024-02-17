@@ -17,6 +17,7 @@ export const NavBarItem = styled.button`
   background-color: transparent;
   color: #f0f0f0;
   font-size: 0.76rem;
+  cursor: pointer;
 `;
 export const UserBar = styled.div`
   display: flex;

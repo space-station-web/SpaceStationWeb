@@ -11,6 +11,8 @@ export interface PostData {
   content: string;
   created_at: string;
   visibility: string;
+  image_url: string[];
+  like: number;
 }
 
 interface ApiResponse {
@@ -21,6 +23,12 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
   const router = useRouter();
   const { post_id: postId } = router.query;
   const [isStored, setIsStored] = useState(false);
+
+  const accessToken =
+    "Bearer " +
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsIm1haWwiOiJhc2RnQG5hdmVyLmNvbSIsImlhdCI6MTcwODE1MDI4NSwiZXhwIjoxNzA4MTYxMDg1fQ.Ji0pjJL_kPgBM5h_ik3TxGGB-5P--8EOV5NEeZPiYNY";
+  const refreshToken =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDgxNTAyODUsImV4cCI6MTcwODIzNjY4NX0.0fSx4wNWj20i2wxqe5NTlByt6H2tqxGumP1VOF9WsRw";
 
   // 게시글 보관 api 요청
 
@@ -49,7 +57,7 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
   };
 
   // 게시물 api 요청
-  const [data, setData] = useState<PostData[] | null>(null);
+  const [data, setData] = useState<PostData | null>(null);
   const onClickCommentToggle = (): void => {
     props.setIsOpen((prev) => !prev);
   };
@@ -63,6 +71,7 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
           );
 
           setData(response.data.result);
+          console.log(response.data);
         } catch (error) {
           console.error("데이터 로딩 중 오류 발생", error);
         }
@@ -75,6 +84,27 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
     void router.push("/boards");
   };
 
+  // 게시글 좋아요
+  const onClickLike = async (): Promise<void> => {
+    if (typeof postId === "string") {
+      try {
+        const response = await axios.post(
+          `http://localhost:8080/likes/posts/${postId}`,
+          {
+            headers: {
+              authorization: accessToken,
+              refresh: refreshToken,
+            },
+          },
+        );
+
+        console.log(response.data);
+      } catch (error) {
+        console.error("데이터 로딩 중 오류 발생", error);
+      }
+    }
+  };
+
   return (
     <BoardDetailUI
       onClickCommentToggle={onClickCommentToggle}
@@ -84,6 +114,7 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
       onClickBoards={onClickBoards}
       storePost={storePost}
       isStored={isStored}
+      onClickLike={onClickLike}
     />
   );
 }

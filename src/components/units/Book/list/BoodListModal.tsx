@@ -14,14 +14,14 @@ const ModalComponent = ({ onClose }: ModalComponentProps): JSX.Element => {
         <Text>책을 등록하시겠습니까?</Text>
         <Button
           onClick={() => {
-            void router.push("/book/write");
+            void router.push("/books/write");
           }}
         >
           새로 등록하기
         </Button>
         <Button
           onClick={() => {
-            void router.push("/book/tempBook");
+            void router.push("/books/tempBook");
           }}
         >
           기존 글 불러오기

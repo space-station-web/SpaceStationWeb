@@ -1,4 +1,4 @@
-import type { ChangeEvent, MouseEvent } from "react";
+import type { ChangeEvent, MouseEvent, RefObject } from "react";
 
 export interface IBookWriteProps {
   isToggle: boolean;
@@ -12,16 +12,19 @@ export interface IBookWriteProps {
   handleAddTableContent: (
     title: string,
     content: string,
-    images?: string[] | undefined,
+    image?: File[] | undefined,
   ) => void;
-
   onChangeTitle: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeIntro: (event: ChangeEvent<HTMLTextAreaElement>) => void;
   onClickSubmitBook: () => Promise<void>;
+  handleCoverImageChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleFileInputClick: () => void;
+  coverImageUrl: string;
+  coverImageRef: RefObject<HTMLInputElement>;
 }
 
 export interface TableContent {
   title: string;
   content: string;
-  images?: string[] | undefined;
+  image?: File[];
 }
