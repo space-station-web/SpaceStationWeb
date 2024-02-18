@@ -1,13 +1,25 @@
 // ModalComponent.jsx
 import axios from "axios";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../API/request";
 interface ModalComponentProps {
   onClose: () => void;
 }
 
 const BookModal = ({ onClose }: ModalComponentProps): JSX.Element => {
+  const [accessToken, setAccessToken] = useState<string | null>(null);
+  const [refreshToken, setRefreshToken] = useState<string | null>(null);
+
+  useEffect(() => {
+    // localStorage에서 토큰을 가져와 상태에 저장
+    const token = "Bearer " + window.localStorage.getItem(ACCESS_TOKEN);
+    const refresh = window.localStorage.getItem(REFRESH_TOKEN);
+    setAccessToken(token);
+    setRefreshToken(refresh);
+  }, []);
+
   // 모달 바깥 클릭을 감지하는 핸들러
   const handleOutsideClick = (e: MouseEvent): void => {
     // 모달 컨테이너(ref)가 이벤트의 대상이 아닌 경우 onClose 실행
@@ -36,12 +48,6 @@ const BookModal = ({ onClose }: ModalComponentProps): JSX.Element => {
     alert("미완성");
   };
 
-  const refreshToken =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsIm1haWwiOiJhc2RnQG5hdmVyLmNvbSIsImlhdCI6MTcwODA2MDM4MSwiZXhwIjoxNzA4MDcxMTgxfQ.DN6JNIW9Qep8BYUbI7d3Ib0eSLZzmD_pY6SY57F6rDc";
-  const accessToken =
-    "Bearer " +
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDgwNjAzODEsImV4cCI6MTcwODE0Njc4MX0.kvb5RU3ZQD5qkx0mEm-5SCcUNModY3W6akrhI8g-iwg";
-
   // 게시글 삭제 로직을 수행하는 함수
   const router = useRouter();
   const { post_id: postId } = router.query;
@@ -59,11 +65,10 @@ const BookModal = ({ onClose }: ModalComponentProps): JSX.Element => {
             },
           },
         );
-
+        console.log(response.data);
         // 요청이 성공적으로 완료되었음을 알림
-        alert("게시글이 삭제되었습니다.");
+        alert(response.data.result.data.message);
         onClose(); // 게시글 삭제 후 모달 닫기
-        console.log(response);
 
         // void router.push("/boards");
       } catch (error) {

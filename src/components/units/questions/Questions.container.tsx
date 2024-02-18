@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState, type ChangeEvent } from "react";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../API/request";
 import QuestionsUI from "./Questions.presenter";
 
 interface Question {
@@ -15,6 +16,17 @@ interface QuestionsResponse {
 export default function Questions(): JSX.Element {
   const [questionTitle, setQuestionTitle] = useState<string>("");
   const [content, setContent] = useState("");
+  const [accessToken, setAccessToken] = useState<string | null>(null);
+  const [refreshToken, setRefreshToken] = useState<string | null>(null);
+
+  useEffect(() => {
+    // localStorage에서 토큰을 가져와 상태에 저장
+    const token = "Bearer " + window.localStorage.getItem(ACCESS_TOKEN);
+    const refresh = window.localStorage.getItem(REFRESH_TOKEN);
+    setAccessToken(token);
+    setRefreshToken(refresh);
+  }, []);
+
   const router = useRouter();
 
   useEffect(() => {
@@ -24,14 +36,12 @@ export default function Questions(): JSX.Element {
           "http://localhost:8080/questions",
           {
             headers: {
-              authorization:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsIm1haWwiOiJhc2RnQG5hdmVyLmNvbSIsImlhdCI6MTcwNzk5MjAzMiwiZXhwIjoxNzA4MDAyODMyfQ._HO0A2M0goJxlyGedXxojwIdtGgw7KR4hnwycKEMQ7I",
-              refresh:
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDc5OTIwMzIsImV4cCI6MTcwODA3ODQzMn0.h4Xyvpu51i_nSG83Adr9_76XAg7KZZ3s2anF4dOeY_w",
+              authorization: accessToken,
+              refresh: refreshToken,
             },
           },
         );
-        console.log(response.data.result.content);
+        console.log(response.data.result?.content);
         const firstQuestionTitle = response.data.result?.content;
         setQuestionTitle(firstQuestionTitle);
       } catch (error) {
@@ -60,10 +70,8 @@ export default function Questions(): JSX.Element {
         },
         {
           headers: {
-            authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsIm1haWwiOiJhc2RnQG5hdmVyLmNvbSIsImlhdCI6MTcwNzk5MTAwNCwiZXhwIjoxNzA4MDAxODA0fQ.QXw2n2l_smgf-Dh0OY94kilK0DzzoZLclFwrONJapCE",
-            refresh:
-              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDc5OTEwMDQsImV4cCI6MTcwODA3NzQwNH0.IN1ua6x320RXSJcLUAAeFqtmuQmsc_JtArztxAMaV3c",
+            authorization: accessToken,
+            refresh: refreshToken,
           },
         },
       );

@@ -16,6 +16,9 @@ export default function BoardCommentListUI(
                   <L.UserName>{el.user_id}</L.UserName>
                   <L.Comment>{el.content}</L.Comment>
                 </L.CommentDiv>
+                <L.Delete id={el.post_reply_id} onClick={props.onClickDelete}>
+                  X
+                </L.Delete>
               </L.CommentContainer>
             ))
           ) : (

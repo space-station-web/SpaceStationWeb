@@ -19,7 +19,10 @@ export default function BoardDetailPage(): JSX.Element {
       {isOpen ? (
         <div style={{ display: "flex", flexDirection: "column" }}>
           <CommentWrite setRefreshData={setRefreshData} />
-          <BoardCommentList refreshData={refreshData} />
+          <BoardCommentList
+            refreshData={refreshData}
+            setRefreshData={setRefreshData}
+          />
         </div>
       ) : (
         " "

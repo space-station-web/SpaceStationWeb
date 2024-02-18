@@ -10,7 +10,6 @@ export interface IBoardDetailUIProps {
   data: PostData | null;
   onClickBoards: (event: MouseEvent<HTMLImageElement>) => void;
 
-  isStored: boolean;
-  storePost: () => Promise<void>;
   onClickLike: () => Promise<void>;
+  onClickSave: () => Promise<void>;
 }

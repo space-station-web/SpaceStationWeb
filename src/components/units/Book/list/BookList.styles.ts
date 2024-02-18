@@ -95,6 +95,7 @@ export const Board = styled.div`
 export const BoardImage = styled.img`
   width: 100%;
   height: 14.9rem;
+  border-radius: 20px;
   img {
     box-shadow: 0px 5px 4.5px 1px rgba(0, 0, 0, 0.09);
   }

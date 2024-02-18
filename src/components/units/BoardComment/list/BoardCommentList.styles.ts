@@ -23,6 +23,7 @@ export const CommentContainer = styled.div`
   flex-direction: row;
   align-items: center;
   padding: 0 20px 0 21px;
+  border-bottom: 0.5px solid #0a0a0a;
 `;
 
 export const UserImg = styled.img`
@@ -47,4 +48,15 @@ export const Comment = styled.p`
   font-size: 0.65rem;
   font-weight: 600;
   line-height: 25px; /* 147.059% */
+`;
+
+export const Delete = styled.button`
+  width: 1rem;
+  height: 1rem;
+  font-size: 1rem;
+  color: #8c8c8c;
+  background-color: #1e1e1e;
+  border: none;
+  margin-left: 38.5rem;
+  cursor: pointer;
 `;
