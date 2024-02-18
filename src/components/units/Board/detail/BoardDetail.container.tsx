@@ -15,6 +15,7 @@ export interface PostData {
   image_url: string[];
   postLikeCount: number;
   postLike: boolean;
+  storage: boolean;
 }
 
 interface ApiResponse {
@@ -25,8 +26,6 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
   const router = useRouter();
   const { post_id: postId } = router.query;
 
-  const [isStored, setIsStored] = useState(false);
-
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [refreshToken, setRefreshToken] = useState<string | null>(null);
 
@@ -34,24 +33,37 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
 
   // 게시글 보관 api 요청
 
-  const storePost = async (): Promise<void> => {
-    if (!isStored && typeof postId === "string" && postId.length > 0) {
+  const onClickSave = async (): Promise<void> => {
+    if (typeof postId === "string" && postId.length > 0) {
       try {
-        await axios.post(`http://localhost:8080/storages/posts/${postId}`, {
-          userId: 1,
-        });
+        const response = await axios.post(
+          `http://localhost:8080/storages/posts/types?postId=${postId}`,
+          {},
+          {
+            headers: {
+              authorization: accessToken,
+              refresh: refreshToken,
+            },
+          },
+        );
+        console.log(response.data);
         alert("게시글이 성공적으로 보관되었습니다.");
-        setIsStored(true);
       } catch (error) {
         console.error("게시글 보관 중 오류 발생", error);
       }
-    } else if (isStored && typeof postId === "string" && postId.length > 0) {
+    } else if (typeof postId === "string" && postId.length > 0) {
       try {
-        await axios.delete(`http://localhost:8080/storages/posts/${postId}`, {
-          data: { userId: 1 },
-        });
+        await axios.delete(
+          `http://localhost:8080/storages/posts/types?postId=${postId}`,
+
+          {
+            headers: {
+              authorization: accessToken,
+              refresh: refreshToken,
+            },
+          },
+        );
         alert("게시글 보관이 취소되었습니다.");
-        setIsStored(false);
       } catch (error) {
         console.error("게시글 보관 취소 중 오류 발생", error);
       }
@@ -141,9 +153,8 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
       data={data}
       //
       onClickBoards={onClickBoards}
-      storePost={storePost}
-      isStored={isStored}
       onClickLike={onClickLike}
+      onClickSave={onClickSave}
     />
   );
 }
