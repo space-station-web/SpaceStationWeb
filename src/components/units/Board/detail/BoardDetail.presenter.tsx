@@ -57,7 +57,7 @@ export default function BoardDetailUI(props: IBoardDetailUIProps): JSX.Element {
             <L.TopBoard>
               <L.UserBox>
                 <L.UserProfile src="/common/icon/User.png" />
-                <L.UserName>{firstData?.user_id}</L.UserName>
+                <L.UserName>{firstData?.nickname}</L.UserName>
               </L.UserBox>
               <L.MoreIcon onClick={toggleModal} />
             </L.TopBoard>

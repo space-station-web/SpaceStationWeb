@@ -16,6 +16,7 @@ export interface PostData {
   postLikeCount: number;
   postLike: boolean;
   storage: boolean;
+  nickname: string;
 }
 
 interface ApiResponse {
