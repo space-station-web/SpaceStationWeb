@@ -8,24 +8,34 @@ axios.defaults.baseURL = "http://localhost:8080/";
 function Neighbor() {
   const router = useRouter();
   const [userId, setUserId] = useState("20");
+  const [accessToken, setAccessToken] = useState<string | null>("");
+  const [refreshToken, setRefreshToken] = useState<string | null>("");
+  const headers = {
+    authorization: "Bearer " + accessToken,
+    refresh: refreshToken,
+  };
   const idForSee = router.query.user_id;
   const [neighborList, setNeighborList] = useState<NeighborItemProps[]>([]);
   const [myNeighborList, setMyNeighborList] = useState<number[]>([]);
 
   const getMyFollowList = async (): Promise<void> => {
     try {
-      const response = await axios.get(`/follow/user/${userId}`);
+      const response = await axios.get(`/follow/user/${userId}`, {
+        headers: headers,
+      });
+      console.log(response.data.result);
       setMyNeighborList(
         response.data.result.map((item: NeighborItemProps) => item.follow_id),
       );
-      console.log(response.data.result);
     } catch (error) {
       console.log(error);
     }
   };
   const getFollowList = async (): Promise<void> => {
     try {
-      const response = await axios.get(`/follow/user/${idForSee}`);
+      const response = await axios.get(`/follow/user/${idForSee}`, {
+        headers: headers,
+      });
       setNeighborList(response.data.result);
     } catch (error) {
       console.log(error);
@@ -36,8 +46,8 @@ function Neighbor() {
       const response = myNeighborList.includes(id)
         ? await axios.delete("/follow", { data: { followId: id } })
         : await axios.post("/follow", { followId: id });
-      getMyFollowList();
-      getFollowList();
+      userId !== idForSee && (await getMyFollowList());
+      await getFollowList();
     } catch (error) {
       console.log(error);
     }
@@ -45,13 +55,16 @@ function Neighbor() {
   const handleClickBack = () => {
     router.back();
   };
-
   useEffect(() => {
-    if (idForSee) {
+    setAccessToken(localStorage.getItem("accessToken"));
+    setRefreshToken(localStorage.getItem("refreshToken"));
+  }, []);
+  useEffect(() => {
+    if (router.isReady && accessToken && refreshToken) {
       getFollowList();
       getMyFollowList();
     }
-  }, [idForSee]);
+  }, [idForSee, accessToken, refreshToken]);
 
   return (
     <NeighborUI
