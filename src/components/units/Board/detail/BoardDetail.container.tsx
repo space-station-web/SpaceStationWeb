@@ -37,7 +37,7 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
     if (typeof postId === "string" && postId.length > 0) {
       try {
         const response = await axios.post(
-          `http://localhost:8080/storages/posts/types?postId=${postId}`,
+          `http://localhost:8080/storages/posts/${postId}`,
           {},
           {
             headers: {
@@ -54,7 +54,7 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
     } else if (typeof postId === "string" && postId.length > 0) {
       try {
         await axios.delete(
-          `http://localhost:8080/storages/posts/types?postId=${postId}`,
+          `http://localhost:8080/storages/posts/${postId}`,
 
           {
             headers: {
