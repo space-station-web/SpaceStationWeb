@@ -29,8 +29,20 @@ export default function LayoutHeaderUI(props: ILayoutHeader): JSX.Element {
           오늘의 질문
         </Styled.NavBarItem>
         <Styled.NavBarItem>오늘의 글감</Styled.NavBarItem>
-        <Styled.NavBarItem>우주 정거장</Styled.NavBarItem>
-        <Styled.NavBarItem>책방</Styled.NavBarItem>
+        <Styled.NavBarItem
+          onClick={() => {
+            void router.push("/boards");
+          }}
+        >
+          우주 정거장
+        </Styled.NavBarItem>
+        <Styled.NavBarItem
+          onClick={() => {
+            void router.push("/books");
+          }}
+        >
+          책방
+        </Styled.NavBarItem>
         <Styled.NavBarItem
           onClick={() => {
             void router.push("/write");
@@ -44,11 +56,13 @@ export default function LayoutHeaderUI(props: ILayoutHeader): JSX.Element {
           <>
             <Styled.User>
               <Styled.UserImg />
-              <div style={{ 
-                width: "70px",
-                color: "#f0f0f0", 
-                fontSize: "0.76rem", 
-                lineHeight: "31px" }}
+              <div
+                style={{
+                  width: "70px",
+                  color: "#f0f0f0",
+                  fontSize: "0.76rem",
+                  lineHeight: "31px",
+                }}
               >
                 {props._nick}
               </div>
