@@ -60,6 +60,7 @@ export default function Login(): JSX.Element {
         localStorage.setItem('accessToken', accessToken);
         localStorage.setItem('refreshToken', refreshToken);
         localStorage.setItem('nickname', nickname);
+        localStorage.setItem('userId', userId);
   
         // 로그인 여부 업데이트
         setLoginState(true);
