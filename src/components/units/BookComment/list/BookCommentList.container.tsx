@@ -2,14 +2,14 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState, type MouseEvent } from "react";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../API/request";
-import type { IBoardContainer } from "./BookComment.types";
-import BoardCommentListUI from "./BookCommentList.presenter";
+import type { IBookContainer } from "./BookComment.types";
+import BookCommentListUI from "./BookCommentList.presenter";
 
 export interface Comments {
-  post_reply_id: number;
+  book_reply_id: number;
   content: string;
   create_at: string;
-  PostId: number;
+  book_id: number;
   user_id: number;
 }
 
@@ -20,9 +20,9 @@ interface ApiResponse {
   result: Comments[];
 }
 
-export default function BookCommentList(props: IBoardContainer): JSX.Element {
+export default function BookCommentList(props: IBookContainer): JSX.Element {
   const router = useRouter();
-  const { post_id: postId } = router.query;
+  const { bookId } = router.query;
   const [comments, setComments] = useState<Comments[]>([]);
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [refreshToken, setRefreshToken] = useState<string | null>(null);
@@ -38,10 +38,10 @@ export default function BookCommentList(props: IBoardContainer): JSX.Element {
   useEffect(() => {
     // fetchComments 함수를 useEffect 외부로 이동
     const fetchComments = async (): Promise<void> => {
-      if (typeof postId === "string" && postId.length > 0) {
+      if (typeof bookId === "string" && bookId.length > 0) {
         try {
           const response = await axios.get<ApiResponse>(
-            `http://localhost:8080/replies/books/?bookId=${postId}`,
+            `http://localhost:8080/replies/books/?bookId=${bookId}`,
             {
               headers: {
                 authorization: accessToken,
@@ -84,7 +84,7 @@ export default function BookCommentList(props: IBoardContainer): JSX.Element {
 
   return (
     <>
-      <BoardCommentListUI comments={comments} onClickDelete={onClickDelete} />
+      <BookCommentListUI comments={comments} onClickDelete={onClickDelete} />
     </>
   );
 }

@@ -49,7 +49,7 @@ function MyPage() {
     setStorageName(e.target.value);
   };
   const handleQuestionOpen = (id: number) => {
-    router.push(`/questions/${id}`);
+    void router.push(`/questions/${id}`);
   };
   const getUserData = async (): Promise<void> => {
     try {

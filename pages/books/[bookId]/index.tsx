@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 import { useState } from "react";
-import CommentWrite from "../../../src/components/units/BoardComment/write/CommentWrite.container";
 import BookDetail from "../../../src/components/units/Book/detail/BookDetail.container";
 import BookCommentList from "../../../src/components/units/BookComment/list/BookCommentList.container";
+import BookCommentWrite from "../../../src/components/units/BookComment/write/BookCommentWrite.container";
 
 const Align = styled.div`
   display: flex;
@@ -18,7 +18,7 @@ export default function BookDetailPage(): JSX.Element {
       <BookDetail setIsOpen={setIsOpen} />
       {isOpen ? (
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <CommentWrite setRefreshData={setRefreshData} />
+          <BookCommentWrite setRefreshData={setRefreshData} />
           <BookCommentList
             refreshData={refreshData}
             setRefreshData={setRefreshData}

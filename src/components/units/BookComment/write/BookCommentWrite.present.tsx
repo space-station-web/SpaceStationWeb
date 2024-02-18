@@ -1,8 +1,10 @@
 import Lock from "../../../../../public/locked.svg";
-import * as L from "./CommentWrite.styled";
-import type { onChangeContents } from "./CommentWrite.types";
+import * as L from "./BookCommentWrite.styled";
+import type { onChangeContents } from "./BookCommentWrite.types";
 
-export default function CommentWriteUI(props: onChangeContents): JSX.Element {
+export default function BookCommentWriteUI(
+  props: onChangeContents,
+): JSX.Element {
   return (
     <>
       <L.Wrapper>
