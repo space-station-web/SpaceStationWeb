@@ -11,9 +11,9 @@ export default function Write(): JSX.Element {
   const [_content, setContent] = useState("");
   const [draftId, setDraftId] = useState(null);
 
-  const [isComponentVisible, setIsComponentVisible] = useState(false);
+  
   // 임시 저장 리스트 개수
-  const [temporaryStorageCount, setTemporaryStorageCount] = useState(0);
+  const [temporaryStorageCount, setTemporaryStorageCount] = useState(-1);
   const [temporaryStorageForms, setTemporaryStorageForms] = useState<number[]>(
     [],
   );
@@ -21,8 +21,13 @@ export default function Write(): JSX.Element {
   // 임시저장 팝업창
   const [isTempSaveAlertVisible, setIsTempSaveAlertVisible] = useState(false);
 
+  // 오늘의 글감
+  const [isComponentVisible, setIsComponentVisible] = useState(false);
+
   const [visibility, setVisibility] = useState("전채공개");
-  const [isAlertVisible, setIsAlertVisible] = useState(false);
+
+  // 발행하기 팝업창
+  // const [isAlertVisible, setIsAlertVisible] = useState(false);
   const [selectedImages, setSelectedImages] = useState<string[]>([]);
 
   // 토큰
@@ -33,19 +38,6 @@ export default function Write(): JSX.Element {
   const [topicId, setTopicId] = useState(null);
   const [todayTopic, setTodayTopic] = useState("");
   const [todayContent, setTodayContent] = useState("");
-
-  useEffect(() => {
-    // localStorage에서 토큰을 가져와 상태에 저장
-    const token = window.localStorage.getItem("accessToken");
-    const refresh = window.localStorage.getItem("refreshToken");
-    setAccessToken(token);
-    setRefreshToken(refresh);
-    // localStorage에서 user_id을 가져와 상태에 저장
-    const userId = window.localStorage.getItem("userId");
-    if (userId !== null) {
-      setUserId(userId);
-    }
-  }, []);
 
   useEffect(() => {
     // 임시저장 글 전체 조회
@@ -76,11 +68,29 @@ export default function Write(): JSX.Element {
     void fetchData();
   }, [temporaryStorageCount]);
 
+  useEffect(() => {
+    // localStorage에서 토큰을 가져와 상태에 저장
+    const token = window.localStorage.getItem("accessToken");
+    const refresh = window.localStorage.getItem("refreshToken");
+    setAccessToken(token);
+    setRefreshToken(refresh);
+    // localStorage에서 user_id을 가져와 상태에 저장
+    const userId = window.localStorage.getItem("userId");
+    if (userId !== null) {
+      setUserId(userId);
+    }
+    setTemporaryStorageCount(0);
+  }, []);
+
+  
+
   // 임시저장
   const handleTemporaryStorageClick = async (): Promise<void> => {
     setTemporaryStorageCount(temporaryStorageCount + 1);
 
     setTemporaryStorageForms((prevForms) => [...prevForms, Date.now()]);
+
+    console.log("selectedImages",selectedImages);
 
     try {
       const requestData = {
@@ -88,6 +98,7 @@ export default function Write(): JSX.Element {
         title: _title,
         content: _content,
         topic_id: topicId,
+        images: selectedImages
       };
       // const images = _images;
       if (draftId === null) {
@@ -155,7 +166,7 @@ export default function Write(): JSX.Element {
 
   // 발행하기 버튼
   const handlePublishClick = async (): Promise<void> => {
-    setIsAlertVisible(true);
+    // setIsAlertVisible(true);
     try {
       const title = _title;
       const content = _content;
@@ -178,8 +189,19 @@ export default function Write(): JSX.Element {
         },
       );
       console.log(response);
-      alert("게시물 등록이 완료되었습니다.");
-      void router.push("/boards");
+      const isSuccess = response.data.isSuccess === true;
+        if (isSuccess) {
+          console.log("발행하기 요청 성공");
+          // setIsAlertVisible(true);
+          // setTimeout(() => {
+          //   setIsAlertVisible(false);
+          // }, 2000);
+          alert("게시물 등록이 완료되었습니다.");
+          void router.push("/boards");
+        } else {
+          console.log("발행하기 요청 false");
+        }
+
     } catch (error: any) {
       alert(error.message); // 에러 처리
       console.log(error.message);
@@ -216,13 +238,13 @@ export default function Write(): JSX.Element {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // 이미지 클릭
-  const onImageClick = () => {
+  const onImageClick = (): void => {
     if (fileInputRef.current !== null) {
       fileInputRef.current.click();
     }
   };
   // 이미지 넣기
-  const onFileInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onFileInputChange = (event: ChangeEvent<HTMLInputElement>):void => {
     const files = event.target.files;
 
     if (files !== null && files.length > 0) {
@@ -266,7 +288,7 @@ export default function Write(): JSX.Element {
         handlePublishClick={handlePublishClick} // handlePublishClick 추가
         temporaryStorageCount={temporaryStorageCount}
         isComponentVisible={isComponentVisible}
-        isAlertVisible={isAlertVisible}
+        // isAlertVisible={isAlertVisible}
         isTempSaveAlertVisible={isTempSaveAlertVisible}
         selectedImages={selectedImages}
         fileInputRef={fileInputRef}

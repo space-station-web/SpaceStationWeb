@@ -361,7 +361,7 @@ export const CustomAlert = styled.div`
   /* 위치 지정 */
   position: absolute;
   top: 30.76rem;
-  left: 45rem;
+  left: 66rem;
 `;
 
 export const CustomTemSaveAlert = styled.div`
@@ -379,13 +379,15 @@ export const CustomTemSaveAlert = styled.div`
   /* 위치 지정 */
   position: absolute;
   top: 30.76rem;
-  left: 45rem;
+  left: 66rem;
 `;
 
 export const CustomTemSaveAlertImg = styled.div`
-  width: 3.84rem;
-  height: 3.84rem;
+  width: 3rem;
+  height: 3rem;
   flex-shrink: 0;
+  margin-right: 2rem;
+  margin-bottom: 1.5rem;
 `;
 export const CustomTemSaveAlertText = styled.p`
   color: var(--Layout-Color-Gray-100, #dcdcdc);
@@ -397,10 +399,11 @@ export const CustomTemSaveAlertText = styled.p`
 `;
 
 export const CustomAlertImg = styled.div`
-  width: 5.38rem;
-  height: 5.38rem;
-  flex-shrink: 0;
-  margin-left: 1.15rem;
+width: 1rem;
+height: 1rem;
+flex-shrink: 0;
+margin-right: 2rem;
+margin-bottom: 1.5rem;
 `;
 
 export const CustomAlertText = styled.p`
