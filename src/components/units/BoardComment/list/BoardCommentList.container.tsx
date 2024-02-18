@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../API/request";
 import type { IBoardContainer } from "./BoardComment.types";
 import BoardCommentListUI from "./BoardCommentList.presenter";
@@ -60,9 +60,31 @@ export default function BoardCommentList(props: IBoardContainer): JSX.Element {
     void fetchComments();
   }, [accessToken, refreshToken, props.refreshData]); // 의존성 배열에 id를 추가
 
+  const onClickDelete = async (
+    event: MouseEvent<HTMLButtonElement>,
+  ): Promise<void> => {
+    const replyId = event.currentTarget.id;
+    try {
+      const response = await axios.delete(
+        `http://localhost:8080/replies/posts/?replyId=${replyId}`,
+        {
+          headers: {
+            authorization: accessToken,
+            refresh: refreshToken,
+          },
+        },
+      );
+
+      console.log(response.data);
+      props.setRefreshData((prev) => !prev);
+    } catch (error: any) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <>
-      <BoardCommentListUI comments={comments} />
+      <BoardCommentListUI comments={comments} onClickDelete={onClickDelete} />
     </>
   );
 }
