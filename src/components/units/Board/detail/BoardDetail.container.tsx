@@ -32,14 +32,6 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
 
   const [refreshData, setRefreshData] = useState(false); // 데이터 리프레시를 위한 상태
 
-  useEffect(() => {
-    // localStorage에서 토큰을 가져와 상태에 저장
-    const token = "Bearer " + window.localStorage.getItem(ACCESS_TOKEN);
-    const refresh = window.localStorage.getItem(REFRESH_TOKEN);
-    setAccessToken(token);
-    setRefreshToken(refresh);
-  }, []);
-
   // 게시글 보관 api 요청
 
   const storePost = async (): Promise<void> => {
@@ -73,28 +65,36 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
   };
 
   useEffect(() => {
-    if (typeof postId === "string" && postId.length > 0) {
-      const fetchData = async (): Promise<void> => {
-        try {
-          const response = await axios.get<ApiResponse>(
-            `http://localhost:8080/posts/${postId}`,
-            {
-              headers: {
-                authorization: accessToken,
-                refresh: refreshToken,
-              },
-            },
-          );
+    // localStorage에서 토큰을 가져와 상태에 저장
+    const token = "Bearer " + window.localStorage.getItem(ACCESS_TOKEN);
+    const refresh = window.localStorage.getItem(REFRESH_TOKEN);
+    setAccessToken(token);
+    setRefreshToken(refresh);
 
-          setData(response.data.result);
-          console.log(response.data);
-        } catch (error) {
-          console.error("데이터 로딩 중 오류 발생", error);
+    if (router.isReady) {
+      const fetchData = async (): Promise<void> => {
+        // postId가 문자열이고, 길이가 0보다 클 때만 실행
+        if (typeof postId === "string" && postId.length > 0) {
+          try {
+            const response = await axios.get<ApiResponse>(
+              `http://localhost:8080/posts/${postId}`,
+              {
+                headers: {
+                  authorization: accessToken,
+                  refresh: refreshToken,
+                },
+              },
+            );
+            setData(response.data.result);
+          } catch (error) {
+            console.error("데이터 로딩 중 오류 발생", error);
+          }
         }
       };
+
       void fetchData();
     }
-  }, [postId, refreshData]);
+  }, [postId, refreshData, router.isReady, accessToken, refreshToken]);
 
   const onClickBoards = (): void => {
     void router.push("/boards");
