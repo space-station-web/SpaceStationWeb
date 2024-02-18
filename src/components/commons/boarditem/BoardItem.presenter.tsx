@@ -7,6 +7,7 @@ function BoardItemUI({
   questionItem,
   save,
   handleSaveClick,
+  ...props
 }: BoardItemUIProps) {
   const [optionOpen, setOptionOpen] = useState(false);
   const handleOptionClick = () => {
@@ -28,8 +29,14 @@ function BoardItemUI({
         <styled.MyWritting
           $imgUrl={writtingItem.img}
           key={`${writtingItem.user_id}-${writtingItem.title}`}
+          {...props}
         >
-          <styled.SaveBtn onClick={handleSaveClick}>
+          <styled.SaveBtn
+            onClick={(e: React.MouseEvent<HTMLDivElement>) => {
+              e.stopPropagation();
+              handleSaveClick();
+            }}
+          >
             <styled.IconSave $issave={save} />
           </styled.SaveBtn>
           <styled.MyWrittingInfoField>
@@ -41,7 +48,7 @@ function BoardItemUI({
               }}
             >
               <styled.MyWrittingAuthor>
-                {writtingItem.author}
+                {writtingItem.user_id}
               </styled.MyWrittingAuthor>
               <styled.MyWrittingTitle>
                 {writtingItem.title}
@@ -50,7 +57,10 @@ function BoardItemUI({
             <img
               src="/common/icon/more.svg"
               style={{ height: 25, marginTop: 2 }}
-              onClick={handleOptionClick}
+              onClick={(e: React.MouseEvent<HTMLDivElement>) => {
+                e.stopPropagation();
+                handleOptionClick();
+              }}
             />
           </styled.MyWrittingInfoField>
           {optionOpen && (
@@ -77,14 +87,14 @@ function BoardItemUI({
       return questionItem ? (
         <styled.Question>
           <div>
-            {questionItem.number < 10
-              ? "0" + questionItem.number
-              : questionItem.number}
+            {/* {questionItem. < 10
+              ? "0" + questionItem.
+              : questionItem.} */}
           </div>
           <div style={{ marginTop: 10, marginBottom: 32 }}>
-            {questionItem.question}
+            {questionItem.question_content}
           </div>
-          <div style={{ color: "#b4b4b4" }}>{questionItem.answer}</div>
+          <div style={{ color: "#b4b4b4" }}>{questionItem.answer_content}</div>
           <img
             src="/common/icon/more.svg"
             style={{
