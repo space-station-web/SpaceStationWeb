@@ -94,7 +94,7 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
 
       void fetchData();
     }
-  }, [postId, refreshData, router.isReady, accessToken, refreshToken]);
+  }, [postId, refreshData, accessToken, refreshToken]);
 
   const onClickBoards = (): void => {
     void router.push("/boards");

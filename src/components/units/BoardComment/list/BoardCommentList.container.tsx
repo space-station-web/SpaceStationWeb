@@ -2,6 +2,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../API/request";
+import type { IBoardContainer } from "./BoardComment.types";
 import BoardCommentListUI from "./BoardCommentList.presenter";
 
 export interface Comments {
@@ -19,7 +20,7 @@ interface ApiResponse {
   result: Comments[];
 }
 
-export default function BoardCommentList(): JSX.Element {
+export default function BoardCommentList(props: IBoardContainer): JSX.Element {
   const router = useRouter();
   const { post_id: postId } = router.query;
   const [comments, setComments] = useState<Comments[]>([]);
@@ -57,7 +58,11 @@ export default function BoardCommentList(): JSX.Element {
     };
 
     void fetchComments();
-  }, [accessToken, refreshToken]); // 의존성 배열에 id를 추가
+  }, [accessToken, refreshToken, props.refreshData]); // 의존성 배열에 id를 추가
 
-  return <BoardCommentListUI comments={comments} />;
+  return (
+    <>
+      <BoardCommentListUI comments={comments} />
+    </>
+  );
 }
