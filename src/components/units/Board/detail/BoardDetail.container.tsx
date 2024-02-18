@@ -88,12 +88,15 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
                 },
               },
             )
-          : axios.delete(`http://localhost:8080/storages/posts/${postId}`, {
-              headers: {
-                authorization: accessToken,
-                refresh: refreshToken,
+          : axios.delete(
+              `http://localhost:8080/storages/posts/${postId}?typeId=2`,
+              {
+                headers: {
+                  authorization: accessToken,
+                  refresh: refreshToken,
+                },
               },
-            }));
+            ));
 
         if (response.status === 200) {
           setRefreshData((prev) => !prev);

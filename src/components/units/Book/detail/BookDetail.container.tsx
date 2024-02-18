@@ -94,12 +94,15 @@ export default function BookDetail(props: IBookDetailProps): JSX.Element {
                 },
               },
             )
-          : axios.delete(`http://localhost:8080/storages/books/${bookId}`, {
-              headers: {
-                authorization: accessToken,
-                refresh: refreshToken,
+          : axios.delete(
+              `http://localhost:8080/storages/books/${bookId}?typeId=2`,
+              {
+                headers: {
+                  authorization: accessToken,
+                  refresh: refreshToken,
+                },
               },
-            }));
+            ));
 
         if (response.status === 200) {
           setRefreshData((prev) => !prev);

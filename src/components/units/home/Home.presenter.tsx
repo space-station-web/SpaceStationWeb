@@ -68,7 +68,12 @@ function HomeUI({
                 <styled.SubTitle>다른 사람은 어떤 생각을 할까?</styled.SubTitle>
                 <styled.Title>우주 정거장</styled.Title>
               </styled.Stack>
-              <styled.ContentsBtn style={{ alignSelf: "flex-end" }}>
+              <styled.ContentsBtn
+                style={{ alignSelf: "flex-end" }}
+                onClick={() => {
+                  void router.push("/boards");
+                }}
+              >
                 보러가기
               </styled.ContentsBtn>
             </styled.Card>
@@ -76,15 +81,16 @@ function HomeUI({
               <styled.Stack $gap="9px">
                 <styled.SubTitle>오늘의 질문</styled.SubTitle>
                 <styled.Title
-                  style={{ filter: `blur(5px)`, userSelect: "none" }}
+
+                // style={{ filter: `blur(5px)`, userSelect: "none" }}
                 >
                   제일 좋아하는 과일은 무엇인가요?
                 </styled.Title>
-                <styled.Balloon
+                {/* <styled.Balloon
                   style={{ fontSize: "0.654rem", color: "#bdbdbd" }}
                 >
                   로그인/회원가입을 하시면 오늘의 질문을 볼 수 있어요 !
-                </styled.Balloon>
+                </styled.Balloon> */}
               </styled.Stack>
               <styled.ContentsBtn
                 style={{ alignSelf: "flex-end" }}
@@ -102,7 +108,12 @@ function HomeUI({
                 <styled.SubTitle>다른 작가님들의</styled.SubTitle>
                 <styled.Title>책방</styled.Title>
               </styled.Stack>
-              <styled.ContentsBtn style={{ alignSelf: "flex-end" }}>
+              <styled.ContentsBtn
+                style={{ alignSelf: "flex-end" }}
+                onClick={() => {
+                  void router.push("/books");
+                }}
+              >
                 보러가기
               </styled.ContentsBtn>
             </styled.Card>
