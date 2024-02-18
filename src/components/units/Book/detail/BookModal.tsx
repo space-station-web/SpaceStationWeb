@@ -8,7 +8,7 @@ interface ModalComponentProps {
   onClose: () => void;
 }
 
-const BoardModal = ({ onClose }: ModalComponentProps): JSX.Element => {
+const BookModal = ({ onClose }: ModalComponentProps): JSX.Element => {
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [refreshToken, setRefreshToken] = useState<string | null>(null);
 
@@ -50,14 +50,15 @@ const BoardModal = ({ onClose }: ModalComponentProps): JSX.Element => {
 
   // 게시글 삭제 로직을 수행하는 함수
   const router = useRouter();
-  const { post_id: postId } = router.query;
+  const { bookId } = router.query;
 
   const onClickDelete = async (): Promise<void> => {
-    // postId가 문자열인지 확인
-    if (typeof postId === "string") {
+    // bookId가 문자열인지 확인
+
+    if (typeof bookId === "string") {
       try {
         const response = await axios.delete(
-          `http://localhost:8080/posts/${postId}`,
+          `http://localhost:8080/books/${bookId}`,
           {
             headers: {
               Authorization: accessToken,
@@ -76,8 +77,8 @@ const BoardModal = ({ onClose }: ModalComponentProps): JSX.Element => {
         alert("게시글 삭제 중 오류가 발생했습니다.");
       }
     } else {
-      // postId가 문자열이 아닌 경우의 처리
-      console.error("Invalid postId:", postId);
+      // bookId가 문자열이 아닌 경우의 처리
+      console.error("Invalid bookId:", bookId);
       alert("유효하지 않은 게시글 ID입니다.");
     }
   };
@@ -90,7 +91,7 @@ const BoardModal = ({ onClose }: ModalComponentProps): JSX.Element => {
   );
 };
 
-export default BoardModal;
+export default BookModal;
 
 const ModalContainer = styled.div`
   background: #141414;

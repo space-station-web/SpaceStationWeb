@@ -31,45 +31,6 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
 
   const [refreshData, setRefreshData] = useState(false); // 데이터 리프레시를 위한 상태
 
-  // 게시글 보관 api 요청
-
-  const onClickSave = async (): Promise<void> => {
-    if (typeof postId === "string" && postId.length > 0) {
-      try {
-        const response = await axios.post(
-          `http://localhost:8080/storages/posts/types?postId=${postId}`,
-          {},
-          {
-            headers: {
-              authorization: accessToken,
-              refresh: refreshToken,
-            },
-          },
-        );
-        console.log(response.data);
-        alert("게시글이 성공적으로 보관되었습니다.");
-      } catch (error) {
-        console.error("게시글 보관 중 오류 발생", error);
-      }
-    } else if (typeof postId === "string" && postId.length > 0) {
-      try {
-        await axios.delete(
-          `http://localhost:8080/storages/posts/types?postId=${postId}`,
-
-          {
-            headers: {
-              authorization: accessToken,
-              refresh: refreshToken,
-            },
-          },
-        );
-        alert("게시글 보관이 취소되었습니다.");
-      } catch (error) {
-        console.error("게시글 보관 취소 중 오류 발생", error);
-      }
-    }
-  };
-
   // 게시물 api 요청
   const [data, setData] = useState<PostData | null>(null);
   const onClickCommentToggle = (): void => {
@@ -107,6 +68,44 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
       void fetchData();
     }
   }, [postId, refreshData, accessToken, refreshToken]);
+
+  // 게시글 보관 api 요청
+
+  const onClickSave = async (): Promise<void> => {
+    if (typeof postId === "string") {
+      try {
+        console.log(data?.storage);
+        const response = await (data?.storage === false
+          ? axios.post(
+              `http://localhost:8080/storages/posts/${postId}`,
+              {
+                typeId: 2,
+              },
+              {
+                headers: {
+                  authorization: accessToken,
+                  refresh: refreshToken,
+                },
+              },
+            )
+          : axios.delete(`http://localhost:8080/storages/posts/${postId}`, {
+              headers: {
+                authorization: accessToken,
+                refresh: refreshToken,
+              },
+            }));
+
+        if (response.status === 200) {
+          setRefreshData((prev) => !prev);
+        }
+        console.log(response.data);
+      } catch (error) {
+        console.error("데이터 로딩 중 오류 발생", error);
+      }
+    } else {
+      console.log("not type postId");
+    }
+  };
 
   const onClickBoards = (): void => {
     void router.push("/boards");
