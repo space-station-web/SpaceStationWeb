@@ -10,6 +10,7 @@ export const MyWritting = styled.div<{ $imgUrl: string }>`
   flex-direction: column;
   justify-content: space-between;
 `;
+
 export const SaveBtn = styled.div`
   width: 40px;
   height: 40px;

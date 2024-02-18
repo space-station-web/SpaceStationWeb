@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import * as styled from "./BoardItem.styles";
 import { BoardItemUIProps } from "./BoardItem.types";
+import StoreModal from "./storeModal/StoreModal.container";
 function BoardItemUI({
   type,
   writtingItem,
@@ -10,6 +11,7 @@ function BoardItemUI({
   ...props
 }: BoardItemUIProps) {
   const [optionOpen, setOptionOpen] = useState(false);
+  const [storeOpen, setStoreOpen] = useState(false);
   const handleOptionClick = () => {
     setOptionOpen(!optionOpen);
   };
@@ -26,66 +28,76 @@ function BoardItemUI({
   switch (type) {
     default:
       return writtingItem ? (
-        <styled.MyWritting
-          $imgUrl={writtingItem.img}
-          key={`${writtingItem.user_id}-${writtingItem.title}`}
-          {...props}
-        >
-          <styled.SaveBtn
-            onClick={(e: React.MouseEvent<HTMLDivElement>) => {
-              e.stopPropagation();
-              handleSaveClick();
-            }}
-          >
-            <styled.IconSave $issave={save} />
-          </styled.SaveBtn>
-          <styled.MyWrittingInfoField>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 5,
+        <>
+          {storeOpen && (
+            <StoreModal
+              setModalClose={() => {
+                setStoreOpen(false);
               }}
-            >
-              <styled.MyWrittingAuthor>
-                {writtingItem.user_id}
-              </styled.MyWrittingAuthor>
-              <styled.MyWrittingTitle>
-                {writtingItem.title}
-              </styled.MyWrittingTitle>
-            </div>
-            <img
-              src="/common/icon/more.svg"
-              style={{ height: 25, marginTop: 2 }}
+              postId={writtingItem.post_id}
+            />
+          )}
+          <styled.MyWritting
+            $imgUrl={writtingItem.img}
+            key={`${writtingItem.user_id}-${writtingItem.title}`}
+            {...props}
+          >
+            <styled.SaveBtn
               onClick={(e: React.MouseEvent<HTMLDivElement>) => {
                 e.stopPropagation();
-                handleOptionClick();
+                setStoreOpen(true);
               }}
-            />
-          </styled.MyWrittingInfoField>
-          {optionOpen && (
-            <styled.OptionBox ref={optionRef}>
-              <styled.OptionBtn
-                style={{ borderTopLeftRadius: 20, borderTopRightRadius: 20 }}
-              >
-                수정하기
-              </styled.OptionBtn>
-              <styled.OptionBtn
+            >
+              <styled.IconSave $issave={save} />
+            </styled.SaveBtn>
+            <styled.MyWrittingInfoField>
+              <div
                 style={{
-                  borderBottomLeftRadius: 20,
-                  borderBottomRightRadius: 20,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 5,
                 }}
               >
-                공유하기
-              </styled.OptionBtn>
-            </styled.OptionBox>
-          )}
-        </styled.MyWritting>
+                <styled.MyWrittingAuthor>
+                  {writtingItem.user_id}
+                </styled.MyWrittingAuthor>
+                <styled.MyWrittingTitle>
+                  {writtingItem.title}
+                </styled.MyWrittingTitle>
+              </div>
+              <img
+                src="/common/icon/more.svg"
+                style={{ height: 25, marginTop: 2 }}
+                onClick={(e: React.MouseEvent<HTMLDivElement>) => {
+                  e.stopPropagation();
+                  handleOptionClick();
+                }}
+              />
+            </styled.MyWrittingInfoField>
+            {optionOpen && (
+              <styled.OptionBox ref={optionRef}>
+                <styled.OptionBtn
+                  style={{ borderTopLeftRadius: 20, borderTopRightRadius: 20 }}
+                >
+                  수정하기
+                </styled.OptionBtn>
+                <styled.OptionBtn
+                  style={{
+                    borderBottomLeftRadius: 20,
+                    borderBottomRightRadius: 20,
+                  }}
+                >
+                  공유하기
+                </styled.OptionBtn>
+              </styled.OptionBox>
+            )}
+          </styled.MyWritting>
+        </>
       ) : null;
 
     case "question":
       return questionItem ? (
-        <styled.Question>
+        <styled.Question {...props}>
           <div>
             {/* {questionItem. < 10
               ? "0" + questionItem.
