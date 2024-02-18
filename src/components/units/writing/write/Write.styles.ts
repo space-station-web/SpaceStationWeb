@@ -89,6 +89,7 @@ line-height: 1.438rem; /* 115% */
 
 export const Form = styled.div`
   flex-direction: column;
+  position: relative
 
   // 스크롤바 디자인
   ::-webkit-scrollbar {
@@ -366,6 +367,7 @@ export const CustomAlert = styled.div`
 export const CustomTemSaveAlert = styled.div`
   width: 28.75rem;
   height: 11.063rem;
+  z-index: 2;
   flex-shrink: 0;
 
   border-radius: 1.25rem;
@@ -373,6 +375,11 @@ export const CustomTemSaveAlert = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  /* 위치 지정 */
+  position: absolute;
+  top: 50rem;
+  left: 73.125rem;
 `;
 
 export const CustomTemSaveAlertImg = styled.div`
