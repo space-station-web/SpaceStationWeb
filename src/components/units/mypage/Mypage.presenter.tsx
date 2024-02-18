@@ -27,8 +27,10 @@ function MyPageUI({
   handleStorageSelect,
   handleStorageChange,
   handleBackClick,
+  handleQuestionClick,
   questions,
   storages,
+  userData,
 }: MyPageProps) {
   const [optionOpen, setOptionOpen] = useState(false);
   const handleOptionClick = () => {
@@ -151,7 +153,7 @@ function MyPageUI({
             )}
           </div>
           <styled.ProfileName>
-            <styled.ProfileNameText>허거덩</styled.ProfileNameText>
+            <styled.ProfileNameText>{userData.nickName}</styled.ProfileNameText>
             {isMine && <img src="/common/icon/icon_edit_pencil.svg" />}
           </styled.ProfileName>
           <styled.TabBar>
@@ -324,7 +326,14 @@ function MyPageUI({
                 : tabValue === "질문집"
                   ? questions &&
                     questions.map((item) => (
-                      <BoardItem type="question" questionItem={item} />
+                      <BoardItem
+                        type="question"
+                        questionItem={item}
+                        onClick={() => {
+                          handleQuestionClick(item.question_id);
+                          console.log("hi");
+                        }}
+                      />
                     ))
                   : null}
             </styled.List>

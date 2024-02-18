@@ -8,11 +8,12 @@ import type { NeighborItemProps } from "./neighbor/Neighbor.types";
 axios.defaults.baseURL = "http://localhost:8080/";
 
 function MyPage() {
-  const userId = "20";
+  const [userId, setUserId] = useState("");
   const [accessToken, setAccessToken] = useState<string | null>("");
   const [refreshToken, setRefreshToken] = useState<string | null>("");
   const router = useRouter();
   const idForSee = router.query.user_id as string;
+  const [userData, setUserData] = useState({ nickName: "", profileImg: "" });
   const [posts, setPosts] = useState<PostProps[]>([]);
   const [questions, setQuestions] = useState<QuestionProps[]>([]);
   const [storages, setStorages] = useState<StorageProps[]>([]);
@@ -30,6 +31,11 @@ function MyPage() {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [modalType, setModalType] = useState("");
   const [storageName, setStorageName] = useState("");
+
+  const headers = {
+    authorization: "Bearer " + accessToken,
+    refresh: refreshToken,
+  };
   // 보관함 삭제하기 모달
   const handleDeleteModal = () => {
     setDeleteModalOpen((prev) => !prev);
@@ -42,17 +48,30 @@ function MyPage() {
   const handleStorageChange = (e: ChangeEvent<HTMLInputElement>) => {
     setStorageName(e.target.value);
   };
+  const handleQuestionOpen = (id: number) => {
+    router.push(`/questions/${id}`);
+  };
+  const getUserData = async (): Promise<void> => {
+    try {
+      const response = await axios.get(`/mypage/${idForSee}`, {
+        headers: headers,
+      });
 
+      setUserData({
+        nickName: response.data.result.result.nickname,
+        profileImg: "",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   // 내 글 목록
   const getPosts = async (): Promise<void> => {
     try {
       const response = await axios.get(
         `/posts/user/${idForSee}?limit=12&offset=0`,
         {
-          headers: {
-            Authorization: "Bearer " + accessToken,
-            refresh: refreshToken,
-          },
+          headers: headers,
         },
       );
       setPosts(response.data.result);
@@ -65,20 +84,21 @@ function MyPage() {
       const response = await axios.get(
         "/questions/my-answer?limit=12&offset=0",
         {
-          headers: {
-            Authorization: "Bearer " + accessToken,
-            refresh: refreshToken,
-          },
+          headers: headers,
         },
       );
-      await setQuestions(response.data.result);
+      setQuestions(response.data.result);
+      console.log(response.data.result);
     } catch (error) {
       console.log(error);
     }
   };
   const getStorageList = async () => {
     try {
-      const response = await axios.get(`/storagetype/user/${idForSee}`);
+      const response = await axios.get(`/storagetype/user/${idForSee}`, {
+        headers: headers,
+      });
+      console.log(response);
       setStorages(response.data.result);
     } catch (error) {
       console.log(error);
@@ -87,7 +107,9 @@ function MyPage() {
   //내 이웃 리스트
   const getFollowList = async (): Promise<void> => {
     try {
-      const response = await axios.get(`/follow/user/${userId}`);
+      const response = await axios.get(`/follow/user/${userId}`, {
+        headers: headers,
+      });
       setFollowers(
         response.data.result.map((item: NeighborItemProps) => item.follow_id),
       );
@@ -99,6 +121,7 @@ function MyPage() {
     try {
       const response = await axios.get(
         `/storages/my-post-storage?storageType=${clickedStorage.open}`,
+        { headers: headers },
       );
       setStoredPosts(
         storages
@@ -122,8 +145,15 @@ function MyPage() {
   const changeFollow = async (): Promise<void> => {
     try {
       const response = followers.includes(parseInt(idForSee))
-        ? await axios.delete("/follow", { data: { followId: idForSee } })
-        : await axios.post("/follow", { followId: idForSee });
+        ? await axios.delete("/follow", {
+            data: { followId: idForSee },
+            headers: headers,
+          })
+        : await axios.post(
+            "/follow",
+            { followId: idForSee },
+            { headers: headers },
+          );
       await getFollowList();
     } catch (error) {
       console.log(error);
@@ -152,7 +182,15 @@ function MyPage() {
   };
   const addStorageItem = async () => {
     try {
-      const response = await axios.post("/storagetype", { type: storageName });
+      const response = await axios.post(
+        "/storagetype",
+        {
+          type: storageName,
+        },
+        {
+          headers: headers,
+        },
+      );
       await getStorageList();
     } catch (error) {
       console.log(error);
@@ -162,6 +200,7 @@ function MyPage() {
     try {
       const response = await axios.delete(
         `/storagetype/${clickedStorage.delete}`,
+        { headers: headers },
       );
       await getStorageList();
     } catch (error) {
@@ -169,19 +208,24 @@ function MyPage() {
     }
   };
   useEffect(() => {
+    const localId = window.localStorage.getItem("userId");
+    if (localId !== null) setUserId(localId);
+  }, []);
+  useEffect(() => {
     setAccessToken(localStorage.getItem("accessToken"));
     setRefreshToken(localStorage.getItem("refreshToken"));
 
-    if (idForSee) {
+    if (router.isReady && accessToken && refreshToken) {
+      getUserData();
       getPosts();
       if (idForSee === userId) getQuestions();
       getStorageList();
       getFollowList();
     }
-  }, [idForSee]);
+  }, [idForSee, accessToken, refreshToken]);
 
   useEffect(() => {
-    getStoredPosts();
+    if (router.isReady && accessToken && refreshToken) getStoredPosts();
   }, [clickedStorage.open, storages]);
   return (
     <MyPageUI
@@ -192,6 +236,7 @@ function MyPage() {
       questions={questions}
       storages={storages}
       storedPosts={storedPosts}
+      userData={userData}
       deleteModalOpen={deleteModalOpen}
       handleDeleteModal={handleDeleteModal}
       modalType={modalType}
@@ -207,6 +252,7 @@ function MyPage() {
       addStorageItem={addStorageItem}
       deleteStorageItem={deleteStorageItem}
       handleStorageChange={handleStorageChange}
+      handleQuestionClick={handleQuestionOpen}
     />
   );
 }

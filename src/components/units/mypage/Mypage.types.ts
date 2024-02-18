@@ -21,8 +21,10 @@ export interface MyPageProps {
   handleStorageSelect: (id: number, purpose: "delete" | "open") => void;
   handleFollowClick: () => void;
   handleBackClick: () => void;
+  handleQuestionClick: (id: number) => void;
   isMine: boolean;
   isFollowing: boolean;
+  userData: { nickName: string; profileImg: string };
 }
 export interface PostProps {
   post_id: number;
@@ -39,6 +41,7 @@ export interface PostProps {
 export interface QuestionProps {
   question_content: string;
   answer_content: string;
+  question_id: number;
 }
 
 export interface StorageProps {
