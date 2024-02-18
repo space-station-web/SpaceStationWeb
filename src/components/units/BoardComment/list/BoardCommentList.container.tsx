@@ -1,37 +1,68 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../API/request";
+import type { IBoardContainer } from "./BoardComment.types";
 import BoardCommentListUI from "./BoardCommentList.presenter";
 
 export interface Comments {
-  id: number;
+  post_reply_id: number;
   content: string;
-  UserId: number;
+  create_at: string;
   PostId: number;
+  user_id: number;
 }
 
-export default function BoardCommentList(): JSX.Element {
-  const router = useRouter();
-  const { id } = router.query;
-  const [comments, setComments] = useState<Comments[]>([]);
+interface ApiResponse {
+  isSuccess: boolean;
+  code: number;
+  message: string;
+  result: Comments[];
+}
 
-  // fetchComments 함수를 useEffect 외부로 이동
-  const fetchComments = async (): Promise<void> => {
-    if (typeof id === "string" && id.length > 0) {
-      try {
-        const response = await axios.get<Comments[]>(
-          `https://koreanjson.com/comments/${id}`,
-        );
-        setComments([response.data]);
-      } catch (error) {
-        console.error("Error", error);
-      }
-    }
-  };
+export default function BoardCommentList(props: IBoardContainer): JSX.Element {
+  const router = useRouter();
+  const { post_id: postId } = router.query;
+  const [comments, setComments] = useState<Comments[]>([]);
+  const [accessToken, setAccessToken] = useState<string | null>(null);
+  const [refreshToken, setRefreshToken] = useState<string | null>(null);
 
   useEffect(() => {
-    void fetchComments();
-  }, []); // 의존성 배열에 id를 추가
+    // localStorage에서 토큰을 가져와 상태에 저장
+    const token = "Bearer " + window.localStorage.getItem(ACCESS_TOKEN);
+    const refresh = window.localStorage.getItem(REFRESH_TOKEN);
+    setAccessToken(token);
+    setRefreshToken(refresh);
+  }, []);
 
-  return <BoardCommentListUI comments={comments} />;
+  useEffect(() => {
+    // fetchComments 함수를 useEffect 외부로 이동
+    const fetchComments = async (): Promise<void> => {
+      if (typeof postId === "string" && postId.length > 0) {
+        try {
+          const response = await axios.get<ApiResponse>(
+            `http://localhost:8080/replies/posts/?postId=${postId}`,
+            {
+              headers: {
+                authorization: accessToken,
+                refresh: refreshToken,
+              },
+            },
+          );
+          setComments(response.data.result);
+          console.log(response);
+        } catch (error) {
+          console.error("Error", error);
+        }
+      }
+    };
+
+    void fetchComments();
+  }, [accessToken, refreshToken, props.refreshData]); // 의존성 배열에 id를 추가
+
+  return (
+    <>
+      <BoardCommentListUI comments={comments} />
+    </>
+  );
 }

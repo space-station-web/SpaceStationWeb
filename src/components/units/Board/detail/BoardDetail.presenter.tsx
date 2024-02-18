@@ -95,8 +95,11 @@ export default function BoardDetailUI(props: IBoardDetailUIProps): JSX.Element {
                 댓글보기
               </L.CommentToggle>
               <L.IconContainer>
-                <L.LikeIcon onClick={props.onClickLike} />
-                <L.CountLike>{firstData?.like}</L.CountLike>
+                <L.LikeIcon
+                  onClick={props.onClickLike}
+                  fill={firstData?.postLike ?? false ? "#ff6f00" : "#8c8c8c"}
+                />
+                <L.CountLike>{firstData?.postLikeCount}</L.CountLike>
                 <L.SaveButton
                   onClick={handleSaveButtonClick}
                   fill={isStored ? "#ff6f00" : "none"}

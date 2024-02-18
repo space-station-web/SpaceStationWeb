@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  padding: 0px 200px 20px 200px;
+  padding: 0px 200px 10px 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 
 export const WriteForm = styled.div`
   width: 46.1rem;
-  height: 4.23rem;
+  height: 3.6rem;
   padding: 10px 15px 10px 15px;
   background-color: #1e1e1e;
   border-radius: 20px;
@@ -20,8 +20,8 @@ export const WriteForm = styled.div`
 `;
 
 export const UserProfile = styled.img`
-  width: 2.19rem;
-  height: 2.19rem;
+  width: 1.5rem;
+  height: 1.5rem;
   border-radius: 57px;
 `;
 
@@ -44,8 +44,8 @@ export const Lock = styled.img`
 `;
 
 export const Input = styled.input`
-  width: 38rem;
-  height: 2.76rem;
+  width: 39rem;
+  height: 2.1rem;
   border: none;
   border-radius: 20px;
   background-color: #0a0a0a;
@@ -54,20 +54,25 @@ export const Input = styled.input`
   padding: 20px;
 
   color: #dcdcdc;
-  font-size: 17px;
+  font-size: 0.65rem;
 
   outline: none;
 `;
 export const Submit = styled.div`
-  width: 2.7rem;
-  height: 2.7rem;
-  background-image: url("/common/icon/submit(black).png");
-  border-radius: 20px;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  background-color: #0a0a0a;
+
+  border-radius: 15px;
   cursor: pointer;
 
   transition: background-image 0.5s ease; /* 트랜지션 속성 추가 */
 
   &:hover {
-    background-image: url("/common/icon/submit(white).png");
+    background-color: gray;
   }
 `;

@@ -18,14 +18,17 @@ export const CommentListContainer = styled.div`
 
 export const CommentContainer = styled.div`
   width: 100%;
-  height: 100px;
+  height: 3.6rem;
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 30px;
+  padding: 0 20px 0 21px;
 `;
 
-export const UserImg = styled.img``;
+export const UserImg = styled.img`
+  width: 1.5rem;
+  height: 1.5rem;
+`;
 
 export const CommentDiv = styled.div`
   display: flex;
@@ -35,13 +38,13 @@ export const CommentDiv = styled.div`
 
 export const UserName = styled.p`
   color: #8c8c8c;
-  font-size: 17px;
+  font-size: 0.8rem;
   font-weight: 600;
 `;
 
 export const Comment = styled.p`
   color: #b4b4b4;
-  font-size: 17px;
+  font-size: 0.65rem;
   font-weight: 600;
   line-height: 25px; /* 147.059% */
 `;

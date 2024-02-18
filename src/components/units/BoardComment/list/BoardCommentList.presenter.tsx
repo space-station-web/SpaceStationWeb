@@ -8,15 +8,19 @@ export default function BoardCommentListUI(
     <div>
       <L.Wrapper>
         <L.CommentListContainer>
-          {props.comments.map((el) => (
-            <L.CommentContainer key={el.id}>
-              <L.UserImg src="/boardComment/Icon.png" />
-              <L.CommentDiv>
-                <L.UserName>{el.UserId}</L.UserName>
-                <L.Comment>{el.content}</L.Comment>
-              </L.CommentDiv>
-            </L.CommentContainer>
-          ))}
+          {props.comments && props.comments.length > 0 ? (
+            props.comments.map((el) => (
+              <L.CommentContainer key={el.post_reply_id}>
+                <L.UserImg src="/boardComment/Icon.png" />
+                <L.CommentDiv>
+                  <L.UserName>{el.user_id}</L.UserName>
+                  <L.Comment>{el.content}</L.Comment>
+                </L.CommentDiv>
+              </L.CommentContainer>
+            ))
+          ) : (
+            <></>
+          )}
         </L.CommentListContainer>
       </L.Wrapper>
     </div>

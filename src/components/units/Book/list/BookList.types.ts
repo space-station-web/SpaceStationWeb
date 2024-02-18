@@ -6,7 +6,7 @@ export interface Book {
   title: string;
   intro: string;
   category: string;
-  img_url: string;
+  thumbnail: string;
 }
 
 export interface ApiResponse {
