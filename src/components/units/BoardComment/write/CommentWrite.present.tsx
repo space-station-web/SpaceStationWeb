@@ -14,7 +14,9 @@ export default function CommentWriteUI(props: onChangeContents): JSX.Element {
               <Lock />
             </L.IconContainer>
           </L.InputContainer>
-          <L.Submit onClick={props.onClickComment}></L.Submit>
+          <L.Submit onClick={props.onClickComment}>
+            <img src="/boardComment/submit.svg" />
+          </L.Submit>
         </L.WriteForm>
       </L.Wrapper>
     </>
