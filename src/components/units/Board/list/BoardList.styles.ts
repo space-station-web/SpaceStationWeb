@@ -126,7 +126,6 @@ export const BoardSaveBack = styled.div`
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 10px;
-  background-color: #141414;
 
   display: flex;
   justify-content: center;

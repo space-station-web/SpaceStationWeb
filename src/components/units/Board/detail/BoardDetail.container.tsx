@@ -22,13 +22,14 @@ interface ApiResponse {
 export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
   const router = useRouter();
   const { post_id: postId } = router.query;
+
   const [isStored, setIsStored] = useState(false);
 
   const accessToken =
     "Bearer " +
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsIm1haWwiOiJhc2RnQG5hdmVyLmNvbSIsImlhdCI6MTcwODE1MDI4NSwiZXhwIjoxNzA4MTYxMDg1fQ.Ji0pjJL_kPgBM5h_ik3TxGGB-5P--8EOV5NEeZPiYNY";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsIm1haWwiOiJhc2RnQG5hdmVyLmNvbSIsImlhdCI6MTcwODE2MTgxOSwiZXhwIjoxNzA4MTcyNjE5fQ.9l3O92l_ZUTwO96tpxu1I2bG9ZoqbvxkwtO_RxIl1UI";
   const refreshToken =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDgxNTAyODUsImV4cCI6MTcwODIzNjY4NX0.0fSx4wNWj20i2wxqe5NTlByt6H2tqxGumP1VOF9WsRw";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDgxNjE4MTksImV4cCI6MTcwODI0ODIxOX0.01IrBlS3M9iCTXHRptX8fQ91LTfJJvKSJXIE9aOu1iQ";
 
   // 게시글 보관 api 요청
 
@@ -90,6 +91,7 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
       try {
         const response = await axios.post(
           `http://localhost:8080/likes/posts/${postId}`,
+          {},
           {
             headers: {
               authorization: accessToken,

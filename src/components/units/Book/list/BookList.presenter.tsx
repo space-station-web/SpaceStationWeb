@@ -64,9 +64,13 @@ export default function BoardListUI(props: IBookListProps): JSX.Element {
       </L.CategoryDiv>
 
       <L.BoardBox>
-        {props.books.map((el) => (
-          <L.Board key={el.book_id}>
-            <L.BoardImage src="/book/rectangle 208.png"></L.BoardImage>
+        {props.books?.map((el) => (
+          <L.Board
+            key={el.book_id}
+            id={`${el.book_id}`}
+            onClick={props.onClickBook}
+          >
+            <L.BoardImage src={"/book/rectangle 208.png"}></L.BoardImage>
 
             <L.BoardBottom>
               <L.BoardCategory>지연</L.BoardCategory>

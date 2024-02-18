@@ -1,12 +1,15 @@
-export interface BoardItemProps {
+import { HTMLAttributes } from "react";
+import { PostProps, QuestionProps } from "../../units/mypage/Mypage.types";
+
+export interface BoardItemProps extends HTMLAttributes<HTMLDivElement> {
   type: "writting" | "question";
-  writtingItem?: { img: string; author: string; title: string };
-  questionItem?: { number: number; question: string; answer: string };
+  writtingItem?: PostProps;
+  questionItem?: QuestionProps;
 }
-export interface BoardItemUIProps {
+export interface BoardItemUIProps extends HTMLAttributes<HTMLDivElement> {
   type: "writting" | "question";
-  writtingItem?: { img: string; author: string; title: string };
-  questionItem?: { number: number; question: string; answer: string };
+  writtingItem?: PostProps;
+  questionItem?: QuestionProps;
   save: boolean;
   handleSaveClick: () => void;
 }

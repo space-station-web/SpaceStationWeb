@@ -11,14 +11,10 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
     <>
       <Global styles={globalStyles} />
       <RecoilRoot>
-        <div
-          style={{ width: "100%", display: "flex", flexDirection: "column" }}
-        >
-          <Layout>
-            <Component {...pageProps} />
-            <Footer />
-          </Layout>
-        </div>
+        <Layout>
+          <Component {...pageProps} />
+          <Footer />
+        </Layout>
       </RecoilRoot>
     </>
   );

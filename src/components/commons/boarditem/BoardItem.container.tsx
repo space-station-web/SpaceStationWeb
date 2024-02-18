@@ -6,6 +6,7 @@ function BoardItem({
   type,
   writtingItem,
   questionItem,
+  ...props
 }: BoardItemProps): JSX.Element {
   const [save, setSave] = useState(false);
   const handleSaveClick = () => {
@@ -18,6 +19,7 @@ function BoardItem({
       questionItem={questionItem}
       save={save}
       handleSaveClick={handleSaveClick}
+      {...props}
     />
   );
 }

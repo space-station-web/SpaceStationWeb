@@ -1,4 +1,4 @@
-import type { Dispatch, SetStateAction } from "react";
+import type { Dispatch, MouseEvent, SetStateAction } from "react";
 
 export interface Book {
   book_id: number;
@@ -6,6 +6,7 @@ export interface Book {
   title: string;
   intro: string;
   category: string;
+  img_url: string;
 }
 
 export interface ApiResponse {
@@ -20,4 +21,5 @@ export interface IBookListProps {
   setCurrentPage: Dispatch<SetStateAction<number>>;
   totalPageCount: number;
   currentPage: number;
+  onClickBook: (event: MouseEvent<HTMLDivElement>) => Promise<void>;
 }
