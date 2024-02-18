@@ -18,7 +18,7 @@ export interface Iwrite {
 
   fileInputRef: React.Ref<HTMLInputElement>;
   isComponentVisible: boolean;
-  isAlertVisible: boolean;
+  // isAlertVisible: boolean;
   isTempSaveAlertVisible: boolean;
 
   selectedImages: string[];
