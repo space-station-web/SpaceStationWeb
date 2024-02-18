@@ -3,12 +3,13 @@ import * as L from "../../Board/detail/BoardDetail.styled";
 import * as L1 from "./BookDetail.styled";
 
 import { useRouter } from "next/router";
-import BookModal from "../../Board/detail/BoardModal";
+
 import type { IBookDetailUIProps } from "./BookDetail.types";
+import BookModal from "./BookModal";
 
 export default function BoardDetailUI(props: IBookDetailUIProps): JSX.Element {
   const [mounted, setMounted] = useState<boolean>(false);
-  const [isStored, setIsStored] = useState<boolean>(false);
+
   const router = useRouter();
 
   // 글 수정, 글 삭제 모달
@@ -17,16 +18,6 @@ export default function BoardDetailUI(props: IBookDetailUIProps): JSX.Element {
     setIsModalVisible((prev) => !prev);
   };
   // ------------------------
-
-  useEffect(() => {
-    // props로 받은 isStored 상태를 로컬 상태에 반영
-    setIsStored(props.isStored);
-  }, [props.isStored]);
-
-  const handleSaveButtonClick = async (): Promise<void> => {
-    await props.storePost(); // 게시글 보관 API 호출
-    setIsStored((prev) => !prev); // 버튼 색상 변경을 위한 상태 업데이트
-  };
 
   useEffect(() => {
     setMounted(true);
@@ -116,8 +107,8 @@ export default function BoardDetailUI(props: IBookDetailUIProps): JSX.Element {
                 />
                 <L.CountLike>{firstData?.likeCount}</L.CountLike>
                 <L.SaveButton
-                  onClick={handleSaveButtonClick}
-                  fill={isStored ? "#ff6f00" : "none"}
+                  onClick={props.onClickSave}
+                  fill={firstData?.storage ?? false ? "#ff6f00" : "none"}
                 />
               </L.IconContainer>
             </L.BoardBottom>

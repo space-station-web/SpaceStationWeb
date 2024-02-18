@@ -7,7 +7,7 @@ import type { ICommentWrite } from "./CommentWrite.types";
 
 export default function CommentWrite(props: ICommentWrite): JSX.Element {
   const router = useRouter();
-  const { post_id: postId } = router.query;
+  const { book_id: bookId } = router.query;
   const [content, setContent] = useState("");
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [refreshToken, setRefreshToken] = useState<string | null>(null);
@@ -28,10 +28,10 @@ export default function CommentWrite(props: ICommentWrite): JSX.Element {
     try {
       // const authHeader = `Bearer ${accessToken}`;
       const response = await axios.post(
-        "http://localhost:8080/replies/posts",
+        "http://localhost:8080/replies/books",
         {
           content,
-          postId,
+          bookId,
         },
         {
           headers: {

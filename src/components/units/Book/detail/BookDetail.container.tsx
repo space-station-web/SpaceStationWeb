@@ -75,6 +75,44 @@ export default function BookDetail(props: IBookDetailProps): JSX.Element {
     }
   }, [bookId, accessToken, refreshToken, refreshData]);
 
+  // 게시글 보관 api 요청
+
+  const onClickSave = async (): Promise<void> => {
+    if (typeof bookId === "string") {
+      try {
+        console.log(data?.storage);
+        const response = await (data?.storage === false
+          ? axios.post(
+              `http://localhost:8080/storages/books/${bookId}`,
+              {
+                typeId: 2,
+              },
+              {
+                headers: {
+                  authorization: accessToken,
+                  refresh: refreshToken,
+                },
+              },
+            )
+          : axios.delete(`http://localhost:8080/storages/books/${bookId}`, {
+              headers: {
+                authorization: accessToken,
+                refresh: refreshToken,
+              },
+            }));
+
+        if (response.status === 200) {
+          setRefreshData((prev) => !prev);
+        }
+        console.log(response.data);
+      } catch (error) {
+        console.error("데이터 로딩 중 오류 발생", error);
+      }
+    } else {
+      console.log("not type postId");
+    }
+  };
+
   // 책 좋아요 및 취소
   const onClickLike = async (): Promise<void> => {
     if (typeof bookId === "string") {
@@ -115,6 +153,7 @@ export default function BookDetail(props: IBookDetailProps): JSX.Element {
       onClickLike={onClickLike}
       setIsOpen={props.setIsOpen}
       data={data}
+      onClickSave={onClickSave}
     />
   );
 }
