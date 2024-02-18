@@ -46,12 +46,12 @@ export default function BoardListUI(props: IBoardListTypes): JSX.Element {
           >
             <L.BoardTop>
               <L.BoardSaveBack>
-                <L.SaveIcon
+                {/* <L.SaveIcon
                   style={{
                     fill: props.savedPosts[el.post_id] ? "#FF6F00" : "none",
                   }}
                   onClick={props.onClickSave(el.post_id)}
-                />
+                /> */}
               </L.BoardSaveBack>
             </L.BoardTop>
             <L.BoardTextContainer>
