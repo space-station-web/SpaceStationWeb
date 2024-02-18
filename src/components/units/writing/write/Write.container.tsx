@@ -4,11 +4,15 @@ import WriteUI from "./Write.presenter";
 import axios from 'axios';
 
 export default function Write(): JSX.Element {
+  const router = useRouter();
+  
   const [_userId, setUserId] = useState("");
   const [_title, setTitle] = useState("");
   const [_content, setContent] = useState("");
+  const [draftId, setDraftId] = useState(null);
 
   const [isComponentVisible, setIsComponentVisible] = useState(false);
+  // 임시 저장 리스트 개수
   const [temporaryStorageCount, setTemporaryStorageCount] = useState(0);
   const [temporaryStorageForms, setTemporaryStorageForms] = useState<number[]>([]);
 
@@ -24,7 +28,7 @@ export default function Write(): JSX.Element {
   const [refreshToken, setRefreshToken] = useState<string | null>(null);
 
   // 글감 제공
-  const [topicId, setTopicId] = useState(-1);
+  const [topicId, setTopicId] = useState(null);
   const [todayTopic, setTodayTopic] = useState("");
   const [todayContent, setTodayContent] = useState("");
 
@@ -34,54 +38,115 @@ export default function Write(): JSX.Element {
     const refresh = window.localStorage.getItem("refreshToken");
     setAccessToken(token);
     setRefreshToken(refresh);
-  }, []);
-
-  const router = useRouter();
-
-  useEffect(() => {
+    // localStorage에서 user_id을 가져와 상태에 저장 
     const userId = window.localStorage.getItem('userId');
     if (userId !== null) {
       setUserId(userId);
     }
   }, []);
 
+  useEffect(() => {
+
+    // 임시저장 글 전체 조회
+    const fetchData = async (): Promise<void> => {
+        try {
+            const response = await axios.get(
+                "http://localhost:8080/drafts",
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${accessToken}`,
+                        Refresh: refreshToken
+                    }
+                },
+            );
+            console.log(response);
+            const isSuccess = response.data.isSuccess === true;
+            if (isSuccess) {
+              const result = response.data.result;
+              setTemporaryStorageCount(result.length);
+              console.log('임시저장 글 전체 조회 요청 성공');
+              
+            } else {
+              console.log('임시저장 글 전체 조회 요청 false');
+            }
+            
+        } catch (error: any) {
+            alert(error.message); // 에러 처리
+            console.log(error.message);
+        }
+    };
+
+    void fetchData();
+
+}, [temporaryStorageCount]);
+
+
+
   // 임시저장 
   const handleTemporaryStorageClick = async (): Promise<void> => {
     setTemporaryStorageCount(temporaryStorageCount + 1);
-    console.log(temporaryStorageCount);
+    
     setTemporaryStorageForms((prevForms) => [...prevForms, Date.now()]);
+
     try {
-      const user_id = _userId;
-      const title = _title;
-      const content = _content;
-      // const images = _images;
-      // const topic_id = _topicId;
-      const response = await axios.post(
-        'http://localhost:8080/drafts',
-        {
-          user_id,
-          title,
-          content
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${accessToken}`,
-            Refresh: refreshToken
-          }
-        }
-      );
-      console.log("res", response);
-      const isSuccess = response.data.isSuccess === true;
-      if (isSuccess) {
-        console.log('임시저장 요청 성공');
-        setIsTempSaveAlertVisible(true);
-        setTimeout(() => {
-          setIsTempSaveAlertVisible(false);
-      }, 2000);
-      } else {
-        console.log('임시저장 요청 false');
+      const requestData = {
+        user_id: _userId,
+        title: _title,
+        content: _content,
+        topic_id: topicId
       }
+      // const images = _images;
+      if (draftId === null) { // 첫번째 임시 저장
+        const response = await axios.post(
+          'http://localhost:8080/drafts',
+          requestData,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${accessToken}`,
+              Refresh: refreshToken
+            }
+          }
+        );
+        console.log("res", response);
+        const isSuccess = response.data.isSuccess === true;
+        if (isSuccess) {
+          console.log('임시저장 요청 성공');
+          setDraftId(response.data.result.draft_id);
+          setIsTempSaveAlertVisible(true);
+          setTimeout(() => {
+            setIsTempSaveAlertVisible(false);
+        }, 2000);
+        } else {
+          console.log('임시저장 요청 false');
+        }
+      } else { // 이후 임시 저장
+        const response = await axios.patch(
+          `http://localhost:8080/drafts/${draftId}`,
+          requestData,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${accessToken}`,
+              Refresh: refreshToken
+            }
+          }
+        );
+        console.log("res", response);
+        const isSuccess = response.data.isSuccess === true;
+        if (isSuccess) {
+          console.log('임시저장 재요청 성공');
+          setDraftId(response.data.result.draft_id);
+          setIsTempSaveAlertVisible(true);
+          setTimeout(() => {
+            setIsTempSaveAlertVisible(false);
+        }, 2000);
+        } else {
+          console.log('임시저장 재요청 false');
+        }
+      }
+      
 
       // onClickMoveTemStorage();
   } catch (error) {
