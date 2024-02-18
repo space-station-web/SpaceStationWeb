@@ -56,7 +56,7 @@ export default function BookDetail(props: IBookDetailProps): JSX.Element {
       const fetchData = async (): Promise<void> => {
         try {
           const response = await axios.get<ApiResponse>(
-            `http://localhost:8080/books/${bookId}`,
+            `http://localhost:8080/books/?bookId=${bookId}`,
             {
               headers: {
                 Authorization: accessToken,
