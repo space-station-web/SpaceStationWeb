@@ -2,32 +2,33 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   width: 100%;
-  padding: 150px 200px 20px 200px;
+  padding: 5.77rem 7.69rem 0.76rem 7.69rem;
 
-  background-color: rgba(20, 20, 20, 0.8);
+  // background-color: rgba(20, 20, 20, 0.8);
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
+
 export const Form = styled.div`
   flex-direction: column;
-  width: 74.625rem;
-  height: 78.75rem;
+  width: 45.9rem; // z
+  height: 48.46rem;
   flex-shrink: 0;
 
-  border-radius: 1.25rem;
+  border-radius: 0.77rem; // z
   background: var(--Primary-BlackLight, #1E1E1E);
-  margin-top: 1.25rem;
+  margin-top: 0.77rem; // z
 `;
 
 export const FormHeader = styled.div`
-  width: 74.625rem;
-  height: 7.813rem;
+  width: 45.9rem; // z
+  height: 4.8rem;
   flex-shrink: 0;
 
-  border-radius: 20px 20px 0px 0px;
+  border-radius: 0.77rem 0.77rem 0px 0px;
   background: var(--Primary-Black, #141414);  
 `;
 
@@ -36,12 +37,12 @@ export const FormHeaderWrite = styled.p`
 
   /* Heading */
   font-family: Pretendard;
-  font-size: 1.875rem;
+  font-size: 1.15rem; // z
   font-style: normal;
   font-weight: 600;
-  line-height: 5.625rem;
+  line-height: 3.46rem;
 
-  margin-left: 2.813rem;
+  margin-left: 1.73rem; // z
 `;
 
 export const FormHeaderNum = styled.p`
@@ -49,22 +50,22 @@ export const FormHeaderNum = styled.p`
 
   /* Heading 1 */
   font-family: Pretendard;
-  font-size: 1.25rem;
+  font-size: 0.77rem; // z
   font-style: normal;
   font-weight: 600;
-  margin-left: 2.813rem;
+  margin-left: 1.73rem; // z
 
-  margin-top: -1.25rem;
+  margin-top: -0.77rem;
 `;
 
 export const OneForm = styled.div`
   flex-direction: column;
 
-  width: 74.625rem;
-  height: 5.813rem;
+  width: 45.9rem; // z
+  height: 3.57rem;
   flex-shrink: 0;
 
-  border-bottom: 0.063rem solid var(--Layout-Color-Gray-300, #8C8C8C);
+  border-bottom: 0.038rem solid var(--Layout-Color-Gray-300, #8C8C8C); // z
   background: var(--Primary-BlackLight, #1E1E1E);
 `;
 
@@ -73,15 +74,15 @@ color: var(--Layout-Color-Gray-300, #8C8C8C);
 
 /* Heading 2 */
 font-family: Pretendard;
-font-size: 1.125rem;
+font-size: 0.69rem;
 font-style: normal;
 font-weight: 400;
-line-height: 1.75rem; /* 155.556% */
-letter-spacing: -0.18px;
+line-height: 1.07rem; /* 155.556% */
+letter-spacing: -0.111px;
 
-margin-left: 2.813rem;
+margin-left: 1.73rem; // z
 position: relative;
-top: 1.875rem;
+top: 1.15rem; // z
 `;
 
 export const Title = styled.span`
@@ -89,62 +90,62 @@ color: var(--Layout-Color-Gray-100, #DCDCDC);
 
 /* Heading 1 */
 font-family: Pretendard;
-font-size: 1.25rem;
+font-size: 0.77rem; // z
 font-style: normal;
 font-weight: 600;
-line-height: 1.438rem; /* 115% */
+line-height: 0.88rem; /* 115% */ // z
 cursor: pointer;
 
-margin-left: 12.5rem;
+margin-left: 7.7rem;
 `;
 
 export const DeleteBtn = styled.button`
-width: 8.125rem;
-height: 2.5rem;
+width: 5rem; // z
+height: 1.53rem; // z
 flex-shrink: 0;
 
-border-radius: 62.438rem;
+border-radius: 38.42rem; // z
 background: var(--Layout-Color-Gray-200, #B4B4B4);
 
 border: none;
 cursor: pointer;
-margin-left: 34.375rem;
+margin-left: 21.15rem;
 `;
 
 export const DeleteBtnText = styled.p`
-width: 2.203rem;
-height: 1.529rem;
+width: 1.35rem;
+height: 0.94rem;
 flex-shrink: 0;
 
 color: var(--Primary-BlackLight, #1E1E1E);
 
 /* Heading 1 */
 font-family: Pretendard;
-font-size: 1.25rem;
+font-size: 0.77rem; // z
 font-style: normal;
 font-weight: 600;
-line-height: 1.438rem; /* 115% */
+line-height: 0.88rem; /* 115% */ // z
 `;
 
 export const Line = styled.div`
-  width: 74.625rem;
-  height: 0.063rem;
+  width: 45.9rem; // z
+  height: 0.038rem; // z
   flex-shrink: 0;
 
   background: var(--Layout-Color-Gray-300, #8C8C8C);
 `;
 
 export const DelModalWrapper = styled.div`
-width: 22.5rem;
-height: 15rem;
+width: 13.84rem;
+height: 9.23rem;
 flex-shrink: 0;
-border-radius: 1.25rem;
+border-radius: 0.77rem; // z
 background: var(--Layout-Color-Gray-100, #DCDCDC);
 
 // -- 수정 -- //
 position: relative;
-top: -80px; 
-left: 220px;
+top: -3.07rem; 
+left: 8.46rem;
 
 `;
 
@@ -153,34 +154,34 @@ color: var(--Primary-BlackDark, #0A0A0A);
 
 /* Heading 1 */
 font-family: Pretendard;
-font-size: 1.25rem;
+font-size: 0.77rem; // z
 font-style: normal;
 font-weight: 600;
-line-height: 1.438rem; /* 115% */
+line-height: 0.88rem; /* 115% */ // z
 
 // -------- 수정
 position: relative;
-top: 80px; 
-left: 40px;
+top: 3.07rem; 
+left: 1.53rem; // z
 
 `;
 
 export const DelModalYesBtn = styled.button`
 display: inline-flex;
-/*padding: 8px 56px;*/
-width: 8.125rem;  
-height: 2.5rem;
+/*padding: 0.3rem 2.15rem;*/ // z
+width: 5rem;   // z
+height: 1.53rem; // z
 justify-content: center;
 align-items: center;
-gap: 0.625rem;
+gap: 0.385rem;
 
-border-radius: 999px;
+border-radius: 38.423rem;
 background: var(--Layout-Color-Gray-200, #B4B4B4);
 
 //-- 수정
 position: relative;
-top: 110px; 
-left: 40px;
+top: 4.23rem; // z
+left: 1.53rem; // z
 
 border: none;
 
@@ -190,29 +191,29 @@ color: var(--Primary-BlackLight, #1E1E1E);
 
 /* Heading 1 */
 font-family: Pretendard;
-font-size: 1.25rem;
+font-size: 0.77rem; // z
 font-style: normal;
 font-weight: 600;
-line-height: 1.438rem; /* 115% */
+line-height: 0.88rem; /* 115% */ // z
 cursor: pointer;
 `;
 
 export const DelModalNoBtn = styled.button`
 display: inline-flex;
-/* padding: 8px 56px; */
-width: 8.125rem;  
-height: 2.5rem;
+/* padding: 0.3rem 2.15rem; */ // z
+width: 5rem;   // z
+height: 1.53rem; // z
 justify-content: center;
 align-items: center;
-gap: 0.625rem;
+gap: 0.385rem;
 
-border-radius: 62.438rem;
+border-radius: 38.42rem; // z
 background: var(--Layout-Color-Gray-200, #B4B4B4);
 
 //---- 수정
 position: relative;
-top: 110px; 
-left: 65px;
+top: 4.23rem; // z
+left: 2.5rem;
 border: none;
 `;
 
@@ -221,24 +222,24 @@ color: var(--Primary-BlackLight, #1E1E1E);
 
 /* Heading 1 */
 font-family: Pretendard;
-font-size: 1.25rem;
+font-size: 0.77rem; // z
 font-style: normal;
 font-weight: 600;
-line-height: 1.438rem; /* 115% */
+line-height: 0.88rem; /* 115% */ // z
 cursor: pointer;
 `;
 
 export const backBtn = styled.span`
-  width: 30px;
-  height: 30px;
+  width: 1.5rem;
+  height: 1.5rem;
   transform: rotate(0deg);
   writing-mode: vertical-lr;
   text-align: center; 
-  line-height: 30px; 
+  line-height: 1.5rem; 
   flex-shrink: 0;
   background: url("/common/back.png");
   cursor: pointer;
 
-  margin-right: 780px;
-  margin-top: 20px;
+  margin-right: 45rem;
+  margin-top: 0.77rem; 
 `;
