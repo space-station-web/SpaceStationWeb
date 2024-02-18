@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  width: 1186px;
+  width: 45.6rem;
   position: relative; 
   z-index: 1;
   display: flex;
@@ -11,10 +11,10 @@ export const Wrapper = styled.div`
 
 export const Prev = styled.img`
   position: absolute;
-  top: 300px; 
+  top: 11.5rem; 
   left: 0; 
-  width: 32px;
-  height: 32px;
+  width: 1.2rem;
+  height: 1.2rem;
   cursor: pointer;
 `;
 export const Stack = styled.div<{ $gap?: string }>`
@@ -25,8 +25,8 @@ export const Stack = styled.div<{ $gap?: string }>`
 export const Form = styled.div`
   z-index: 100;
   background-color: #1e1e1e;
-  width: 786px;
-  height: 601px;
+  width: 30.2rem;
+  height: 23.1rem;
   border: 0.5px solid #757575;
   border-radius: 40px;
 
@@ -34,8 +34,8 @@ export const Form = styled.div`
   flex-direction: column;
   align-items: center;
 
-  margin: 50px 0 300px 0;
-  padding: 70px;
+  margin: 1.9rem 0 11.5rem 0;
+  padding: 2.7rem;
 `;
 
 
@@ -43,20 +43,20 @@ export const Form = styled.div`
 
 export const InputTextForm = styled.div`
   display: flex;
-  width: 582px;
-  height: 75px;
+  width: 22.4rem;
+  height: 2.9rem;
   border-radius: 20px;
 
   background-color: #141414;
 
-  margin-bottom: 15px;
+  margin-bottom: 0.58rem;
 `;
 
 
 
 export const Input = styled.input`
-  width: 450px;
-  height: 75px;
+  width: 17.3rem;
+  height: 2.9rem;
   background-color: #141414;
   border: none;
   :focus {
@@ -64,8 +64,8 @@ export const Input = styled.input`
   }
   color: #e0e0e0;
   caret-color: #e0e0e0;
-  font-size: 17px;
-  margin-left: 30px;
+  font-size: 0.65rem;
+  margin-left: 1.15rem;
 
   &::placeholder {
     color: #bdbdbd;
@@ -75,10 +75,10 @@ export const Input = styled.input`
 // 자동로그인 체크박스 및 이메일|비밀번호 찾기
 export const UtilForm = styled.div`
   display: flex;
-  width: 582px;
+  width: 22.4rem;
   justify-content: space-between;
-  margin-top: 10px;
-  margin-bottom: 60px;
+  margin-top: 0.38rem;
+  margin-bottom: 2.3rem;
 `;
 
 export const UtilBox = styled.div`
@@ -89,9 +89,9 @@ export const UtilBox = styled.div`
 export const CheckBox = styled.input`
   appearance: none;
   border: 1px solid #B4B4B4;
-  width: 20px;
-  height: 20px;
-  margin: 0 8px;
+  width: 0.77rem;
+  height: 0.77rem;
+  margin: 0 0.3rem;
   cursor: pointer;
 
   &:checked {
@@ -103,25 +103,26 @@ export const CheckBox = styled.input`
 
 export const UtilText = styled.span`
   color: #BDBDBD;
-  font-size: 17px;
+  font-size: 0.65rem;
   text-align: center;
-  margin-right: 7px;
+  margin-right: 0.3rem;
   cursor: pointer;
 `;
 
 export const NormText = styled.span`
   color: #BDBDBD;
-  font-size: 17px;
+  font-size: 0.65rem;
   text-align: center;
-  margin-right: 7px;
+  margin-right: 0.3rem;
 `;
 
 export const SubmitButton = styled.button`
-  width: 582px;
-  height: 75px;
+  width: 22.4rem;
+  height: 2.9rem;
   border-radius: 20px;
   border: none;
   cursor: pointer;
+  font-size: 0.65rem;
   
   background-color: #0e0e0e;
   color: #e0e0e0;
@@ -133,8 +134,8 @@ export const SubmitButton = styled.button`
 `;
 
 export const Line = styled.div`
-  width: 582px;
+  width: 22.4rem;
   border: 0;
   border-top: 1px solid #757575;
-  margin: 20px 0;
+  margin: 0.77rem 0;
 `;

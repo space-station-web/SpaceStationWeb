@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  width: 1186px;
+  width: 45.6rem;
   position: relative; 
   z-index: 1;
   display: flex;
@@ -11,10 +11,10 @@ export const Wrapper = styled.div`
 
 export const Prev = styled.img`
   position: absolute;
-  top: 300px; 
+  top: 11.5rem; 
   left: 0; 
-  width: 32px;
-  height: 32px;
+  width: 1.2rem;
+  height: 1.2rem;
   cursor: pointer;
 `;
 export const Stack = styled.div<{ $gap?: string }>`
@@ -26,8 +26,8 @@ export const Stack = styled.div<{ $gap?: string }>`
 export const Form = styled.div`
   z-index: 100;
   background-color: #1e1e1e;
-  width: 786px;
-  min-height: 601px;
+  width: 30.2rem;
+  min-height: 23.1rem;
   border: 0.5px solid #757575;
   border-radius: 40px;
 
@@ -35,42 +35,42 @@ export const Form = styled.div`
   flex-direction: column;
   align-items: center;
 
-  margin: 50px 0 300px 0;
-  padding: 70px;
+  margin: 1.9rem 0 11.5rem 0;
+  padding: 2.7rem;
 `;
 
 export const Heading1 = styled.p`
-  font-size: 20px;
+  font-size: 0.77rem;
   font-weight: 600;
   color: #dcdcdc;
   white-space: pre-wrap;
   text-align: center;
-  line-height: 23px;
+  line-height: 0.88rem;
 
-  margin-bottom: 40px;
+  margin-bottom: 0.38rem;
 `;
 
 export const InputTextForm = styled.div`
   display: flex;
-  width: 582px;
-  height: 75px;
+  width: 22.4rem;
+  height: 2.9rem;
   border-radius: 20px;
 
   background-color: #141414;
 
-  margin: 7px 0;
+  margin: 0.27rem 0;
 `;
 
 export const Input = styled.input`
-  width: 450px;
-  height: 75px;
+  width: 17.3rem;
+  height: 2.9rem;
   background-color: #141414;
   border: none;
   
   color: #e0e0e0;
   caret-color: #e0e0e0;
-  font-size: 17px;
-  margin-left: 30px;
+  font-size: 0.65rem;
+  margin-left: 1.15rem;
 
   &::placeholder {
     color: #bdbdbd;
@@ -80,15 +80,15 @@ export const Input = styled.input`
   }
 `;
 export const InputF = styled.input`
-  width: 450px;
-  height: 75px;
+  width: 17.3rem;
+  height: 2.9rem;
   background-color: #141414;
   border: none;
   
   color: #e0e0e0;
   caret-color: #e0e0e0;
-  font-size: 17px;
-  margin-left: 30px;
+  font-size: 0.65rem;
+  margin-left: 1.15rem;
 
   &::placeholder {
     color: #bdbdbd;
@@ -98,18 +98,19 @@ export const InputF = styled.input`
 
     &::placeholder {
       color: #C8C8C8;
-      font-size: 15px;
+      font-size: 0.57rem;
     }
   }
 `;
 
 export const SubmitButton = styled.button`
-  width: 582px;
-  height: 75px;
+  width: 22.4rem;
+  height: 2.9rem;
   border-radius: 20px;
   border: none;
   cursor: pointer;
-  margin-top: 10px;
+  font-size: 0.65rem;
+  margin-top: 0.38rem;
 
   background-color: #0e0e0e;
   color: #e0e0e0;
@@ -121,20 +122,20 @@ export const SubmitButton = styled.button`
 `;
 
 export const UtilBox = styled.div`
-  width: 570px;
+  width: 21.9rem;
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 0.77rem;
 `;
 
 export const CheckBox = styled.input`
   appearance: none;
   border: 1px solid #8c8c8c;
-  width: 20px;
-  height: 20px;
+  width: 0.77rem;
+  height: 0.77rem;
   cursor: pointer;
-  margin-left: 4px;
-  margin-right: 15px;
+  margin-left: 0.15rem;
+  margin-right: 0.56rem;
 
   &:checked {
     background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='black' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e");
@@ -144,27 +145,27 @@ export const CheckBox = styled.input`
 
 export const UtilText = styled.span`
   color: #8c8c8c;
-  font-size: 15px;
-  line-height: 18px;
+  font-size: 0.56rem;
+  line-height: 0.69rem;
   text-align: center;
-  margin-left: 5px;
+  margin-left: 0.19rem;
   cursor: pointer;
   text-decoration: underline;
 `;
 
 export const NormText = styled.span`
   color: #8c8c8c;
-  font-size: 15px;
-  line-height: 18px;
+  font-size: 0.56rem;
+  line-height: 0.69rem;
   text-align: center;
   
 `;
 
 export const ErrorMessage = styled.div`
   color: #ff6d6d;
-  font-size: 15px;
-  width: 570px;
-  margin-bottom: 13px;
+  font-size: 0.57rem;
+  width: 21.9rem;
+  margin-bottom: 0.5rem;
 `;
 
 
@@ -172,26 +173,27 @@ export const ErrorMessage1 = styled.small`
   color: red;
   text-align: left;
   display: block;
-  margin-bottom: 10px;
-  margin-left: 150px;
+  margin-bottom: 0.38rem;
+  margin-left: 5.77rem;
+  font-size: 0.57rem;
 `;
 
 export const blank =  styled.div`
-  height: 25px;
+  height: 1rem;
 `;
 
 // 유틸 버튼
 export const VertBtn = styled.button`
-  width: 93px;
-  height: 49px;
+  width: 3.57rem;
+  height: 1.88rem;
   border-radius: 15px;
 
-  margin: 13px 13px 0 0;
+  margin: 0.5rem 0.5rem 0 0;
 
   border: none;
   background-color: #1e1e1e;
   color: #e0e0e0;
-  font-size: 17px;
+  font-size: 0.65rem;
 
   cursor: pointer;
 
