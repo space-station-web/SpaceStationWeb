@@ -11,14 +11,15 @@ const Align = styled.div`
 
 export default function BoardDetailPage(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
+  const [refreshData, setRefreshData] = useState(false);
 
   return (
     <Align>
       <BoardDetail setIsOpen={setIsOpen} />
       {isOpen ? (
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <CommentWrite />
-          <BoardCommentList />
+          <CommentWrite setRefreshData={setRefreshData} />
+          <BoardCommentList refreshData={refreshData} />
         </div>
       ) : (
         " "
