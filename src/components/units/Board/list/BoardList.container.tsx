@@ -70,7 +70,7 @@ export default function BoardList(): JSX.Element {
     }
 
     void fetchPosts();
-  }, []); // 빈 의존성 배열로 마운트 시에만 실행
+  }, [accessToken, refreshToken]); // 빈 의존성 배열로 마운트 시에만 실행
 
   // 좋아요순
   const onClickLikeCountOrder = async (): Promise<void> => {
@@ -106,14 +106,19 @@ export default function BoardList(): JSX.Element {
     console.log(posts);
   };
 
+  const totalPageCount = Array.isArray(posts)
+    ? Math.ceil(posts.length / POSTS_PER_PAGE)
+    : 0;
+
   // 현재 페이지에 따라 게시물을 필터링하는 함수
   const getCurrentPagePosts = (): Post[] => {
+    if (!Array.isArray(posts) || posts.length === 0) {
+      return []; // posts가 빈 배열이거나 유효하지 않으면 빈 배열 반환
+    }
     const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
     const endIndex = startIndex + POSTS_PER_PAGE;
     return posts.slice(startIndex, endIndex);
   };
-
-  const totalPageCount = Math.ceil(posts.length / POSTS_PER_PAGE);
 
   return (
     <>

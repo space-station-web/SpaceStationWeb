@@ -6,7 +6,7 @@ export interface Book {
   title: string;
   intro: string;
   category: string;
-  thumbnail: string;
+  thumnail: string;
 }
 
 export interface ApiResponse {

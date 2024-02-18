@@ -71,7 +71,7 @@ export default function BoardListUI(props: IBookListProps): JSX.Element {
             onClick={props.onClickBook}
           >
             <L.BoardImage
-              src={el.image_url ? el.image_url : "/book/rectangle 208.png"}
+              src={el.thumnail ? el.thumnail : "/book/rectangle 208.png"}
             />
 
             <L.BoardBottom>
