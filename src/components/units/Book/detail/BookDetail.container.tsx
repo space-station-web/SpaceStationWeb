@@ -15,12 +15,19 @@ export interface BookData {
   like: boolean;
   likeCount: number;
   storage: boolean;
-  content: string[];
+  contents: ContentData[];
 
   // content: string;
   // created_at: string;
 
   // visibility: string;
+}
+export interface ContentData {
+  content_title: string;
+  content_text: string;
+  content_index: number;
+  image: string[];
+  // 다른 필드들...
 }
 
 interface ApiResponse {
@@ -33,6 +40,7 @@ export default function BookDetail(props: IBookDetailProps): JSX.Element {
   const [data, setData] = useState<BookData | null>(null);
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [refreshToken, setRefreshToken] = useState<string | null>(null);
+  const [refreshData, setRefreshData] = useState(false); // 데이터 리프레시를 위한 상태
 
   const onClickCommentToggle = (): void => {
     props.setIsOpen((prev) => !prev);
@@ -65,11 +73,46 @@ export default function BookDetail(props: IBookDetailProps): JSX.Element {
       };
       void fetchData();
     }
-  }, [bookId, accessToken, refreshToken]);
+  }, [bookId, accessToken, refreshToken, refreshData]);
+
+  // 책 좋아요 및 취소
+  const onClickLike = async (): Promise<void> => {
+    if (typeof bookId === "string") {
+      try {
+        const response = await (data?.like === false
+          ? axios.post(
+              `http://localhost:8080/likes/books/${bookId}`,
+              {},
+              {
+                headers: {
+                  authorization: accessToken,
+                  refresh: refreshToken,
+                },
+              },
+            )
+          : axios.delete(`http://localhost:8080/likes/books/${bookId}`, {
+              headers: {
+                authorization: accessToken,
+                refresh: refreshToken,
+              },
+            }));
+
+        if (response.status === 200) {
+          setRefreshData((prev) => !prev);
+        }
+        console.log(response.data);
+      } catch (error) {
+        console.error("데이터 로딩 중 오류 발생", error);
+      }
+    } else {
+      console.log("not type postId");
+    }
+  };
 
   return (
     <BookDetailUI
       onClickCommentToggle={onClickCommentToggle}
+      onClickLike={onClickLike}
       setIsOpen={props.setIsOpen}
       data={data}
     />

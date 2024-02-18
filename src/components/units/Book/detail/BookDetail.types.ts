@@ -10,4 +10,5 @@ export interface IBookDetailUIProps {
   data: BookData | null;
   isStored: boolean;
   storePost: () => Promise<void>;
+  onClickLike: () => Promise<void>;
 }

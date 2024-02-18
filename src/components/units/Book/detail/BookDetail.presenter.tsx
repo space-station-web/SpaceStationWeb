@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import * as L from "../../Board/detail/BoardDetail.styled";
+import * as L1 from "./BookDetail.styled";
 
 import { useRouter } from "next/router";
 import BookModal from "../../Board/detail/BoardModal";
@@ -92,7 +93,16 @@ export default function BoardDetailUI(props: IBookDetailUIProps): JSX.Element {
                   <L.Image key={index} src={url} />
                 ))} */}
               </L.ImageBox>
-              <L.Contents>{firstData?.intro}</L.Contents>
+              <L.Contents>
+                {firstData?.contents?.map((content, index) => (
+                  <div key={index} style={{ marginBottom: "25px" }}>
+                    <L1.ContentsTitle>{content.content_title}</L1.ContentsTitle>
+                    <L1.ContentsContent>
+                      {content.content_text}
+                    </L1.ContentsContent>
+                  </div>
+                ))}
+              </L.Contents>
             </L.BoardMiddle>
 
             <L.BoardBottom>
@@ -102,7 +112,7 @@ export default function BoardDetailUI(props: IBookDetailUIProps): JSX.Element {
               <L.IconContainer>
                 <L.LikeIcon
                   onClick={props.onClickLike}
-                  fill={firstData?.like ? "#ff6f00" : "none"}
+                  fill={firstData?.like ? "#ff6f00" : "#8c8c8c"}
                 />
                 <L.CountLike>{firstData?.likeCount}</L.CountLike>
                 <L.SaveButton
