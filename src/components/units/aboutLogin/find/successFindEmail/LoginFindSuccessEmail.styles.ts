@@ -13,8 +13,8 @@ export const Stack = styled.div<{ $gap?: string }>`
 export const Form = styled.div`
   z-index: 100;
   background-color: #1e1e1e;
-  width: 786px;
-  height: 601px;
+  width: 30.2rem;
+  min-height: 23.1rem;
   border: 0.5px solid #757575;
   border-radius: 40px;
 
@@ -22,31 +22,32 @@ export const Form = styled.div`
   flex-direction: column;
   align-items: center;
 
-  margin: 50px 0 300px 0;
-  padding: 70px;
+  margin: 1.9rem 0 11.5rem 0;
+  padding: 2.7rem;
 `;
 
 export const Icon = styled.img`
-  margin-bottom: 60px;
+  margin-bottom: 2.3rem;
 `;
 
 export const Text = styled.p`
-  font-size: 20px;
+  font-size: 0.77rem;
   color: #e0e0e0;
   white-space: pre-wrap;
   text-align: center;
-  line-height: 35px;
+  line-height: 1.34rem;
 
-  margin-bottom: 40px;
+  margin-bottom: 1.5rem;
 `;
 
 export const Button = styled.button`
-  width: 582px;
-  height: 75px;
+  width: 22.4rem;
+  height: 2.9rem;
   border-radius: 20px;
   border: none;
 
-  margin-top: 15px;
+  margin-top: 0.57rem;
+  font-size: 0.65rem;
 
   background-color: #0e0e0e;
   color: #e0e0e0;

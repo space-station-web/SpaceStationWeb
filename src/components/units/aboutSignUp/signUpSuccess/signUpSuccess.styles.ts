@@ -1,30 +1,20 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  background-image: url("/common/background.png");
-  background-position: top center;
-
+  width: 45.6rem;
+  position: relative; 
+  z-index: 1;
   display: flex;
-  justify-content: center;
-
-  position: relative;
-
-  ::before {
-    position: absolute;
-    content: "";
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
+  flex-direction: column;
+  align-items: center;
   }
 `;
 
 export const Form = styled.div`
   z-index: 100;
   background-color: #1e1e1e;
-  width: 786px;
-  height: 601px;
+  width: 30.2rem;
+  min-height: 23.1rem;
   border: 0.5px solid #757575;
   border-radius: 40px;
 
@@ -32,45 +22,46 @@ export const Form = styled.div`
   flex-direction: column;
   align-items: center;
 
-  margin: 550px 0 300px 0;
-  padding: 70px;
+  margin: 1.9rem 0 11.5rem 0;
+  padding: 2.7rem;
 
 `;
 
 export const Icon = styled.img`
-  margin-top: 80px;
-  margin-bottom: 60px;
+  margin-top: 3rem;
+  margin-bottom: 2.3rem;
 `;
 
 export const Heading1 = styled.p`
-  font-size: 20px;
+font-size: 0.77rem;
   font-weight: 600;
   color: #DCDCDC;
   white-space: pre-wrap;
   text-align: center;
-  line-height: 23px;
+  line-height: 0.88rem;
 
-  margin-bottom: 10px;
+  margin-bottom: 0.38rem;
 `;
 
 export const Heading2 = styled.p`
-  font-size: 18px;
+  font-size: 0.69rem;
   font-weight: 400;
   color: #B4B4B4;
   white-space: pre-wrap;
   text-align: center;
-  line-height: 28px;
+  line-height: 1.07rem;
 
-  margin-bottom: 30px;
+  margin-bottom: 1.15rem;
 `;
 
 export const Button = styled.button`
-  width: 582px;
-  height: 75px;
+  width: 22.4rem;
+  height: 2.9rem;
   border-radius: 20px;
   border: none;
+  font-size: 0.65rem;
 
-  margin-top: 15px;
+  margin-top: 0.57rem;
 
   background-color: #0e0e0e;
   color: #e0e0e0;

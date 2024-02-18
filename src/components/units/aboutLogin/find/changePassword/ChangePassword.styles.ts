@@ -13,8 +13,8 @@ export const Stack = styled.div<{ $gap?: string }>`
 export const Form = styled.div`
   z-index: 100;
   background-color: #1e1e1e;
-  width: 786px;
-  height: 601px;
+  width: 30.2rem;
+  min-height: 23.1rem;
   border: 0.5px solid #757575;
   border-radius: 40px;
 
@@ -22,42 +22,42 @@ export const Form = styled.div`
   flex-direction: column;
   align-items: center;
 
-  margin: 50px 0 300px 0;
-  padding: 70px 0 0 0;
+  margin: 1.9rem 0 11.5rem 0;
+  padding: 2.7rem;
 `;
 
 export const Heading1 = styled.p`
-  font-size: 20px;
+  font-size: 0.77rem;
   font-weight: 600;
   color: #dcdcdc;
   white-space: pre-wrap;
   text-align: center;
-  line-height: 23px;
+  line-height: 0.88rem;
 
-  margin-bottom: 40px;
+  margin-bottom: 1.5rem;
 `;
 
 export const InputTextForm = styled.div`
   display: flex;
-  width: 582px;
-  height: 75px;
+  width: 22.4rem;
+  height: 2.9rem;
   border-radius: 20px;
 
   background-color: #141414;
 
-  margin: 7px 0;
+  margin: 0.27rem 0;
 `;
 
 export const InputF = styled.input`
-  width: 450px;
-  height: 75px;
+  width: 17.3rem;
+  height: 2.9rem;
   background-color: #141414;
   border: none;
   
   color: #e0e0e0;
   caret-color: #e0e0e0;
-  font-size: 17px;
-  margin-left: 30px;
+  font-size: 0.65rem;
+  margin-left: 1.15rem;
 
   &::placeholder {
     color: #bdbdbd;
@@ -67,21 +67,21 @@ export const InputF = styled.input`
 
     &::placeholder {
       color: #C8C8C8;
-      font-size: 15px;
+      font-size: 0.57rem;
     }
   }
 `;
 
 export const Input = styled.input`
-  width: 450px;
-  height: 75px;
+  width: 17.3rem;
+  height: 2.9rem;
   background-color: #141414;
   border: none;
   
   color: #e0e0e0;
   caret-color: #e0e0e0;
-  font-size: 17px;
-  margin-left: 30px;
+  font-size: 0.65rem;
+  margin-left: 1.15rem;
 
   &::placeholder {
     color: #bdbdbd;
@@ -92,12 +92,13 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-  width: 582px;
-  height: 75px;
+  width: 22.4rem;
+  height: 2.9rem;
   border-radius: 20px;
   border: none;
+  font-size: 0.65rem;
 
-  margin-top: 80px;
+  margin-top: 3rem;
 
   background-color: #0e0e0e;
   color: #e0e0e0;
@@ -112,7 +113,7 @@ export const Button = styled.button`
 
 export const ErrorMessage = styled.div`
   color: #ff6d6d;
-  font-size: 15px;
-  width: 570px;
-  margin-bottom: 13px;
+  font-size: 0.57rem;
+  width: 21.9rem;
+  margin-bottom: 0.5rem;
 `;

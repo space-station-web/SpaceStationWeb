@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  width: 1186px;
+  width: 45.6rem;
   position: relative; 
   z-index: 1;
   display: flex;
@@ -11,10 +11,10 @@ export const Wrapper = styled.div`
 
 export const Prev = styled.img`
   position: absolute;
-  top: 300px; 
+  top: 11.5rem; 
   left: 0; 
-  width: 32px;
-  height: 32px;
+  width: 1.2rem;
+  height: 1.2rem;
   cursor: pointer;
 `;
 export const Stack = styled.div<{ $gap?: string }>`
@@ -26,8 +26,8 @@ export const Stack = styled.div<{ $gap?: string }>`
 export const Form = styled.div`
   z-index: 100;
   background-color: #1e1e1e;
-  width: 786px;
-  min-height: 601px;
+  width: 30.2rem;
+  min-height: 23.1rem;
   border: 0.5px solid #757575;
   border-radius: 40px;
 
@@ -35,31 +35,31 @@ export const Form = styled.div`
   flex-direction: column;
   align-items: center;
 
-  margin: 50px 0 300px 0;
-  padding: 70px;
+  margin: 1.9rem 0 11.5rem 0;
+  padding: 2.7rem;
 `;
 
 export const Title = styled.p`
   color: #e0e0e0;
-  font-size: 20px;
+  font-size: 0.77rem;
 
-  margin-bottom: 60px;
+  margin-bottom: 2.3rem;
 `;
 
 export const InputTextForm = styled.div`
   display: flex;
-  width: 582px;
-  height: 75px;
+  width: 22.4rem;
+  height: 2.9rem;
   border-radius: 20px;
 
   background-color: #141414;
 
-  margin-bottom: 15px;
+  margin-bottom: 0.58rem;
 `;
 
 export const Input = styled.input`
-  width: 450px;
-  height: 75px;
+  width: 17.3rem;
+  height: 2.9rem;
   background-color: #141414;
   border: none;
   :focus {
@@ -67,8 +67,8 @@ export const Input = styled.input`
   }
   color: #e0e0e0;
   caret-color: #e0e0e0;
-  font-size: 17px;
-  margin-left: 30px;
+  font-size: 0.65rem;
+  margin-left: 1.15rem;
 
   &::placeholder {
     color: #bdbdbd;
@@ -76,12 +76,13 @@ export const Input = styled.input`
 `;
 
 export const SubmitButton = styled.button`
-  width: 582px;
-  height: 75px;
+  width: 22.4rem;
+  height: 2.9rem;
   border-radius: 20px;
   border: none;
   cursor: pointer;
-  margin-top: 40px;
+  margin-top: 1.5rem;
+  font-size: 0.65rem;
 
   background-color: #0e0e0e;
   color: #e0e0e0;
@@ -95,6 +96,6 @@ export const SubmitButton = styled.button`
 
 export const ErrorMessage = styled.div`
   color: #ff6d6d;
-  font-size: 15px;
-  margin-right: 370px;
+  font-size: 0.57rem;
+  margin-right: 14.2rem;
 `;
