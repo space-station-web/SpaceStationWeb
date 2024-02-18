@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import * as L from "./BoardDetail.styled";
 import type { IBoardDetailUIProps } from "./BoardDetail.types";
-import BookModal from "./BoardModal";
+import BoardModal from "./BoardModal";
 
 export default function BoardDetailUI(props: IBoardDetailUIProps): JSX.Element {
   const [mounted, setMounted] = useState<boolean>(false);
@@ -51,7 +51,7 @@ export default function BoardDetailUI(props: IBoardDetailUIProps): JSX.Element {
           <L.BoardWrapper>
             {/* modal */}
             <L.BookModalContainer>
-              {isModalVisible && <BookModal onClose={toggleModal} />}
+              {isModalVisible && <BoardModal onClose={toggleModal} />}
             </L.BookModalContainer>
             {/*  */}
             <L.TopBoard>

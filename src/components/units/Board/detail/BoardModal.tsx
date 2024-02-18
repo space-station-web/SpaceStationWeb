@@ -8,7 +8,7 @@ interface ModalComponentProps {
   onClose: () => void;
 }
 
-const BookModal = ({ onClose }: ModalComponentProps): JSX.Element => {
+const BoardModal = ({ onClose }: ModalComponentProps): JSX.Element => {
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [refreshToken, setRefreshToken] = useState<string | null>(null);
 
@@ -90,7 +90,7 @@ const BookModal = ({ onClose }: ModalComponentProps): JSX.Element => {
   );
 };
 
-export default BookModal;
+export default BoardModal;
 
 const ModalContainer = styled.div`
   background: #141414;
