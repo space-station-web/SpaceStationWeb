@@ -1,8 +1,9 @@
-
+import { useRouter } from "next/router";
 import * as F from "./Write.styles";
 import type { Iwrite } from "./Write.types";
 
 export default function WriteUI(props: Iwrite): JSX.Element {
+  const router = useRouter();
 
   return (
     <>
@@ -79,10 +80,11 @@ export default function WriteUI(props: Iwrite): JSX.Element {
             </F.InputRecommendForm>
           )}
           <F.InputTextForm>
-          <F.TitleText
+            <F.TitleText
               placeholder="글에 대한 제목을 정해주세요."
-              value={props._title} 
-              onChange={props.onChangeTitle}></F.TitleText>
+              value={props._title}
+              onChange={props.onChangeTitle}
+            ></F.TitleText>
             <F.Line></F.Line>
             <F.ImageIcon onClick={props.onImageClick}>
               <svg
@@ -100,7 +102,7 @@ export default function WriteUI(props: Iwrite): JSX.Element {
             </F.ImageIcon>
             <F.WrapHorizontal>
               <F.InsertImgForm>
-              {props.selectedImages.map((image, index) => (
+                {props.selectedImages.map((image, index) => (
                   <F.InsertImg
                     key={index}
                     style={{ backgroundImage: `url(${image})` }}
@@ -108,11 +110,11 @@ export default function WriteUI(props: Iwrite): JSX.Element {
                 ))}
               </F.InsertImgForm>
             </F.WrapHorizontal>
-            <F.Writing 
+            <F.Writing
               placeholder="글이 잘 써지지 않는다면, 글감을 확인해주세요."
               value={props._content}
               onChange={props.onChangeContent}
-              ></F.Writing>
+            ></F.Writing>
             <input
               type="file"
               ref={props.fileInputRef}
@@ -129,30 +131,80 @@ export default function WriteUI(props: Iwrite): JSX.Element {
             />
           </F.InputTextForm>
           {props.isAlertVisible && (
-        <F.CustomAlert>
-          <F.CustomAlertImg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 140 140" fill="none">
-              <path d="M126.942 69.4641C126.942 85.4061 120.391 99.9568 109.725 110.624C99.4638 121.058 84.913 127.667 68.971 127.667C53.029 127.667 38.4783 121.116 28.0435 110.624C17.3768 100.015 11 85.4641 11 69.4641C11 53.4641 17.3768 38.9713 28.0435 28.7105C38.4783 18.1018 53.029 11.667 68.971 11.667C84.913 11.667 99.4638 18.0438 109.725 28.7105C120.391 38.9713 126.942 53.5221 126.942 69.4641Z" fill="#FF6F00"/>
-              <path d="M16.7974 69.5218C16.7974 98.3914 40.2177 121.812 69.0872 121.812C97.9568 121.812 121.145 98.3914 121.145 69.5218C121.145 40.6523 97.8988 17.4639 69.0872 17.4639C40.2756 17.4639 16.7974 40.7102 16.7974 69.5218Z" fill="#F0F0F0"/>
-              <path d="M49.6665 71.2034L67.2897 85.87L90.1882 53.4062" stroke="#FF6F00" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </F.CustomAlertImg>
-          <F.CustomAlertText>글이 발행되었습니다.</F.CustomAlertText>
-        </F.CustomAlert>
-      )}
-      {props.isTempSaveAlertVisible && (
-      <F.CustomTemSaveAlert>
-        <F.CustomTemSaveAlertImg>
-        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="none">
-          <path d="M50 12.5V61.5" stroke="#FF6F00" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M27 38.625L50 61.5" stroke="#FF6F00" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M73 38.625L50 61.5" stroke="#FF6F00" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M12.5833 57.667V74.167C12.5833 81.542 18.2083 87.5003 25.125 87.5003H74.9583C81.875 87.5003 87.5 81.542 87.5 74.167V57.667" stroke="#FF6F00" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-        </F.CustomTemSaveAlertImg>
-        <F.CustomTemSaveAlertText>글이 임시저장되었습니다.</F.CustomTemSaveAlertText>
-      </F.CustomTemSaveAlert>
-    )}
+            <F.CustomAlert>
+              <F.CustomAlertImg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="140"
+                  height="140"
+                  viewBox="0 0 140 140"
+                  fill="none"
+                >
+                  <path
+                    d="M126.942 69.4641C126.942 85.4061 120.391 99.9568 109.725 110.624C99.4638 121.058 84.913 127.667 68.971 127.667C53.029 127.667 38.4783 121.116 28.0435 110.624C17.3768 100.015 11 85.4641 11 69.4641C11 53.4641 17.3768 38.9713 28.0435 28.7105C38.4783 18.1018 53.029 11.667 68.971 11.667C84.913 11.667 99.4638 18.0438 109.725 28.7105C120.391 38.9713 126.942 53.5221 126.942 69.4641Z"
+                    fill="#FF6F00"
+                  />
+                  <path
+                    d="M16.7974 69.5218C16.7974 98.3914 40.2177 121.812 69.0872 121.812C97.9568 121.812 121.145 98.3914 121.145 69.5218C121.145 40.6523 97.8988 17.4639 69.0872 17.4639C40.2756 17.4639 16.7974 40.7102 16.7974 69.5218Z"
+                    fill="#F0F0F0"
+                  />
+                  <path
+                    d="M49.6665 71.2034L67.2897 85.87L90.1882 53.4062"
+                    stroke="#FF6F00"
+                    strokeWidth="8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </F.CustomAlertImg>
+              <F.CustomAlertText>글이 발행되었습니다.</F.CustomAlertText>
+            </F.CustomAlert>
+          )}
+          {props.isTempSaveAlertVisible && (
+            <F.CustomTemSaveAlert>
+              <F.CustomTemSaveAlertImg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="100"
+                  height="100"
+                  viewBox="0 0 100 100"
+                  fill="none"
+                >
+                  <path
+                    d="M50 12.5V61.5"
+                    stroke="#FF6F00"
+                    strokeWidth="8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M27 38.625L50 61.5"
+                    stroke="#FF6F00"
+                    strokeWidth="8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M73 38.625L50 61.5"
+                    stroke="#FF6F00"
+                    strokeWidth="8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M12.5833 57.667V74.167C12.5833 81.542 18.2083 87.5003 25.125 87.5003H74.9583C81.875 87.5003 87.5 81.542 87.5 74.167V57.667"
+                    stroke="#FF6F00"
+                    strokeWidth="8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </F.CustomTemSaveAlertImg>
+              <F.CustomTemSaveAlertText>
+                글이 임시저장되었습니다.
+              </F.CustomTemSaveAlertText>
+            </F.CustomTemSaveAlert>
+          )}
         </F.Form>
       </F.Wrapper>
     </>
