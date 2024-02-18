@@ -70,7 +70,9 @@ export default function BoardListUI(props: IBookListProps): JSX.Element {
             id={`${el.book_id}`}
             onClick={props.onClickBook}
           >
-            <L.BoardImage src={"/book/rectangle 208.png"}></L.BoardImage>
+            <L.BoardImage
+              src={el.image_url ? el.image_url : "/book/rectangle 208.png"}
+            />
 
             <L.BoardBottom>
               <L.BoardCategory>지연</L.BoardCategory>
