@@ -81,8 +81,10 @@ export default function Questions(): JSX.Element {
       alert("작성 완료되었습니다.");
       void router.push("/");
     } catch (error: any) {
-      alert(error.message); // 에러 처리
-      console.log(error.message);
+      alert(
+        "오늘의 질문에 이미 답변을 하셨습니다. 수정을 원하시면 수정하기를 선택해주세요.",
+      );
+      void router.push("/");
     }
   };
 
