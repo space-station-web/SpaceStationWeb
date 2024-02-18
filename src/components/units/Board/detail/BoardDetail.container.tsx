@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../API/request";
 import BoardDetailUI from "./BoardDetail.presenter";
 import type { IBoardDetailProps } from "./BoardDetail.types";
 
@@ -12,7 +13,8 @@ export interface PostData {
   created_at: string;
   visibility: string;
   image_url: string[];
-  like: number;
+  postLikeCount: number;
+  postLike: boolean;
 }
 
 interface ApiResponse {
@@ -25,11 +27,18 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
 
   const [isStored, setIsStored] = useState(false);
 
-  const accessToken =
-    "Bearer " +
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYsIm1haWwiOiJhc2RnQG5hdmVyLmNvbSIsImlhdCI6MTcwODE2MTgxOSwiZXhwIjoxNzA4MTcyNjE5fQ.9l3O92l_ZUTwO96tpxu1I2bG9ZoqbvxkwtO_RxIl1UI";
-  const refreshToken =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDgxNjE4MTksImV4cCI6MTcwODI0ODIxOX0.01IrBlS3M9iCTXHRptX8fQ91LTfJJvKSJXIE9aOu1iQ";
+  const [accessToken, setAccessToken] = useState<string | null>(null);
+  const [refreshToken, setRefreshToken] = useState<string | null>(null);
+
+  const [refreshData, setRefreshData] = useState(false); // 데이터 리프레시를 위한 상태
+
+  useEffect(() => {
+    // localStorage에서 토큰을 가져와 상태에 저장
+    const token = "Bearer " + window.localStorage.getItem(ACCESS_TOKEN);
+    const refresh = window.localStorage.getItem(REFRESH_TOKEN);
+    setAccessToken(token);
+    setRefreshToken(refresh);
+  }, []);
 
   // 게시글 보관 api 요청
 
@@ -69,6 +78,12 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
         try {
           const response = await axios.get<ApiResponse>(
             `http://localhost:8080/posts/${postId}`,
+            {
+              headers: {
+                authorization: accessToken,
+                refresh: refreshToken,
+              },
+            },
           );
 
           setData(response.data.result);
@@ -79,31 +94,43 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
       };
       void fetchData();
     }
-  }, [postId]);
+  }, [postId, refreshData]);
 
   const onClickBoards = (): void => {
     void router.push("/boards");
   };
 
-  // 게시글 좋아요
+  // 게시글 좋아요 및 취소
   const onClickLike = async (): Promise<void> => {
     if (typeof postId === "string") {
       try {
-        const response = await axios.post(
-          `http://localhost:8080/likes/posts/${postId}`,
-          {},
-          {
-            headers: {
-              authorization: accessToken,
-              refresh: refreshToken,
-            },
-          },
-        );
+        const response = await (data?.postLike === false
+          ? axios.post(
+              `http://localhost:8080/likes/posts/${postId}`,
+              {},
+              {
+                headers: {
+                  authorization: accessToken,
+                  refresh: refreshToken,
+                },
+              },
+            )
+          : axios.delete(`http://localhost:8080/likes/posts/${postId}`, {
+              headers: {
+                authorization: accessToken,
+                refresh: refreshToken,
+              },
+            }));
 
+        if (response.status === 200) {
+          setRefreshData((prev) => !prev);
+        }
         console.log(response.data);
       } catch (error) {
         console.error("데이터 로딩 중 오류 발생", error);
       }
+    } else {
+      console.log("not type postId");
     }
   };
 

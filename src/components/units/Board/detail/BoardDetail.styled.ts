@@ -197,6 +197,8 @@ export const CountLike = styled.p`
 `;
 
 export const LikeIcon = styled(Like)`
+  width: 30px;
+  height: 30px;
   margin-right: 5px;
   cursor: pointer;
 `;
