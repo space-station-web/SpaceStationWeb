@@ -61,6 +61,12 @@ export default function BoardList(): JSX.Element {
       try {
         const response = await axios.get<ApiResponse>(
           "http://localhost:8080/posts?orderColumn=created_at&orderDirection=desc",
+          {
+            headers: {
+              authorization: "Bearer " + accessToken,
+              refresh: refreshToken,
+            },
+          },
         );
         setPosts(response.data.result); // 데이터를 상태에 저장
         console.log(response.data);
@@ -76,6 +82,12 @@ export default function BoardList(): JSX.Element {
   const onClickLikeCountOrder = async (): Promise<void> => {
     const response = await axios.get<ApiResponse>(
       "http://localhost:8080/posts?orderColumn=like_count&orderDirection=desc",
+      {
+        headers: {
+          authorization: "Bearer " + accessToken,
+          refresh: refreshToken,
+        },
+      },
     );
     setPosts(response.data.result);
   };
@@ -84,6 +96,12 @@ export default function BoardList(): JSX.Element {
   const onClickCreatedAtOrder = async (): Promise<void> => {
     const response = await axios.get<ApiResponse>(
       "http://localhost:8080/posts?orderColumn=created_at&orderDirection=desc",
+      {
+        headers: {
+          authorization: "Bearer " + accessToken,
+          refresh: refreshToken,
+        },
+      },
     );
     setPosts(response.data.result);
     console.log(posts);
