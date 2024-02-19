@@ -13,7 +13,7 @@ export default function BookCommentListUI(
               <L.CommentContainer key={el.book_reply_id}>
                 <L.UserImg src="/boardComment/Icon.png" />
                 <L.CommentDiv>
-                  <L.UserName>{el.user_id}</L.UserName>
+                  <L.UserName>{el.nickname}</L.UserName>
                   <L.Comment>{el.content}</L.Comment>
                 </L.CommentDiv>
                 <L.Delete
