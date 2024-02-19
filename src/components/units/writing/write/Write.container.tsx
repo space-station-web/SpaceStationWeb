@@ -181,7 +181,7 @@ export default function Write(): JSX.Element {
       const response = await axios.post(
         "http://localhost:8080/posts",
         {
-          topic_id: 123,
+          topic_id: topicId,
           title,
           content,
           visibility,
