@@ -37,9 +37,9 @@ export default function LayoutHeader(): JSX.Element {
     await router.push("../../../../../../login");
   };
   const onClickLogout = async (): Promise<void> => {
+    await router.push("../../../../../../login/");
     setLoginState(false);
     localStorage.clear(); // 모든 로컬 스토리지 항목 삭제
-    await router.push("../../../../../../login/");
   };
   const onClickSignUp = async (): Promise<void> => {
     await router.push("../../../../../../signUp");
