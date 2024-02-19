@@ -54,9 +54,9 @@ export default function LayoutHeaderUI(props: ILayoutHeader): JSX.Element {
       <Styled.UserBar>
         {props.login ? (
           <>
-            <Styled.User>
+            <Styled.User onClick={props.onClickMoveMyPage}>
               <Styled.UserImg />
-              <div onClick={props.onClickMoveMyPage}
+              <div
                 style={{
                   width: "70px",
                   color: "#f0f0f0",

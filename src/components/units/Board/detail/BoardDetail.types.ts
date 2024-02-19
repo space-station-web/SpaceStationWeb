@@ -9,6 +9,7 @@ export interface IBoardDetailUIProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   data: PostData | null;
   onClickBoards: (event: MouseEvent<HTMLImageElement>) => void;
+  onClickMoveMyPage: (event: MouseEvent<HTMLDivElement>) => void;
 
   onClickLike: () => Promise<void>;
   onClickSave: () => Promise<void>;

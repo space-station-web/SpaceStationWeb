@@ -55,7 +55,7 @@ export default function BoardDetailUI(props: IBoardDetailUIProps): JSX.Element {
             </L.BookModalContainer>
             {/*  */}
             <L.TopBoard>
-              <L.UserBox>
+              <L.UserBox onClick={props.onClickMoveMyPage}>
                 <L.UserProfile src="/common/icon/User.png" />
                 <L.UserName>{firstData?.nickname}</L.UserName>
               </L.UserBox>

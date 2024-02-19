@@ -29,6 +29,7 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
 
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [refreshToken, setRefreshToken] = useState<string | null>(null);
+  const [_userId, setUserId] = useState("");
 
   const [refreshData, setRefreshData] = useState(false); // 데이터 리프레시를 위한 상태
 
@@ -42,6 +43,10 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
     // localStorage에서 토큰을 가져와 상태에 저장
     const token = "Bearer " + window.localStorage.getItem(ACCESS_TOKEN);
     const refresh = window.localStorage.getItem(REFRESH_TOKEN);
+    const userId = window.localStorage.getItem('userId');
+    if (userId !== null) {
+      setUserId(userId);
+    }
     setAccessToken(token);
     setRefreshToken(refresh);
 
@@ -149,6 +154,10 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
     }
   };
 
+  const onClickMoveMyPage = async (): Promise<void> => {
+    await router.push(`../../../../../../mypage/${_userId}`);
+  };
+
   return (
     <BoardDetailUI
       onClickCommentToggle={onClickCommentToggle}
@@ -158,6 +167,7 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
       onClickBoards={onClickBoards}
       onClickLike={onClickLike}
       onClickSave={onClickSave}
+      onClickMoveMyPage={onClickMoveMyPage}
     />
   );
 }
