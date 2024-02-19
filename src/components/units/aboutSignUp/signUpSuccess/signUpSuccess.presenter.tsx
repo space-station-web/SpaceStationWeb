@@ -10,7 +10,7 @@ export default function SignUpSuccessUI(
         <F.Form>
           <F.Icon src="/common/icon/rocket.png" />
           <F.Heading1>
-          허거덩님 환영해요!
+          {props._nick}님 환영해요!
           </F.Heading1>
           <F.Heading2>
           우주정거장 가입이 완료됐어요.

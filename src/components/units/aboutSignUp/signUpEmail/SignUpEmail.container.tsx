@@ -82,7 +82,11 @@ export default function SignUpEmail(): JSX.Element {
       console.log("res", response);
       const isSuccess = response.data.result.isSuccess === true;
       if (isSuccess) {
-        await router.push("../../../../../../signUp/signUpSuccess");
+        // await router.push("../../../../../../signUp/signUpSuccess");
+        await router.push({
+          pathname: "../../../../../../signUp/signUpSuccess",
+          query: { nickname },
+        });
         console.log('회원가입 성공');
       } else {
         console.log('회원가입 false');
