@@ -18,7 +18,7 @@ export interface BookData {
   contents: ContentData[];
 
   // content: string;
-  // created_at: string;
+  create_at: string;
 
   // visibility: string;
 }

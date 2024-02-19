@@ -11,6 +11,7 @@ export interface Comments {
   create_at: string;
   PostId: number;
   user_id: number;
+  nickname: string;
 }
 
 interface ApiResponse {

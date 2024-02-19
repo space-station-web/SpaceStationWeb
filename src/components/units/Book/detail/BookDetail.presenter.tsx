@@ -54,7 +54,7 @@ export default function BoardDetailUI(props: IBookDetailUIProps): JSX.Element {
                 void router.push("/books");
               }}
             />
-            <L.ShareBtn>인용하기</L.ShareBtn>
+            {/* <L.ShareBtn>인용하기</L.ShareBtn> */}
           </L.TopDiv>
           <L.BoardWrapper>
             {/* modal */}
@@ -74,7 +74,7 @@ export default function BoardDetailUI(props: IBookDetailUIProps): JSX.Element {
               <L.BoardTopContainer>
                 <L.Title>{firstData?.title}</L.Title>
                 <L.CreateAt>
-                  {formatDate(firstData?.like ?? "날짜 정보 없음")}
+                  {formatDate(firstData?.create_at ?? "날짜 정보 없음")}
                 </L.CreateAt>
               </L.BoardTopContainer>
               <L.ImageBox
