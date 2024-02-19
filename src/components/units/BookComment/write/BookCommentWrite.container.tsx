@@ -2,12 +2,12 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState, type ChangeEvent } from "react";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../API/request";
-import CommentWriteUI from "./CommentWrite.present";
-import type { ICommentWrite } from "./CommentWrite.types";
+import CommentWriteUI from "./BookCommentWrite.present";
+import type { ICommentWrite } from "./BookCommentWrite.types";
 
-export default function CommentWrite(props: ICommentWrite): JSX.Element {
+export default function BookCommentWrite(props: ICommentWrite): JSX.Element {
   const router = useRouter();
-  const { book_id: bookId } = router.query;
+  const { bookId } = router.query;
   const [content, setContent] = useState("");
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [refreshToken, setRefreshToken] = useState<string | null>(null);
@@ -25,6 +25,7 @@ export default function CommentWrite(props: ICommentWrite): JSX.Element {
   };
 
   const onClickComment = async (): Promise<void> => {
+    console.log(router.query);
     try {
       // const authHeader = `Bearer ${accessToken}`;
       const response = await axios.post(

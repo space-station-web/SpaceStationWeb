@@ -106,7 +106,7 @@ export default function BookWriteUI(props: IBookWriteProps): JSX.Element {
           <B.ContentsImageContainer>
             {props.tableContents.map(
               (item, index) =>
-                item.images?.map(
+                item.image?.map(
                   (
                     imageSrc,
                     imgIndex, // `?.` 연산자를 사용하여 `images`가 있는 경우에만 `map` 함수를 호출

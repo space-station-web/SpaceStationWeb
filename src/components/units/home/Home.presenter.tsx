@@ -25,7 +25,7 @@ function HomeUI({
         <styled.Group $gap="0.84rem">
           <styled.LoginBtn
             onClick={() => {
-              void router.push("/sighUp");
+              void router.push("/signUp");
             }}
           >
             가입

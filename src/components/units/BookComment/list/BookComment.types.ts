@@ -1,12 +1,12 @@
 import type { Dispatch, MouseEvent, SetStateAction } from "react";
 import type { Comments } from "./BookCommentList.container";
 
-export interface IBoardCommentList {
+export interface IBookCommentList {
   comments: Comments[];
   onClickDelete: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
-export interface IBoardContainer {
+export interface IBookContainer {
   refreshData: boolean;
   setRefreshData: Dispatch<SetStateAction<boolean>>;
 }
