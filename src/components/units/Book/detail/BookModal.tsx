@@ -69,7 +69,6 @@ const BookModal = ({ onClose }: ModalComponentProps): JSX.Element => {
         console.log(response.data);
         // 요청이 성공적으로 완료되었음을 알림
         alert(response.data.result.data.message);
-
         void router.push("/boards");
         onClose(); // 게시글 삭제 후 모달 닫기
 
