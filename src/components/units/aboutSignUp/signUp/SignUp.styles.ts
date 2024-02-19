@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   width: 45.6rem;
-  position: relative; 
+  position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
@@ -11,8 +11,8 @@ export const Wrapper = styled.div`
 
 export const Prev = styled.img`
   position: absolute;
-  top: 11.5rem; 
-  left: 0; 
+  top: 11.5rem;
+  left: 0;
   width: 1.2rem;
   height: 1.2rem;
   cursor: pointer;
@@ -27,7 +27,7 @@ export const Form = styled.div`
   z-index: 100;
   background-color: #1e1e1e;
   width: 30.2rem;
-  min-height: 23.1rem;
+  min-height: 21.7rem;
   border: 0.5px solid #757575;
   border-radius: 16px;
 
@@ -36,7 +36,7 @@ export const Form = styled.div`
   align-items: center;
 
   margin: 1.9rem 0 11.5rem 0;
-  padding: 2.7rem;
+  padding: 2.7rem 2.7rem 0rem 2.7rem;
 `;
 
 export const Icon = styled.img`

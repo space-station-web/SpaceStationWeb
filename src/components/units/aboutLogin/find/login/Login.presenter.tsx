@@ -54,9 +54,9 @@ export default function LoginUI(props: ILogin): JSX.Element {
 
           <F.SubmitButton onClick={props.handleLogin}>로그인</F.SubmitButton>
 
-          <F.Line></F.Line>
+          {/* <F.Line></F.Line> */}
 
-          <F.SubmitButton>네이버로 로그인</F.SubmitButton>
+          {/* <F.SubmitButton>네이버로 로그인</F.SubmitButton> */}
         </F.Form>
       </F.Wrapper>
     </>
