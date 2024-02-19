@@ -43,10 +43,6 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
     // localStorage에서 토큰을 가져와 상태에 저장
     const token = "Bearer " + window.localStorage.getItem(ACCESS_TOKEN);
     const refresh = window.localStorage.getItem(REFRESH_TOKEN);
-    const userId = window.localStorage.getItem('userId');
-    if (userId !== null) {
-      setUserId(userId);
-    }
     setAccessToken(token);
     setRefreshToken(refresh);
 
@@ -64,7 +60,9 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
                 },
               },
             );
+            console.log("response",response);
             setData(response.data.result);
+            setUserId(response.data.result.user_id);
           } catch (error) {
             console.error("데이터 로딩 중 오류 발생", error);
           }
@@ -155,6 +153,7 @@ export default function BoardDetail(props: IBoardDetailProps): JSX.Element {
   };
 
   const onClickMoveMyPage = async (): Promise<void> => {
+    
     await router.push(`../../../../../../mypage/${_userId}`);
   };
 

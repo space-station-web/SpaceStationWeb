@@ -45,8 +45,14 @@ function HomeUI({
                 </styled.SubBody>
               </styled.Stack>
               <styled.Group $gap="0.65rem" style={{ alignSelf: "flex-end" }}>
-                <styled.ContentsBtn>모음집 확인</styled.ContentsBtn>
-                <styled.ContentsBtn>작성하기</styled.ContentsBtn>
+                {/* <styled.ContentsBtn>모음집 확인</styled.ContentsBtn> */}
+                <styled.ContentsBtn
+                  onClick={() => {
+                    void router.push("/write");
+                  }}
+                >
+                  작성하기
+                </styled.ContentsBtn>
               </styled.Group>
             </styled.Card>
             <styled.Card $width="14.5rem" $height="14.2rem">

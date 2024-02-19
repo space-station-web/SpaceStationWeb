@@ -19,13 +19,13 @@ const ModalComponent = ({ onClose }: ModalComponentProps): JSX.Element => {
         >
           새로 등록하기
         </Button>
-        <Button
+        {/* <Button
           onClick={() => {
             void router.push("/books/tempBook");
           }}
         >
           기존 글 불러오기
-        </Button>
+        </Button> */}
       </ModalContainer>
     </ModalBackground>
   );
@@ -55,7 +55,7 @@ export const ModalContainer = styled.div`
   gap: 10px;
 
   width: 14rem;
-  height: 13.8rem;
+  height: 10.3rem;
 `;
 
 const Image = styled.img`
