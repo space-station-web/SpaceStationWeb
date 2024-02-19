@@ -28,7 +28,7 @@ export default function LayoutHeaderUI(props: ILayoutHeader): JSX.Element {
         >
           오늘의 질문
         </Styled.NavBarItem>
-        <Styled.NavBarItem>오늘의 글감</Styled.NavBarItem>
+        {/* <Styled.NavBarItem>오늘의 글감</Styled.NavBarItem> */}
         <Styled.NavBarItem
           onClick={() => {
             void router.push("/boards");
@@ -62,7 +62,7 @@ export default function LayoutHeaderUI(props: ILayoutHeader): JSX.Element {
                   color: "#f0f0f0",
                   fontSize: "0.76rem",
                   lineHeight: "31px",
-                  cursor: "pointer"
+                  cursor: "pointer",
                 }}
               >
                 {props._nick}
