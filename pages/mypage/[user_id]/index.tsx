@@ -1,7 +1,6 @@
 import MyPage from "../../../src/components/units/mypage/Mypage.container";
 
-function MyPagePage() {
+export default function MyPagePage(): JSX.Element {
   return <MyPage />;
 }
 
-export default MyPagePage;

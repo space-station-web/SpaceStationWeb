@@ -10,6 +10,7 @@ export default function LayoutHeader(): JSX.Element {
 
   const [login, setLoginState] = useRecoilState(isLoginState);
   const [_nick, setNick] = useState("");
+  const [_userId, setUserId] = useState("");
 
   // const [isTokenState, setIsTokenState] = useState(false);
 
@@ -20,11 +21,15 @@ export default function LayoutHeader(): JSX.Element {
   useEffect(() => {
     const accessToken = window.localStorage.getItem('accessToken');
     const nickname = window.localStorage.getItem('nickname');
+    const userId = window.localStorage.getItem('userId');
     if (accessToken !== null) {
       setLoginState(true);
     }
     if (nickname !== null) {
       setNick(nickname);
+    }
+    if (userId !== null) {
+      setUserId(userId);
     }
   }, []);
 
@@ -39,11 +44,16 @@ export default function LayoutHeader(): JSX.Element {
   const onClickSignUp = async (): Promise<void> => {
     await router.push("../../../../../../signUp");
   };
+  const onClickMoveMyPage = async (): Promise<void> => {
+    await router.push(`../../../../../../mypage/${_userId}`);
+  };
+  
 
   return <LayoutHeaderUI 
   onClickLogin={onClickLogin}
   onClickLogout={onClickLogout}
   onClickSignUp={onClickSignUp}
+  onClickMoveMyPage={onClickMoveMyPage}
   login={login}
   _nick={_nick}
   />;

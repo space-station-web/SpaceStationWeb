@@ -39,6 +39,9 @@ export default function Write(): JSX.Element {
   const [todayTopic, setTodayTopic] = useState("");
   const [todayContent, setTodayContent] = useState("");
 
+  // formdata
+  const formData = new FormData();
+
   useEffect(() => {
     // 임시저장 글 전체 조회
     const fetchData = async (): Promise<void> => {
@@ -166,7 +169,11 @@ export default function Write(): JSX.Element {
 
   // 발행하기 버튼
   const handlePublishClick = async (): Promise<void> => {
-    // setIsAlertVisible(true);
+    // formData.append("title", title);
+    // formData.append("title", title);
+    // formData.append("title", title);
+    // formData.append("title", title);
+    // formData.append("title", title);
     try {
       const title = _title;
       const content = _content;

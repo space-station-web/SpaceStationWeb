@@ -56,12 +56,13 @@ export default function LayoutHeaderUI(props: ILayoutHeader): JSX.Element {
           <>
             <Styled.User>
               <Styled.UserImg />
-              <div
+              <div onClick={props.onClickMoveMyPage}
                 style={{
                   width: "70px",
                   color: "#f0f0f0",
                   fontSize: "0.76rem",
                   lineHeight: "31px",
+                  cursor: "pointer"
                 }}
               >
                 {props._nick}
