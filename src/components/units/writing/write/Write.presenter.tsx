@@ -130,7 +130,7 @@ export default function WriteUI(props: Iwrite): JSX.Element {
               multiple // 여러 개 파일 선택 가능
             />
           </F.InputTextForm>
-          {props.isAlertVisible && (
+          {/* {props.isAlertVisible && (
             <F.CustomAlert>
               <F.CustomAlertImg>
                 <svg
@@ -159,7 +159,7 @@ export default function WriteUI(props: Iwrite): JSX.Element {
               </F.CustomAlertImg>
               <F.CustomAlertText>글이 발행되었습니다.</F.CustomAlertText>
             </F.CustomAlert>
-          )}
+          )} */}
           {props.isTempSaveAlertVisible && (
             <F.CustomTemSaveAlert>
               <F.CustomTemSaveAlertImg>
