@@ -5,6 +5,8 @@ import type { ITemporaryStorage } from "./TemporaryStorage.types";
 interface TemporaryStorageUIProps extends ITemporaryStorage {
   onClickMoveWriting: (draftId: string) => void; 
   temporaryStorageCount: number;
+  onClickYesDelete: () => void; 
+  onClickNoDelete: () => void; 
 }
 
 export default function TemporaryStorageUI(props: TemporaryStorageUIProps): JSX.Element {
@@ -59,17 +61,16 @@ export default function TemporaryStorageUI(props: TemporaryStorageUIProps): JSX.
             </F.OneForm>
           ))}
 
-          {isDeleteModalOpen && (
-            <F.DelModalWrapper>
-              <F.DelModalText>삭제하시겠습니까?<br />삭제된 글은 복구되지 않습니다.</F.DelModalText>
-              <F.DelModalYesBtn>
-                <F.DelModalYesText>예</F.DelModalYesText>
-              </F.DelModalYesBtn>
-              <F.DelModalNoBtn onClick={handleNoBtnClick}>
-                <F.DelModalNoText>아니요</F.DelModalNoText>
-              </F.DelModalNoBtn>
-            </F.DelModalWrapper>
-          )}
+        {isDeleteModalOpen && (
+          <F.DelModalWrapper>
+            <F.DelModalText>삭제하시겠습니까?<br />삭제된 글은 복구되지 않습니다.</F.DelModalText>
+            <F.DelModalYesBtn onClick={props.onClickYesDelete}>              <F.DelModalYesText>예</F.DelModalYesText>
+            </F.DelModalYesBtn>
+            <F.DelModalNoBtn onClick={props.onClickNoDelete}>
+              <F.DelModalNoText>아니요</F.DelModalNoText>
+            </F.DelModalNoBtn>
+          </F.DelModalWrapper>
+        )}
         </F.Form>
       </F.Wrapper>
     </>
