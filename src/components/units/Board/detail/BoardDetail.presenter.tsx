@@ -66,7 +66,7 @@ export default function BoardDetailUI(props: IBoardDetailUIProps): JSX.Element {
               <L.BoardTopContainer>
                 <L.Title>{firstData?.title}</L.Title>
                 <L.CreateAt>
-                  {formatDate(firstData?.create_at ?? "날짜 정보 없음")}
+                  {formatDate(firstData?.created_at ?? "날짜 정보 없음")}
                 </L.CreateAt>
               </L.BoardTopContainer>
               <L.ImageBox

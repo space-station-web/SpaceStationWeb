@@ -151,6 +151,8 @@ export default function Write(): JSX.Element {
           setTimeout(() => {
             setIsTempSaveAlertVisible(false);
           }, 2000);
+          alert("게시물이 임시저장 되었습니다.");
+          void router.push("/write/TemporaryStorage");
         } else {
           console.log("임시저장 재요청 false");
         }
@@ -272,9 +274,25 @@ export default function Write(): JSX.Element {
   const onClickMoveHomePage = async (): Promise<void> => {
     await router.push("../../../../../../");
   };
-
+  async function fetchDraftTitle(draftId: string): Promise<string | null> {
+    try {
+        const response = await fetch(`/drafts/${draftId}`);
+        if (response.ok) {
+            const data = await response.json();
+            return data.title;
+        } else {
+            console.error('임시저장의 제목을 가져오는데 실패했습니다.');
+            return null;
+        }
+    } catch (error) {
+        console.error('임시저장의 제목을 가져오는데 실패했습니다.', error);
+        return null;
+    }
+  }
+  
+  // 임시저장 이동
   const onClickMoveTemStorage = async (): Promise<void> => {
-    await router.push("../../../../../../write/TemporaryStorage");
+
   };
   const onClickPluseTemStorage = async (): Promise<void> => {
     await router.push("../../../../../../write/TemporaryStoragePluse");

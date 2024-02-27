@@ -16,9 +16,9 @@ export default function WriteUI(props: Iwrite): JSX.Element {
             </F.TempText>
             <F.TempLine></F.TempLine>
             {/* <F.TempNum onClick={handleMoveTemporaryStorageClick}> */}
-            <F.TempNum onClick={props.onClickMoveTemStorage}>
+            {/* <F.TempNum onClick={props.onClickMoveTemStorage}>
               {props.temporaryStorageCount}
-            </F.TempNum>
+            </F.TempNum> */}
           </F.TempBtnContainer>
           <F.publishBtn onClick={props.handlePublishClick}>
             <F.publishBtnText>발행하기</F.publishBtnText>
