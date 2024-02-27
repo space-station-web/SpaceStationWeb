@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import * as F from "./TemporaryStorage.styles";
 import type { ITemporaryStorage } from "./TemporaryStorage.types";
+import PaginationComponent from "../../../commons/pagination/Pagination";
+
 
 interface TemporaryStorageUIProps extends ITemporaryStorage {
   onClickMoveWriting: (draftId: string) => void; 
@@ -14,7 +16,7 @@ export default function TemporaryStorageUI(props: TemporaryStorageUIProps): JSX.
     content: string | undefined,
     maxLength: number = 13,
   ): string => {
-    // 내용이 falsy 값인 경우 (undefined, null, 빈 문자열 등), 빈 문자열을 반환합니다.
+    // 내용이 false 값인 경우 (undefined, null, 빈 문자열 등), 빈 문자열을 반환합니다.
     if (content === null || content === undefined || content === "") return "";
 
     // 내용이 최대 길이보다 길면, 잘라내고 "..."를 추가합니다.
@@ -45,7 +47,7 @@ export default function TemporaryStorageUI(props: TemporaryStorageUIProps): JSX.
             <F.FormHeaderNum>총 {props.temporaryStorageCount}개</F.FormHeaderNum>
           </F.FormHeader>
           
-          {props.posts.map((el) => ( // 각 게시물마다 새로운 OneForm 생성
+          {props.drafts.map((el) => ( // 각 게시물마다 새로운 OneForm 생성
             <F.OneForm key={el.user_id}>
               <F.Line>
                 <F.Date>{formattedDate}</F.Date>
@@ -64,7 +66,8 @@ export default function TemporaryStorageUI(props: TemporaryStorageUIProps): JSX.
         {isDeleteModalOpen && (
           <F.DelModalWrapper>
             <F.DelModalText>삭제하시겠습니까?<br />삭제된 글은 복구되지 않습니다.</F.DelModalText>
-            <F.DelModalYesBtn onClick={props.onClickYesDelete}>              <F.DelModalYesText>예</F.DelModalYesText>
+            <F.DelModalYesBtn onClick={props.onClickYesDelete}>              
+            <F.DelModalYesText>예</F.DelModalYesText>
             </F.DelModalYesBtn>
             <F.DelModalNoBtn onClick={props.onClickNoDelete}>
               <F.DelModalNoText>아니요</F.DelModalNoText>
@@ -72,6 +75,11 @@ export default function TemporaryStorageUI(props: TemporaryStorageUIProps): JSX.
           </F.DelModalWrapper>
         )}
         </F.Form>
+        <PaginationComponent
+        currentPage={props.currentPage}
+        setCurrentPage={props.setCurrentPage}
+        totalPageCount={props.totalPageCount}
+      />
       </F.Wrapper>
     </>
   );
